@@ -25,8 +25,10 @@ public class MenuPrincipal : MonoBehaviour {
     void Start () {
         unselectedBGColor = new Color(0.529F, 0.407F, 0.239F, 1);
         selectedBGColor = new Color(0.364F, 0.305F, 0.227F, 1);
-        unselectedTextColor = new Color(0.333F, 0.239F, 0.086F, 1);
-        selectedTextColor = new Color(0.176F, 0.156F, 0.086F, 1);
+        //unselectedTextColor = new Color(0.333F, 0.239F, 0.086F, 1);
+        //selectedTextColor = new Color(0.176F, 0.156F, 0.086F, 1);
+        unselectedTextColor = new Color(0F, 0F, 0F, 1);
+        selectedTextColor = new Color(1F, 1F, 1F, 1);
 
         //Boton Iniciar Partida - Initial state: Selected
         start = start.GetComponent<Button>();
