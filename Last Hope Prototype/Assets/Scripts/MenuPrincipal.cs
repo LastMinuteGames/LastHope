@@ -15,6 +15,14 @@ public class MenuPrincipal : MonoBehaviour {
     public Text creditsText;
     public Text exitText;
     public int focus;
+    //Confirm exit menu
+    public bool isConfirmExit = false;
+    public Canvas confirmExit;
+    public Button yes;
+    public Button no;
+    public Text yesText;
+    public Text noText;
+    public int focusExit;
 
     public Color unselectedBGColor;
     public Color selectedBGColor;
@@ -56,6 +64,29 @@ public class MenuPrincipal : MonoBehaviour {
 
         //focus manages button focus logic - initiate 0
         focus = 0;
+
+        //Manages the confirm exit canvas (sets it to invisible)
+        confirmExit = confirmExit.GetComponent<Canvas>();
+        confirmExit.gameObject.SetActive(false);
+
+        //Flah isConfirmExit to false
+        isConfirmExit = false;
+
+        //Boton SI salir
+        yes = yes.GetComponent<Button>();
+        yes.image.color = unselectedBGColor;
+        yesText = yesText.GetComponent<Text>();
+        yesText.color = unselectedTextColor;
+
+        //Boton NO salir
+        no = no.GetComponent<Button>();
+        no.image.color = unselectedBGColor;
+        noText = noText.GetComponent<Text>();
+        noText.color = unselectedTextColor;
+
+        //focus exit menu
+        focusExit = 1;
+
     }
 
     //Move focus up
@@ -77,6 +108,30 @@ public class MenuPrincipal : MonoBehaviour {
         if (focus != 3)
         {
             focus = focus + 1;
+        }
+
+        return focus;
+    }
+
+    //Move focus right in exit menu
+    public int MoveFocusRight(int focus)
+    {
+
+        if (focus == 0)
+        {
+            focus = 1;
+        }
+
+        return focus;
+    }
+
+    //Move focus left in exit menu
+    public int MoveFocusLeft(int focus)
+    {
+
+        if (focus == 1)
+        {
+            focus = 0;
         }
 
         return focus;
@@ -134,6 +189,28 @@ public class MenuPrincipal : MonoBehaviour {
                 break;
         }
     }
+    //Redraw the buttons of the confirm exit menu if focus has changed
+    void UpdateFocusExit(int focus)
+    {
+
+        switch (focus)
+        {
+            case 0:
+                yes.image.color = selectedBGColor;
+                no.image.color = unselectedBGColor;
+
+                yesText.color = selectedTextColor;
+                noText.color = unselectedTextColor;
+                break;
+            case 1:
+                yes.image.color = unselectedBGColor;
+                no.image.color = selectedBGColor;
+
+                yesText.color = unselectedTextColor;
+                noText.color = selectedTextColor;
+                break;
+        }
+    }
 
     //When Enter is pressed, we've selected an item
     /*
@@ -144,39 +221,93 @@ public class MenuPrincipal : MonoBehaviour {
 	*/
     void EnterPress(int focus)
     {
-
-        switch (focus)
+        if (!isConfirmExit)
         {
-            case 0:
-                SceneManager.LoadScene("1");
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                Application.Quit();
-                break;
+            switch (focus)
+            {
+                case 0:
+                    SceneManager.LoadScene("1");
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    openExitMenu();
+                    break;
+            }
         }
+        else
+        {
+            switch (focus)
+            {
+                case 0:
+                    Debug.Log("Application quit");
+                    //Application.Quit();
+                    break;
+                case 1:
+                    closeExitMenu();
+                    break;
+            }
+        }
+        
+    }
+
+    //Open the confirm exit menu
+    void openExitMenu()
+    {
+        confirmExit.gameObject.SetActive(true);
+        isConfirmExit = true;
+        focusExit = 1;
+        UpdateFocusExit(focusExit);
+    }
+
+    //Open the confirm exit menu
+    void closeExitMenu()
+    {
+        confirmExit.gameObject.SetActive(false);
+        isConfirmExit = false;
+        focusExit = 1;
     }
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown("up"))
+        if (!isConfirmExit)
         {
-            focus = MoveFocusUp(focus);
-            UpdateFocus(focus);
-        }
+            //Principal menu
+            if (Input.GetKeyDown("up"))
+            {
+                focus = MoveFocusUp(focus);
+                UpdateFocus(focus);
+            }
 
-        if (Input.GetKeyDown("down"))
-        {
-            focus = MoveFocusDown(focus);
-            UpdateFocus(focus);
+            if (Input.GetKeyDown("down"))
+            {
+                focus = MoveFocusDown(focus);
+                UpdateFocus(focus);
+            }
         }
+        else
+        {
+            //Exit menu
+            if (Input.GetKeyDown("left"))
+            {
+                focusExit = MoveFocusLeft(focusExit);
+                UpdateFocusExit(focusExit);
+            }
+
+            if (Input.GetKeyDown("right"))
+            {
+                focusExit = MoveFocusRight(focusExit);
+                UpdateFocusExit(focusExit);
+            }
+        }
+        
 
         if (Input.GetKeyDown("return"))
         {
-            EnterPress(focus);
+            if (isConfirmExit) EnterPress(focusExit);
+            else EnterPress(focus);
         }
     }
 }
