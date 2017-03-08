@@ -94,7 +94,7 @@ public class MenuPrincipal : MonoBehaviour {
         focusExit = 1;
 
         //HelpCanvas
-        helpCanvas = confirmExit.GetComponent<Canvas>();
+        helpCanvas = helpCanvas.GetComponent<Canvas>();
         helpCanvas.gameObject.SetActive(false);
 
         //Flag isHelp to false
