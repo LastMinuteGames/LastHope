@@ -5,7 +5,6 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour
 {
     public Image currentHPBar;
-    public Text ratioText;
     
     public int maxHP = 100;
     public int currentHP;
@@ -92,6 +91,5 @@ public class PlayerHealth : MonoBehaviour
     {
         float ratio = (float)currentHP / maxHP;
         currentHPBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
-        ratioText.text = (ratio * 100).ToString();
     }
 }
