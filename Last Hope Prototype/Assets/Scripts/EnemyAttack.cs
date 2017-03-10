@@ -31,7 +31,7 @@ public class EnemyAttack : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (playerInRange && playerHealth.currenthp > 0 && timer > timeBeweenAttacks)
+        if (playerInRange && playerHealth.currentHP > 0 && timer > timeBeweenAttacks)
             Attack();
     }
 

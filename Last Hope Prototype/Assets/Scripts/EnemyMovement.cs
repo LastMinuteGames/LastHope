@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (playerhp.currenthp > 0)
+        if (playerhp.currentHP > 0)
         {
             nav.SetDestination(player.position);
         }

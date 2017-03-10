@@ -4,13 +4,16 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int starthp = 100;
-    public int currenthp;
+    public Image currentHPBar;
+    public Text ratioText;
+    
+    public int maxHP = 100;
+    public int currentHP;
     public Material defaultMaterial;
     public Material dmgedMaterial;
     public float timeBetweenDmg = 0.5f;
 
-    private PlayerMovement movescript;
+    private PlayerMovement moveScript;
     private bool dmged;
     private bool dead;
     private MeshRenderer meshRenderer;
@@ -18,8 +21,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
-        currenthp = starthp;
-        movescript = GetComponent<PlayerMovement>();
+        currentHP = maxHP;
+        moveScript = GetComponent<PlayerMovement>();
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
@@ -37,9 +40,13 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
             TakeDmg(10);
 
+        if (Input.GetKeyDown(KeyCode.H))
+            Heal(5);
+
         if (dead == true && Input.GetKeyDown(KeyCode.R))
             Respawn();
 
+        UpdateHPBar();
     }
 
     public void TakeDmg(int nasusQ)
@@ -48,27 +55,43 @@ public class PlayerHealth : MonoBehaviour
         {
             dmged = true;
             timer = 0;
-            currenthp -= nasusQ;
+            currentHP -= nasusQ;
             meshRenderer.material = dmgedMaterial;
-            if (currenthp <= 0 && !dead)
+            if (currentHP <= 0 && !dead)
                 Die();
+        }
+    }
+    public void Heal(int hp)
+    {
+        if (!dead && currentHP < maxHP)
+        {
+            currentHP += hp;
+            if (currentHP > maxHP)
+            {
+                currentHP = maxHP;
+            }
         }
     }
 
     void Die()
     {
         dead = true;
-        movescript.enabled = false;
+        moveScript.enabled = false;
         meshRenderer.enabled = false;
     }
 
     void Respawn()
     {
-        currenthp = starthp;
+        currentHP = maxHP;
         dead = false;
-        movescript.enabled = true;
+        moveScript.enabled = true;
         meshRenderer.enabled = true;
     }
 
-
+    void UpdateHPBar()
+    {
+        float ratio = (float)currentHP / maxHP;
+        currentHPBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+        ratioText.text = (ratio * 100).ToString();
+    }
 }
