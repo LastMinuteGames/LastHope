@@ -15,6 +15,20 @@ public class MenuPrincipal : MonoBehaviour {
     public Text creditsText;
     public Text exitText;
     public int focus;
+    //Confirm exit menu
+    public bool isConfirmExit = false;
+    public Canvas confirmExit;
+    public Button yes;
+    public Button no;
+    public Text yesText;
+    public Text noText;
+    public int focusExit;
+    //Help
+    public bool isHelp = false;
+    public Canvas helpCanvas;
+    //Credits
+    public bool isCredits = false;
+    public Canvas creditsCanvas;
 
     public Color unselectedBGColor;
     public Color selectedBGColor;
@@ -25,8 +39,10 @@ public class MenuPrincipal : MonoBehaviour {
     void Start () {
         unselectedBGColor = new Color(0.529F, 0.407F, 0.239F, 1);
         selectedBGColor = new Color(0.364F, 0.305F, 0.227F, 1);
-        unselectedTextColor = new Color(0.333F, 0.239F, 0.086F, 1);
-        selectedTextColor = new Color(0.176F, 0.156F, 0.086F, 1);
+        //unselectedTextColor = new Color(0.333F, 0.239F, 0.086F, 1);
+        //selectedTextColor = new Color(0.176F, 0.156F, 0.086F, 1);
+        unselectedTextColor = new Color(0F, 0F, 0F, 1);
+        selectedTextColor = new Color(1F, 1F, 1F, 1);
 
         //Boton Iniciar Partida - Initial state: Selected
         start = start.GetComponent<Button>();
@@ -54,6 +70,43 @@ public class MenuPrincipal : MonoBehaviour {
 
         //focus manages button focus logic - initiate 0
         focus = 0;
+
+        //Manages the confirm exit canvas (sets it to invisible)
+        confirmExit = confirmExit.GetComponent<Canvas>();
+        confirmExit.gameObject.SetActive(false);
+
+        //Flag isConfirmExit to false
+        isConfirmExit = false;
+
+        //Boton SI salir
+        yes = yes.GetComponent<Button>();
+        yes.image.color = unselectedBGColor;
+        yesText = yesText.GetComponent<Text>();
+        yesText.color = unselectedTextColor;
+
+        //Boton NO salir
+        no = no.GetComponent<Button>();
+        no.image.color = unselectedBGColor;
+        noText = noText.GetComponent<Text>();
+        noText.color = unselectedTextColor;
+
+        //focus exit menu
+        focusExit = 1;
+
+        //HelpCanvas
+        helpCanvas = helpCanvas.GetComponent<Canvas>();
+        helpCanvas.gameObject.SetActive(false);
+
+        //Flag isHelp to false
+        isHelp = false;
+
+        //CreditCanvas
+        creditsCanvas = creditsCanvas.GetComponent<Canvas>();
+        creditsCanvas.gameObject.SetActive(false);
+
+        //Flag isHelp to false
+        isCredits = false;
+
     }
 
     //Move focus up
@@ -75,6 +128,30 @@ public class MenuPrincipal : MonoBehaviour {
         if (focus != 3)
         {
             focus = focus + 1;
+        }
+
+        return focus;
+    }
+
+    //Move focus right in exit menu
+    public int MoveFocusRight(int focus)
+    {
+
+        if (focus == 0)
+        {
+            focus = 1;
+        }
+
+        return focus;
+    }
+
+    //Move focus left in exit menu
+    public int MoveFocusLeft(int focus)
+    {
+
+        if (focus == 1)
+        {
+            focus = 0;
         }
 
         return focus;
@@ -132,6 +209,28 @@ public class MenuPrincipal : MonoBehaviour {
                 break;
         }
     }
+    //Redraw the buttons of the confirm exit menu if focus has changed
+    void UpdateFocusExit(int focus)
+    {
+
+        switch (focus)
+        {
+            case 0:
+                yes.image.color = selectedBGColor;
+                no.image.color = unselectedBGColor;
+
+                yesText.color = selectedTextColor;
+                noText.color = unselectedTextColor;
+                break;
+            case 1:
+                yes.image.color = unselectedBGColor;
+                no.image.color = selectedBGColor;
+
+                yesText.color = unselectedTextColor;
+                noText.color = selectedTextColor;
+                break;
+        }
+    }
 
     //When Enter is pressed, we've selected an item
     /*
@@ -142,39 +241,153 @@ public class MenuPrincipal : MonoBehaviour {
 	*/
     void EnterPress(int focus)
     {
-
-        switch (focus)
+        if (!isConfirmExit)
         {
-            case 0:
-                SceneManager.LoadScene("1");
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                Application.Quit();
-                break;
+            switch (focus)
+            {
+                case 0:
+                    SceneManager.LoadScene("1");
+                    break;
+                case 1:
+                    openHelp();
+                    break;
+                case 2:
+                    openCredits();
+                    break;
+                case 3:
+                    openExitMenu();
+                    break;
+            }
         }
+        else
+        {
+            switch (focus)
+            {
+                case 0:
+                    Debug.Log("Application quit");
+                    //Application.Quit();
+                    break;
+                case 1:
+                    closeExitMenu();
+                    break;
+            }
+        }
+        
+    }
+
+    //Open the confirm exit menu
+    void openExitMenu()
+    {
+        confirmExit.gameObject.SetActive(true);
+        isConfirmExit = true;
+        focusExit = 1;
+        UpdateFocusExit(focusExit);
+    }
+
+    //Open the confirm exit menu
+    void closeExitMenu()
+    {
+        confirmExit.gameObject.SetActive(false);
+        isConfirmExit = false;
+        focusExit = 1;
+    }
+
+    //Open Help
+    void openHelp()
+    {
+        helpCanvas.gameObject.SetActive(true);
+        isHelp = true;
+        start.gameObject.SetActive(false);
+        help.gameObject.SetActive(false);
+        credits.gameObject.SetActive(false);
+        exit.gameObject.SetActive(false);
+    }
+
+    //Close Help
+    void closeHelp()
+    {
+        helpCanvas.gameObject.SetActive(false);
+        isHelp = false;
+        start.gameObject.SetActive(true);
+        help.gameObject.SetActive(true);
+        credits.gameObject.SetActive(true);
+        exit.gameObject.SetActive(true);
+    }
+
+    //Open Credits
+    void openCredits()
+    {
+        creditsCanvas.gameObject.SetActive(true);
+        isCredits = true;
+        start.gameObject.SetActive(false);
+        help.gameObject.SetActive(false);
+        credits.gameObject.SetActive(false);
+        exit.gameObject.SetActive(false);
+    }
+
+    //Close Credits
+    void closeCredits()
+    {
+        creditsCanvas.gameObject.SetActive(false);
+        isCredits = false;
+        start.gameObject.SetActive(true);
+        help.gameObject.SetActive(true);
+        credits.gameObject.SetActive(true);
+        exit.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown("up"))
+        if (isHelp || isCredits)
         {
-            focus = MoveFocusUp(focus);
-            UpdateFocus(focus);
+            //Go back to principal menu
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isHelp) closeHelp();
+                if (isCredits) closeCredits();
+            }
+        }
+        else
+        {
+            if (!isConfirmExit)
+            {
+                //Principal menu
+                if (Input.GetKeyDown("up"))
+                {
+                    focus = MoveFocusUp(focus);
+                    UpdateFocus(focus);
+                }
+
+                if (Input.GetKeyDown("down"))
+                {
+                    focus = MoveFocusDown(focus);
+                    UpdateFocus(focus);
+                }
+            }
+            else
+            {
+                //Exit menu
+                if (Input.GetKeyDown("left"))
+                {
+                    focusExit = MoveFocusLeft(focusExit);
+                    UpdateFocusExit(focusExit);
+                }
+
+                if (Input.GetKeyDown("right"))
+                {
+                    focusExit = MoveFocusRight(focusExit);
+                    UpdateFocusExit(focusExit);
+                }
+            }
         }
 
-        if (Input.GetKeyDown("down"))
-        {
-            focus = MoveFocusDown(focus);
-            UpdateFocus(focus);
-        }
+        
+        
 
         if (Input.GetKeyDown("return"))
         {
-            EnterPress(focus);
+            if (isConfirmExit) EnterPress(focusExit);
+            else EnterPress(focus);
         }
     }
 }
