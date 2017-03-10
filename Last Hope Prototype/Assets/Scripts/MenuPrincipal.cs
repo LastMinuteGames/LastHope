@@ -297,6 +297,10 @@ public class MenuPrincipal : MonoBehaviour {
     {
         helpCanvas.gameObject.SetActive(true);
         isHelp = true;
+        start.gameObject.SetActive(false);
+        help.gameObject.SetActive(false);
+        credits.gameObject.SetActive(false);
+        exit.gameObject.SetActive(false);
     }
 
     //Close Help
@@ -304,6 +308,10 @@ public class MenuPrincipal : MonoBehaviour {
     {
         helpCanvas.gameObject.SetActive(false);
         isHelp = false;
+        start.gameObject.SetActive(true);
+        help.gameObject.SetActive(true);
+        credits.gameObject.SetActive(true);
+        exit.gameObject.SetActive(true);
     }
 
     //Open Credits
@@ -311,6 +319,10 @@ public class MenuPrincipal : MonoBehaviour {
     {
         creditsCanvas.gameObject.SetActive(true);
         isCredits = true;
+        start.gameObject.SetActive(false);
+        help.gameObject.SetActive(false);
+        credits.gameObject.SetActive(false);
+        exit.gameObject.SetActive(false);
     }
 
     //Close Credits
@@ -318,6 +330,10 @@ public class MenuPrincipal : MonoBehaviour {
     {
         creditsCanvas.gameObject.SetActive(false);
         isCredits = false;
+        start.gameObject.SetActive(true);
+        help.gameObject.SetActive(true);
+        credits.gameObject.SetActive(true);
+        exit.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
