@@ -32,16 +32,26 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Debug.Log("NEUTRAL STANCE");
-                stance = PlayerStance.NEUTRAL;
+                SwitchToNeutral();
             } else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if (redAbilityEnabled)
-                {
-                    Debug.Log("RED STANCE");
-                    stance = PlayerStance.RED;
-                }
+                SwitchToRed();
             }
+        }
+    }
+
+    public void SwitchToNeutral()
+    {
+        Debug.Log("NEUTRAL STANCE");
+        stance = PlayerStance.NEUTRAL;
+    }
+
+    public void SwitchToRed()
+    {
+        if (redAbilityEnabled)
+        {
+            Debug.Log("RED STANCE");
+            stance = PlayerStance.RED;
         }
     }
 

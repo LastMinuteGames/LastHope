@@ -17,8 +17,11 @@ public class SpecialAbilityController : MonoBehaviour {
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().EnableRedAbility();
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            player.EnableRedAbility();
+            player.SwitchToRed();
             gameObject.SetActive(false);
+            Debug.Log("Red special ability learned");
         }
     }
 }
