@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -84,12 +82,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AttackInRange.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashDeadState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashIdleState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\PlayerDetection.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\EnemyTrash.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\TrashChaseState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\TrashDamagedState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\TrashDeadState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\TrashEnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\TrashIdleState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\TrashState.cs" />
     <Compile Include="Assets\Scripts\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
@@ -98,7 +101,6 @@
     <Compile Include="Assets\Scripts\PlayerEnergy.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashDamagedState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

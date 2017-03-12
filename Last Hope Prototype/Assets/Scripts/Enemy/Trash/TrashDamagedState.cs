@@ -14,25 +14,4 @@ public class TrashDamagedState : TrashState
     {
         return null;
     }
-
-    /**
-     * TODO: Delete if we have not need to change it!
-    * */
-    //public override void OnTriggerEnter(GameObject go, Collider other)
-    //{
-    //    Debug.Log("Collider!");
-    //    if (other.tag == "PlayerAttack")
-    //    {
-
-    //    }
-    //}
-
-    //public override void OnTriggerExit(GameObject go, Collider other)
-    //{
-    //    if (other.tag == "PlayerAttack")
-    //    {
-    //        go.GetComponent<TrashStatePattern>().currentState = new TrashIdleState();
-    //    }
-    //}
-
 }

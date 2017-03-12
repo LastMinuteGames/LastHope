@@ -9,8 +9,9 @@ public class EnemyTrash : Enemy {
     }
 
 	// Use this for initialization
-	void Start () {
-        
+	void Start ()
+    {
+        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         currentState = new TrashIdleState(gameObject);
     }
 	

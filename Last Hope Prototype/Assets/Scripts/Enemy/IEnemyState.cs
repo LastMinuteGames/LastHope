@@ -15,5 +15,10 @@ public interface IEnemyState
     void OnTriggerEnter(Collider other);
 
     void OnTriggerExit(Collider other);
+
+    //void OnPlayerDetected(Collider other);
+
+    void OnPlayerInRange(Collider other);
+
 }
 

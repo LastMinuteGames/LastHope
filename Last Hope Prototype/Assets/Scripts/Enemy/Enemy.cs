@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy: MonoBehaviour {
-    private UnityEngine.AI.NavMeshAgent nav;
+
+
     public Transform enemy;
-    [HideInInspector]
-    public IEnemyState currentState;
     public int life;
     public int maxLife;
     public long timeToAfterDeadMS;
+    public long timeAttackRefresh;
+    public int attack;
+    public GameObject attackInRange;
+    public GameObject attackZone;
+
+
+
+
+    [HideInInspector]
+    public IEnemyState currentState;
+    [HideInInspector]
+    public Transform target;
+    [HideInInspector]
+    public UnityEngine.AI.NavMeshAgent nav;
 
     void Awake()
     {
@@ -18,7 +31,9 @@ public class Enemy: MonoBehaviour {
     // Use this for initialization
     void Start () {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
-	}
+        attackZone.SetActive(false);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -58,6 +73,37 @@ public class Enemy: MonoBehaviour {
         /**
          * TODO: Drop items if necessary
         **/
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
+    }
+
+    public void ChangeTarget(Transform target)
+    {
+        //this.target = target == null ? this.transform : target;
+        Debug.Log("Changed Target!!!");
+        if(target != null)
+            nav.SetDestination(target.position);
+    }
+
+    public void OnPlayerDetected(Collider player)
+    {
+        ChangeTarget(player.gameObject.transform);
+        currentState.OnTriggerEnter(player);
+    }
+
+    public void OnPlayerFlees(Collider player)
+    {
+        //ChangeTarget(null);
+        currentState.OnTriggerExit(player);
+    }
+
+    public void OnPlayerInRange(Collider player)
+    {
+        currentState.OnPlayerInRange(player);
+    }
+
+    public void Attack()
+    {
+        attackZone.SetActive(true);
+
     }
 }

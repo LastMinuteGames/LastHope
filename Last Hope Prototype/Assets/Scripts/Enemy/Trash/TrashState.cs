@@ -41,7 +41,14 @@ public class TrashState : IEnemyState
             **/
             int damage = 10;
             trashState.TakeDamage(damage);
-
+        }
+        else if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            EnemyTrash trashState = go.GetComponent<EnemyTrash>();
+            trashState.currentState.EndState();
+            trashState.target = other.transform;
+            trashState.currentState = new TrashChaseState(go);
+            trashState.currentState.StartState();
         }
     }
 
@@ -59,6 +66,23 @@ public class TrashState : IEnemyState
 
             trashState.currentState.StartState();
         }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            EnemyTrash trashState = go.GetComponent<EnemyTrash>();
+            trashState.currentState.EndState();
+            trashState.currentState = new TrashIdleState(go);
+            trashState.currentState.StartState();
+        }
     }
 
+    public void OnPlayerInRange(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            EnemyTrash trashState = go.GetComponent<EnemyTrash>();
+            trashState.currentState.EndState();
+            trashState.currentState = new TrashEnemyAttack(go);
+            trashState.currentState.StartState();
+        }
+    }
 }
