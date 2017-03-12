@@ -6,7 +6,9 @@ public class PlayerAttack : MonoBehaviour
 {
     public float timeBeweenAttacks = 0.5f;
     public GameObject attackBox;
+    public GameObject swordObject;
 
+    private PlayerSword sword;
     private float timer = 0f;
     private bool attacking;
 
@@ -14,6 +16,8 @@ public class PlayerAttack : MonoBehaviour
     {
         attacking = false;
         attackBox.SetActive(false);
+        sword = swordObject.GetComponent<PlayerSword>();
+        sword.damage = 20;
     }
 
     // Use this for initialization
@@ -31,11 +35,13 @@ public class PlayerAttack : MonoBehaviour
         {
             attacking = false;
             attackBox.SetActive(false);
+            sword.EndAttack();
         }
 
         if (Input.GetButton("Fire1") && timer >= timeBeweenAttacks)
         {
             Attack();
+            sword.Attack();
         }
     }
 
