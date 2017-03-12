@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
     public Transform playerT;
-    public Vector3 pivotOffset = new Vector3(0, 2, 0);
+    public Vector3 pivotOffset = new Vector3(0, 1, 0);
     public Vector3 camOffset = new Vector3(0, 2, 3);
     public float camSpeed = 200f;
 
@@ -35,6 +35,6 @@ public class CameraController : MonoBehaviour
         cam.position = playerT.position + totalOffset;
 
         cam.rotation.SetLookRotation(playerT.position);
-        transform.LookAt(playerT.position);
+        transform.LookAt(playerT.position + pivotOffset);
     }
 }
