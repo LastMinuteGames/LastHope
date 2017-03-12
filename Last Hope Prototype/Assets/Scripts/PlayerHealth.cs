@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     
     public int maxHP = 100;
     public int currentHP;
+    private int initialMaxHP;
     public Material defaultMaterial;
     public Material dmgedMaterial;
     public float timeBetweenDmg = 0.5f;
@@ -20,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
+        initialMaxHP = maxHP;
         currentHP = maxHP;
         moveScript = GetComponent<PlayerMovement>();
         meshRenderer = GetComponent<MeshRenderer>();
@@ -72,6 +74,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void IncreaseMaxHealthAndHeal(int hp)
+    {
+        maxHP += hp;
+        currentHP = maxHP;
+    }
+
     void Die()
     {
         dead = true;
@@ -90,6 +98,6 @@ public class PlayerHealth : MonoBehaviour
     void UpdateHPBar()
     {
         float ratio = (float)currentHP / maxHP;
-        currentHPBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+        currentHPBar.rectTransform.localScale = new Vector3(ratio * maxHP / initialMaxHP, 1, 1);
     }
 }

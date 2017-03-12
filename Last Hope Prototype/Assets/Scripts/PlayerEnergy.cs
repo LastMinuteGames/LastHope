@@ -7,12 +7,15 @@ public class PlayerEnergy : MonoBehaviour {
 
     public Image currentEnergyBar;
 
-    public int maxEnergy = 100;
-    public int currenEnergy;
+    public int maxEnergy = 5;
+    public int currentEnergy;
+
+    private  int initialMaxEnergy;
 
     void Awake()
     {
-        currenEnergy = maxEnergy;
+        initialMaxEnergy = maxEnergy;
+        currentEnergy = maxEnergy;
     }
 
     void Update()
@@ -28,30 +31,36 @@ public class PlayerEnergy : MonoBehaviour {
 
     public void LoseEnergy(int value)
     {
-        if (currenEnergy > 0)
+        if (currentEnergy > 0)
         {
-            currenEnergy -= value;
-            if (currenEnergy < 0)
+            currentEnergy -= value;
+            if (currentEnergy < 0)
             {
-                currenEnergy = 0;
+                currentEnergy = 0;
             }
         }
     }
     public void GainEnergy(int value)
     {
-        if (currenEnergy < maxEnergy)
+        if (currentEnergy < maxEnergy)
         {
-            currenEnergy += value;
-            if (currenEnergy > maxEnergy)
+            currentEnergy += value;
+            if (currentEnergy > maxEnergy)
             {
-                currenEnergy = maxEnergy;
+                currentEnergy = maxEnergy;
             }
         }
     }
 
+    public void IncreaseMaxEnergy(int value)
+    {
+        maxEnergy += value;
+        currentEnergy = maxEnergy;
+    }
+
     void UpdateEnergyBar()
     {
-        float ratio = (float)currenEnergy / maxEnergy;
-        currentEnergyBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+        float ratio = (float)currentEnergy / maxEnergy;
+        currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
     }
 }
