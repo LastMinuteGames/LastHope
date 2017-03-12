@@ -5,7 +5,8 @@ using UnityEngine;
 public class GeneratorController : MonoBehaviour {
 
     public GameObject specialAbilityPrefab;
-    public Transform spawnPoint;
+    public Vector3 spawnPointPos;
+    public Quaternion spawnPointQuat;
 
     private bool canSpawn = false;
     private bool spawned = false;
@@ -53,6 +54,6 @@ public class GeneratorController : MonoBehaviour {
 
     void SpawnSpecialAbility()
     {
-        GameObject go = Instantiate(specialAbilityPrefab, spawnPoint);
+        GameObject go = Instantiate(specialAbilityPrefab, spawnPointPos, spawnPointQuat);
     }
 }

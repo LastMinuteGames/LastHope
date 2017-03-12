@@ -5,13 +5,14 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour
 {
     public Image currentHPBar;
-    
+
     public int maxHP = 100;
     public int currentHP;
     private int initialMaxHP;
     public Material defaultMaterial;
     public Material dmgedMaterial;
     public float timeBetweenDmg = 0.5f;
+    public SpawnManager respawnManager;
 
     private PlayerMovement moveScript;
     private bool dmged;
@@ -89,6 +90,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Respawn()
     {
+        if (respawnManager != null)
+        {
+            transform.position = respawnManager.GetRespawnPoint();
+        }
         currentHP = maxHP;
         dead = false;
         moveScript.enabled = true;

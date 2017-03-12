@@ -2,26 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSword : MonoBehaviour {
+public class PlayerSword : MonoBehaviour
+{
 
     bool isAttacking = false;
     public int damage = 10;
     public LayerMask layersToCollideWith;
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void Attack()
     {
         isAttacking = true;
-        this.transform.Rotate(new Vector3(90,0,0));
+        this.transform.Rotate(new Vector3(90, 0, 0));
     }
 
     public void EndAttack()
@@ -32,12 +35,12 @@ public class PlayerSword : MonoBehaviour {
 
     public void SecondAttack()
     {
-        this.transform.Rotate(new Vector3(0, 0, 90));
+        this.transform.Rotate(new Vector3(0, -90, 0));
     }
 
     public void EndSecondAttack()
     {
-        this.transform.Rotate(new Vector3(0, 0, -90));
+        this.transform.Rotate(new Vector3(0, 90, 0));
         this.transform.Rotate(new Vector3(-90, 0, 0));
     }
 
