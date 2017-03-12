@@ -3,52 +3,38 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
+    public Transform playerT;
+    public Vector3 pivotOffset = new Vector3(0, 2, 0);
+    public Vector3 camOffset = new Vector3(0, 2, 3);
+    public float camSpeed = 200f;
 
-    public Transform target;
-    public float lookSmooth = 0.09f;
-    public Vector3 offsetFromTarget = new Vector3(0, 6, -8);
-    public float xTilt = 20;
+    private Transform cam;
+    private float h, v;
 
-    Vector3 destination = Vector3.zero;
-    PlayerMovement playerMovement;
-
-    float rotateVel = 0f;
-
-    void Start()
+    void Awake()
     {
-        SetCameraTarget(target);
+        cam = transform;
+        playerT = GameObject.FindGameObjectWithTag("Player").transform;
+        cam.position = playerT.position + pivotOffset + camOffset;
     }
 
-    void SetCameraTarget(Transform t)
+    void Update()
     {
-        target = t;
-        if (target != null)
-        {
-            if (target.GetComponent<PlayerMovement>())
-                playerMovement = target.GetComponent<PlayerMovement>();
-            else
-                Debug.LogError("Player must have a PlayerMovement script to follow it");
-        }
-        else
-            Debug.LogError("Need a reference to player");
+        h += Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * camSpeed * Time.deltaTime;
+        //v = Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * camSpeed * Time.deltaTime;
     }
 
     void LateUpdate()
     {
-        MoveToTarget();
-        LookAtTarget();
-    }
+        Quaternion targetRotation = Quaternion.Euler(0, h, 0);
+        cam.rotation = targetRotation;
+        Vector3 totalOffset = pivotOffset + camOffset;
+        totalOffset = targetRotation * totalOffset;
+        Debug.DrawRay(playerT.position, totalOffset);
 
-    void MoveToTarget()
-    {
-        destination = playerMovement.TargetRotation * offsetFromTarget;
-        destination += target.position;
-        gameObject.transform.position = destination;
-    }
+        cam.position = playerT.position + totalOffset;
 
-    void LookAtTarget()
-    {
-        float eulerYAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target.eulerAngles.y, ref rotateVel, lookSmooth);
-        transform.rotation = Quaternion.Euler(xTilt, eulerYAngle, 0);
+        cam.rotation.SetLookRotation(playerT.position);
+        transform.LookAt(playerT.position);
     }
 }

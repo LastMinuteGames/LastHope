@@ -4,105 +4,77 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [System.Serializable]
-    public class MoveSettings
-    {
-        public float forwardVel = 15;
-        public float horizontalVel = 15;
-        public float rotatVel = 100f;
-        public float distToGround = 0.5f;
-        public float maxFallingSpeed = -80f;
-        public LayerMask ground;
-    }
-    [System.Serializable]
-    public class PhysSettings
-    {
-        public float downAccel = 0.75f;
-    }
+    public float turnSpeed = 3;
+    public float speed = 5;
+    public Transform camT;
 
-    [System.Serializable]
-    public class InputSettings
-    {
-        public float inputDelay = 0.1f;
-    }
-
-    public MoveSettings moveSetting = new MoveSettings();
-    public PhysSettings physSetting = new PhysSettings();
-    public InputSettings inputSetting = new InputSettings();
-
-    private Vector3 movement = Vector3.zero;
-    private Quaternion targetRotation = Quaternion.identity;
+    private float h, v;
+    private Vector3 targetDirection;
     private Rigidbody rigidBody;
-    private float forwardInput, horizontalInput, turnInput;
-    private bool isGrounded;
+    private Vector3 camForward;
+    private Vector3 camRight;
+    private Vector3 movement;
 
-
-    public Quaternion TargetRotation
-    {
-        get { return targetRotation; }
-    }
 
     void Start()
     {
-        targetRotation = transform.rotation;
+        camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rigidBody = GetComponent<Rigidbody>();
-        forwardInput = horizontalInput = turnInput = 0;
-        isGrounded = true;
     }
+
 
     void Update()
     {
-        GetInput();
-        Turn();
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
     }
 
     void FixedUpdate()
     {
-        //CheckGrounded();
+        Rotate();
         Move();
     }
 
-    void GetInput()
+    void Rotate()
     {
-        forwardInput = Input.GetAxisRaw("Vertical");
-        horizontalInput = (Input.GetKey(KeyCode.E) ? 1 : 0) - (Input.GetKey(KeyCode.Q) ? 1 : 0);
-        turnInput = Input.GetAxis("Horizontal");
+        camForward = camT.TransformDirection(Vector3.forward);
+        camForward.y = 0;
+        camForward.Normalize();
+
+        Debug.DrawRay(transform.position, camForward, Color.black);
+        Debug.DrawRay(transform.position, transform.forward, Color.cyan);
+
+        camRight = new Vector3(camForward.z, 0, -camForward.x);
+        Debug.DrawRay(transform.position, camRight, Color.red);
+
+        targetDirection = camForward * v + camRight * h;
+        Debug.DrawRay(transform.position, targetDirection, Color.blue);
+
+        if (targetDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+        }
     }
 
-    void Turn()
-    {
-        if (Mathf.Abs(turnInput) > 0)
-            targetRotation *= Quaternion.AngleAxis(moveSetting.rotatVel * turnInput * Time.deltaTime, Vector3.up);
-        transform.rotation = targetRotation;
-    }
-
-    void CheckGrounded()
-    {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, moveSetting.distToGround, moveSetting.ground);
-    }
 
     void Move()
     {
         movement = rigidBody.velocity;
 
-        if (Mathf.Abs(forwardInput) > 0)
-            movement.z = moveSetting.forwardVel * forwardInput;
-        else
-            movement.z = 0;
+        movement.z = 0;
+        v = Mathf.Abs(v);
+        h = Mathf.Abs(h);
+        float totalImpulse = h + v;
+        totalImpulse = (totalImpulse > 1) ? 1 : totalImpulse;
+        movement.z += totalImpulse * speed;
 
-        if (Mathf.Abs(horizontalInput) > 0)
-            movement.x = moveSetting.horizontalVel * horizontalInput;
-        else
-            movement.x = 0;
+        movement.x = 0;
 
         if (movement.y > 2)
             movement.y = 2;
 
-
         rigidBody.velocity = transform.TransformDirection(movement);
     }
-
-
-
 
 }
