@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public bool debugMode = false;
     public Camera[] cameras;
     public Camera activeCamera;
     private int camToActivate;
@@ -18,7 +17,7 @@ public class CameraManager : MonoBehaviour
 
     void Update()
     {
-        if (debugMode)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().debugMode)
         {
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
