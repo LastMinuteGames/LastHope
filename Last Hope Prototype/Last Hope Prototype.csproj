@@ -84,11 +84,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyStatePattern.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\TrashDeadState.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\TrashState.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\TrashIdleState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashStatePattern.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\EnemyTrash.cs" />
     <Compile Include="Assets\Scripts\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />

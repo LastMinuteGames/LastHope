@@ -8,8 +8,12 @@ public interface IEnemyState
 {
     IEnemyState UpdateState();
 
-    void OnTriggerEnter(GameObject go, Collider other);
+    void StartState();
 
-    void OnTriggerExit(GameObject go, Collider other);
+    void EndState();
+
+    void OnTriggerEnter(Collider other);
+
+    void OnTriggerExit(Collider other);
 }
 
