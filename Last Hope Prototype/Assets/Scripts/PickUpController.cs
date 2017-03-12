@@ -17,6 +17,7 @@ public class PickUpController : MonoBehaviour {
 
     public PickUpEffect effect;
     public PickUpType type;
+    public int value;
 
     // Update is called once per frame
     void Update () {
@@ -25,34 +26,34 @@ public class PickUpController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PickUp"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            PickUpController script = other.GetComponent<PickUpController>();
-            if (script.effect == PickUpEffect.CURRENT)
+            if (effect == PickUpEffect.CURRENT)
             {
-                switch (script.type)
+                switch (type)
                 {
                     case (PickUpType.HP):
-                        GetComponentInParent<PlayerHealth>().Heal(5);
+
+                        other.gameObject.GetComponent<PlayerHealth>().Heal(value);
                         break;
                     case (PickUpType.ENERGY):
-                        GetComponentInParent<PlayerEnergy>().GainEnergy(1);
+                        other.gameObject.GetComponent<PlayerEnergy>().GainEnergy(value);
                         break;
                 }
             }
-            if (script.effect == PickUpEffect.MAX)
+            if (effect == PickUpEffect.MAX)
             {
-                switch (script.type)
+                switch (type)
                 {
                     case (PickUpType.HP):
-                        GetComponentInParent<PlayerHealth>().IncreaseMaxHealthAndHeal(20);
+                        other.gameObject.GetComponent<PlayerHealth>().IncreaseMaxHealthAndHeal(value);
                         break;
                     case (PickUpType.ENERGY):
-                        GetComponentInParent<PlayerEnergy>().IncreaseMaxEnergy(1);
+                        other.gameObject.GetComponent<PlayerEnergy>().IncreaseMaxEnergy(value);
                         break;
                 }
             }
-            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }
