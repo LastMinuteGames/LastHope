@@ -6,9 +6,10 @@ public class PlayerSword : MonoBehaviour {
 
     bool isAttacking = false;
     public int damage = 10;
+    public LayerMask layersToCollideWith;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -29,9 +30,11 @@ public class PlayerSword : MonoBehaviour {
         this.transform.Rotate(new Vector3(-90, 0, 0));
     }
 
+    public
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && isAttacking)
+        if (layersToCollideWith == (layersToCollideWith | (1 << other.gameObject.layer)) && isAttacking)
         {
             Debug.Log("Aux!");
             Destroy(other.gameObject);

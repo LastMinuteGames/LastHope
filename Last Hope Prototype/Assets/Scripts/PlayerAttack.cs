@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public float timeBeweenAttacks = 0.5f;
+    public float timeBeweenAttacks = 0.15f;
+    public float timeToCombo = 0.15f;
     public GameObject attackBox;
     public GameObject swordObject;
 
     private PlayerSword sword;
     private float timer = 0f;
     private bool attacking;
+
+    public enum playerState
+    {
+        NOT_ATTACKING = 1,
+        FIRST_ATTACK = 2,
+        FINAL_ATTACK = 3
+    };
+
+    public playerState state = playerState.NOT_ATTACKING;
 
     void Awake()
     {
