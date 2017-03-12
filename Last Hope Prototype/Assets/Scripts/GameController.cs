@@ -17,14 +17,25 @@ public class GameController : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape) && !isMenu)
         {
-            menuInGame.gameObject.SetActive(true);
-            Time.timeScale = 0.0F;
-            isMenu = true;
-        }else if (Input.GetKeyDown(KeyCode.Escape) && isMenu)
-        {
-            menuInGame.gameObject.SetActive(false);
-            Time.timeScale = 1.0F;
-            isMenu = false;
+            openMenu();
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isMenu)
+        {
+            closeMenu();
+        }
+    }
+
+    public void openMenu()
+    {
+        menuInGame.gameObject.SetActive(true);
+        Time.timeScale = 0.0F;
+        isMenu = true;
+    }
+
+    public void closeMenu()
+    {
+        menuInGame.gameObject.SetActive(false);
+        Time.timeScale = 1.0F;
+        isMenu = false;
     }
 }
