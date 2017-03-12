@@ -52,14 +52,14 @@ public class PlayerAttack : MonoBehaviour
             state = playerState.NOT_ATTACKING;
         }
 
-        if (Input.GetButton("Fire1") && timer <= timeBeweenAttacks && timer >= timeToCombo && attacking && state == playerState.FIRST_ATTACK)
+        if (Input.GetButtonDown("Fire1") && timer <= timeBeweenAttacks && timer >= timeToCombo && attacking && state == playerState.FIRST_ATTACK)
         {
             timer = 0;
             state = playerState.FINAL_ATTACK;
             sword.SecondAttack();
         }
 
-        if (Input.GetButton("Fire1") && timer >= timeBeweenAttacks && state == playerState.NOT_ATTACKING)
+        if (Input.GetButtonDown("Fire1") && timer >= timeBeweenAttacks && state == playerState.NOT_ATTACKING)
         {
             Attack();
             state = playerState.FIRST_ATTACK;
