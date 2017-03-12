@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public PlayerStance stance;
     public bool debugMode = false;
 
+    private bool redAbilityEnabled = false;
+
     // Use this for initialization
     void Start()
     {
@@ -34,9 +36,17 @@ public class PlayerController : MonoBehaviour
                 stance = PlayerStance.NEUTRAL;
             } else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Debug.Log("RED STANCE");
-                stance = PlayerStance.RED;
+                if (redAbilityEnabled)
+                {
+                    Debug.Log("RED STANCE");
+                    stance = PlayerStance.RED;
+                }
             }
         }
+    }
+
+    public void EnableRedAbility()
+    {
+        redAbilityEnabled = true;
     }
 }
