@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public float timeBeweenAttacks = 0.15f;
-    public float timeToCombo = 0.15f;
+    public float timeToCombo = 0.1f;
     public GameObject attackBox;
     public GameObject swordObject;
 
@@ -43,14 +43,32 @@ public class PlayerAttack : MonoBehaviour
 
         if (attacking && timer >= timeBeweenAttacks)
         {
-            attacking = false;
-            attackBox.SetActive(false);
-            sword.EndAttack();
+            if (state == playerState.FINAL_ATTACK)
+            {
+                sword.EndSecondAttack();
+                attacking = false;
+                attackBox.SetActive(false);
+            }
+            else if (state == playerState.FIRST_ATTACK)
+            {
+                sword.EndAttack();
+                attacking = false;
+                attackBox.SetActive(false);
+            }
+            state = playerState.NOT_ATTACKING;
         }
 
-        if (Input.GetButton("Fire1") && timer >= timeBeweenAttacks)
+        if (Input.GetButton("Fire1") && timer <= timeBeweenAttacks && timer >= timeToCombo && attacking && state == playerState.FIRST_ATTACK)
+        {
+            timer = 0;
+            state = playerState.FINAL_ATTACK;
+            sword.SecondAttack();
+        }
+
+        if (Input.GetButton("Fire1") && timer >= timeBeweenAttacks && state == playerState.NOT_ATTACKING)
         {
             Attack();
+            state = playerState.FIRST_ATTACK;
             sword.Attack();
         }
     }

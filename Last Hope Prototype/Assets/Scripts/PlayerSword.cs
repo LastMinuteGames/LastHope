@@ -30,7 +30,16 @@ public class PlayerSword : MonoBehaviour {
         this.transform.Rotate(new Vector3(-90, 0, 0));
     }
 
-    public
+    public void SecondAttack()
+    {
+        this.transform.Rotate(new Vector3(0, 0, 90));
+    }
+
+    public void EndSecondAttack()
+    {
+        this.transform.Rotate(new Vector3(0, 0, -90));
+        this.transform.Rotate(new Vector3(-90, 0, 0));
+    }
 
     void OnTriggerEnter(Collider other)
     {
