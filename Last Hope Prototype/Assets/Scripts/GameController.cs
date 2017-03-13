@@ -11,7 +11,8 @@ public class GameController : MonoBehaviour {
 	void Start () {
         menuInGame = menuInGame.GetComponent<Canvas>();
         menuInGame.gameObject.SetActive(false);
-	}
+        isMenu = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {

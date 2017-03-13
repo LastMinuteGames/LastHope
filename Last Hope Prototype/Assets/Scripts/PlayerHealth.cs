@@ -15,17 +15,21 @@ public class PlayerHealth : MonoBehaviour
     public SpawnManager respawnManager;
 
     private PlayerMovement moveScript;
+    private PlayerAttack attackScript;
     private bool dmged;
     private bool dead;
     private MeshRenderer meshRenderer;
     private float timer;
+    private PlayerController playerControl;
 
     void Awake()
     {
         initialMaxHP = maxHP;
         currentHP = maxHP;
         moveScript = GetComponent<PlayerMovement>();
+        attackScript = GetComponent<PlayerAttack>();
         meshRenderer = GetComponent<MeshRenderer>();
+        playerControl = GetComponent<PlayerController>();
     }
 
     void Update()
@@ -45,29 +49,26 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
             Heal(5);
 
-        if (dead == true && Input.GetKeyDown(KeyCode.R))
-            Respawn();
-
         UpdateHPBar();
     }
 
-    public void TakeDmg(int nasusQ)
+    public void TakeDmg(int value)
     {
-        if (!dead)
+        if ((!dead) && (!playerControl.debugMode))
         {
             dmged = true;
             timer = 0;
-            currentHP -= nasusQ;
+            currentHP -= value;
             meshRenderer.material = dmgedMaterial;
             if (currentHP <= 0 && !dead)
                 Die();
         }
     }
-    public void Heal(int hp)
+    public void Heal(int value)
     {
         if (!dead && currentHP < maxHP)
         {
-            currentHP += hp;
+            currentHP += value;
             if (currentHP > maxHP)
             {
                 currentHP = maxHP;
@@ -75,9 +76,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void IncreaseMaxHealthAndHeal(int hp)
+    public void IncreaseMaxHealthAndHeal(int value)
     {
-        maxHP += hp;
+        maxHP += value;
         currentHP = maxHP;
     }
 
@@ -85,7 +86,11 @@ public class PlayerHealth : MonoBehaviour
     {
         dead = true;
         moveScript.enabled = false;
+        attackScript.enabled = false;
         meshRenderer.enabled = false;
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        Invoke("Respawn", 3);
     }
 
     void Respawn()
@@ -97,7 +102,10 @@ public class PlayerHealth : MonoBehaviour
         currentHP = maxHP;
         dead = false;
         moveScript.enabled = true;
+        attackScript.enabled = true;
         meshRenderer.enabled = true;
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        gameObject.transform.GetChild(1).gameObject.SetActive(true);
     }
 
     void UpdateHPBar()
