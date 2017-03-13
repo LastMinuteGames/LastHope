@@ -11,21 +11,25 @@ public class PlayerEnergy : MonoBehaviour {
     public int currentEnergy;
 
     private  int initialMaxEnergy;
+    private PlayerController playerControl;
 
     void Awake()
     {
         initialMaxEnergy = maxEnergy;
         currentEnergy = maxEnergy;
+        playerControl = GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-            LoseEnergy(1);
+        if (playerControl.debugMode)
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+                LoseEnergy(1);
 
-        if (Input.GetKeyDown(KeyCode.V))
-            GainEnergy(1);
-
+            if (Input.GetKeyDown(KeyCode.V))
+                GainEnergy(1);
+        }
         UpdateEnergyBar();
     }
 
