@@ -265,7 +265,7 @@ public class MenuPrincipal : MonoBehaviour {
             {
                 case 0:
                     Debug.Log("Application quit");
-                    //Application.Quit();
+                    Application.Quit();
                     break;
                 case 1:
                     closeExitMenu();
