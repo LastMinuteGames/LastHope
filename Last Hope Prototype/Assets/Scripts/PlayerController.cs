@@ -59,4 +59,13 @@ public class PlayerController : MonoBehaviour
     {
         redAbilityEnabled = true;
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
+        {
+            int damage = other.gameObject.transform.parent.gameObject.GetComponent<EnemyTrash>().attack;
+            gameObject.GetComponent<PlayerHealth>().TakeDmg(damage);
+        }
+    }
 }

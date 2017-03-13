@@ -14,9 +14,6 @@ public class Enemy: MonoBehaviour {
     public GameObject attackInRange;
     public GameObject attackZone;
 
-
-
-
     [HideInInspector]
     public IEnemyState currentState;
     [HideInInspector]
@@ -73,15 +70,15 @@ public class Enemy: MonoBehaviour {
         /**
          * TODO: Drop items if necessary
         **/
-        Destroy(transform.parent.gameObject);
+        Destroy(gameObject);
     }
 
     public void ChangeTarget(Transform target)
     {
-        //this.target = target == null ? this.transform : target;
+        this.target = target;
         Debug.Log("Changed Target!!!");
-        if(target != null)
-            nav.SetDestination(target.position);
+        if(this.target != null)
+            nav.SetDestination(this.target.position);
     }
 
     public void OnPlayerDetected(Collider player)
@@ -92,7 +89,7 @@ public class Enemy: MonoBehaviour {
 
     public void OnPlayerFlees(Collider player)
     {
-        //ChangeTarget(null);
+        ChangeTarget(null);
         currentState.OnTriggerExit(player);
     }
 

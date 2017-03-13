@@ -15,6 +15,11 @@ public class TrashState : IEnemyState
 
     public virtual IEnemyState UpdateState()
     {
+        EnemyTrash enemyTrash = go.GetComponent<EnemyTrash>();
+        if (enemyTrash.target != null)
+        {
+            enemyTrash.nav.SetDestination(enemyTrash.target.position);
+        }
         return null;
     }
 
