@@ -29,16 +29,19 @@ public class PlayerEnergy : MonoBehaviour {
         UpdateEnergyBar();
     }
 
-    public void LoseEnergy(int value)
+    public bool LoseEnergy(int value)
     {
+        bool ret = false;
         if (currentEnergy > 0)
         {
             currentEnergy -= value;
+            ret = true;
             if (currentEnergy < 0)
             {
                 currentEnergy = 0;
             }
         }
+        return ret;
     }
     public void GainEnergy(int value)
     {

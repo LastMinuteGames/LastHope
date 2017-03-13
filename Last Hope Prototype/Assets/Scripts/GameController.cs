@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Time.timeScale = 1;
         menuInGame = menuInGame.GetComponent<Canvas>();
         menuInGame.gameObject.SetActive(false);
         isMenu = false;

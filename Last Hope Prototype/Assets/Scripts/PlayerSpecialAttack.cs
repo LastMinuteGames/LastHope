@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class PlayerSpecialAttack : MonoBehaviour {
 
+    PlayerController playerController;
+    PlayerEnergy playerEnergy;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerEnergy = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEnergy>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            switch (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().stance)
+            if (playerEnergy.LoseEnergy(1))
             {
-                case (PlayerStance.NEUTRAL):
-                    Debug.Log("NEUTRAL SPECIAL ATTACK!");
-                    break;
-                case (PlayerStance.RED):
-                    Debug.Log("RED SPECIAL ATTACK!");
-                    break;
+                switch (playerController.stance)
+                {
+                    case (PlayerStance.NEUTRAL):
+                        Debug.Log("NEUTRAL SPECIAL ATTACK!");
+                        break;
+                    case (PlayerStance.RED):
+                        Debug.Log("RED SPECIAL ATTACK!");
+                        break;
+                }
             }
         }
 	}
