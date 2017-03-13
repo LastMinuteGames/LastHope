@@ -192,6 +192,7 @@ public class InGameMenu : MonoBehaviour {
             switch (focus)
             {
                 case 0:
+                    GetComponentInParent<GameController>().isMenu = false;
                     SceneManager.LoadScene("Menu");
                     break;
                 case 1:

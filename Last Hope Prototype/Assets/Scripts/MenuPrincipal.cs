@@ -246,7 +246,7 @@ public class MenuPrincipal : MonoBehaviour {
             switch (focus)
             {
                 case 0:
-                    SceneManager.LoadScene("1");
+                    SceneManager.LoadScene("CityMap");
                     break;
                 case 1:
                     openHelp();
