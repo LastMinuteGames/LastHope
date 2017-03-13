@@ -17,7 +17,6 @@ class TrashChaseState : TrashState
 
     public override IEnemyState UpdateState()
     {
-        EnemyTrash trashState = go.GetComponent<EnemyTrash>();
         if (trashState.target != null)
         {
             trashState.nav.SetDestination(trashState.target.position);

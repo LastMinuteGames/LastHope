@@ -16,6 +16,7 @@ public class Enemy: MonoBehaviour {
 
     [HideInInspector]
     public IEnemyState currentState;
+    private IEnemyState previousState;
     [HideInInspector]
     public Transform target;
     [HideInInspector]
@@ -38,6 +39,7 @@ public class Enemy: MonoBehaviour {
         if (newState != null)
         {
             currentState.EndState();
+            previousState = currentState;
             currentState = newState;
             currentState.StartState();
         }
@@ -101,6 +103,15 @@ public class Enemy: MonoBehaviour {
     public void Attack()
     {
         attackZone.SetActive(true);
+    }
 
+    public void ChangeToPreviousState()
+    {
+        if (previousState != null)
+        {
+            currentState.EndState();
+            currentState = previousState;
+            currentState.StartState();
+        }
     }
 }

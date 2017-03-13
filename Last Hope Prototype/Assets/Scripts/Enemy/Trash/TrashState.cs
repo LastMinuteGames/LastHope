@@ -7,18 +7,19 @@ public class TrashState : IEnemyState
 {
 
     protected GameObject go;
+    protected EnemyTrash trashState;
 
     public TrashState(GameObject go)
     {
         this.go = go;
+        trashState = go.GetComponent<EnemyTrash>();
     }
 
     public virtual IEnemyState UpdateState()
     {
-        EnemyTrash enemyTrash = go.GetComponent<EnemyTrash>();
-        if (enemyTrash.target != null)
+        if (trashState.target != null)
         {
-            enemyTrash.nav.SetDestination(enemyTrash.target.position);
+            trashState.nav.SetDestination(trashState.target.position);
         }
         return null;
     }
@@ -37,7 +38,6 @@ public class TrashState : IEnemyState
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
-            EnemyTrash trashState = go.GetComponent<EnemyTrash>();
             trashState.currentState.EndState();
             trashState.currentState = new TrashDamagedState(go);
             trashState.currentState.StartState();
@@ -49,7 +49,6 @@ public class TrashState : IEnemyState
         }
         else if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            EnemyTrash trashState = go.GetComponent<EnemyTrash>();
             trashState.currentState.EndState();
             trashState.target = other.transform;
             trashState.currentState = new TrashChaseState(go);
@@ -61,21 +60,19 @@ public class TrashState : IEnemyState
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
-            EnemyTrash trashState = go.GetComponent<EnemyTrash>();
             trashState.currentState.EndState();
 
             if (trashState.life <= 0)
                 trashState.currentState = new TrashDeadState(go);
             else
-                trashState.currentState = new TrashIdleState(go);
+                trashState.ChangeToPreviousState();
 
             trashState.currentState.StartState();
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            EnemyTrash trashState = go.GetComponent<EnemyTrash>();
             trashState.currentState.EndState();
-            trashState.currentState = new TrashIdleState(go);
+            trashState.ChangeToPreviousState();
             trashState.currentState.StartState();
         }
     }
@@ -84,7 +81,6 @@ public class TrashState : IEnemyState
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            EnemyTrash trashState = go.GetComponent<EnemyTrash>();
             trashState.currentState.EndState();
             trashState.currentState = new TrashEnemyAttack(go);
             trashState.currentState.StartState();

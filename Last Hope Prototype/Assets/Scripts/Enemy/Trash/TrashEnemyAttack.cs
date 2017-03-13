@@ -14,17 +14,15 @@ class TrashEnemyAttack : TrashState
     public override void StartState()
     {
         msStartTime = (DateTime.Now - DateTime.MinValue).TotalMilliseconds;
-        EnemyTrash trashState = go.GetComponent<EnemyTrash>();
         trashState.Attack();
     }
 
     public override IEnemyState UpdateState()
     {
-        EnemyTrash trashState = go.GetComponent<EnemyTrash>();
         double diff = (DateTime.Now - DateTime.MinValue).TotalMilliseconds - msStartTime;
         if (diff >= trashState.timeAttackRefresh)
         {
-            return new TrashIdleState(go);
+            return new TrashChaseState(go);
         }
 
         return null;
