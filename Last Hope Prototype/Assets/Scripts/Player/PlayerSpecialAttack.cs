@@ -29,7 +29,7 @@ public class PlayerSpecialAttack : MonoBehaviour {
 	
 	void Update ()
     {
-        if ((Input.GetKeyDown(KeyCode.Q) && !isDashing) || (isDashing))
+        if ((InputManager.SpecialAttack() && !isDashing) || (isDashing))
         {
             SpecialAttack();
         }

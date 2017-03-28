@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
+        h = InputManager.LeftJoystick().x;
+        v = InputManager.LeftJoystick().z;
     }
 
     void FixedUpdate()

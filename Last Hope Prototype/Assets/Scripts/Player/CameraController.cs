@@ -20,8 +20,9 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        h += Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * camSpeed * Time.deltaTime;
+        //h += Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * camSpeed * Time.deltaTime;
         //v = Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * camSpeed * Time.deltaTime;
+        h += Mathf.Clamp(InputManager.RightJoystick().x, -1, 1) * camSpeed * Time.deltaTime;
     }
 
     void LateUpdate()
