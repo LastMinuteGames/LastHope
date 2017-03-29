@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class InGameMenu : MonoBehaviour {
+public class InGameMenu : MonoBehaviour
+{
 
     public Button continueGame;
     public Button exit;
@@ -25,8 +26,15 @@ public class InGameMenu : MonoBehaviour {
     public Color unselectedTextColor;
     public Color selectedTextColor;
 
+    //Input
+    bool upInUse = false;
+    bool downInUse = false;
+    bool leftInUse = false;
+    bool rightInUse = false;
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         unselectedBGColor = new Color(0.529F, 0.407F, 0.239F, 1);
         selectedBGColor = new Color(0.364F, 0.305F, 0.227F, 1);
         unselectedTextColor = new Color(0F, 0F, 0F, 1);
@@ -224,43 +232,79 @@ public class InGameMenu : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (!isConfirmExit)
         {
-            //Principal menu
-            if (Input.GetKeyDown("up"))
+            //Main menu
+            if (InputManager.LeftJoystickUp() || Input.GetKeyDown("up"))
             {
-                focus = MoveFocusUp(focus);
-                UpdateFocus(focus);
+                if (!upInUse)
+                {
+                    upInUse = true;
+                    focus = MoveFocusUp(focus);
+                    UpdateFocus(focus);
+                }
             }
-
-            if (Input.GetKeyDown("down"))
+            else
             {
-                focus = MoveFocusDown(focus);
-                UpdateFocus(focus);
+                upInUse = false;
+            }
+            if (InputManager.LeftJoystickDown() || Input.GetKeyDown("down"))
+            {
+                if (!downInUse)
+                {
+                    downInUse = true;
+                    focus = MoveFocusDown(focus);
+                    UpdateFocus(focus);
+                }
+            }
+            else
+            {
+                downInUse = false;
             }
         }
         else
         {
             //Exit menu
-            if (Input.GetKeyDown("left"))
+            if (InputManager.LeftJoystickLeft() || Input.GetKeyDown("left"))
             {
-                focusExit = MoveFocusLeft(focusExit);
-                UpdateFocusExit(focusExit);
+                if (!leftInUse)
+                {
+                    leftInUse = true;
+                    focusExit = MoveFocusLeft(focusExit);
+                    UpdateFocusExit(focusExit);
+                }
+            }
+            else
+            {
+                leftInUse = false;
             }
 
-            if (Input.GetKeyDown("right"))
+            if (InputManager.LeftJoystickRight() || Input.GetKeyDown("right"))
             {
-                focusExit = MoveFocusRight(focusExit);
-                UpdateFocusExit(focusExit);
+                if (!rightInUse)
+                {
+                    rightInUse = true;
+                    focusExit = MoveFocusRight(focusExit);
+                    UpdateFocusExit(focusExit);
+                }
+            }
+            else
+            {
+                rightInUse = false;
             }
         }
-
-        if (Input.GetKeyDown("return"))
+        if (InputManager.Dodge() || Input.GetKeyDown("return"))
         {
-            if (isConfirmExit) EnterPress(focusExit);
-            else EnterPress(focus);
+            if (isConfirmExit)
+            {
+                EnterPress(focusExit);
+            }
+            else
+            {
+                EnterPress(focus);
+            }
         }
-
     }
 }

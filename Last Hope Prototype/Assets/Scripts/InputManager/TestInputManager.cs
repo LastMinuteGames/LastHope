@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestInputManager : MonoBehaviour {
 	void Update () {
         //Debug.Log(InputManager.LeftJoystick());
-        Debug.Log(InputManager.RightJoystick());
+        //Debug.Log(InputManager.RightJoystick());
+        Debug.Log(InputManager.Stance1());
     }
 }

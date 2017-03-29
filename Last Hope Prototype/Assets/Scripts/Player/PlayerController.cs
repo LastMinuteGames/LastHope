@@ -24,16 +24,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (InputManager.DebugMode())
         {
             debugMode = !debugMode;
         }
         if (!debugMode)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (InputManager.Stance1())
             {
                 SwitchToNeutral();
-            } else if (Input.GetKeyDown(KeyCode.Alpha2))
+            } else if (InputManager.Stance2())
             {
                 SwitchToRed();
             }
