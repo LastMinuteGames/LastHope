@@ -54,6 +54,6 @@ public class GeneratorController : MonoBehaviour {
 
     void SpawnSpecialAbility()
     {
-        GameObject go = Instantiate(specialAbilityPrefab, spawnPointPos, spawnPointQuat);
+        Instantiate(specialAbilityPrefab, spawnPointPos, spawnPointQuat);
     }
 }
