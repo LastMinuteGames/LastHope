@@ -45,11 +45,11 @@ public class PlayerSpecialAttack : MonoBehaviour {
                 specialAttackTimer = 0;
                 isDashing = true;
                 playerMovement.enabled = false;
-                if (playerController.stance == PlayerStance.NEUTRAL)
+                if (playerController.stance == PlayerStance.STANCE_GREY)
                 {
                     neutralSphere.gameObject.SetActive(true);
                 }
-                else
+                else if (playerController.stance == PlayerStance.STANCE_RED)
                 {
                     redSpehre.gameObject.SetActive(true);
                 }
@@ -66,11 +66,11 @@ public class PlayerSpecialAttack : MonoBehaviour {
             {
                 isDashing = false;
                 playerMovement.enabled = true;
-                if (playerController.stance == PlayerStance.NEUTRAL)
+                if (playerController.stance == PlayerStance.STANCE_GREY)
                 {
                     neutralSphere.gameObject.SetActive(false);
                 }
-                else
+                else if (playerController.stance == PlayerStance.STANCE_RED)
                 {
                     redSpehre.gameObject.SetActive(false);
                 }

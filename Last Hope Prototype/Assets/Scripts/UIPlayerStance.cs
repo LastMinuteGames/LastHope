@@ -21,13 +21,13 @@ public class UIPlayerStance : MonoBehaviour {
         Color color = new Color();
         switch (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().stance)
         {
-            case (PlayerStance.NEUTRAL):
+            case (PlayerStance.STANCE_GREY):
                 color.r = 0.5f;
                 color.g = 0.5f;
                 color.b = 0.5f;
                 color.a = 1;
                 break;
-            case (PlayerStance.RED):
+            case (PlayerStance.STANCE_RED):
                 color.r = 1;
                 color.g = 0;
                 color.b = 0;

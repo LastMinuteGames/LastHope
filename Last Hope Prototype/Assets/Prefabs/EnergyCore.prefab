@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23549655754185480}
   - component: {fileID: 114080729936988324}
   m_Layer: 0
-  m_Name: SpecialAbility
+  m_Name: EnergyCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5cb522470f597f94ba9d10d80cb69d7f, type: 2}
+  - {fileID: 2100000, guid: a4315615d0ed5c24dbb244c7e8995ab6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,6 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b332c33f0c5324499954b71fdfbe5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: 0
+  greyMat: {fileID: 2100000, guid: a4315615d0ed5c24dbb244c7e8995ab6, type: 2}
+  redMat: {fileID: 2100000, guid: 5cb522470f597f94ba9d10d80cb69d7f, type: 2}
 --- !u!135 &135340837714458568
 SphereCollider:
   m_ObjectHideFlags: 1
