@@ -18,8 +18,45 @@ public class PickUpController : MonoBehaviour {
     public PickUpEffect effect;
     public PickUpType type;
     public int value;
+    public Material currentHpMat;
+    public Material maxHpMat;
+    public Material currentEnergyMat;
+    public Material maxEnergyMat;
 
-    // Update is called once per frame
+    private Renderer rend;
+
+    void Start ()
+    {
+        rend = GetComponent<Renderer>();
+        rend.enabled = true;
+        switch (effect)
+        {
+            case PickUpEffect.CURRENT:
+                switch (type)
+                {
+                    case (PickUpType.HP):
+                        rend.sharedMaterial = currentHpMat;
+                        break;
+                    case (PickUpType.ENERGY):
+                        rend.sharedMaterial = currentEnergyMat;
+                        break;
+                }
+                break;
+            case PickUpEffect.MAX:
+
+                switch (type)
+                {
+                    case (PickUpType.HP):
+                        rend.sharedMaterial = maxHpMat;
+                        break;
+                    case (PickUpType.ENERGY):
+                        rend.sharedMaterial = maxEnergyMat;
+                        break;
+                }
+                break;
+        }
+    }
+    
     void Update () {
         transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
 	}
