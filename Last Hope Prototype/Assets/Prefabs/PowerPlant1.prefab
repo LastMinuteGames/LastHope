@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4969263012041538}
   - component: {fileID: 64278209444790938}
+  - component: {fileID: 114313039877532914}
+  - component: {fileID: 65544613256170298}
   m_Layer: 0
   m_Name: PowerPlant1
   m_TagString: Untagged
@@ -94,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1474565993548770}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.1809673, y: 7, z: 11.887791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4274227412997636}
@@ -139,14 +141,14 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892685632024374}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9047d709e033d8d4fa2ab5cd9d861118, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -190,5 +192,28 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_InflateMesh: 0
-  m_SkinWidth: 0.01
+  m_SkinWidth: 1.00000005e-20
   m_Mesh: {fileID: 4300000, guid: 7aa6523f841655147b6216dfdbee7cdd, type: 3}
+--- !u!65 &65544613256170298
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1474565993548770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 45, y: 10, z: 45}
+  m_Center: {x: 0, y: 6.94, z: 0}
+--- !u!114 &114313039877532914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1474565993548770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd18e4923ced934aa4a0b89cb4932e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

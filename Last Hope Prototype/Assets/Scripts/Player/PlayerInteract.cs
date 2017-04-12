@@ -11,9 +11,16 @@ public class PlayerInteract : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (InputManager.Interact())
-        {
-            Debug.Log("Interact!!");
-        }
 	}
+
+    public void OnTriggerEnter(Collider other) {
+        Debug.Log(other.gameObject.layer);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        {
+            if (InputManager.Interact())
+            {
+                Debug.Log("Interact!!");
+            }
+        }
+    }
 }
