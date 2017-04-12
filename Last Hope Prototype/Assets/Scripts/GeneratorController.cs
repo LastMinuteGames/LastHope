@@ -18,7 +18,7 @@ public class GeneratorController : MonoBehaviour {
 	void Update () {
         if (canSpawn)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (InputManager.Interact())
             {
                 spawned = true;
                 Debug.Log("Generator charging...");
@@ -36,7 +36,7 @@ public class GeneratorController : MonoBehaviour {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 canSpawn = true;
-                Debug.Log("Press E to charge the generator");
+                Debug.Log("Press Interact to charge the generator");
             }
         }
     }
