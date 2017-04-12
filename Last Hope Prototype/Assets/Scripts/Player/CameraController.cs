@@ -4,7 +4,8 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
     public Transform playerT;
-    public Vector3 pivotOffset = new Vector3(0, 1, 0);
+    //public Vector3 pivotOffset = new Vector3(0, 1, 0);
+    public Vector3 pivotOffset = new Vector3(4, 1, 4);
     public Vector3 camOffset = new Vector3(0, 2, 3);
     public float camSpeed = 200f;
 
