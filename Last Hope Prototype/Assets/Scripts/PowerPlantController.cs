@@ -6,6 +6,7 @@ public class PowerPlantController : MonoBehaviour {
 
     private bool bridgeDown = false;
     private bool canActivateBridge = false;
+    public GameObject bridgeFloor;
 
 	// Use this for initialization
 	void Start () {
@@ -14,13 +15,25 @@ public class PowerPlantController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (canActivateBridge)
+        {
+            if (InputManager.Interact())
+            {
+                //Debug.Log("Interact!!");
+                bridgeDown = true;
+                Debug.Log("Power plant charging...");
+                Debug.Log("Wait for 5 seconds");
+                canActivateBridge = false;
+                Invoke("ActivateBridge", 5);
+            }
+        }
 	}
 
     void OnTriggerEnter(Collider other)
     {
         if (bridgeDown == false)
         {
+
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 canActivateBridge = true;
@@ -38,6 +51,12 @@ public class PowerPlantController : MonoBehaviour {
                 canActivateBridge = false;
             }
         }
+    }
+
+    void ActivateBridge()
+    {
+        bridgeFloor.GetComponent<BoxCollider>().isTrigger = true;
+        Debug.Log("Puente bajado!");
     }
 
 }

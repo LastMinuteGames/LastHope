@@ -141,6 +141,16 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9047d709e033d8d4fa2ab5cd9d861118, type: 2}
+    - target: {fileID: 114313039877532914, guid: fec16a82459b80c4eb8174ffa351a84a,
+        type: 2}
+      propertyPath: bridge
+      value: 
+      objectReference: {fileID: 675628988}
+    - target: {fileID: 114313039877532914, guid: fec16a82459b80c4eb8174ffa351a84a,
+        type: 2}
+      propertyPath: bridgeFloor
+      value: 
+      objectReference: {fileID: 675628988}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fec16a82459b80c4eb8174ffa351a84a, type: 2}
   m_IsPrefabParent: 0
@@ -160,6 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8716b84e4506df8439fe54cdefc4fbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &675628988 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1714716800985888, guid: 66b0278662697ba4ea19854e6ee837ca,
+    type: 2}
+  m_PrefabInternal: {fileID: 883027801}
 --- !u!1 &720716291
 GameObject:
   m_ObjectHideFlags: 0
