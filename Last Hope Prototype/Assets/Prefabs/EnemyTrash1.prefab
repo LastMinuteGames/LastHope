@@ -681,6 +681,7 @@ GameObject:
   - component: {fileID: 23848242345419994}
   - component: {fileID: 114602240751060996}
   - component: {fileID: 195573079738375160}
+  - component: {fileID: 95090222487063840}
   m_Layer: 9
   m_Name: EnemyTrash1
   m_TagString: Untagged
@@ -1070,7 +1071,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651550896130278}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.6023283, y: 1, z: 0.5018961}
+  m_LocalPosition: {x: -18.04961, y: 32.97, z: -48.152935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4726504341162350}
@@ -1783,6 +1784,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95090222487063840
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651550896130278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: eb138c127ca197e44b50a681e13a5d9b, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7743704f34520bb4b992a602a10ad21f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95775621299320130
 Animator:
   serializedVersion: 3
@@ -1821,6 +1839,7 @@ MonoBehaviour:
   attackZone: {fileID: 1088642726725788}
   target: {fileID: 0}
   nav: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &114640696828226250
 MonoBehaviour:
   m_ObjectHideFlags: 1

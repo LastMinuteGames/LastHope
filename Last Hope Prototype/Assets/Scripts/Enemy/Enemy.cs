@@ -21,6 +21,8 @@ public class Enemy: MonoBehaviour {
     public Transform target;
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
+    [HideInInspector]
+    public Animator anim;
 
     void Awake()
     {

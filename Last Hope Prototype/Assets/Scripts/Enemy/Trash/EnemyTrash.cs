@@ -13,6 +13,7 @@ public class EnemyTrash : Enemy {
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         currentState = new TrashIdleState(gameObject);
+        anim = GetComponent<Animator>();
     }
 	
     void OnTriggerEnter(Collider other)
