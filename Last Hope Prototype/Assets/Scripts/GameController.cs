@@ -6,8 +6,7 @@ public class GameController : MonoBehaviour {
 
     public Canvas menuInGame;
     public bool isMenu = false;
-
-	// Use this for initialization
+    
 	void Start () {
         Time.timeScale = 1;
         menuInGame = menuInGame.GetComponent<Canvas>();
@@ -15,13 +14,12 @@ public class GameController : MonoBehaviour {
         isMenu = false;
     }
 	
-	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isMenu)
+        if (InputManager.Pause() && !isMenu)
         {
             openMenu();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && isMenu)
+        else if (InputManager.Pause() && isMenu)
         {
             closeMenu();
         }

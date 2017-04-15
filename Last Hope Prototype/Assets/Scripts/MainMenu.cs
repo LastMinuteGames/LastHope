@@ -346,7 +346,7 @@ public class MainMenu : MonoBehaviour {
     void Update () {
         if (isHelp || isCredits)
         {
-            //Go back to principal menu
+            //Go back to main menu
             if (InputManager.Pause())
             {
                 if (isHelp) closeHelp();
