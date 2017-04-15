@@ -68,6 +68,7 @@ public class EnemySpawnOverTime : MonoBehaviour {
         }
         if (spawning)
         {
+            int waveCopy = currentWave;
             // Check for last wave
             if (delayBeforeWave[delayBeforeWave.Count - 1] <= 0)
             {
@@ -85,19 +86,21 @@ public class EnemySpawnOverTime : MonoBehaviour {
                     }
                 }
             }
-            
+            // Check if we're in the next wave
+            if (currentWave != waveCopy)
+            {
+                waveSpawned = false;
+            }
+
+            delayBeforeWave[currentWave] -= Time.deltaTime;
+
             if (delayBeforeWave[currentWave] <= 0 && !waveSpawned)
             {
                 int countTrash = trashEnemiesPerWave[currentWave];
                 int countMelee = meleeEnemiesPerWave[currentWave];
                 int countRanged = rangedEnemiesPerWave[currentWave];
-                //manager.SpawnWave(reusableSpawnPoints, countTrash, countMelee, countRanged);
+                manager.SpawnWave(reusableSpawnPoints, countTrash, countMelee, countRanged);
                 waveSpawned = true;
-            }
-            else
-            {
-                delayBeforeWave[currentWave] -= Time.deltaTime;
-                waveSpawned = false;
             }
         }
     }

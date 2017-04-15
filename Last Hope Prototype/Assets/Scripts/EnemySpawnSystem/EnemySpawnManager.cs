@@ -41,7 +41,7 @@ public class EnemySpawnManager : MonoBehaviour
     public List<GameObject> SpawnWave(List<EnemySpawnPoint> points, int countTrash, int countMelee, int countRanged)
     {
         List<GameObject> spawnedWave = new List<GameObject>();
-        GameObject originalEnemy;
+        GameObject originalEnemy = null;
         for (int i = 0; i < points.Count; i++)
         {
             switch (points[i].type)
@@ -75,8 +75,11 @@ public class EnemySpawnManager : MonoBehaviour
                     }
                     break;
             }
-            GameObject spawnedEnemy = Instantiate(trashEnemy, points[i].transform.position, points[i].transform.rotation);
-            spawnedWave.Add(spawnedEnemy);
+            if (originalEnemy != null)
+            {
+                GameObject spawnedEnemy = Instantiate(originalEnemy, points[i].transform.position, points[i].transform.rotation);
+                spawnedWave.Add(spawnedEnemy);
+            }
             if (countTrash <= 0 && countMelee <= 0 && countRanged <= 0)
             {
                 break;

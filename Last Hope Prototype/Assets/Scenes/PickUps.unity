@@ -178,13 +178,11 @@ MonoBehaviour:
   - {fileID: 1814444880}
   - {fileID: 2032142620}
   delayBeforeWave:
-  - 1
-  - 1
-  - 2
-  - 2
-  trashEnemiesPerWave: 03000000020000000200000002000000
-  meleeEnemiesPerWave: 01000000000000000200000003000000
-  rangedEnemiesPerWave: 00000000020000000100000003000000
+  - 3
+  - 3
+  trashEnemiesPerWave: 0200000002000000
+  meleeEnemiesPerWave: 0000000000000000
+  rangedEnemiesPerWave: 0000000000000000
   manager: {fileID: 464653590}
   artillery: {fileID: 418861778}
 --- !u!65 &298131818
@@ -283,34 +281,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4403055597535568, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -42.110413
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403055597535568, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1.0765103e-15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403055597535568, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 48.481712
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403055597535568, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403055597535568, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403055597535568, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403055597535568, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403055597535568, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
@@ -356,6 +326,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114149960560030476, guid: 773ded7fc32b30347a5d7a245fa84a8e,
+        type: 2}
+      propertyPath: meleeEnemy
+      value: 
+      objectReference: {fileID: 1651550896130278, guid: 44ffa086ce0db8c49ab3eed421fc6595,
+        type: 2}
+    - target: {fileID: 114149960560030476, guid: 773ded7fc32b30347a5d7a245fa84a8e,
+        type: 2}
+      propertyPath: rangedEnemy
+      value: 
+      objectReference: {fileID: 1651550896130278, guid: 44ffa086ce0db8c49ab3eed421fc6595,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 773ded7fc32b30347a5d7a245fa84a8e, type: 2}
   m_IsPrefabParent: 0
