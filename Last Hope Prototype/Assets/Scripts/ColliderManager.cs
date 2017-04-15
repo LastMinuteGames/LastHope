@@ -1,0 +1,42 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ColliderManager : MonoBehaviour {
+
+    private bool debug; 
+
+	// Use this for initialization
+	void Start () {
+        debug = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().debugMode;
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().debugMode != debug) {
+            debug = !debug;
+            ManageColliders();
+        }
+    }
+
+    void ManageColliders() {
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        foreach (GameObject go in allObjects)
+        {
+            if (go.activeInHierarchy)
+            {
+                if (go.name.StartsWith("Deco_"))
+                {
+                    Debug.Log(go.name + " is a decoration object");
+                    go.GetComponent<MeshRenderer>().enabled = !go.GetComponent<MeshRenderer>().enabled;
+                }
+                if (go.name.StartsWith("Col_"))
+                {
+                    Debug.Log(go.name + " is a collider object");
+                    go.GetComponent<MeshRenderer>().enabled = !go.GetComponent<MeshRenderer>().enabled;
+                }
+            }
+        }
+    }
+
+}
