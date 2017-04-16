@@ -8,6 +8,7 @@ public class Enemy: MonoBehaviour {
     public Transform enemy;
     public int life;
     public int maxLife;
+    public bool dead = false;
     public long timeToAfterDeadMS;
     public long timeAttackRefresh;
     public int attack;

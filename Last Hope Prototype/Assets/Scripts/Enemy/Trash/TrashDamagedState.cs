@@ -9,4 +9,5 @@ public class TrashDamagedState : TrashState
     public TrashDamagedState(GameObject go) : base(go)
     {
     }
+
 }

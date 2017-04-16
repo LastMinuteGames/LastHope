@@ -17,6 +17,7 @@ class TrashChaseState : TrashState
 
     public override IEnemyState UpdateState()
     {
+
         if (trashState.target != null)
         {
             trashState.nav.SetDestination(trashState.target.position);
