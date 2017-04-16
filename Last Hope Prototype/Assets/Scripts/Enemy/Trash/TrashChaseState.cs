@@ -6,7 +6,7 @@ using UnityEngine;
 
 class TrashChaseState : TrashState
 {
-    public TrashChaseState(GameObject go) : base(go)
+    public TrashChaseState(GameObject go) : base(go, "TrashChaseState")
     {
     }
 
@@ -15,23 +15,19 @@ class TrashChaseState : TrashState
         //EnemyTrash trashState = go.GetComponent<EnemyTrash>();
     }
 
-    public override IEnemyState UpdateState()
+    public override String UpdateState()
     {
         if (trashState.target != null)
         {
-            trashState.nav.SetDestination(trashState.target.position);
+            if (trashState.nav.remainingDistance >= trashState.combatRange)
+            {
+                trashState.nav.SetDestination(trashState.target.position);
+            }
+            else
+            {
+                trashState.nav.Stop();
+            }
         }
-        return null;
+        return name;
     }
-
-    //public override void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-    //    {
-    //        EnemyTrash trashState = go.GetComponent<EnemyTrash>();
-    //        trashState.currentState.EndState();
-    //        trashState.currentState = new TrashIdleState(go);
-    //        trashState.currentState.StartState();
-    //    }
-    //}
 }

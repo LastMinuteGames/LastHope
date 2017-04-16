@@ -68,6 +68,7 @@ public class PlayerEnergy : MonoBehaviour {
     void UpdateEnergyBar()
     {
         float ratio = (float)currentEnergy / maxEnergy;
-        currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
+        if(currentEnergyBar != null)
+            currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
     }
 }

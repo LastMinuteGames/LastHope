@@ -6,7 +6,7 @@ using UnityEngine;
 
 public interface IEnemyState
 {
-    IEnemyState UpdateState();
+    String UpdateState();
 
     void StartState();
 
@@ -20,5 +20,6 @@ public interface IEnemyState
 
     void OnPlayerInRange(Collider other);
 
-}
+    String GetName();
 
+}

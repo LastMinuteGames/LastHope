@@ -111,6 +111,7 @@ public class PlayerHealth : MonoBehaviour
     void UpdateHPBar()
     {
         float ratio = (float)currentHP / maxHP;
-        currentHPBar.rectTransform.localScale = new Vector3(ratio * maxHP / initialMaxHP, 1, 1);
+        if(currentHPBar != null)
+            currentHPBar.rectTransform.localScale = new Vector3(ratio * maxHP / initialMaxHP, 1, 1);
     }
 }

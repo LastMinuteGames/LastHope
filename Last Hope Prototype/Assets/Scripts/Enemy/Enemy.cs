@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy: MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
 
 
     public Transform enemy;
@@ -11,6 +13,8 @@ public class Enemy: MonoBehaviour {
     public long timeToAfterDeadMS;
     public long timeAttackRefresh;
     public int attack;
+    public int combatRange;
+    public int attackRange;
     public GameObject attackInRange;
     public GameObject attackZone;
 
@@ -21,27 +25,28 @@ public class Enemy: MonoBehaviour {
     public Transform target;
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
+    protected Dictionary<string, IEnemyState> states;
 
     void Awake()
     {
     }
 
     // Use this for initialization
-    void Start () {
-        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        attackZone.SetActive(false);
-
+    void Start()
+    {
     }
-	
-	// Update is called once per frame
-	void Update () {
-        IEnemyState newState = currentState.UpdateState();
-        if (newState != null)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (currentState == null)
+            return;
+        string newState = currentState.UpdateState();
+
+        if (newState != "" && currentState.GetName() != newState)
         {
-            currentState.EndState();
             previousState = currentState;
-            currentState = newState;
-            currentState.StartState();
+            ChangeState(newState);
         }
     }
 
@@ -79,7 +84,7 @@ public class Enemy: MonoBehaviour {
     {
         this.target = target;
         Debug.Log("Changed Target!!!");
-        if(this.target != null)
+        if (this.target != null)
             nav.SetDestination(this.target.position);
     }
 
@@ -111,6 +116,18 @@ public class Enemy: MonoBehaviour {
         {
             currentState.EndState();
             currentState = previousState;
+            currentState.StartState();
+        }
+    }
+
+    public void ChangeState(string stateName)
+    {
+        if (states.ContainsKey(stateName))
+        {
+            if (currentState != null)
+                currentState.EndState();
+
+            currentState = states[stateName];
             currentState.StartState();
         }
     }

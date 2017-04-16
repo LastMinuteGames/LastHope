@@ -7,7 +7,7 @@ class TrashEnemyAttack : TrashState
 {
     double msStartTime;
 
-    public TrashEnemyAttack(GameObject go) : base(go)
+    public TrashEnemyAttack(GameObject go) : base(go, "TrashEnemyAttack")
     {
     }
 
@@ -17,15 +17,15 @@ class TrashEnemyAttack : TrashState
         trashState.Attack();
     }
 
-    public override IEnemyState UpdateState()
+    public override String UpdateState()
     {
         double diff = (DateTime.Now - DateTime.MinValue).TotalMilliseconds - msStartTime;
         if (diff >= trashState.timeAttackRefresh)
         {
-            return new TrashChaseState(go);
+            return GetState(TrashStateTypes.TRASH_CHASE_STATE);//new TrashChaseState(go);
         }
 
-        return null;
+        return name;
     }
 }
 
