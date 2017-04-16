@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GeneratorController : MonoBehaviour {
 
-    public GameObject specialAbilityPrefab;
+    public GameObject energyCore;
     public Vector3 spawnPointPos;
     public Quaternion spawnPointQuat;
 
@@ -54,6 +54,8 @@ public class GeneratorController : MonoBehaviour {
 
     void SpawnSpecialAbility()
     {
-        Instantiate(specialAbilityPrefab, spawnPointPos, spawnPointQuat);
+        GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
+        EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();
+        coreParameters.color = PlayerStance.STANCE_RED;
     }
 }

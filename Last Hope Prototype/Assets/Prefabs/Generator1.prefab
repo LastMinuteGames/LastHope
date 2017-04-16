@@ -205,9 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5031fb559599a24798f82acbb8b823b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialAbilityPrefab: {fileID: 1908130509973278, guid: 3aae5947dc889204e9bc5bba42b28546,
-    type: 2}
-  spawnPointPos: {x: 0, y: 0, z: 0}
+  energyCore: {fileID: 1908130509973278, guid: 3aae5947dc889204e9bc5bba42b28546, type: 2}
+  spawnPointPos: {x: -90, y: 1, z: 230}
   spawnPointQuat: {x: 0, y: 0, z: 0, w: 0}
 --- !u!135 &135889624789819648
 SphereCollider:
