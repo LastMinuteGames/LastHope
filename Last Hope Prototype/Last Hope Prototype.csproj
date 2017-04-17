@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,6 +87,8 @@
     <Compile Include="Assets\Scripts\CameraGod.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\ColliderManager.cs" />
+    <Compile Include="Assets\Scripts\ComboSystem\Attack.cs" />
+    <Compile Include="Assets\Scripts\ComboSystem\AttackManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\AttackInRange.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
@@ -115,10 +115,7 @@
     <Compile Include="Assets\Scripts\PickUpController.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\IPlayerFSM.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\PlayerFSM.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerInteract.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerAttackState.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerBlockState.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerChangeStanceState.cs" />
@@ -127,10 +124,13 @@
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerInteractState.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerMoveBlockState.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerMoveState.cs" />
+    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerStateIdle.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInteract.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpecialAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerStateIdle.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSword.cs" />
     <Compile Include="Assets\Scripts\PowerPlantController.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
@@ -143,7 +143,6 @@
     <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
     <None Include="Assets\prototype_textures\readme.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>
