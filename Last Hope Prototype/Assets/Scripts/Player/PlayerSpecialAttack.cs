@@ -14,7 +14,6 @@ public class PlayerSpecialAttack : MonoBehaviour {
     private Vector3 movement;
     private PlayerController playerController;
     private PlayerMovement playerMovement;
-    private PlayerEnergy playerEnergy;
     private Vector3 impulse;
 
     void Start ()
@@ -24,7 +23,6 @@ public class PlayerSpecialAttack : MonoBehaviour {
         rigidBody = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
         playerMovement = GetComponent<PlayerMovement>();
-        playerEnergy = GetComponent<PlayerEnergy>();
     }
 	
 	void Update ()
@@ -40,7 +38,7 @@ public class PlayerSpecialAttack : MonoBehaviour {
     {
         if (!isDashing)
         {
-            if (playerEnergy.LoseEnergy(1))
+            if (playerController.LoseEnergy(1))
             {
                 specialAttackTimer = 0;
                 isDashing = true;
