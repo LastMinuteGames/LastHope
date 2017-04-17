@@ -47745,6 +47745,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114567722209727492, guid: 707430ca36cb294408e3f828cbefef96,
+        type: 2}
+      propertyPath: currentEnergyBar
+      value: 
+      objectReference: {fileID: 250803465}
     - target: {fileID: 114569494476844346, guid: 707430ca36cb294408e3f828cbefef96,
         type: 2}
       propertyPath: currentHPBar
@@ -47755,11 +47760,11 @@ Prefab:
       propertyPath: respawnManager
       value: 
       objectReference: {fileID: 1733716130}
-    - target: {fileID: 114567722209727492, guid: 707430ca36cb294408e3f828cbefef96,
+    - target: {fileID: 23084852897672078, guid: 707430ca36cb294408e3f828cbefef96,
         type: 2}
-      propertyPath: currentEnergyBar
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 250803465}
+      objectReference: {fileID: 2100000, guid: c4715273bb7f1d34b9848d6f4f9c5371, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
   m_IsPrefabParent: 0

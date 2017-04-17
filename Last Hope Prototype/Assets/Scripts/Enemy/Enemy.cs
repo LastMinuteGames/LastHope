@@ -23,7 +23,7 @@ public class Enemy: MonoBehaviour {
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector]
-    public Animator anim;
+    public Animation anim;
 
     void Awake()
     {

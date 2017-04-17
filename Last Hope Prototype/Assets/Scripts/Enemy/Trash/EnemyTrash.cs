@@ -13,10 +13,15 @@ public class EnemyTrash : Enemy {
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         currentState = new TrashIdleState(gameObject);
-        anim = GetComponent<Animator>();
+        anim = GetComponent<Animation>();
         //hand.animation["bridge"].speed = -1;
         //hand.animation["bridge"].time = hand.animation["bridge"].length;
         //hand.animation.Play("bridge");
+        AnimationEvent animationEvent = new AnimationEvent();
+        animationEvent.functionName = "Test";
+        //animationEvent.floatParameter = 0;
+        animationEvent.time = 0.8f;
+        anim.GetClip("Die").AddEvent(animationEvent);
     }
 
     void Update()

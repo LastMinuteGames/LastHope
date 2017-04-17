@@ -181,8 +181,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: Event Test of Animation Clip Die has a time  (0.833333)
-      outside the clip's valid range (0.000000..0.833333). It will never be fired
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
@@ -744,8 +743,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
-        functionName: Die
+      - time: 0.96585363
+        functionName: Test
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -991,7 +990,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
