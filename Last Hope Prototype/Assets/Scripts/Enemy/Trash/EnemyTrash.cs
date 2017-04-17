@@ -13,7 +13,7 @@ public class EnemyTrash : Enemy {
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         currentState = new TrashIdleState(gameObject);
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
         //hand.animation["bridge"].speed = -1;
         //hand.animation["bridge"].time = hand.animation["bridge"].length;
         //hand.animation.Play("bridge");
@@ -21,7 +21,7 @@ public class EnemyTrash : Enemy {
         animationEvent.functionName = "Test";
         //animationEvent.floatParameter = 0;
         animationEvent.time = 0.8f;
-        anim.GetClip("Die").AddEvent(animationEvent);
+        //anim.GetClip("Die").AddEvent(animationEvent);
     }
 
     void Update()
@@ -29,7 +29,7 @@ public class EnemyTrash : Enemy {
         if (!dead && life <= 0)
         {
             dead = true;
-            anim.Play("Die");
+            anim.SetBool("die", true);
         }
     }
 	
@@ -45,6 +45,8 @@ public class EnemyTrash : Enemy {
 
     void Test()
     {
-        Debug.Log("EVENTOO!!");
+        Debug.Log("Event!");
+        Destroy(this.gameObject);
     }
+
 }

@@ -15,6 +15,12 @@ class TrashEnemyAttack : TrashState
     {
         msStartTime = (DateTime.Now - DateTime.MinValue).TotalMilliseconds;
         trashState.Attack();
+        trashState.anim.SetBool("attack", true);
+    }
+
+    public override void EndState()
+    {
+        trashState.anim.SetBool("attack",false);
     }
 
     public override IEnemyState UpdateState()

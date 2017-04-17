@@ -23,7 +23,7 @@ public class Enemy: MonoBehaviour {
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector]
-    public Animation anim;
+    public Animator anim;
 
     void Awake()
     {
@@ -75,6 +75,7 @@ public class Enemy: MonoBehaviour {
         /**
          * TODO: Drop items if necessary
         **/
+        Debug.Log("DEAD!");
         Destroy(gameObject);
     }
 

@@ -27,6 +27,7 @@ public class TrashDeadState : TrashState
         /**
          *  TODO: Mark enemy to know that he's dead
          * */
+        trashState.anim.SetBool("die",true);
         go.GetComponent<Renderer>().material.color = Color.yellow;
     }
 
