@@ -495,7 +495,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4284180406485762, guid: 44ffa086ce0db8c49ab3eed421fc6595, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 64.735115
+      value: 48.58
       objectReference: {fileID: 0}
     - target: {fileID: 4284180406485762, guid: 44ffa086ce0db8c49ab3eed421fc6595, type: 2}
       propertyPath: m_LocalRotation.x
@@ -526,6 +526,31 @@ Prefab:
         type: 2}
       propertyPath: attackRange
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602240751060996, guid: 44ffa086ce0db8c49ab3eed421fc6595,
+        type: 2}
+      propertyPath: combatAngularSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602240751060996, guid: 44ffa086ce0db8c49ab3eed421fc6595,
+        type: 2}
+      propertyPath: chaseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602240751060996, guid: 44ffa086ce0db8c49ab3eed421fc6595,
+        type: 2}
+      propertyPath: frameUpdateInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602240751060996, guid: 44ffa086ce0db8c49ab3eed421fc6595,
+        type: 2}
+      propertyPath: attackProbability
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602240751060996, guid: 44ffa086ce0db8c49ab3eed421fc6595,
+        type: 2}
+      propertyPath: approachProbability
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44ffa086ce0db8c49ab3eed421fc6595, type: 2}

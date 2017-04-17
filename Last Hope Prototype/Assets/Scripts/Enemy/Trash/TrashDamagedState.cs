@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TrashDamagedState : TrashState
 {
-    public TrashDamagedState(GameObject go) : base(go, "TrashDamagedState")
+    public TrashDamagedState(GameObject go) : base(go, TrashStateTypes.DAMAGED_STATE)
     {
     }
 }

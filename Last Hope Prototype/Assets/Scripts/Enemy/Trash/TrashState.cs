@@ -4,36 +4,28 @@ using System.Linq;
 using UnityEngine;
 
 
-public enum TrashStateTypes
-{
-    TRASH_IDLE_STATE,
-    TRASH_ATTACK_STATE,
-    TRASH_DEAD_STATE,
-    TRASH_DAMAGED_STATE,
-    TRASH_CHASE_STATE,
-    TRASH_UNDEFINED_STATE
-}
 
 
-public class TrashState : State, IEnemyState
+
+public class TrashState : EnemyState, IEnemyState
 {
 
     protected GameObject go;
     protected EnemyTrash trashState;
 
-    public TrashState(GameObject go, String name) : base(name)
+    public TrashState(GameObject go, TrashStateTypes type) : base(type)
     {
         this.go = go;
         trashState = go.GetComponent<EnemyTrash>();
     }
 
-    public virtual String UpdateState()
+    public virtual TrashStateTypes UpdateState()
     {
         if (trashState.target != null)
         {
             trashState.nav.SetDestination(trashState.target.position);
         }
-        return name;
+        return type;
     }
 
     public virtual void StartState()
@@ -50,7 +42,7 @@ public class TrashState : State, IEnemyState
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
-            trashState.ChangeState(GetState(TrashStateTypes.TRASH_CHASE_STATE));
+            trashState.ChangeState(TrashStateTypes.CHASE_STATE);
 
             /**
              *  TODO: Get damage from player!
@@ -61,7 +53,7 @@ public class TrashState : State, IEnemyState
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             trashState.target = other.transform;
-            trashState.ChangeState(GetState(TrashStateTypes.TRASH_CHASE_STATE));
+            trashState.ChangeState(TrashStateTypes.CHASE_STATE);
         }
     }
 
@@ -72,7 +64,7 @@ public class TrashState : State, IEnemyState
             trashState.currentState.EndState();
 
             if (trashState.life <= 0)
-                trashState.ChangeState(GetState(TrashStateTypes.TRASH_DEAD_STATE));
+                trashState.ChangeState(TrashStateTypes.DEAD_STATE);
             else
                 trashState.ChangeToPreviousState();
 
@@ -86,35 +78,16 @@ public class TrashState : State, IEnemyState
 
     public void OnPlayerInRange(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            trashState.currentState.EndState();
-            trashState.currentState = new TrashEnemyAttack(go);
-            trashState.currentState.StartState();
-        }
+        //if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        //{
+        //    trashState.currentState.EndState();
+        //    trashState.currentState = new TrashEnemyAttack(go);
+        //    trashState.currentState.StartState();
+        //}
     }
 
-    protected String GetState(TrashStateTypes type)
+    public TrashStateTypes Type()
     {
-        switch (type)
-        {
-            case TrashStateTypes.TRASH_IDLE_STATE:
-                return "TrashIdleState";
-            case TrashStateTypes.TRASH_DEAD_STATE:
-                return "TrashDeadState";
-            case TrashStateTypes.TRASH_ATTACK_STATE:
-                return "TrashEnemyAttack";
-            case TrashStateTypes.TRASH_CHASE_STATE:
-                return "TrashChaseState";
-            case TrashStateTypes.TRASH_DAMAGED_STATE:
-                return "TrashDamagedState";
-            default:
-                return "";
-        }
-    }
-
-    public String GetName()
-    {
-        return name;
+        return type;
     }
 }

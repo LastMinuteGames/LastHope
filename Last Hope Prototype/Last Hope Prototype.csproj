@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\Enemy\PlayerDetection.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\EnemyTrash.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\TrashChaseState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\TrashCombatState.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\TrashDamagedState.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\TrashDeadState.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\TrashEnemyAttack.cs" />
@@ -128,7 +129,7 @@
     <Compile Include="Assets\Scripts\PowerPlantController.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
-    <Compile Include="Assets\Scripts\State.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyState.cs" />
     <Compile Include="Assets\Scripts\UIPlayerStance.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -15,9 +15,14 @@ public class Enemy : MonoBehaviour
     public int attack;
     public int combatRange;
     public int attackRange;
-    public GameObject attackInRange;
+    //public GameObject attackInRange;
     public GameObject attackZone;
+    public int chaseSpeed;
+    public int combatAngularSpeed;
+    public int frameUpdateInterval;
 
+    [HideInInspector]
+    public double lastAttackTime = 0;
     [HideInInspector]
     public IEnemyState currentState;
     private IEnemyState previousState;
@@ -25,7 +30,7 @@ public class Enemy : MonoBehaviour
     public Transform target;
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
-    protected Dictionary<string, IEnemyState> states;
+    protected Dictionary<TrashStateTypes, IEnemyState> states;
 
     void Awake()
     {
@@ -41,9 +46,9 @@ public class Enemy : MonoBehaviour
     {
         if (currentState == null)
             return;
-        string newState = currentState.UpdateState();
+        TrashStateTypes newState = currentState.UpdateState();
 
-        if (newState != "" && currentState.GetName() != newState)
+        if (newState != TrashStateTypes.UNDEFINED_STATE && currentState.Type() != newState)
         {
             previousState = currentState;
             ChangeState(newState);
@@ -120,14 +125,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void ChangeState(string stateName)
+    public void ChangeState(TrashStateTypes type)
     {
-        if (states.ContainsKey(stateName))
+        if (states.ContainsKey(type))
         {
             if (currentState != null)
                 currentState.EndState();
 
-            currentState = states[stateName];
+            currentState = states[type];
             currentState.StartState();
         }
     }

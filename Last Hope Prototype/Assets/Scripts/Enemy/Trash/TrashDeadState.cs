@@ -5,11 +5,11 @@ public class TrashDeadState : TrashState
 {
     public long msToDissappear;
     private double msStartTime;
-    public TrashDeadState(GameObject go) : base(go, "TrashDeadState")
+    public TrashDeadState(GameObject go) : base(go, TrashStateTypes.DEAD_STATE)
     {
     }
 
-    public override String UpdateState()
+    public override TrashStateTypes UpdateState()
     {
         double diff = (DateTime.Now - DateTime.MinValue).TotalMilliseconds - msStartTime;
         if (diff >= trashState.timeToAfterDeadMS)
@@ -18,7 +18,7 @@ public class TrashDeadState : TrashState
             trashState.Dead();
 
         }
-        return name;
+        return type;
     }
 
     public override void StartState()

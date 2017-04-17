@@ -7,25 +7,39 @@ class TrashEnemyAttack : TrashState
 {
     double msStartTime;
 
-    public TrashEnemyAttack(GameObject go) : base(go, "TrashEnemyAttack")
+    public TrashEnemyAttack(GameObject go) : base(go, TrashStateTypes.ATTACK_STATE)
     {
     }
 
     public override void StartState()
     {
         msStartTime = (DateTime.Now - DateTime.MinValue).TotalMilliseconds;
-        trashState.Attack();
+        numberOfFrames = 0;
     }
 
-    public override String UpdateState()
+    public override TrashStateTypes UpdateState()
     {
-        double diff = (DateTime.Now - DateTime.MinValue).TotalMilliseconds - msStartTime;
-        if (diff >= trashState.timeAttackRefresh)
+        if (numberOfFrames != 0 && numberOfFrames % trashState.frameUpdateInterval == 0)
         {
-            return GetState(TrashStateTypes.TRASH_CHASE_STATE);//new TrashChaseState(go);
+            trashState.Attack();
+            ++numberOfFrames;
+            return type;
+        }
+        
+        double diff = msStartTime - trashState.lastAttackTime;
+        if (trashState.lastAttackTime == 0 || diff >= trashState.timeAttackRefresh)
+        {
+            trashState.lastAttackTime = msStartTime;
+            trashState.Attack();
+            return TrashStateTypes.COMBAT_STATE;//new TrashChaseState(go);
         }
 
-        return name;
+        return type;
+    }
+
+    public override void EndState()
+    {
+        trashState.attackZone.SetActive(false);
     }
 }
 
