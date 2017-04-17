@@ -55,9 +55,33 @@ public class PlayerController : MonoBehaviour
         moveScript = GetComponent<PlayerMovement>();
         attackScript = GetComponent<PlayerAttack>();
 
-        IPlayerFSM state = new PlayerMoveState(gameObject);
+        IPlayerFSM state = new PlayerIdleState(gameObject);
         PlayerStateType defaultState = state.Type();
         states = new Dictionary<PlayerStateType, IPlayerFSM>();
+        states.Add(state.Type(), state);
+
+        state = new PlayerBlockState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerMoveBlockState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerDamageState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerDodgeState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerInteractState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerAttackState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerChangeStanceState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerMoveState(gameObject);
         states.Add(state.Type(), state);
 
         ChangeState(defaultState);
