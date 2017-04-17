@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour
     public int currentEnergy;
     private int initialMaxEnergy;
 
+    IPlayerFSM currentState;
+    PlayerStateType currentStateType;
+    Dictionary<PlayerStateType, IPlayerFSM> states;
+
     // Use this for initialization
     void Start()
     {
@@ -50,11 +54,26 @@ public class PlayerController : MonoBehaviour
 
         moveScript = GetComponent<PlayerMovement>();
         attackScript = GetComponent<PlayerAttack>();
+
+        IPlayerFSM state = new PlayerMoveState(gameObject);
+        PlayerStateType defaultState = state.Type();
+        states = new Dictionary<PlayerStateType, IPlayerFSM>();
+        states.Add(state.Type(), state);
+
+        ChangeState(defaultState);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        PlayerStateType state = currentState.Update();
+        if(state!= PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
+        {
+            ChangeState(state);
+        }
+
+
         if (InputManager.DebugMode())
         {
             debugMode = !debugMode;
@@ -234,5 +253,16 @@ public class PlayerController : MonoBehaviour
     {
         float ratio = (float)currentEnergy / maxEnergy;
         currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
+    }
+
+    void ChangeState(PlayerStateType type)
+    {
+        if (states.ContainsKey(type))
+        {
+            if(currentState != null)
+                currentState.End();
+            currentState = states[type];
+            currentState.Start();
+        }
     }
 }

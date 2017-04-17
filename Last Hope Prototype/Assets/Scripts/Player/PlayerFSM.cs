@@ -47,5 +47,11 @@ public class PlayerFSM : PlayerState, IPlayerFSM
     {
         return type;
     }
+
+    
+    public PlayerStateType Type()
+    {
+        return type;
+    }
 }
 

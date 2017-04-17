@@ -14,5 +14,6 @@ public interface IPlayerFSM
     void OnTriggerEnter(Collider other);
     void OnTriggerExit(Collider other);
     void ChangeState(PlayerStateType type);
+    PlayerStateType Type();
 }
 
