@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy: MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
 
 
     public Transform enemy;
@@ -12,9 +14,16 @@ public class Enemy: MonoBehaviour {
     public long timeToAfterDeadMS;
     public long timeAttackRefresh;
     public int attack;
-    public GameObject attackInRange;
+    public int combatRange;
+    public int attackRange;
+    //public GameObject attackInRange;
     public GameObject attackZone;
+    public int chaseSpeed;
+    public int combatAngularSpeed;
+    public int frameUpdateInterval;
 
+    [HideInInspector]
+    public double lastAttackTime = 0;
     [HideInInspector]
     public IEnemyState currentState;
     private IEnemyState previousState;
@@ -24,27 +33,28 @@ public class Enemy: MonoBehaviour {
     public UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector]
     public Animator anim;
+    protected Dictionary<TrashStateTypes, IEnemyState> states;
 
     void Awake()
     {
     }
 
     // Use this for initialization
-    void Start () {
-        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        attackZone.SetActive(false);
-
+    void Start()
+    {
     }
-	
-	// Update is called once per frame
-	void Update () {
-        IEnemyState newState = currentState.UpdateState();
-        if (newState != null)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (currentState == null)
+            return;
+        TrashStateTypes newState = currentState.UpdateState();
+
+        if (newState != TrashStateTypes.UNDEFINED_STATE && currentState.Type() != newState)
         {
-            currentState.EndState();
             previousState = currentState;
-            currentState = newState;
-            currentState.StartState();
+            ChangeState(newState);
         }
     }
 
@@ -81,7 +91,8 @@ public class Enemy: MonoBehaviour {
     public void ChangeTarget(Transform target)
     {
         this.target = target;
-        if(this.target != null)
+        Debug.Log("Changed Target!!!");
+        if (this.target != null)
             nav.SetDestination(this.target.position);
     }
 
@@ -113,6 +124,18 @@ public class Enemy: MonoBehaviour {
         {
             currentState.EndState();
             currentState = previousState;
+            currentState.StartState();
+        }
+    }
+
+    public void ChangeState(TrashStateTypes type)
+    {
+        if (states.ContainsKey(type))
+        {
+            if (currentState != null)
+                currentState.EndState();
+
+            currentState = states[type];
             currentState.StartState();
         }
     }
