@@ -9,6 +9,34 @@ class PlayerIdleState : PlayerFSM
 {
     public PlayerIdleState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_IDLE)
     {
+        
+    }
 
+    public PlayerStateType Update()
+    {
+        if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
+        {
+            return PlayerStateType.PLAYER_STATE_MOVE;
+        }
+        else if (InputManager.Block())
+        {
+            return PlayerStateType.PLAYER_STATE_BLOCK;
+        }
+        else if (InputManager.Interact())
+        {
+            return PlayerStateType.PLAYER_STATE_INTERACT;
+        }
+        else if (InputManager.Stance1() || InputManager.Stance2())
+        {
+            return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
+        }
+        else if (InputManager.Dodge())
+        {
+            return PlayerStateType.PLAYER_STATE_DODGE;
+        }
+
+        // TODO: LIGHT, HEAVY AND SPECIAL ATTACK FOR THE COMBO SYSTEM
+
+        return PlayerStateType.PLAYER_STATE_UNDEFINED;
     }
 }
