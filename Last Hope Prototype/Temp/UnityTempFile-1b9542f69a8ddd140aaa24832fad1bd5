@@ -1,0 +1,144 @@
+-debug
+-target:library
+-nowarn:0169
+-langversion:4
+-out:Temp/Assembly-CSharp.dll
+-r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll"
+-r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_5_3_OR_NEWER
+-define:UNITY_5_4_OR_NEWER
+-define:UNITY_5_5_OR_NEWER
+-define:UNITY_5_5_0
+-define:UNITY_5_5
+-define:UNITY_5
+-define:ENABLE_AUDIO
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_GENERICS
+-define:ENABLE_MICROPHONE
+-define:ENABLE_MULTIPLE_DISPLAYS
+-define:ENABLE_PHYSICS
+-define:ENABLE_SPRITERENDERER_FLIPPING
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_RAKNET
+-define:ENABLE_UNET
+-define:ENABLE_LZMA
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_WEBCAM
+-define:ENABLE_WWW
+-define:ENABLE_CLOUD_SERVICES_COLLAB
+-define:ENABLE_CLOUD_SERVICES_ADS
+-define:ENABLE_CLOUD_HUB
+-define:ENABLE_CLOUD_PROJECT_ID
+-define:ENABLE_CLOUD_SERVICES_UNET
+-define:ENABLE_CLOUD_SERVICES_BUILD
+-define:ENABLE_CLOUD_LICENSE
+-define:ENABLE_EDITOR_METRICS
+-define:ENABLE_EDITOR_METRICS_CACHING
+-define:INCLUDE_DYNAMIC_GI
+-define:INCLUDE_GI
+-define:PLATFORM_SUPPORTS_MONO
+-define:RENDER_SOFTWARE_CURSOR
+-define:INCLUDE_PUBNUB
+-define:ENABLE_PLAYMODE_TESTS_RUNNER
+-define:ENABLE_SCRIPTING_NEW_CSHARP_COMPILER
+-define:UNITY_STANDALONE_WIN
+-define:UNITY_STANDALONE
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_RUNTIME_GI
+-define:ENABLE_MOVIES
+-define:ENABLE_NETWORK
+-define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+-define:ENABLE_UNITYWEBREQUEST
+-define:ENABLE_CLOUD_SERVICES
+-define:ENABLE_CLOUD_SERVICES_ANALYTICS
+-define:ENABLE_CLOUD_SERVICES_PURCHASING
+-define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
+-define:ENABLE_EVENT_QUEUE
+-define:ENABLE_CLUSTERINPUT
+-define:ENABLE_VIDEO
+-define:ENABLE_VR
+-define:ENABLE_WEBSOCKET_HOST
+-define:ENABLE_MONO
+-define:ENABLE_PROFILER
+-define:DEBUG
+-define:TRACE
+-define:UNITY_ASSERTIONS
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_64
+-define:UNITY_EDITOR_WIN
+-define:UNITY_TEAM_LICENSE
+-define:ENABLE_VSTU
+-define:CROSS_PLATFORM_INPUT
+Assets/Scripts/ArtilleryController.cs
+Assets/Scripts/ArtilleryEventTrigger.cs
+Assets/Scripts/BarricadeController.cs
+Assets/Scripts/CameraGod.cs
+Assets/Scripts/CameraManager.cs
+Assets/Scripts/ColliderManager.cs
+Assets/Scripts/ComboSystem/Attack.cs
+Assets/Scripts/ComboSystem/AttackManager.cs
+Assets/Scripts/Enemy/AttackInRange.cs
+Assets/Scripts/Enemy/Enemy.cs
+Assets/Scripts/Enemy/IEnemyState.cs
+Assets/Scripts/Enemy/PlayerDetection.cs
+Assets/Scripts/Enemy/Trash/EnemyTrash.cs
+Assets/Scripts/Enemy/Trash/TrashChaseState.cs
+Assets/Scripts/Enemy/Trash/TrashDamagedState.cs
+Assets/Scripts/Enemy/Trash/TrashDeadState.cs
+Assets/Scripts/Enemy/Trash/TrashEnemyAttack.cs
+Assets/Scripts/Enemy/Trash/TrashIdleState.cs
+Assets/Scripts/Enemy/Trash/TrashState.cs
+Assets/Scripts/EnemySpawnSystem/EnemySpawnManager.cs
+Assets/Scripts/EnemySpawnSystem/EnemySpawnOverTime.cs
+Assets/Scripts/EnemySpawnSystem/EnemySpawnPoint.cs
+Assets/Scripts/EnemySpawnSystem/EnemySpawnTrigger.cs
+Assets/Scripts/EnergyCoreController.cs
+Assets/Scripts/FPSDisplay.cs
+Assets/Scripts/GameController.cs
+Assets/Scripts/GeneratorController.cs
+Assets/Scripts/InGameMenu.cs
+Assets/Scripts/InputManager/InputManager.cs
+Assets/Scripts/InputManager/TestInputManager.cs
+Assets/Scripts/MainMenu.cs
+Assets/Scripts/PickUpController.cs
+Assets/Scripts/Player/CameraController.cs
+Assets/Scripts/Player/FSM/IPlayerFSM.cs
+Assets/Scripts/Player/FSM/PlayerFSM.cs
+Assets/Scripts/Player/FSM/States/PlayerAttackState.cs
+Assets/Scripts/Player/FSM/States/PlayerBlockState.cs
+Assets/Scripts/Player/FSM/States/PlayerChangeStanceState.cs
+Assets/Scripts/Player/FSM/States/PlayerDamageState.cs
+Assets/Scripts/Player/FSM/States/PlayerDodgeState.cs
+Assets/Scripts/Player/FSM/States/PlayerInteractState.cs
+Assets/Scripts/Player/FSM/States/PlayerMoveBlockState.cs
+Assets/Scripts/Player/FSM/States/PlayerMoveState.cs
+Assets/Scripts/Player/FSM/States/PlayerStateIdle.cs
+Assets/Scripts/Player/PlayerAttack.cs
+Assets/Scripts/Player/PlayerController.cs
+Assets/Scripts/Player/PlayerInteract.cs
+Assets/Scripts/Player/PlayerMovement.cs
+Assets/Scripts/Player/PlayerSpecialAttack.cs
+Assets/Scripts/Player/PlayerState.cs
+Assets/Scripts/Player/PlayerSword.cs
+Assets/Scripts/PowerPlantController.cs
+Assets/Scripts/SpawnManager.cs
+Assets/Scripts/SpawnPoint.cs
+Assets/Scripts/UIPlayerStance.cs
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Runtime.Serialization.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Xml.Linq.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.Lang.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\Boo.Lang.dll"
+-sdk:unity

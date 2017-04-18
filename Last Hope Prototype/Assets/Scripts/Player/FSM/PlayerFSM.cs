@@ -15,17 +15,17 @@ public class PlayerFSM : PlayerState, IPlayerFSM
         this.playerController = go.GetComponent<PlayerController>();
     }
 
-    public void ChangeState(PlayerStateType type)
+    virtual public void ChangeState(PlayerStateType type)
     {
         //TODO: END current state on player. Change currentState and start CurrentState
     }
 
-    public void End()
+    virtual public void End()
     {
         
     }
 
-    public void OnTriggerEnter(Collider other)
+    virtual public void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
         {
@@ -33,22 +33,22 @@ public class PlayerFSM : PlayerState, IPlayerFSM
         }
     }
 
-    public void OnTriggerExit(Collider other)
+    virtual public void OnTriggerExit(Collider other)
     {
         
     }
 
-    public void Start()
+    virtual public void Start()
     {
         numberOfFrames = 0;
     }
 
-    public PlayerStateType Update()
+    virtual public PlayerStateType Update()
     {
         return type;
     }
 
-    
+
     public PlayerStateType Type()
     {
         return type;

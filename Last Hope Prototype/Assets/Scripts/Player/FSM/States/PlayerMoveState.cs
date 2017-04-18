@@ -14,11 +14,19 @@ public class PlayerMoveState : PlayerFSM
 
     }
 
-    public PlayerStateType Update()
+    public override PlayerStateType Update()
     {
         h = InputManager.LeftJoystick().x;
         v = InputManager.LeftJoystick().z;
 
+        if (InputManager.Block())
+        {
+            return PlayerStateType.PLAYER_STATE_MOVE_BLOCKING;
+        }
+        else if (h == 0 && v == 0)
+        {
+            return PlayerStateType.PLAYER_STATE_IDLE;
+        }
         return PlayerStateType.PLAYER_STATE_MOVE;
     }
 
@@ -27,6 +35,9 @@ public class PlayerMoveState : PlayerFSM
         playerController.Move(h, v);
     }
 
+    public override void End()
+    {
 
+    }
 }
 

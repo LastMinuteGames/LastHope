@@ -12,7 +12,7 @@ class PlayerIdleState : PlayerFSM
         
     }
 
-    public PlayerStateType Update()
+    public override PlayerStateType Update()
     {
         if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
         {
