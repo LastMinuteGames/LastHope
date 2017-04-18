@@ -13,14 +13,12 @@ class TrashChaseState : TrashState
     public override void StartState()
     {
         //EnemyTrash trashState = go.GetComponent<EnemyTrash>();
-        Debug.Log("Entro en chase!");
         trashState.anim.SetBool("walk", true);
     }
 
     public override void EndState()
     {
         //Exist from state
-        Debug.Log("Salgo de chase!");
         trashState.anim.SetBool("walk", false);
     }
 

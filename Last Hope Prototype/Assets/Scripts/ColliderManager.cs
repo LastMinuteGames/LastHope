@@ -27,12 +27,10 @@ public class ColliderManager : MonoBehaviour {
             {
                 if (go.name.StartsWith("Deco_"))
                 {
-                    Debug.Log(go.name + " is a decoration object");
                     go.GetComponent<MeshRenderer>().enabled = !go.GetComponent<MeshRenderer>().enabled;
                 }
                 if (go.name.StartsWith("Col_"))
                 {
-                    Debug.Log(go.name + " is a collider object");
                     go.GetComponent<MeshRenderer>().enabled = !go.GetComponent<MeshRenderer>().enabled;
                 }
             }

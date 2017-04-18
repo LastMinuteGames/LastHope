@@ -43,9 +43,8 @@ public class EnemyTrash : Enemy {
         currentState.OnTriggerExit(other);
     }
 
-    void Test()
+    void Die()
     {
-        Debug.Log("Event!");
         Destroy(this.gameObject);
     }
 

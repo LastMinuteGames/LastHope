@@ -75,14 +75,12 @@ public class Enemy: MonoBehaviour {
         /**
          * TODO: Drop items if necessary
         **/
-        Debug.Log("DEAD!");
         Destroy(gameObject);
     }
 
     public void ChangeTarget(Transform target)
     {
         this.target = target;
-        Debug.Log("Changed Target!!!");
         if(this.target != null)
             nav.SetDestination(this.target.position);
     }

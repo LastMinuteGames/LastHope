@@ -186,11 +186,9 @@ public class InGameMenu : MonoBehaviour
             switch (focus)
             {
                 case 0:
-                    Debug.Log("Continua!");
                     this.GetComponentInParent<GameController>().closeMenu();
                     break;
                 case 1:
-                    Debug.Log("Abre menu salir!");
                     openExitMenu();
                     break;
             }

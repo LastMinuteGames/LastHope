@@ -19,7 +19,6 @@ public class PowerPlantController : MonoBehaviour {
         {
             if (InputManager.Interact())
             {
-                //Debug.Log("Interact!!");
                 bridgeDown = true;
                 Debug.Log("Power plant charging...");
                 Debug.Log("Wait for 5 seconds");
