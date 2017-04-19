@@ -10,6 +10,7 @@ public enum PlayerStance
     STANCE_RED
 }
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public PlayerStance stance;
@@ -27,7 +28,6 @@ public class PlayerController : MonoBehaviour
     private int initialMaxHP;
     public float timeBetweenDmg = 0.5f;
     public SpawnManager respawnManager;
-    private PlayerMovement moveScript;
     private PlayerAttack attackScript;
     private bool dmged;
     private bool dead;
@@ -44,16 +44,17 @@ public class PlayerController : MonoBehaviour
     public Transform camT;
     public Vector3 movement;
     public Vector3 targetDirection;
-    private float h, v;
+    public bool pendingMove = false;
+    private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
     private Vector3 camForward;
     private Vector3 camRight;
 
-    IPlayerFSM currentState;
-    PlayerStateType currentStateType;
-    Dictionary<PlayerStateType, IPlayerFSM> states;
-
-    // Use this for initialization
+    [SerializeField]
+    private PlayerStateType currentStateType;
+    private IPlayerFSM currentState;
+    private Dictionary<PlayerStateType, IPlayerFSM> states;
+    
     void Start()
     {
         stance = PlayerStance.STANCE_NONE;
@@ -65,8 +66,7 @@ public class PlayerController : MonoBehaviour
 
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rigidBody = GetComponent<Rigidbody>();
-
-        moveScript = GetComponent<PlayerMovement>();
+        
         attackScript = GetComponent<PlayerAttack>();
 
         IPlayerFSM state = new PlayerIdleState(gameObject);
@@ -100,8 +100,7 @@ public class PlayerController : MonoBehaviour
 
         ChangeState(defaultState);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -155,6 +154,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (pendingMove)
+        {
+            Move();
+        }
         RotateCamera();
     }
 
@@ -224,7 +227,6 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         dead = true;
-        moveScript.enabled = false;
         attackScript.enabled = false;
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
@@ -239,7 +241,6 @@ public class PlayerController : MonoBehaviour
         }
         currentHP = maxHP;
         dead = false;
-        moveScript.enabled = true;
         attackScript.enabled = true;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
@@ -289,7 +290,7 @@ public class PlayerController : MonoBehaviour
         camRight = new Vector3(camForward.z, 0, -camForward.x);
         Debug.DrawRay(transform.position, camRight, Color.red);
 
-        targetDirection = camForward * v + camRight * h;
+        targetDirection = camForward * movementVertical + camRight * movementHorizontal;
         Debug.DrawRay(transform.position, targetDirection, Color.blue);
 
         if (targetDirection != Vector3.zero)
@@ -299,17 +300,21 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void Move(float h, float v)
+    public void PendingMovement(float h, float v)
     {
-        this.h = h;
-        this.v = v;
+        movementHorizontal = h;
+        movementVertical = v;
+        pendingMove = true;
+    }
 
+    public void Move()
+    {
         movement = rigidBody.velocity;
 
         movement.z = 0;
-        h = Mathf.Abs(h);
-        v = Mathf.Abs(v);
-        float totalImpulse = h + v;
+        movementHorizontal = Mathf.Abs(movementHorizontal);
+        movementVertical = Mathf.Abs(movementVertical);
+        float totalImpulse = movementHorizontal + movementVertical;
         totalImpulse = (totalImpulse > 1) ? 1 : totalImpulse;
         movement.z += totalImpulse * speed;
 
@@ -319,6 +324,8 @@ public class PlayerController : MonoBehaviour
             movement.y = 2;
 
         rigidBody.velocity = transform.TransformDirection(movement);
+
+        pendingMove = false;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -350,6 +357,7 @@ public class PlayerController : MonoBehaviour
                 currentState.End();
             currentState = states[type];
             currentState.Start();
+            currentStateType = currentState.Type();
         }
     }
 }

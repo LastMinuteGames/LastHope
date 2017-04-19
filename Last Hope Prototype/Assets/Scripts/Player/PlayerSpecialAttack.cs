@@ -13,7 +13,6 @@ public class PlayerSpecialAttack : MonoBehaviour {
     private float specialAttackTimer = 0f;
     private Vector3 movement;
     private PlayerController playerController;
-    private PlayerMovement playerMovement;
     private Vector3 impulse;
 
     void Start ()
@@ -22,7 +21,6 @@ public class PlayerSpecialAttack : MonoBehaviour {
         redSpehre.gameObject.SetActive(false);
         rigidBody = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
-        playerMovement = GetComponent<PlayerMovement>();
     }
 	
 	void Update ()
@@ -42,7 +40,6 @@ public class PlayerSpecialAttack : MonoBehaviour {
             {
                 specialAttackTimer = 0;
                 isDashing = true;
-                playerMovement.enabled = false;
                 if (playerController.stance == PlayerStance.STANCE_GREY)
                 {
                     neutralSphere.gameObject.SetActive(true);
@@ -52,7 +49,7 @@ public class PlayerSpecialAttack : MonoBehaviour {
                     redSpehre.gameObject.SetActive(true);
                 }
                 movement = rigidBody.velocity;
-                impulse = playerMovement.targetDirection.normalized * thrust;
+                //impulse = playerMovement.targetDirection.normalized * thrust;
                 movement += impulse;
                 rigidBody.velocity = movement;
             }
@@ -63,7 +60,6 @@ public class PlayerSpecialAttack : MonoBehaviour {
             if (specialAttackTimer >= attackDuration)
             {
                 isDashing = false;
-                playerMovement.enabled = true;
                 if (playerController.stance == PlayerStance.STANCE_GREY)
                 {
                     neutralSphere.gameObject.SetActive(false);

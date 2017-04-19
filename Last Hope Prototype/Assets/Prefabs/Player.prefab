@@ -144,7 +144,6 @@ GameObject:
   - component: {fileID: 136437592607594740}
   - component: {fileID: 23148916456528880}
   - component: {fileID: 54975386752870720}
-  - component: {fileID: 114823940378632874}
   - component: {fileID: 114956066217251712}
   - component: {fileID: 114007836392273374}
   - component: {fileID: 114806235861738774}
@@ -381,7 +380,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525409397675270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 1, z: -17}
+  m_LocalPosition: {x: -10, y: 5, z: -17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4034528627002148}
@@ -689,6 +688,12 @@ MonoBehaviour:
   respawnManager: {fileID: 0}
   maxEnergy: 5
   currentEnergy: 5
+  turnSpeed: 25
+  speed: 5
+  camT: {fileID: 0}
+  movement: {x: 0, y: 0, z: 0}
+  targetDirection: {x: 0, y: 0, z: 0}
+  pendingMove: 0
 --- !u!114 &114126395590165810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -966,22 +971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830228038448e8943a758f3259785567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114823940378632874
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1525409397675270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584209ec8f208704daea522a824c2461, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 10
-  speed: 10
-  camT: {fileID: 0}
-  movement: {x: 0, y: 0, z: 0}
-  targetDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &114916030858138336
 MonoBehaviour:
   m_ObjectHideFlags: 1

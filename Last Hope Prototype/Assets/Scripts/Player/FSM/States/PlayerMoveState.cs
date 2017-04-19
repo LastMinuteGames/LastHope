@@ -14,6 +14,12 @@ public class PlayerMoveState : PlayerFSM
 
     }
 
+    public override void Start()
+    {
+        h = 0;
+        v = 0;
+    }
+
     public override PlayerStateType Update()
     {
         h = InputManager.LeftJoystick().x;
@@ -23,16 +29,28 @@ public class PlayerMoveState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_MOVE_BLOCKING;
         }
+        else if (InputManager.Interact())
+        {
+            return PlayerStateType.PLAYER_STATE_INTERACT;
+        }
+        else if (InputManager.Stance1() || InputManager.Stance2())
+        {
+            return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
+        }
+        else if (InputManager.Dodge())
+        {
+            return PlayerStateType.PLAYER_STATE_DODGE;
+        }
         else if (h == 0 && v == 0)
         {
             return PlayerStateType.PLAYER_STATE_IDLE;
         }
-        return PlayerStateType.PLAYER_STATE_MOVE;
-    }
 
-    void FixedUpdate()
-    {
-        playerController.Move(h, v);
+        // TODO: LIGHT, HEAVY AND SPECIAL ATTACK FOR THE COMBO SYSTEM
+
+        playerController.PendingMovement(h, v);
+
+        return PlayerStateType.PLAYER_STATE_MOVE;
     }
 
     public override void End()
