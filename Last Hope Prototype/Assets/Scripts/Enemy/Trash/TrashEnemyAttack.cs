@@ -14,8 +14,6 @@ class TrashEnemyAttack : TrashState
     public override void StartState()
     {
         msStartTime = (DateTime.Now - DateTime.MinValue).TotalMilliseconds;
-        //COMMENTED BECAUSE DON'T KNOW IF NECCESSARY
-        //trashState.Attack();
         
         trashState.anim.SetBool("attack", true);
         numberOfFrames = 0;

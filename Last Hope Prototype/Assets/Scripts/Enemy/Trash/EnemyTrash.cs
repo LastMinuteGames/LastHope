@@ -18,11 +18,10 @@ public class EnemyTrash : Enemy
     void Start()
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        nav.speed = chaseSpeed;
 
         currentState = new TrashIdleState(gameObject);
         anim = GetComponent<Animator>();
-
-        nav.speed = chaseSpeed;
 
         attackZone.SetActive(false);
         states = new Dictionary<TrashStateTypes, IEnemyState>();

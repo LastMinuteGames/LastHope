@@ -1071,7 +1071,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651550896130278}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -18.04961, y: 32.97, z: -48.152935}
+  m_LocalPosition: {x: 5, y: 2, z: 45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4726504341162350}
@@ -1836,11 +1836,18 @@ MonoBehaviour:
   timeToAfterDeadMS: 0
   timeAttackRefresh: 0
   attack: 10
-  attackInRange: {fileID: 1039867174264004}
+  combatRange: 10
+  attackRange: 3
   attackZone: {fileID: 1088642726725788}
+  chaseSpeed: 5
+  combatAngularSpeed: 20
+  frameUpdateInterval: 10
+  lastAttackTime: 0
   target: {fileID: 0}
   nav: {fileID: 0}
   anim: {fileID: 0}
+  attackProbability: 15
+  approachProbability: 30
 --- !u!114 &114640696828226250
 MonoBehaviour:
   m_ObjectHideFlags: 1
