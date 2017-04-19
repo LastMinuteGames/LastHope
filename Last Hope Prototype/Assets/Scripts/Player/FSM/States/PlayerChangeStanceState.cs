@@ -7,16 +7,26 @@ using UnityEngine;
 
 public class PlayerChangeStanceState : PlayerFSM
 {
+    private int duration = 30;
+    private int startFrame;
+
     public PlayerChangeStanceState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_CHANGE_STANCE)
     {
 
     }
 
+    public override void Start()
+    {
+        startFrame = Time.frameCount;
+        playerController.ChangeStance(newStance);
+    }
+
     public override PlayerStateType Update()
     {
-        playerController.ChangeStance(newStance);
-
-        // if CHANGE STANCE finished return IDLE
+        if (Time.frameCount >= startFrame + duration)
+        {
+            return PlayerStateType.PLAYER_STATE_IDLE;
+        }
 
         return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
     }

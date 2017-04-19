@@ -51,11 +51,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 camForward;
     private Vector3 camRight;
 
+    // Interact
+    public bool canInteract = false;
+
     [SerializeField]
     private PlayerStateType currentStateType;
     private IPlayerFSM currentState;
     private Dictionary<PlayerStateType, IPlayerFSM> states;
-    
+
     void Start()
     {
         stance = PlayerStance.STANCE_NONE;
@@ -67,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rigidBody = GetComponent<Rigidbody>();
-        
+
         attackScript = GetComponent<PlayerAttack>();
 
         IPlayerFSM state = new PlayerIdleState(gameObject);
@@ -101,12 +104,12 @@ public class PlayerController : MonoBehaviour
 
         ChangeState(defaultState);
     }
-    
+
     void Update()
     {
-        
+
         PlayerStateType state = currentState.Update();
-        if(state!= PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
+        if (state != PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
         {
             ChangeState(state);
         }
@@ -126,7 +129,8 @@ public class PlayerController : MonoBehaviour
             {
                 ChangeStance(PlayerStance.STANCE_RED);
             }
-        } else
+        }
+        else
         {
             if (Input.GetKeyDown(KeyCode.T))
                 LoseHp(10);
@@ -148,7 +152,7 @@ public class PlayerController : MonoBehaviour
                 dmged = false;
             }
         }
-        
+
         UpdateHPBar();
         UpdateEnergyBar();
     }
@@ -303,7 +307,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
         }
     }
-    
+
     public void PendingMovement(float h, float v)
     {
         movementHorizontal = h;
@@ -339,6 +343,18 @@ public class PlayerController : MonoBehaviour
             int damage = other.gameObject.transform.parent.gameObject.GetComponent<EnemyTrash>().attack;
             TakeDmg(damage);
         }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        {
+            canInteract = true;
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        // TODO: Possible bug if two interactable triggers are colliding with the player and one exits
+        if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        {
+            canInteract = false;
+        }
     }
 
     private void UpdateHPBar()
@@ -357,7 +373,7 @@ public class PlayerController : MonoBehaviour
     {
         if (states.ContainsKey(type))
         {
-            if(currentState != null)
+            if (currentState != null)
                 currentState.End();
             currentState = states[type];
             currentState.Start();

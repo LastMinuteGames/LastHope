@@ -22,7 +22,7 @@ public class PlayerBlockState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_IDLE;
         }
-        else if (InputManager.Interact())
+        else if (InputManager.Interact() && playerController.canInteract)
         {
             return PlayerStateType.PLAYER_STATE_INTERACT;
         }

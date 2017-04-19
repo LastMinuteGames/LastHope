@@ -28,7 +28,7 @@ public class PlayerMoveBlockState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_MOVE;
         }
-        else if (InputManager.Interact())
+        else if (InputManager.Interact() && playerController.canInteract)
         {
             return PlayerStateType.PLAYER_STATE_INTERACT;
         }

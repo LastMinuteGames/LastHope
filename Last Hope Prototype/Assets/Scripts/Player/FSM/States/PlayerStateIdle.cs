@@ -9,7 +9,7 @@ class PlayerIdleState : PlayerFSM
 {
     public PlayerIdleState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_IDLE)
     {
-        
+
     }
 
     public override PlayerStateType Update()
@@ -22,7 +22,7 @@ class PlayerIdleState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_BLOCK;
         }
-        else if (InputManager.Interact())
+        else if (InputManager.Interact() && playerController.canInteract)
         {
             return PlayerStateType.PLAYER_STATE_INTERACT;
         }
