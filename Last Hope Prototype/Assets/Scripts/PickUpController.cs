@@ -20,7 +20,7 @@ public class PickUpController : MonoBehaviour {
     public int value;
     
     void Update () {
-        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, 0, 80) * Time.deltaTime);
 	}
 
     void OnTriggerEnter(Collider other)
