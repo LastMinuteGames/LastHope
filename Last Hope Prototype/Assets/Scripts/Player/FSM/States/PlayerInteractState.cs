@@ -11,4 +11,11 @@ public class PlayerInteractState : PlayerFSM
     {
 
     }
+
+    public override PlayerStateType Update()
+    {
+        // if INTERACTION finished return IDLE
+
+        return PlayerStateType.PLAYER_STATE_INTERACT;
+    }
 }

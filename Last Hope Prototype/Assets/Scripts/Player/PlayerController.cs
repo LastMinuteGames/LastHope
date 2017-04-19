@@ -7,7 +7,8 @@ public enum PlayerStance
 {
     STANCE_NONE,
     STANCE_GREY,
-    STANCE_RED
+    STANCE_RED,
+    STANCE_UNDEFINED
 }
 
 [RequireComponent(typeof(Rigidbody))]
@@ -119,11 +120,11 @@ public class PlayerController : MonoBehaviour
         {
             if (InputManager.Stance1())
             {
-                SwitchToGrey();
+                ChangeStance(PlayerStance.STANCE_GREY);
             }
             else if (InputManager.Stance2())
             {
-                SwitchToRed();
+                ChangeStance(PlayerStance.STANCE_RED);
             }
         } else
         {
@@ -161,21 +162,24 @@ public class PlayerController : MonoBehaviour
         RotateCamera();
     }
 
-    public void SwitchToGrey()
+    public void ChangeStance(PlayerStance stance)
     {
-        if (greyAbilityEnabled)
+        switch (stance)
         {
-            Debug.Log("NEUTRAL STANCE");
-            stance = PlayerStance.STANCE_GREY;
-        }
-    }
-
-    public void SwitchToRed()
-    {
-        if (redAbilityEnabled)
-        {
-            Debug.Log("RED STANCE");
-            stance = PlayerStance.STANCE_RED;
+            case PlayerStance.STANCE_GREY:
+                if (greyAbilityEnabled)
+                {
+                    Debug.Log("NEUTRAL STANCE");
+                    this.stance = stance;
+                }
+                break;
+            case PlayerStance.STANCE_RED:
+                if (redAbilityEnabled)
+                {
+                    Debug.Log("RED STANCE");
+                    this.stance = stance;
+                }
+                break;
         }
     }
 

@@ -8,6 +8,7 @@ public class PlayerFSM : PlayerState, IPlayerFSM
 {
     protected GameObject go;
     protected PlayerController playerController;
+    protected PlayerStance newStance = PlayerStance.STANCE_UNDEFINED;
 
    public PlayerFSM(GameObject go, PlayerStateType type) : base(type)
     {

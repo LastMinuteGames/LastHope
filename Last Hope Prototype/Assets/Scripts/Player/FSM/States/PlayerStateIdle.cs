@@ -26,8 +26,14 @@ class PlayerIdleState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_INTERACT;
         }
-        else if (InputManager.Stance1() || InputManager.Stance2())
+        else if (InputManager.Stance1())
         {
+            newStance = PlayerStance.STANCE_GREY;
+            return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
+        }
+        else if (InputManager.Stance2())
+        {
+            newStance = PlayerStance.STANCE_RED;
             return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
         }
         else if (InputManager.Dodge())

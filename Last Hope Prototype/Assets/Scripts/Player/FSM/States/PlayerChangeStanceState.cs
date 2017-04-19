@@ -11,4 +11,13 @@ public class PlayerChangeStanceState : PlayerFSM
     {
 
     }
+
+    public override PlayerStateType Update()
+    {
+        playerController.ChangeStance(newStance);
+
+        // if CHANGE STANCE finished return IDLE
+
+        return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
+    }
 }

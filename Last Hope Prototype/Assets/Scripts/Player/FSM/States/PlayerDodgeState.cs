@@ -11,4 +11,11 @@ public class PlayerDodgeState : PlayerFSM
     {
 
     }
+
+    public override PlayerStateType Update()
+    {
+        // if DODGE finished return IDLE
+
+        return PlayerStateType.PLAYER_STATE_DODGE;
+    }
 }
