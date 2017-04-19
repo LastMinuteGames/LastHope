@@ -1345,6 +1345,11 @@ Prefab:
       propertyPath: m_Name
       value: BridgeFloor1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 65364475387029194, guid: 66b0278662697ba4ea19854e6ee837ca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
   m_IsPrefabParent: 0
@@ -7320,6 +7325,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4599295076276678, guid: 8de030687bde6274c883fc74502cf977,
     type: 2}
   m_PrefabInternal: {fileID: 274990966}
+--- !u!1 &276387699 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1714716800985888, guid: 66b0278662697ba4ea19854e6ee837ca,
+    type: 2}
+  m_PrefabInternal: {fileID: 265173898}
 --- !u!1001 &276518169
 Prefab:
   m_ObjectHideFlags: 0
@@ -8415,6 +8425,11 @@ Prefab:
     - target: {fileID: 1714716800985888, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
       propertyPath: m_Name
       value: BridgeFloor1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 65364475387029194, guid: 66b0278662697ba4ea19854e6ee837ca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
@@ -9764,6 +9779,11 @@ Prefab:
       propertyPath: m_Name
       value: BridgeFloor1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 65364475387029194, guid: 66b0278662697ba4ea19854e6ee837ca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
   m_IsPrefabParent: 0
@@ -11082,6 +11102,11 @@ Prefab:
     - target: {fileID: 1714716800985888, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
       propertyPath: m_Name
       value: BridgeFloor1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 65364475387029194, guid: 66b0278662697ba4ea19854e6ee837ca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
@@ -15033,6 +15058,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6f91f61d74129744ba072d079da10271, type: 2}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
   m_IsPrefabParent: 0
@@ -18143,6 +18173,11 @@ Prefab:
       propertyPath: m_Name
       value: BridgeEnergy1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
   m_IsPrefabParent: 0
@@ -20835,6 +20870,11 @@ Prefab:
       propertyPath: m_Name
       value: BridgeFloor1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 65364475387029194, guid: 66b0278662697ba4ea19854e6ee837ca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
   m_IsPrefabParent: 0
@@ -21689,6 +21729,11 @@ Prefab:
     - target: {fileID: 1508003922599724, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
       propertyPath: m_Name
       value: BridgeEnergy1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
@@ -24370,6 +24415,16 @@ Prefab:
     - target: {fileID: 1714716800985888, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
       propertyPath: m_Name
       value: BridgeFloor1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 65364475387029194, guid: 66b0278662697ba4ea19854e6ee837ca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23542962019261540, guid: 66b0278662697ba4ea19854e6ee837ca,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
@@ -29284,6 +29339,11 @@ Prefab:
       propertyPath: m_Name
       value: BridgeEnergy1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
   m_IsPrefabParent: 0
@@ -33288,6 +33348,11 @@ Prefab:
       propertyPath: m_Name
       value: BridgeEnergy1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
   m_IsPrefabParent: 0
@@ -34738,6 +34803,11 @@ Prefab:
     - target: {fileID: 1508003922599724, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
       propertyPath: m_Name
       value: BridgeEnergy1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
@@ -37127,6 +37197,11 @@ Prefab:
     - target: {fileID: 1508003922599724, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
       propertyPath: m_Name
       value: BridgeEnergy1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
@@ -42536,6 +42611,11 @@ Prefab:
       propertyPath: m_Name
       value: BridgeEnergy1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
   m_IsPrefabParent: 0
@@ -46735,6 +46815,11 @@ Prefab:
       propertyPath: m_Name
       value: BridgeEnergy1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
   m_IsPrefabParent: 0
@@ -47865,6 +47950,11 @@ Prefab:
     - target: {fileID: 1508003922599724, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
       propertyPath: m_Name
       value: BridgeEnergy1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
@@ -49927,6 +50017,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4b06f2343c8ad144d8db6472549c8e57, type: 2}
+    - target: {fileID: 65364475387029194, guid: 66b0278662697ba4ea19854e6ee837ca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66b0278662697ba4ea19854e6ee837ca, type: 2}
   m_IsPrefabParent: 0
@@ -50412,6 +50507,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114313039877532914, guid: fec16a82459b80c4eb8174ffa351a84a,
+        type: 2}
+      propertyPath: bridge
+      value: 
+      objectReference: {fileID: 2029349556}
+    - target: {fileID: 114313039877532914, guid: fec16a82459b80c4eb8174ffa351a84a,
+        type: 2}
+      propertyPath: bridgeFloor
+      value: 
+      objectReference: {fileID: 276387699}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fec16a82459b80c4eb8174ffa351a84a, type: 2}
   m_IsPrefabParent: 0
@@ -51802,6 +51907,11 @@ Prefab:
     - target: {fileID: 1508003922599724, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
       propertyPath: m_Name
       value: BridgeEnergy1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
@@ -65949,6 +66059,11 @@ Prefab:
     - target: {fileID: 1508003922599724, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}
       propertyPath: m_Name
       value: BridgeEnergy1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23759102580842180, guid: 6c5333dad986c6b4e8bc298cc3f421e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c5333dad986c6b4e8bc298cc3f421e4, type: 2}

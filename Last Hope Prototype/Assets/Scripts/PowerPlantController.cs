@@ -6,11 +6,11 @@ public class PowerPlantController : MonoBehaviour {
 
     private bool bridgeDown = false;
     private bool canActivateBridge = false;
+    public GameObject bridge;
     public GameObject bridgeFloor;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -57,6 +57,29 @@ public class PowerPlantController : MonoBehaviour {
     {
         bridgeFloor.GetComponent<BoxCollider>().isTrigger = true;
         Debug.Log("Puente bajado!");
+        for (int i = 0; i < bridge.transform.childCount; ++i)
+        {
+            GameObject child = bridge.transform.GetChild(i).gameObject;
+            if (child.activeInHierarchy)
+            {
+                if (child.name.Contains("Energy")) {
+                    for (int j = 0; j < child.transform.childCount; ++j)
+                    {
+                        GameObject childOfChild = child.transform.GetChild(j).gameObject;
+                        if (childOfChild.activeInHierarchy)
+                        {
+                            if (childOfChild.name.Contains("Deco"))
+                            {
+                                childOfChild.GetComponent<MeshRenderer>().enabled = true;
+                                Debug.Log(childOfChild.name);
+                            }
+                        }
+                            
+                    }
+                        
+                }
+            }
+        }
     }
 
 }
