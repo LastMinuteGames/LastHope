@@ -5,15 +5,21 @@ using UnityEngine;
 public class BarricadeController : MonoBehaviour {
 
     public LayerMask layersToCollideWith;
+    public bool broke = false;
+    [HideInInspector]
+    public Animator anim;
 
     // Use this for initialization
     void Start () {
-		
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (broke)
+        {
+            anim.SetBool("break", true);
+        }
 	}
 
     void OnTriggerEnter(Collider other)
@@ -23,8 +29,15 @@ public class BarricadeController : MonoBehaviour {
         if (layersToCollideWith == (layersToCollideWith | (1 << other.gameObject.layer)) && other.tag == "RedAttack")
         {
             Debug.Log("Aux!");
-            Destroy(this.gameObject);
+            anim.SetBool("break", true);
+            //Destroy(this.gameObject);
         }
+    }
+
+    void Break()
+    {
+        Debug.Log("PADRE! Lo del break!");
+        Destroy(this.gameObject);
     }
 
     /*void OnCollisionEnter(Collision col)
