@@ -29,6 +29,7 @@ public class BarricadeController : MonoBehaviour {
         if (layersToCollideWith == (layersToCollideWith | (1 << other.gameObject.layer)) && other.tag == "RedAttack")
         {
             Debug.Log("Aux!");
+            this.GetComponent<BoxCollider>().isTrigger = true;
             anim.SetBool("break", true);
             //Destroy(this.gameObject);
         }
