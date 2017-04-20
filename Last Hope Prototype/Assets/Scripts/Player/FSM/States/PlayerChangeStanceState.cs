@@ -18,7 +18,7 @@ public class PlayerChangeStanceState : PlayerFSM
     public override void Start()
     {
         startFrame = Time.frameCount;
-        playerController.ChangeStance(newStance);
+        playerController.ChangeStance(playerController.newStance);
     }
 
     public override PlayerStateType Update()

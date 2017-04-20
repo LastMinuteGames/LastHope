@@ -14,7 +14,9 @@ public enum PlayerStance
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    public PlayerStance stance;
+    public PlayerStance stance = PlayerStance.STANCE_NONE;
+    [HideInInspector]
+    public PlayerStance newStance = PlayerStance.STANCE_UNDEFINED;
     public bool debugMode = false;
 
     private bool redAbilityEnabled = false;
@@ -53,6 +55,12 @@ public class PlayerController : MonoBehaviour
 
     // Interact
     public bool canInteract = false;
+
+    // Special Attack
+    public GameObject neutralSphere;
+    public GameObject redSpehre;
+    public float redSpecialAttackThrust = 30;
+    private bool canSpecialAttack = false;
 
     [SerializeField]
     private PlayerStateType currentStateType;
@@ -96,6 +104,9 @@ public class PlayerController : MonoBehaviour
         state = new PlayerAttackState(gameObject);
         states.Add(state.Type(), state);
 
+        state = new PlayerSpecialAttackState(gameObject);
+        states.Add(state.Type(), state);
+
         state = new PlayerChangeStanceState(gameObject);
         states.Add(state.Type(), state);
 
@@ -119,18 +130,7 @@ public class PlayerController : MonoBehaviour
         {
             debugMode = !debugMode;
         }
-        if (!debugMode)
-        {
-            if (InputManager.Stance1())
-            {
-                ChangeStance(PlayerStance.STANCE_GREY);
-            }
-            else if (InputManager.Stance2())
-            {
-                ChangeStance(PlayerStance.STANCE_RED);
-            }
-        }
-        else
+        if (debugMode)
         {
             if (Input.GetKeyDown(KeyCode.T))
                 LoseHp(10);
@@ -195,6 +195,16 @@ public class PlayerController : MonoBehaviour
     public void EnableRedAbility()
     {
         redAbilityEnabled = true;
+    }
+
+    public bool IsGreyAbilityEnabled()
+    {
+        return greyAbilityEnabled;
+    }
+
+    public bool IsRedAbilityEnabled()
+    {
+        return redAbilityEnabled;
     }
 
     public void TakeDmg(int value)
@@ -334,6 +344,60 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = transform.TransformDirection(movement);
 
         pendingMove = false;
+    }
+
+    public void StartSpecialAttack()
+    {
+        canSpecialAttack = false;
+        if (stance != PlayerStance.STANCE_NONE)
+        {
+            if (LoseEnergy(1))
+            {
+                canSpecialAttack = true;
+                switch (stance)
+                {
+                    case PlayerStance.STANCE_GREY:
+                        neutralSphere.gameObject.SetActive(true);
+                        break;
+                    case PlayerStance.STANCE_RED:
+                        redSpehre.gameObject.SetActive(true);
+                        break;
+                }
+            }
+        }
+    }
+    public void SpecialAttack()
+    {
+        if (canSpecialAttack)
+        {
+            switch (stance)
+            {
+                case PlayerStance.STANCE_GREY:
+                    break;
+                case PlayerStance.STANCE_RED:
+                    movement = rigidBody.velocity;
+                    Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
+                    movement += impulse;
+                    rigidBody.velocity = movement;
+                    break;
+            }
+        }
+    }
+
+    public void EndSpecialAttack()
+    {
+        if (canSpecialAttack)
+        {
+            switch (stance)
+            {
+                case PlayerStance.STANCE_GREY:
+                    neutralSphere.gameObject.SetActive(false);
+                    break;
+                case PlayerStance.STANCE_RED:
+                    redSpehre.gameObject.SetActive(false);
+                    break;
+            }
+        }
     }
 
     public void OnTriggerEnter(Collider other)

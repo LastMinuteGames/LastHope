@@ -28,17 +28,37 @@ class PlayerIdleState : PlayerFSM
         }
         else if (InputManager.Stance1())
         {
-            newStance = PlayerStance.STANCE_GREY;
-            return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
+            if (playerController.IsGreyAbilityEnabled())
+            {
+                playerController.newStance = PlayerStance.STANCE_GREY;
+                if (playerController.newStance != playerController.stance)
+                {
+                    return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
+                }
+            }
         }
         else if (InputManager.Stance2())
         {
-            newStance = PlayerStance.STANCE_RED;
-            return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
+            if (playerController.IsRedAbilityEnabled())
+            {
+                playerController.newStance = PlayerStance.STANCE_RED;
+                if (playerController.newStance != playerController.stance)
+                {
+                    return PlayerStateType.PLAYER_STATE_CHANGE_STANCE;
+                }
+            }
         }
         else if (InputManager.Dodge())
         {
             return PlayerStateType.PLAYER_STATE_DODGE;
+        }
+        else if (InputManager.SpecialAttack())
+        {
+            return PlayerStateType.PLAYER_STATE_SPECIAL_ATTACK;
+        }
+        else if (InputManager.SpecialAttack())
+        {
+            return PlayerStateType.PLAYER_STATE_SPECIAL_ATTACK;
         }
 
         // TODO: LIGHT, HEAVY AND SPECIAL ATTACK FOR THE COMBO SYSTEM
