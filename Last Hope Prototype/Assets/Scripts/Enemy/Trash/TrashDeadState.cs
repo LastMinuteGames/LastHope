@@ -12,9 +12,9 @@ public class TrashDeadState : TrashState
     public override TrashStateTypes UpdateState()
     {
         double diff = (DateTime.Now - DateTime.MinValue).TotalMilliseconds - msStartTime;
-        if (diff >= trashState.timeToAfterDeadMS)
+        if (diff >= trashState.timeToAfterDeadMS && trashState.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !trashState.anim.IsInTransition(0))
         {
-            EndState();
+            //EndState();
             trashState.Dead();
 
         }

@@ -14,7 +14,7 @@ class TrashEnemyAttack : TrashState
     public override void StartState()
     {
         msStartTime = (DateTime.Now - DateTime.MinValue).TotalMilliseconds;
-        
+        trashState.nav.Stop();
         trashState.anim.SetBool("attack", true);
         numberOfFrames = 0;
     }
@@ -29,11 +29,13 @@ class TrashEnemyAttack : TrashState
         }
         
         double diff = msStartTime - trashState.lastAttackTime;
-        if (trashState.lastAttackTime == 0 || diff >= trashState.timeAttackRefresh)
+        //if (trashState.lastAttackTime == 0 || diff >= trashState.timeAttackRefresh)
+        if((!trashState.anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") || trashState.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) && !trashState.anim.IsInTransition(0)) // > 1 && !trashState.anim.IsInTransition(0))
         {
             trashState.lastAttackTime = msStartTime;
-            trashState.Attack();
-            return TrashStateTypes.COMBAT_STATE;//new TrashChaseState(go);
+            //trashState.Attack();
+            return TrashStateTypes.COMBAT_MOVE_BACK_STATE;
+            //return TrashStateTypes.COMBAT_STATE;//new TrashChaseState(go);
         }
 
         return type;

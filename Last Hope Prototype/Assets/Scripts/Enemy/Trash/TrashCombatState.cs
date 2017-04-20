@@ -6,11 +6,8 @@ using UnityEngine;
 
 public class TrashCombatState : TrashState
 {
-    private SortedDictionary<int, TrashStateTypes> probabilities;
     private int attackProbability = 0;
     private int approachProbability = 0;
-
-
 
     public TrashCombatState(GameObject go) : base(go, TrashStateTypes.COMBAT_STATE)
     {
@@ -46,19 +43,17 @@ public class TrashCombatState : TrashState
                 else
                 {
                     int probability = UnityEngine.Random.Range(0, 100);
-                    if(trashState.attackProbability <= probability && trashState.nav.remainingDistance <= trashState.attackRange)
+                    if(trashState.attackProbability >= probability && trashState.nav.remainingDistance <= trashState.attackRange)
                     {
                         trashState.nav.Stop();
                         return TrashStateTypes.ATTACK_STATE;
                     }
-                    if (trashState.approachProbability <= probability && trashState.nav.remainingDistance >= trashState.attackRange)
+                    if (trashState.approachProbability >= probability && trashState.nav.remainingDistance >= trashState.attackRange)
                     {
-                        ++numberOfFrames;
-                        trashState.nav.SetDestination(trashState.target.position);
-                        trashState.nav.Resume();
+                        trashState.nav.Stop();
+                        return TrashStateTypes.COMBAT_MOVE_FORWARD_STATE;
                     }
                     trashState.transform.RotateAround(trashState.target.transform.position, Vector3.up, trashState.combatAngularSpeed * Time.deltaTime);
-                
                 }
             }
         }

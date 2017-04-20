@@ -47,16 +47,16 @@ public class EnemyTrash : Enemy
         state = new TrashCombatState(this.gameObject);
         states.Add(state.Type(), state);
 
-        ChangeState(defaultState);
-    }
+        state = new TrashCombatMoveAround(this.gameObject);
+        states.Add(state.Type(), state);
 
-    void Update()
-    {
-        if (!dead && life <= 0)
-        {
-            dead = true;
-            anim.SetBool("die", true);
-        }
+        state = new TrashCombatMoveForwardState(this.gameObject);
+        states.Add(state.Type(), state);
+
+        state = new TrashCombatMoveBackState(this.gameObject);
+        states.Add(state.Type(), state);
+
+        ChangeState(defaultState);
     }
 
     void OnTriggerEnter(Collider other)
@@ -68,10 +68,4 @@ public class EnemyTrash : Enemy
     {
         currentState.OnTriggerExit(other);
     }
-
-    void Die()
-    {
-        Destroy(this.gameObject);
-    }
-
 }
