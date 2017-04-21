@@ -38,12 +38,12 @@ public class EnergyCoreController : MonoBehaviour {
             {
                 case PlayerStance.STANCE_GREY:
                     player.EnableGreyAbility();
-                    player.SwitchToGrey();
+                    player.ChangeStance(color);
                     Debug.Log("Grey special ability learned");
                     break;
                 case PlayerStance.STANCE_RED:
                     player.EnableRedAbility();
-                    player.SwitchToRed();
+                    player.ChangeStance(color);
                     Debug.Log("Red special ability learned");
                     break;
             }
