@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PlayerSpecialAttackState : PlayerFSM
 {
-    private int duration = 2;
+    private int duration = 12;
     private int startFrame;
 
     public PlayerSpecialAttackState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_SPECIAL_ATTACK)

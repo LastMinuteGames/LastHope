@@ -161,9 +161,9 @@ public class PlayerController : MonoBehaviour
     {
         if (pendingMove)
         {
+            Rotate();
             Move();
         }
-        RotateCamera();
     }
 
     public void ChangeStance(PlayerStance stance)
@@ -296,7 +296,7 @@ public class PlayerController : MonoBehaviour
         currentEnergy = maxEnergy;
     }
 
-    public void RotateCamera()
+    public void Rotate()
     {
         camForward = camT.TransformDirection(Vector3.forward);
         camForward.y = 0;
