@@ -5,20 +5,20 @@ public class TrashDeadState : TrashState
 {
     public long msToDissappear;
     private double msStartTime;
-    public TrashDeadState(GameObject go) : base(go)
+    public TrashDeadState(GameObject go) : base(go, TrashStateTypes.DEAD_STATE)
     {
     }
 
-    public override IEnemyState UpdateState()
+    public override TrashStateTypes UpdateState()
     {
         double diff = (DateTime.Now - DateTime.MinValue).TotalMilliseconds - msStartTime;
-        if (diff >= trashState.timeToAfterDeadMS)
+        if (diff >= trashState.timeToAfterDeadMS && trashState.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !trashState.anim.IsInTransition(0))
         {
-            EndState();
+            //EndState();
             trashState.Dead();
-            
+
         }
-        return null;
+        return type;
     }
 
     public override void StartState()
@@ -27,6 +27,7 @@ public class TrashDeadState : TrashState
         /**
          *  TODO: Mark enemy to know that he's dead
          * */
+        trashState.anim.SetBool("die",true);
         go.GetComponent<Renderer>().material.color = Color.yellow;
     }
 

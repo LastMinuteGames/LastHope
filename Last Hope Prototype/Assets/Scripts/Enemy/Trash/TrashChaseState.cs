@@ -6,32 +6,49 @@ using UnityEngine;
 
 class TrashChaseState : TrashState
 {
-    public TrashChaseState(GameObject go) : base(go)
+    public TrashChaseState(GameObject go) : base(go, TrashStateTypes.CHASE_STATE)
     {
+        
+
     }
 
     public override void StartState()
     {
+        numberOfFrames = 0;
         //EnemyTrash trashState = go.GetComponent<EnemyTrash>();
+        trashState.anim.SetBool("walk", true);
     }
 
-    public override IEnemyState UpdateState()
+    public override void EndState()
     {
+        //Exist from state
+        trashState.anim.SetBool("walk", false);
+    }
+
+    public override TrashStateTypes UpdateState()
+    {
+        //IS THIS IF NECCESSARY?
+        if(numberOfFrames != 0 && numberOfFrames % trashState.frameUpdateInterval == 0)
+        {
+            ++numberOfFrames;
+            return type;
+        }
+
+
         if (trashState.target != null)
         {
-            trashState.nav.SetDestination(trashState.target.position);
+            if (trashState.nav.remainingDistance >= trashState.combatRange)
+            {
+                trashState.nav.SetDestination(trashState.target.position);
+                trashState.nav.Resume();
+            }
+            else
+            {
+                trashState.nav.Stop();
+                return TrashStateTypes.COMBAT_STATE;
+            }
         }
-        return null;
+        ++numberOfFrames;
+        return type;
     }
-
-    //public override void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-    //    {
-    //        EnemyTrash trashState = go.GetComponent<EnemyTrash>();
-    //        trashState.currentState.EndState();
-    //        trashState.currentState = new TrashIdleState(go);
-    //        trashState.currentState.StartState();
-    //    }
-    //}
 }

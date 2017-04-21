@@ -681,6 +681,7 @@ GameObject:
   - component: {fileID: 23848242345419994}
   - component: {fileID: 114602240751060996}
   - component: {fileID: 195573079738375160}
+  - component: {fileID: 95859538791342876}
   m_Layer: 9
   m_Name: EnemyTrash1
   m_TagString: Untagged
@@ -1069,8 +1070,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651550896130278}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.6023283, y: 1, z: 0.5018961}
+  m_LocalRotation: {x: 0, y: 0.9848078, z: -0, w: -0.17364809}
+  m_LocalPosition: {x: -101, y: 1.5, z: 219}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4726504341162350}
@@ -1079,7 +1080,7 @@ Transform:
   - {fileID: 4811357137841386}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 200, z: 0}
 --- !u!4 &4289903729433396
 Transform:
   m_ObjectHideFlags: 1
@@ -1800,6 +1801,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95859538791342876
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651550896130278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: eb138c127ca197e44b50a681e13a5d9b, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7743704f34520bb4b992a602a10ad21f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114602240751060996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1814,13 +1832,22 @@ MonoBehaviour:
   enemy: {fileID: 4284180406485762}
   life: 30
   maxLife: 30
+  dead: 0
   timeToAfterDeadMS: 0
   timeAttackRefresh: 0
   attack: 10
-  attackInRange: {fileID: 1039867174264004}
+  combatRange: 10
+  attackRange: 3
   attackZone: {fileID: 1088642726725788}
+  chaseSpeed: 5
+  combatAngularSpeed: 20
+  frameUpdateInterval: 10
+  lastAttackTime: 0
   target: {fileID: 0}
   nav: {fileID: 0}
+  anim: {fileID: 0}
+  attackProbability: 15
+  approachProbability: 30
 --- !u!114 &114640696828226250
 MonoBehaviour:
   m_ObjectHideFlags: 1

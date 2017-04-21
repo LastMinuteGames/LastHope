@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class TrashIdleState : TrashState
 {
-    public TrashIdleState(GameObject go) : base(go)
+    public TrashIdleState(GameObject go) : base(go, TrashStateTypes.IDLE_STATE)
     {
     }
 
-    public override IEnemyState UpdateState()
+    public override TrashStateTypes UpdateState()
     {
-        return null;
+        return type;
     }
 }

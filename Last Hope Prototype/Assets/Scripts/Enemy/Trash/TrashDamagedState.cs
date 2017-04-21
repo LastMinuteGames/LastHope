@@ -6,7 +6,20 @@ using UnityEngine;
 
 public class TrashDamagedState : TrashState
 {
-    public TrashDamagedState(GameObject go) : base(go)
+    public TrashDamagedState(GameObject go) : base(go, TrashStateTypes.DAMAGED_STATE)
     {
     }
+
+    public override void StartState()
+    {
+        //EnemyTrash trashState = go.GetComponent<EnemyTrash>();
+        trashState.anim.SetBool("hit1", true);
+    }
+
+    public override void EndState()
+    {
+        //Exist from state
+        trashState.anim.SetBool("hit1", false);
+    }
+
 }

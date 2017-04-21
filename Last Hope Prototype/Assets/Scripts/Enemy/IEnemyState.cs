@@ -4,9 +4,10 @@ using System.Linq;
 using UnityEngine;
 
 
+
 public interface IEnemyState
 {
-    IEnemyState UpdateState();
+    TrashStateTypes UpdateState();
 
     void StartState();
 
@@ -20,5 +21,6 @@ public interface IEnemyState
 
     void OnPlayerInRange(Collider other);
 
-}
+    TrashStateTypes Type();
 
+}
