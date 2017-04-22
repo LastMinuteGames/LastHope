@@ -43,7 +43,9 @@ public class PlayerController : MonoBehaviour
 
     // Movement
     public float turnSpeed = 3;
-    public float speed = 5;
+    public float speed = 10;
+    public float normalSpeed = 10;
+    public float blockingSpeed = 6;
     public Transform camT;
     public Vector3 movement;
     public Vector3 targetDirection;
@@ -62,7 +64,9 @@ public class PlayerController : MonoBehaviour
 
     // Special Attack
     public GameObject neutralSphere;
-    public float neutralAttackDamage = 25;
+    public GameObject neutralAttackParticles;
+    private GameObject spawnedParticle;
+    public float neutralAttackDamage = 40;
     public GameObject redSpehre;
     public float redAttackDamage = 25;
     public float redSpecialAttackThrust = 30;
@@ -378,6 +382,7 @@ public class PlayerController : MonoBehaviour
                 {
                     case PlayerStance.STANCE_GREY:
                         neutralSphere.gameObject.SetActive(true);
+                        spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
                         break;
                     case PlayerStance.STANCE_RED:
                         redSpehre.gameObject.SetActive(true);
@@ -412,6 +417,7 @@ public class PlayerController : MonoBehaviour
             {
                 case PlayerStance.STANCE_GREY:
                     neutralSphere.gameObject.SetActive(false);
+                    Destroy(spawnedParticle);
                     break;
                 case PlayerStance.STANCE_RED:
                     redSpehre.gameObject.SetActive(false);

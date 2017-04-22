@@ -18,6 +18,7 @@ public class PlayerMoveBlockState : PlayerFSM
         h = 0;
         v = 0;
         playerController.SetBlocking(true);
+        playerController.speed = playerController.blockingSpeed;
     }
 
     public override PlayerStateType Update()
