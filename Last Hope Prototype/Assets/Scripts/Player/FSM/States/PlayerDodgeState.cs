@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PlayerDodgeState : PlayerFSM
 {
-    private int duration = 20;
+    private int duration = 5;
     private int startFrame;
 
     public PlayerDodgeState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_DODGE)
@@ -29,6 +29,7 @@ public class PlayerDodgeState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_IDLE;
         }
+        playerController.Dodge();
 
         return PlayerStateType.PLAYER_STATE_DODGE;
     }

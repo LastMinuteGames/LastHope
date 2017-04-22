@@ -63,6 +63,6 @@ class PlayerIdleState : PlayerFSM
 
         // TODO: LIGHT, HEAVY AND SPECIAL ATTACK FOR THE COMBO SYSTEM
 
-        return PlayerStateType.PLAYER_STATE_UNDEFINED;
+        return PlayerStateType.PLAYER_STATE_IDLE;
     }
 }

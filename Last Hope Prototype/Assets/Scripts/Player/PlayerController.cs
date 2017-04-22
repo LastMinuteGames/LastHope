@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     public Transform camT;
     public Vector3 movement;
     public Vector3 targetDirection;
+    public float dodgeThrust = 25;
     public bool pendingMove = false;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
@@ -56,9 +57,14 @@ public class PlayerController : MonoBehaviour
     // Interact
     public bool canInteract = false;
 
+    // Block
+    public bool blocking = false;
+
     // Special Attack
     public GameObject neutralSphere;
+    public float neutralAttackDamage = 25;
     public GameObject redSpehre;
+    public float redAttackDamage = 25;
     public float redSpecialAttackThrust = 30;
     private bool canSpecialAttack = false;
 
@@ -118,13 +124,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         PlayerStateType state = currentState.Update();
         if (state != PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
         {
             ChangeState(state);
         }
-
 
         if (InputManager.DebugMode())
         {
@@ -217,11 +221,14 @@ public class PlayerController : MonoBehaviour
 
     private void LoseHp(int value)
     {
-        dmged = true;
-        timer = 0;
-        currentHP -= value;
-        if (currentHP <= 0 && !dead)
-            Die();
+        if (!blocking)
+        {
+            dmged = true;
+            timer = 0;
+            currentHP -= value;
+            if (currentHP <= 0 && !dead)
+                Die();
+        }
     }
 
     public void Heal(int value)
@@ -344,6 +351,19 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = transform.TransformDirection(movement);
 
         pendingMove = false;
+    }
+
+    public void Dodge()
+    {
+        movement = rigidBody.velocity;
+        Vector3 impulse = targetDirection.normalized * dodgeThrust;
+        movement += impulse;
+        rigidBody.velocity = movement;
+    }
+
+    public void SetBlocking(bool value)
+    {
+        blocking = value;
     }
 
     public void StartSpecialAttack()
