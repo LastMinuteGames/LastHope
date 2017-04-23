@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1474565993548770}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.1809673, y: 7, z: 11.887791}
+  m_LocalPosition: {x: 125, y: 0, z: 75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4274227412997636}
@@ -141,14 +141,14 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892685632024374}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 404138e866b65de4e978510443a8d0c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,3 +217,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd18e4923ced934aa4a0b89cb4932e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bridge: {fileID: 0}
+  bridgeFloor: {fileID: 0}
