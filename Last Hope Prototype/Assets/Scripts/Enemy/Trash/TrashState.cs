@@ -38,13 +38,16 @@ public class TrashState : EnemyState, IEnemyState
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
-            trashState.ChangeState(TrashStateTypes.DAMAGED_STATE);
+            if(trashState.currentState.Type() != TrashStateTypes.DAMAGED_STATE && trashState.currentState.Type() != TrashStateTypes.DEAD_STATE)
+            {
+                trashState.ChangeState(TrashStateTypes.DAMAGED_STATE);
 
-            /**
-             *  TODO: Get damage from player!
-            **/
-            int damage = 10;
-            trashState.TakeDamage(damage);
+                /**
+                 *  TODO: Get damage from player!
+                **/
+                int damage = 10;
+                trashState.TakeDamage(damage);
+            }
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {

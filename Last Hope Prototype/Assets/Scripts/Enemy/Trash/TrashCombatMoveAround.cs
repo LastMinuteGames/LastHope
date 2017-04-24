@@ -46,8 +46,6 @@ class TrashCombatMoveAround : TrashState
                 }
             
                 startTime = Time.time;
-            
-
             }
             trashState.nav.Stop();
             trashState.transform.RotateAround(trashState.target.transform.position, Vector3.up, trashState.combatAngularSpeed * Time.deltaTime);
