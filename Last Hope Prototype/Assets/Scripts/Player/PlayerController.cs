@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private PlayerStateType currentStateType;
-    private IPlayerFSM currentState;
+    public IPlayerFSM currentState;
     private Dictionary<PlayerStateType, IPlayerFSM> states;
 
     void Start()
