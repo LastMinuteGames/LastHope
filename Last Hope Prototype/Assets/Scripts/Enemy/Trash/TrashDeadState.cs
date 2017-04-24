@@ -17,7 +17,7 @@ public class TrashDeadState : TrashState
             //Debug.Log("DENTRO del if. Diff = " + diff);
             //Debug.Log("timeToAfetDead: " + trashState.timeToAfterDeadMS);
             //EndState();
-            //trashState.Dead();
+            trashState.Dead();
         }
 
         //else

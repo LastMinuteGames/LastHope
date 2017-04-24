@@ -26,30 +26,34 @@ class TrashCombatMoveAround : TrashState
 
     public override TrashStateTypes UpdateState()
     {
-        if(Time.time - startTime >= 2)
+        if(trashState.target != null)
         {
-            int probability = UnityEngine.Random.Range(0, 100);
-            if (trashState.attackProbability >= probability /*&& trashState.nav.remainingDistance <= trashState.attackRange*/)
+            if(Time.time - startTime >= 2)
             {
-                trashState.nav.Stop();
-                return TrashStateTypes.ATTACK_STATE;
-            }
-            if (trashState.approachProbability >= probability && trashState.nav.remainingDistance >= trashState.attackRange)
-            {
-                ++numberOfFrames;
+                int probability = UnityEngine.Random.Range(0, 100);
+                if (trashState.attackProbability >= probability /*&& trashState.nav.remainingDistance <= trashState.attackRange*/)
+                {
+                    trashState.nav.Stop();
+                    return TrashStateTypes.ATTACK_STATE;
+                }
+                if (trashState.approachProbability >= probability && trashState.nav.remainingDistance >= trashState.attackRange)
+                {
+                    ++numberOfFrames;
 
-                trashState.nav.SetDestination(trashState.target.position);
-                trashState.nav.Resume();
-                return TrashStateTypes.COMBAT_MOVE_FORWARD_STATE;
-            }
+                    trashState.nav.SetDestination(trashState.target.position);
+                    trashState.nav.Resume();
+                    return TrashStateTypes.COMBAT_MOVE_FORWARD_STATE;
+                }
             
-            startTime = Time.time;
+                startTime = Time.time;
             
 
+            }
+            trashState.nav.Stop();
+            trashState.transform.RotateAround(trashState.target.transform.position, Vector3.up, trashState.combatAngularSpeed * Time.deltaTime);
+            return type;
         }
-        trashState.nav.Stop();
-        trashState.transform.RotateAround(trashState.target.transform.position, Vector3.up, trashState.combatAngularSpeed * Time.deltaTime);
-        return type;
+        return TrashStateTypes.IDLE_STATE;
     }
 
     public override void EndState()
