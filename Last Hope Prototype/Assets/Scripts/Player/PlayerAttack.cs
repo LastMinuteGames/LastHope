@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
     public float timeBeweenAttacks = 0.15f;
     public float timeToCombo = 0.1f;
     public PlayerSword sword;
-    public float baseDamage = 10;
 
     private float timer = 0f;
     private bool attacking;

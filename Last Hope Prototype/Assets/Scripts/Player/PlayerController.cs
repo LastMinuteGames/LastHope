@@ -11,6 +11,15 @@ public enum PlayerStance
     STANCE_UNDEFINED
 }
 
+public struct PlayerPassiveStats
+{
+    public float attackDamage;
+    //public float attackSpeed;
+    public float blockingMovementSpeed;
+    public float movementSpeed;
+    public float specialAttackDamage;
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +33,10 @@ public class PlayerController : MonoBehaviour
 
     public Image currentHPBar;
     public Image currentEnergyBar;
+
+    public PlayerPassiveStats noneStats;
+    public PlayerPassiveStats neutralStats;
+    public PlayerPassiveStats redStats;
 
     // HP
     public int maxHP = 100;
@@ -62,14 +75,16 @@ public class PlayerController : MonoBehaviour
     // Block
     public bool blocking = false;
 
+    // Attack
+    public float attackDamage = 10.0f;
+
     // Special Attack
     public GameObject neutralSphere;
     public GameObject neutralAttackParticles;
     private GameObject spawnedParticle;
-    public float neutralAttackDamage = 40;
     public GameObject redSpehre;
-    public float redAttackDamage = 25;
     public float redSpecialAttackThrust = 30;
+    public float specialAttackDamage = 40;
     private bool canSpecialAttack = false;
 
     [SerializeField]
@@ -79,6 +94,23 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        // Stats setup
+        noneStats.attackDamage = 10.0f;
+        noneStats.blockingMovementSpeed = 6.0f;
+        noneStats.movementSpeed = 12.0f;
+        noneStats.specialAttackDamage = 0.0f;
+
+        neutralStats.attackDamage = 10.0f;
+        neutralStats.blockingMovementSpeed = 8.0f;
+        neutralStats.movementSpeed = 14.0f;
+        neutralStats.specialAttackDamage = 40.0f;
+
+        redStats.attackDamage = 15.0f;
+        redStats.blockingMovementSpeed = 6.0f;
+        redStats.movementSpeed = 12.0f;
+        redStats.specialAttackDamage = 30.0f;
+
+
         stance = PlayerStance.STANCE_NONE;
 
         initialMaxHP = maxHP;
@@ -183,6 +215,10 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("NEUTRAL STANCE");
                     this.stance = stance;
+                    normalSpeed = neutralStats.movementSpeed;
+                    blockingSpeed = neutralStats.blockingMovementSpeed;
+                    attackDamage = neutralStats.attackDamage;
+                    specialAttackDamage = neutralStats.specialAttackDamage;
                 }
                 break;
             case PlayerStance.STANCE_RED:
@@ -190,6 +226,10 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("RED STANCE");
                     this.stance = stance;
+                    normalSpeed = redStats.movementSpeed;
+                    blockingSpeed = redStats.blockingMovementSpeed;
+                    attackDamage = redStats.attackDamage;
+                    specialAttackDamage = redStats.specialAttackDamage;
                 }
                 break;
         }
