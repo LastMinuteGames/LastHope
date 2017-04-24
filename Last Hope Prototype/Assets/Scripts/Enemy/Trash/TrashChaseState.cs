@@ -17,6 +17,7 @@ class TrashChaseState : TrashState
         numberOfFrames = 0;
         //EnemyTrash trashState = go.GetComponent<EnemyTrash>();
         trashState.anim.SetBool("walk", true);
+        Debug.Log("START TrashChaseState");
     }
 
     public override void EndState()

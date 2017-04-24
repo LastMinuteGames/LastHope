@@ -19,8 +19,9 @@ class TrashCombatMoveAround : TrashState
         numberOfFrames = 0;
         attackProbability = trashState.attackProbability;
         approachProbability = trashState.approachProbability;
-
+        trashState.anim.SetBool("walk", true);
         startTime = Time.time;
+        Debug.Log("START TrashCombatMoveAround");
     }
 
     public override TrashStateTypes UpdateState()
@@ -28,12 +29,12 @@ class TrashCombatMoveAround : TrashState
         if(Time.time - startTime >= 2)
         {
             int probability = UnityEngine.Random.Range(0, 100);
-            if (trashState.attackProbability >= probability && trashState.nav.remainingDistance <= trashState.attackRange)
+            if (trashState.attackProbability >= probability /*&& trashState.nav.remainingDistance <= trashState.attackRange*/)
             {
                 trashState.nav.Stop();
                 return TrashStateTypes.ATTACK_STATE;
             }
-            else if (trashState.approachProbability >= probability && trashState.nav.remainingDistance >= trashState.attackRange)
+            if (trashState.approachProbability >= probability && trashState.nav.remainingDistance >= trashState.attackRange)
             {
                 ++numberOfFrames;
 
@@ -41,10 +42,9 @@ class TrashCombatMoveAround : TrashState
                 trashState.nav.Resume();
                 return TrashStateTypes.COMBAT_MOVE_FORWARD_STATE;
             }
-            else
-            {
-                startTime = Time.time;
-            }
+            
+            startTime = Time.time;
+            
 
         }
         trashState.nav.Stop();
@@ -57,5 +57,6 @@ class TrashCombatMoveAround : TrashState
         numberOfFrames = 0;
         attackProbability = trashState.attackProbability;
         approachProbability = trashState.approachProbability;
+        trashState.anim.SetBool("walk", false);
     }
 }

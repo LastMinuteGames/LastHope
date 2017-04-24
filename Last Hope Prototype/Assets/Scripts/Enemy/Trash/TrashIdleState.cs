@@ -9,6 +9,11 @@ public class TrashIdleState : TrashState
     {
     }
 
+    public override void StartState()
+    {
+        Debug.Log("START TrashIdleState");
+    }
+
     public override TrashStateTypes UpdateState()
     {
         return type;

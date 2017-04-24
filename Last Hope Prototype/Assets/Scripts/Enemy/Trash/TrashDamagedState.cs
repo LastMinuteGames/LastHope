@@ -14,6 +14,7 @@ public class TrashDamagedState : TrashState
     {
         //EnemyTrash trashState = go.GetComponent<EnemyTrash>();
         trashState.anim.SetBool("hit1", true);
+        Debug.Log("START TrashDamagedState");
     }
 
     public override void EndState()

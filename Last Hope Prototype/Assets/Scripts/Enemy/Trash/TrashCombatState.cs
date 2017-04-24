@@ -22,6 +22,8 @@ public class TrashCombatState : TrashState
         numberOfFrames = 0;
         attackProbability = trashState.attackProbability;
         approachProbability = trashState.approachProbability;
+        Debug.Log("START TrashCombatState");
+
     }
 
     public override TrashStateTypes UpdateState()
@@ -43,17 +45,19 @@ public class TrashCombatState : TrashState
                 else
                 {
                     int probability = UnityEngine.Random.Range(0, 100);
+                    if (trashState.approachProbability >= probability && trashState.nav.remainingDistance >= trashState.attackRange)
+                    {
+                        trashState.nav.Stop();
+                        return TrashStateTypes.COMBAT_MOVE_AROUND_STATE;
+                    }
                     if(trashState.attackProbability >= probability && trashState.nav.remainingDistance <= trashState.attackRange)
                     {
                         trashState.nav.Stop();
                         return TrashStateTypes.ATTACK_STATE;
                     }
-                    if (trashState.approachProbability >= probability && trashState.nav.remainingDistance >= trashState.attackRange)
-                    {
-                        trashState.nav.Stop();
-                        return TrashStateTypes.COMBAT_MOVE_FORWARD_STATE;
-                    }
-                    trashState.transform.RotateAround(trashState.target.transform.position, Vector3.up, trashState.combatAngularSpeed * Time.deltaTime);
+
+                    return TrashStateTypes.COMBAT_MOVE_AROUND_STATE;
+                    //trashState.transform.RotateAround(trashState.target.transform.position, Vector3.up, trashState.combatAngularSpeed * Time.deltaTime);
                 }
             }
         }

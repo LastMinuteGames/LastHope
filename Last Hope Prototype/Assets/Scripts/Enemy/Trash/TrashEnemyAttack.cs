@@ -17,6 +17,7 @@ class TrashEnemyAttack : TrashState
         trashState.nav.Stop();
         trashState.anim.SetBool("attack", true);
         numberOfFrames = 0;
+        Debug.Log("START TrashEnemyAttack");
     }
 
     public override TrashStateTypes UpdateState()
