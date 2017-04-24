@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PlayerChangeStanceState : PlayerFSM
 {
-    private int duration = 30;
+    private int duration = 1;
     private int startFrame;
 
     public PlayerChangeStanceState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_CHANGE_STANCE)
