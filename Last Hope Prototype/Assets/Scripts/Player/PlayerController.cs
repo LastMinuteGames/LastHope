@@ -23,6 +23,8 @@ public struct PlayerPassiveStats
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    public Animator anim;
+    public Collider katana;
     public PlayerStance stance = PlayerStance.STANCE_NONE;
     [HideInInspector]
     public PlayerStance newStance = PlayerStance.STANCE_UNDEFINED;
@@ -94,6 +96,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         // Stats setup
         noneStats.attackDamage = 10.0f;
         noneStats.blockingMovementSpeed = 6.0f;
@@ -395,6 +399,16 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = transform.TransformDirection(movement);
 
         pendingMove = false;
+    }
+
+    public void StartAttack()
+    {
+        katana.enabled = true;
+    }
+
+    public void EndAttack()
+    {
+        katana.enabled = false;
     }
 
     public void Dodge()

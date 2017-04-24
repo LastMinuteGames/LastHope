@@ -57,6 +57,10 @@ public class PlayerBlockState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_DODGE;
         }
+        else if (InputManager.LightAttack())
+        {
+            return PlayerStateType.PLAYER_STATE_ATTACK;
+        }
         else if (InputManager.SpecialAttack())
         {
             return PlayerStateType.PLAYER_STATE_SPECIAL_ATTACK;

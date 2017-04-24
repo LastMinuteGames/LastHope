@@ -6,7 +6,6 @@ public class PlayerAttack : MonoBehaviour
 {
     public float timeBeweenAttacks = 0.15f;
     public float timeToCombo = 0.1f;
-    public PlayerSword sword;
 
     private float timer = 0f;
     private bool attacking;
@@ -23,7 +22,6 @@ public class PlayerAttack : MonoBehaviour
     void Awake()
     {
         attacking = false;
-        sword.damage = 20;
     }
 
     // Use this for initialization
@@ -41,12 +39,10 @@ public class PlayerAttack : MonoBehaviour
         {
             if (state == playerState.FINAL_ATTACK)
             {
-                sword.EndSecondAttack();
                 attacking = false;
             }
             else if (state == playerState.FIRST_ATTACK)
             {
-                sword.EndAttack();
                 attacking = false;
             }
             state = playerState.NOT_ATTACKING;
@@ -56,14 +52,12 @@ public class PlayerAttack : MonoBehaviour
         {
             timer = 0;
             state = playerState.FINAL_ATTACK;
-            sword.SecondAttack();
         }
 
         if (InputManager.LightAttack() && timer >= timeBeweenAttacks && state == playerState.NOT_ATTACKING)
         {
             Attack();
             state = playerState.FIRST_ATTACK;
-            sword.Attack();
         }
     }
 
