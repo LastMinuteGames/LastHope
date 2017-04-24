@@ -25,12 +25,16 @@ public class PlayerFSM : PlayerState, IPlayerFSM
         if(other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
         {
             int damage = 15;
-            if (playerController.TakeDmg(damage))
+            if (playerController.currentState.Type() != PlayerStateType.PLAYER_STATE_DEAD && playerController.currentState.Type() != PlayerStateType.PLAYER_STATE_DAMAGED)
             {
-                playerController.ChangeState(PlayerStateType.PLAYER_STATE_DEAD);
-            } else
-            {
-                playerController.ChangeState(PlayerStateType.PLAYER_STATE_DAMAGED);
+                if (playerController.TakeDmg(damage))
+                {
+                    playerController.ChangeState(PlayerStateType.PLAYER_STATE_DEAD);
+                }
+                else
+                {
+                    playerController.ChangeState(PlayerStateType.PLAYER_STATE_DAMAGED);
+                }
             }
         }
     }
