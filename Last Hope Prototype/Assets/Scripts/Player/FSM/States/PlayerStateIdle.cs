@@ -12,6 +12,11 @@ class PlayerIdleState : PlayerFSM
 
     }
 
+    public override void Start()
+    {
+        playerController.anim.SetBool("iddle", true);
+    }
+
     public override PlayerStateType Update()
     {
         if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
@@ -52,9 +57,9 @@ class PlayerIdleState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_DODGE;
         }
-        else if (InputManager.SpecialAttack())
+        else if (InputManager.LightAttack())
         {
-            return PlayerStateType.PLAYER_STATE_SPECIAL_ATTACK;
+            return PlayerStateType.PLAYER_STATE_ATTACK;
         }
         else if (InputManager.SpecialAttack())
         {
@@ -64,5 +69,10 @@ class PlayerIdleState : PlayerFSM
         // TODO: LIGHT, HEAVY AND SPECIAL ATTACK FOR THE COMBO SYSTEM
 
         return PlayerStateType.PLAYER_STATE_IDLE;
+    }
+
+    public override void End()
+    {
+        playerController.anim.SetBool("iddle", false);
     }
 }

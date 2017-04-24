@@ -11,4 +11,14 @@ public class PlayerDamageState : PlayerFSM
     {
 
     }
+
+    public override void Start()
+    {
+        playerController.anim.SetBool("hit1", true);
+    }
+
+    public override void End()
+    {
+        playerController.anim.SetBool("hit1", false);
+    }
 }

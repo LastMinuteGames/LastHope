@@ -19,6 +19,7 @@ public class PlayerMoveState : PlayerFSM
         h = 0;
         v = 0;
         playerController.speed = playerController.normalSpeed;
+        playerController.anim.SetBool("walk", true);
     }
 
     public override PlayerStateType Update()
@@ -64,6 +65,10 @@ public class PlayerMoveState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_IDLE;
         }
+        else if (InputManager.LightAttack())
+        {
+            return PlayerStateType.PLAYER_STATE_ATTACK;
+        }
         else if (InputManager.SpecialAttack())
         {
             return PlayerStateType.PLAYER_STATE_SPECIAL_ATTACK;
@@ -78,7 +83,7 @@ public class PlayerMoveState : PlayerFSM
 
     public override void End()
     {
-
+        playerController.anim.SetBool("walk", false);
     }
 }
 

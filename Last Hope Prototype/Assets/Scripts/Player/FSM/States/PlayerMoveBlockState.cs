@@ -13,12 +13,14 @@ public class PlayerMoveBlockState : PlayerFSM
     {
 
     }
+
     public override void Start()
     {
         h = 0;
         v = 0;
         playerController.SetBlocking(true);
         playerController.speed = playerController.blockingSpeed;
+        playerController.anim.SetBool("walk", true);
     }
 
     public override PlayerStateType Update()
@@ -64,6 +66,10 @@ public class PlayerMoveBlockState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_BLOCK;
         }
+        else if (InputManager.LightAttack())
+        {
+            return PlayerStateType.PLAYER_STATE_ATTACK;
+        }
         else if (InputManager.SpecialAttack())
         {
             return PlayerStateType.PLAYER_STATE_SPECIAL_ATTACK;
@@ -79,6 +85,7 @@ public class PlayerMoveBlockState : PlayerFSM
     public override void End()
     {
         playerController.SetBlocking(false);
+        playerController.anim.SetBool("walk", false);
     }
 }
 
