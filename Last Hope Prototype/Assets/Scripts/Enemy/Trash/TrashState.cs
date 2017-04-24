@@ -38,7 +38,7 @@ public class TrashState : EnemyState, IEnemyState
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
-            trashState.ChangeState(TrashStateTypes.CHASE_STATE);
+            trashState.ChangeState(TrashStateTypes.DAMAGED_STATE);
 
             /**
              *  TODO: Get damage from player!

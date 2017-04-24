@@ -15,11 +15,6 @@ public class PlayerFSM : PlayerState, IPlayerFSM
         this.playerController = go.GetComponent<PlayerController>();
     }
 
-    virtual public void ChangeState(PlayerStateType type)
-    {
-        //TODO: END current state on player. Change currentState and start CurrentState
-    }
-
     virtual public void End()
     {
         
@@ -29,7 +24,14 @@ public class PlayerFSM : PlayerState, IPlayerFSM
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
         {
-            ChangeState(PlayerStateType.PLAYER_STATE_DAMAGED);
+            int damage = 15;
+            if (playerController.TakeDmg(damage))
+            {
+                playerController.ChangeState(PlayerStateType.PLAYER_STATE_DEAD);
+            } else
+            {
+                playerController.ChangeState(PlayerStateType.PLAYER_STATE_DAMAGED);
+            }
         }
     }
 

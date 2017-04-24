@@ -23,7 +23,7 @@ public class EnemyTrash : Enemy
         currentState = new TrashIdleState(gameObject);
         anim = GetComponent<Animator>();
 
-        attackZone.SetActive(false);
+        katana.enabled = false;
         states = new Dictionary<TrashStateTypes, IEnemyState>();
 
         IEnemyState state = null;

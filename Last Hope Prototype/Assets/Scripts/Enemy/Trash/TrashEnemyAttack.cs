@@ -16,6 +16,7 @@ class TrashEnemyAttack : TrashState
         msStartTime = (DateTime.Now - DateTime.MinValue).TotalMilliseconds;
         trashState.nav.Stop();
         trashState.anim.SetBool("attack", true);
+        trashState.StartAttack();
         numberOfFrames = 0;
         Debug.Log("START TrashEnemyAttack");
 
@@ -25,7 +26,6 @@ class TrashEnemyAttack : TrashState
     {
         if (numberOfFrames != 0 && numberOfFrames % trashState.frameUpdateInterval == 0)
         {
-            trashState.Attack();
             ++numberOfFrames;
             return type;
         }
@@ -46,7 +46,7 @@ class TrashEnemyAttack : TrashState
     public override void EndState()
     {
         trashState.anim.SetBool("attack", false);
-        trashState.attackZone.SetActive(false);
+        trashState.EndAttack();
     }
 }
 

@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public int combatRange;
     public int attackRange;
     //public GameObject attackInRange;
-    public GameObject attackZone;
+    public Collider katana;
     public int chaseSpeed;
     public int combatAngularSpeed;
     public int frameUpdateInterval;
@@ -113,9 +113,14 @@ public class Enemy : MonoBehaviour
         currentState.OnPlayerInRange(player);
     }
 
-    public void Attack()
+    public void StartAttack()
     {
-        attackZone.SetActive(true);
+        katana.enabled = true;
+    }
+
+    public void EndAttack()
+    {
+        katana.enabled = false;
     }
 
     public void ChangeToPreviousState()

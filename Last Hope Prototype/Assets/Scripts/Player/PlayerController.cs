@@ -125,8 +125,6 @@ public class PlayerController : MonoBehaviour
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rigidBody = GetComponent<Rigidbody>();
 
-        attackScript = GetComponent<PlayerAttack>();
-
         IPlayerFSM state = new PlayerIdleState(gameObject);
         PlayerStateType defaultState = state.Type();
         states = new Dictionary<PlayerStateType, IPlayerFSM>();
@@ -139,6 +137,12 @@ public class PlayerController : MonoBehaviour
         states.Add(state.Type(), state);
 
         state = new PlayerDamageState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerDeadState(gameObject);
+        states.Add(state.Type(), state);
+
+        state = new PlayerRespawnState(gameObject);
         states.Add(state.Type(), state);
 
         state = new PlayerDodgeState(gameObject);
@@ -259,15 +263,16 @@ public class PlayerController : MonoBehaviour
         return redAbilityEnabled;
     }
 
-    public void TakeDmg(int value)
+    public bool TakeDmg(int value)
     {
         if ((!dead) && (!debugMode))
         {
-            LoseHp(value);
+            return LoseHp(value);
         }
+        return false;
     }
 
-    private void LoseHp(int value)
+    private bool LoseHp(int value)
     {
         if (!blocking)
         {
@@ -275,8 +280,12 @@ public class PlayerController : MonoBehaviour
             timer = 0;
             currentHP -= value;
             if (currentHP <= 0 && !dead)
+            {
                 Die();
+                return true;
+            }
         }
+        return false;
     }
 
     public void Heal(int value)
@@ -300,13 +309,9 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         dead = true;
-        attackScript.enabled = false;
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        gameObject.transform.GetChild(1).gameObject.SetActive(false);
-        Invoke("Respawn", 3);
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         if (respawnManager != null)
         {
@@ -314,9 +319,6 @@ public class PlayerController : MonoBehaviour
         }
         currentHP = maxHP;
         dead = false;
-        attackScript.enabled = true;
-        gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        gameObject.transform.GetChild(1).gameObject.SetActive(true);
     }
 
     public bool LoseEnergy(int value)
@@ -484,8 +486,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
         {
-            int damage = other.gameObject.transform.parent.gameObject.GetComponent<EnemyTrash>().attack;
-            TakeDmg(damage);
+            currentState.OnTriggerEnter(other);
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
@@ -513,7 +514,7 @@ public class PlayerController : MonoBehaviour
         currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
     }
 
-    void ChangeState(PlayerStateType type)
+    public void ChangeState(PlayerStateType type)
     {
         if (states.ContainsKey(type))
         {

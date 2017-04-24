@@ -1,16 +1,13 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using UnityEngine;
 
-public class PlayerDamageState : PlayerFSM
+public class PlayerRespawnState : PlayerFSM
 {
-    private int duration = 45;
+    private int duration = 120;
     private int startFrame;
 
-    public PlayerDamageState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_DAMAGED)
+    public PlayerRespawnState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_RESPAWN)
     {
 
     }
@@ -18,7 +15,7 @@ public class PlayerDamageState : PlayerFSM
     public override void Start()
     {
         startFrame = Time.frameCount;
-        playerController.anim.SetBool("hit1", true);
+        playerController.anim.SetBool("respawn", true);
     }
 
     public override PlayerStateType Update()
@@ -27,12 +24,12 @@ public class PlayerDamageState : PlayerFSM
         {
             return PlayerStateType.PLAYER_STATE_IDLE;
         }
-
-        return PlayerStateType.PLAYER_STATE_DAMAGED;
+        return PlayerStateType.PLAYER_STATE_RESPAWN;
     }
 
     public override void End()
     {
-        playerController.anim.SetBool("hit1", false);
+        playerController.Respawn();
+        playerController.anim.SetBool("respawn", false);
     }
 }
