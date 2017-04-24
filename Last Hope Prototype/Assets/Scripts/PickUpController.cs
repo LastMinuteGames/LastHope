@@ -20,7 +20,7 @@ public class PickUpController : MonoBehaviour {
     public int value;
     
     void Update () {
-        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, 80, 0) * Time.deltaTime);
 	}
 
     void OnTriggerEnter(Collider other)
@@ -33,10 +33,10 @@ public class PickUpController : MonoBehaviour {
                 {
                     case (PickUpType.HP):
 
-                        other.gameObject.GetComponent<PlayerHealth>().Heal(value);
+                        other.gameObject.GetComponent<PlayerController>().Heal(value);
                         break;
                     case (PickUpType.ENERGY):
-                        other.gameObject.GetComponent<PlayerEnergy>().GainEnergy(value);
+                        other.gameObject.GetComponent<PlayerController>().GainEnergy(value);
                         break;
                 }
             }
@@ -45,10 +45,10 @@ public class PickUpController : MonoBehaviour {
                 switch (type)
                 {
                     case (PickUpType.HP):
-                        other.gameObject.GetComponent<PlayerHealth>().IncreaseMaxHealthAndHeal(value);
+                        other.gameObject.GetComponent<PlayerController>().IncreaseMaxHealthAndHeal(value);
                         break;
                     case (PickUpType.ENERGY):
-                        other.gameObject.GetComponent<PlayerEnergy>().IncreaseMaxEnergy(value);
+                        other.gameObject.GetComponent<PlayerController>().IncreaseMaxEnergy(value);
                         break;
                 }
             }

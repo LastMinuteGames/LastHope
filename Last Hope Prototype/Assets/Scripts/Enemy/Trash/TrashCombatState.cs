@@ -45,6 +45,7 @@ public class TrashCombatState : TrashState
                 else
                 {
                     int probability = UnityEngine.Random.Range(0, 100);
+
                     if (trashState.approachProbability >= probability && trashState.nav.remainingDistance >= trashState.attackRange)
                     {
                         trashState.nav.Stop();

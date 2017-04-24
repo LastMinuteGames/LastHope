@@ -43,6 +43,7 @@ class TrashCombatMoveBackState : TrashState
         //    return TrashStateTypes.COMBAT_STATE;
         //}
 
+
         trashState.transform.Translate(Vector3.back * speed * Time.deltaTime);
         return type;
     }

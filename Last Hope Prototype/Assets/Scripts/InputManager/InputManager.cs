@@ -182,7 +182,7 @@ public static class InputManager {
     }
     public static bool Block()
     {
-        return Input.GetButtonDown("Block");
+        return Input.GetButton("Block");
     }
     public static bool DebugMode()
     {

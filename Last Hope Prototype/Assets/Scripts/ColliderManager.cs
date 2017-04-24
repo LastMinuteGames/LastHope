@@ -28,6 +28,7 @@ public class ColliderManager : MonoBehaviour {
                 if (go.name.StartsWith("Deco_"))
                 {
                     go.GetComponent<MeshRenderer>().enabled = !go.GetComponent<MeshRenderer>().enabled;
+                    //Gizmos
                 }
                 if (go.name.StartsWith("Col_"))
                 {

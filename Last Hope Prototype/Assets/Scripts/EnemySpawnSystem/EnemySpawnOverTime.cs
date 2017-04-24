@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class EnemySpawnOverTime : MonoBehaviour {
-    public List<EnemySpawnPoint> reusableSpawnPoints;
+public class EnemySpawnOverTime : MonoBehaviour
+{
+    public GameObject reusableSpawnPointsParent;
     public List<float> delayBeforeWave;
     public List<int> trashEnemiesPerWave;
     public List<int> meleeEnemiesPerWave;
@@ -13,15 +14,25 @@ public class EnemySpawnOverTime : MonoBehaviour {
     public EnemySpawnManager manager;
     public ArtilleryController artillery;
 
+    private List<EnemySpawnPoint> reusableSpawnPoints;
     private bool spawning = false;
     private bool waveSpawned = false;
     private int currentWave = 0;
-    
-	void Start () {
+
+    void Start()
+    {
+        reusableSpawnPoints = new List<EnemySpawnPoint>();
+
         // Check wave count for all lists involved
         Assert.IsTrue(trashEnemiesPerWave.Count == delayBeforeWave.Count);
         Assert.IsTrue(trashEnemiesPerWave.Count == meleeEnemiesPerWave.Count);
         Assert.IsTrue(trashEnemiesPerWave.Count == rangedEnemiesPerWave.Count);
+
+        // Find all spawnpoints to use
+        foreach (Transform child in reusableSpawnPointsParent.transform)
+        {
+            reusableSpawnPoints.Add(child.GetComponent<EnemySpawnPoint>());
+        }
 
         // Check spawnpoints available
         int trashSpawnPointsCount = 0;
@@ -60,8 +71,9 @@ public class EnemySpawnOverTime : MonoBehaviour {
         Assert.IsTrue(meleeSpawnPointsCount >= maxMelees);
         Assert.IsTrue(rangedSpawnPointsCount >= maxRangeds);
     }
-	
-	void Update () {
+
+    void Update()
+    {
         if (artillery.countDown <= 0)
         {
             spawning = false;

@@ -18,12 +18,13 @@ public class TrashDeadState : TrashState
             //Debug.Log("timeToAfetDead: " + trashState.timeToAfterDeadMS);
             //EndState();
             trashState.Dead();
-
         }
+
         //else
         //{
         //    Debug.Log("FUERA del if. Diff = " + diff);
         //}
+
         return type;
     }
 
