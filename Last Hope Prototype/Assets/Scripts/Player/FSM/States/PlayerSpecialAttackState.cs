@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PlayerSpecialAttackState : PlayerFSM
 {
-    private int duration = 12;
+    private int duration;
     private int startFrame;
 
     public PlayerSpecialAttackState(GameObject go) : base(go, PlayerStateType.PLAYER_STATE_SPECIAL_ATTACK)
@@ -19,6 +19,15 @@ public class PlayerSpecialAttackState : PlayerFSM
     {
         startFrame = Time.frameCount;
         playerController.StartSpecialAttack();
+        switch (playerController.stance)
+        {
+            case PlayerStance.STANCE_GREY:
+                duration = 80;
+                break;
+            case PlayerStance.STANCE_RED:
+                duration = 12;
+                break;
+        }
     }
 
     public override PlayerStateType Update()

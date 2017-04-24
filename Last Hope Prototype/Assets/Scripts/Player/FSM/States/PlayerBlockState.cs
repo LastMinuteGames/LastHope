@@ -12,6 +12,11 @@ public class PlayerBlockState : PlayerFSM
 
     }
 
+    public override void Start()
+    {
+        playerController.SetBlocking(true);
+    }
+
     public override PlayerStateType Update()
     {
         if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
@@ -59,7 +64,12 @@ public class PlayerBlockState : PlayerFSM
 
         // TODO: LIGHT, HEAVY AND SPECIAL ATTACK FOR THE COMBO SYSTEM
 
-        return PlayerStateType.PLAYER_STATE_MOVE;
+        return PlayerStateType.PLAYER_STATE_BLOCK;
+    }
+
+    public override void End()
+    {
+        playerController.SetBlocking(false);
     }
 }
 

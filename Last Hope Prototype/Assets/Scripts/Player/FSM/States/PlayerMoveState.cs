@@ -18,6 +18,7 @@ public class PlayerMoveState : PlayerFSM
     {
         h = 0;
         v = 0;
+        playerController.speed = playerController.normalSpeed;
     }
 
     public override PlayerStateType Update()

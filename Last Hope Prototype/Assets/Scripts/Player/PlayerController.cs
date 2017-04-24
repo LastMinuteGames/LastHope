@@ -43,10 +43,13 @@ public class PlayerController : MonoBehaviour
 
     // Movement
     public float turnSpeed = 3;
-    public float speed = 5;
+    public float speed = 10;
+    public float normalSpeed = 10;
+    public float blockingSpeed = 6;
     public Transform camT;
     public Vector3 movement;
     public Vector3 targetDirection;
+    public float dodgeThrust = 25;
     public bool pendingMove = false;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
@@ -56,9 +59,16 @@ public class PlayerController : MonoBehaviour
     // Interact
     public bool canInteract = false;
 
+    // Block
+    public bool blocking = false;
+
     // Special Attack
     public GameObject neutralSphere;
+    public GameObject neutralAttackParticles;
+    private GameObject spawnedParticle;
+    public float neutralAttackDamage = 40;
     public GameObject redSpehre;
+    public float redAttackDamage = 25;
     public float redSpecialAttackThrust = 30;
     private bool canSpecialAttack = false;
 
@@ -118,13 +128,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         PlayerStateType state = currentState.Update();
         if (state != PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
         {
             ChangeState(state);
         }
-
 
         if (InputManager.DebugMode())
         {
@@ -217,11 +225,14 @@ public class PlayerController : MonoBehaviour
 
     private void LoseHp(int value)
     {
-        dmged = true;
-        timer = 0;
-        currentHP -= value;
-        if (currentHP <= 0 && !dead)
-            Die();
+        if (!blocking)
+        {
+            dmged = true;
+            timer = 0;
+            currentHP -= value;
+            if (currentHP <= 0 && !dead)
+                Die();
+        }
     }
 
     public void Heal(int value)
@@ -346,6 +357,19 @@ public class PlayerController : MonoBehaviour
         pendingMove = false;
     }
 
+    public void Dodge()
+    {
+        movement = rigidBody.velocity;
+        Vector3 impulse = targetDirection.normalized * dodgeThrust;
+        movement += impulse;
+        rigidBody.velocity = movement;
+    }
+
+    public void SetBlocking(bool value)
+    {
+        blocking = value;
+    }
+
     public void StartSpecialAttack()
     {
         canSpecialAttack = false;
@@ -358,6 +382,7 @@ public class PlayerController : MonoBehaviour
                 {
                     case PlayerStance.STANCE_GREY:
                         neutralSphere.gameObject.SetActive(true);
+                        spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
                         break;
                     case PlayerStance.STANCE_RED:
                         redSpehre.gameObject.SetActive(true);
@@ -392,6 +417,7 @@ public class PlayerController : MonoBehaviour
             {
                 case PlayerStance.STANCE_GREY:
                     neutralSphere.gameObject.SetActive(false);
+                    Destroy(spawnedParticle);
                     break;
                 case PlayerStance.STANCE_RED:
                     redSpehre.gameObject.SetActive(false);
