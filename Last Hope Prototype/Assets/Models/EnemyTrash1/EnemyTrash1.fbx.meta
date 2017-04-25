@@ -1,0 +1,1172 @@
+fileFormatVersion: 2
+guid: eb138c127ca197e44b50a681e13a5d9b
+timeCreated: 1492191092
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: backBend_CTRL
+    100002: body_CTRL
+    100004: Cap
+    100006: Cap_CTRL
+    100008: CenterHead
+    100010: CenterHead2
+    100012: CenterNeck
+    100014: CenterNeck2
+    100016: CenterSpine
+    100018: CenterSpine2
+    100020: CenterSpine3
+    100022: ChestLeft
+    100024: ChestRight
+    100026: //RootNode
+    100028: EnemyTrash1:Blade
+    100030: EnemyTrash1:EnemyTrash1_base
+    100032: EnemyTrash1:EnemyTrash1_extra
+    100034: EnemyTrash1_MESH
+    100036: Head_CTRL
+    100038: Katana
+    100040: KatanaMOVE_CTRL
+    100042: KatanaROT_CTRL1
+    100044: L_Chest_CTRL
+    100046: L_Clavicle_CTRL
+    100048: L_Finger1_CTRL
+    100050: L_Finger_CTRL
+    100052: L_Hand_CTRL
+    100054: L_Hand_Offset
+    100056: L_Thumb1_CTRL
+    100058: L_Thumb_CTRL
+    100060: LeftCollar
+    100062: LeftElbow
+    100064: LeftFoot
+    100066: LeftFootThumb
+    100068: LeftFootThumb2
+    100070: LeftHand
+    100072: LeftHip
+    100074: LeftIndexFinger
+    100076: LeftIndexFinger2
+    100078: LeftIndexFinger3
+    100080: LeftKnee
+    100082: LeftShoulder
+    100084: LeftThumb
+    100086: LeftThumb2
+    100088: LeftThumb3
+    100090: PistonLeft
+    100092: PistonLeft2
+    100094: PistonRight
+    100096: PistonRight2
+    100098: R_Chest_CTRL
+    100100: R_Clavicle_CTRL
+    100102: R_Finger1_CTRL
+    100104: R_Finger_CTRL
+    100106: R_Hand_CTRL
+    100108: R_Hand_Offset
+    100110: R_Thumb1_CTRL
+    100112: R_Thumb_CTRL
+    100114: RightCollar
+    100116: RightElbow
+    100118: RightFoot
+    100120: RightFootThumb
+    100122: RightFootThumb2
+    100124: RightHand
+    100126: RightHip
+    100128: RightIndexFiner3
+    100130: RightIndexFinger
+    100132: RightIndexFinger2
+    100134: RightKnee
+    100136: RightShoulder
+    100138: RightThumb
+    100140: RightThumb2
+    100142: RightThumb3
+    100144: Root
+    100146: skeleton_GRP
+    100148: superMover_CTRL
+    100150: upperBack_CTRL
+    400000: backBend_CTRL
+    400002: body_CTRL
+    400004: Cap
+    400006: Cap_CTRL
+    400008: CenterHead
+    400010: CenterHead2
+    400012: CenterNeck
+    400014: CenterNeck2
+    400016: CenterSpine
+    400018: CenterSpine2
+    400020: CenterSpine3
+    400022: ChestLeft
+    400024: ChestRight
+    400026: //RootNode
+    400028: EnemyTrash1:Blade
+    400030: EnemyTrash1:EnemyTrash1_base
+    400032: EnemyTrash1:EnemyTrash1_extra
+    400034: EnemyTrash1_MESH
+    400036: Head_CTRL
+    400038: Katana
+    400040: KatanaMOVE_CTRL
+    400042: KatanaROT_CTRL1
+    400044: L_Chest_CTRL
+    400046: L_Clavicle_CTRL
+    400048: L_Finger1_CTRL
+    400050: L_Finger_CTRL
+    400052: L_Hand_CTRL
+    400054: L_Hand_Offset
+    400056: L_Thumb1_CTRL
+    400058: L_Thumb_CTRL
+    400060: LeftCollar
+    400062: LeftElbow
+    400064: LeftFoot
+    400066: LeftFootThumb
+    400068: LeftFootThumb2
+    400070: LeftHand
+    400072: LeftHip
+    400074: LeftIndexFinger
+    400076: LeftIndexFinger2
+    400078: LeftIndexFinger3
+    400080: LeftKnee
+    400082: LeftShoulder
+    400084: LeftThumb
+    400086: LeftThumb2
+    400088: LeftThumb3
+    400090: PistonLeft
+    400092: PistonLeft2
+    400094: PistonRight
+    400096: PistonRight2
+    400098: R_Chest_CTRL
+    400100: R_Clavicle_CTRL
+    400102: R_Finger1_CTRL
+    400104: R_Finger_CTRL
+    400106: R_Hand_CTRL
+    400108: R_Hand_Offset
+    400110: R_Thumb1_CTRL
+    400112: R_Thumb_CTRL
+    400114: RightCollar
+    400116: RightElbow
+    400118: RightFoot
+    400120: RightFootThumb
+    400122: RightFootThumb2
+    400124: RightHand
+    400126: RightHip
+    400128: RightIndexFiner3
+    400130: RightIndexFinger
+    400132: RightIndexFinger2
+    400134: RightKnee
+    400136: RightShoulder
+    400138: RightThumb
+    400140: RightThumb2
+    400142: RightThumb3
+    400144: Root
+    400146: skeleton_GRP
+    400148: superMover_CTRL
+    400150: upperBack_CTRL
+    4300000: EnemyTrash1:EnemyTrash1_base
+    4300002: EnemyTrash1:EnemyTrash1_extra
+    4300004: EnemyTrash1:Blade
+    7400000: Iddle
+    7400002: Walk
+    7400004: Attack
+    7400006: Hit1
+    7400008: Die
+    7400010: Hit2
+    7400012: Dead
+    9500000: //RootNode
+    13700000: EnemyTrash1:Blade
+    13700002: EnemyTrash1:EnemyTrash1_base
+    13700004: EnemyTrash1:EnemyTrash1_extra
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Iddle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 73
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyTrash1_MESH
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:Blade
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_base
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_extra
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/Root
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2/Cap
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/Katana
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2/LeftIndexFinger3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2/LeftThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft/PistonLeft2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight/PistonRight2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2/RightIndexFiner3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2/RightThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb/LeftFootThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb/RightFootThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 90
+      lastFrame: 137
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyTrash1_MESH
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:Blade
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_base
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_extra
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/Root
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2/Cap
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/Katana
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2/LeftIndexFinger3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2/LeftThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft/PistonLeft2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight/PistonRight2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2/RightIndexFiner3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2/RightThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb/LeftFootThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb/RightFootThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 150
+      lastFrame: 209
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyTrash1_MESH
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:Blade
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_base
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_extra
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/Root
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2/Cap
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/Katana
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2/LeftIndexFinger3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2/LeftThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft/PistonLeft2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight/PistonRight2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2/RightIndexFiner3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2/RightThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb/LeftFootThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb/RightFootThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hit1
+      takeName: Take 001
+      firstFrame: 220
+      lastFrame: 259
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyTrash1_MESH
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:Blade
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_base
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_extra
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/Root
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2/Cap
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/Katana
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2/LeftIndexFinger3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2/LeftThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft/PistonLeft2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight/PistonRight2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2/RightIndexFiner3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2/RightThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb/LeftFootThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb/RightFootThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Die
+      takeName: Take 001
+      firstFrame: 265
+      lastFrame: 285
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.96585363
+        functionName: Test
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyTrash1_MESH
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:Blade
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_base
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_extra
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/Root
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2/Cap
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/Katana
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2/LeftIndexFinger3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2/LeftThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft/PistonLeft2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight/PistonRight2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2/RightIndexFiner3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2/RightThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb/LeftFootThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb/RightFootThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hit2
+      takeName: Take 001
+      firstFrame: 221
+      lastFrame: 260
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyTrash1_MESH
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:Blade
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_base
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_extra
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/Root
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2/Cap
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/Katana
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2/LeftIndexFinger3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2/LeftThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft/PistonLeft2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight/PistonRight2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2/RightIndexFiner3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2/RightThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb/LeftFootThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb/RightFootThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Dead
+      takeName: Take 001
+      firstFrame: 290
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyTrash1_MESH
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:Blade
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_base
+        weight: 1
+      - path: EnemyTrash1_MESH/EnemyTrash1:EnemyTrash1_extra
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/Root
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/CenterNeck2/CenterHead/CenterHead2/Cap
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/ChestRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/Katana
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftIndexFinger/LeftIndexFinger2/LeftIndexFinger3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/LeftCollar/LeftShoulder/LeftElbow/LeftHand/LeftThumb/LeftThumb2/LeftThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonLeft/PistonLeft2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/PistonRight/PistonRight2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightIndexFinger/RightIndexFinger2/RightIndexFiner3
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/CenterSpine/CenterSpine2/CenterSpine3/CenterNeck/RightCollar/RightShoulder/RightElbow/RightHand/RightThumb/RightThumb2/RightThumb3
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/LeftHip/LeftKnee/LeftFoot/LeftFootThumb/LeftFootThumb2
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb
+        weight: 1
+      - path: skeleton_GRP/Root/RightHip/RightKnee/RightFoot/RightFootThumb/RightFootThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
