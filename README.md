@@ -12,6 +12,7 @@ Controller:
 	LB: Block
 	RT: Switch to Red Stance
 	LT: Switch to Grey Stance
+	START: Pause
 	
 Keyboard & Mouse:
 	WASD: Movement
@@ -23,3 +24,4 @@ Keyboard & Mouse:
 	SPACE: Block
 	2: Switch to Red Stance
 	1: Switch to Grey Stance
+	ESC: Pause
