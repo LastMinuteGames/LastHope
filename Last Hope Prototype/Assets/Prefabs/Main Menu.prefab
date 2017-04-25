@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -737,26 +737,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b92356a857f030468358d2c955d92d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: {fileID: 0}
-  help: {fileID: 0}
-  credits: {fileID: 0}
-  exit: {fileID: 0}
-  startText: {fileID: 0}
-  helpText: {fileID: 0}
-  creditsText: {fileID: 0}
-  exitText: {fileID: 0}
+  start: {fileID: 114796132607178808}
+  help: {fileID: 114998443846545970}
+  credits: {fileID: 114659411763994474}
+  exit: {fileID: 114287332188343118}
+  startText: {fileID: 114290408898859080}
+  helpText: {fileID: 114716718838770996}
+  creditsText: {fileID: 114286968067442116}
+  exitText: {fileID: 114957379167970336}
   focus: 0
   isConfirmExit: 0
-  confirmExit: {fileID: 0}
-  yes: {fileID: 0}
-  no: {fileID: 0}
-  yesText: {fileID: 0}
-  noText: {fileID: 0}
+  confirmExit: {fileID: 223751071646463558}
+  yes: {fileID: 114794245713265938}
+  no: {fileID: 114832366618662992}
+  yesText: {fileID: 114783159764433220}
+  noText: {fileID: 114917693725547978}
   focusExit: 0
   isHelp: 0
-  helpCanvas: {fileID: 0}
+  helpCanvas: {fileID: 223157515384056412}
   isCredits: 0
-  creditsCanvas: {fileID: 0}
+  creditsCanvas: {fileID: 223967941135548152}
   unselectedBGColor: {r: 0, g: 0, b: 0, a: 0}
   selectedBGColor: {r: 0, g: 0, b: 0, a: 0}
   unselectedTextColor: {r: 0, g: 0, b: 0, a: 0}
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -820,7 +820,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'The controls for Last Hope are:'
+  m_Text: "Last Hope\r\nBy: Roberto Azor\xEDn, Arnau Escrib\xE0, Sergi Ledesma, Pau
+    Mamano, David Masana, Manuel M\xE9ndez\r"
 --- !u!114 &114206382918137354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -849,7 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -882,7 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1082,7 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1115,7 +1116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1441,7 +1442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1643,7 +1644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1663,12 +1664,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\tSTANDARD CONTROLS\n\tCharacter movement -> W-A-S-D\n\tCamera movement
-    -> Mouse Movement\t\n\tDodge -> SHIFT (NOT IMPLEMENTED)\n\tLight attack -> LMB\n\tHeavy
-    attack -> RMB (NOT IMPLEMENTED)\n\tInteract -> E\n\tChange stance -> 1-2\n\tSpecial
-    Hability -> Q\n\tEnter/Exit Pause Menu -> ESC\n\tEnter/Exit Debug Mode -> F2\n\n\tDEBUG
-    MODE\n\tChange cameras -> 0-4\n\tHeal -> H\n\tTake Damage -> T\n\tLose Energy
-    -> C\n\tGain Energy -> V\n"
+  m_Text: "CONTROLS\r\nController  /  Keyboard & Mouse:\r\n\tLeft Joystick  /  WASD:
+    \  Movement\r\n\tRight Joystick  /  Mouse Move:   Camera\r\n\tX  /  Mouse Left
+    Click:   Light Attack\r\n\tA  /  SHIFT:   Dodge\r\n\tB  /  E:   Interact\r\n\tRB
+    \ /  Q:   Special Attack\r\n\tLB  /  SPACE:   Block\r\n\tRT  /  2:   Switch to
+    Red Stance\r\n\tLT  /  1:   Switch to Grey Stance\r\n\tSTART  /  ESC:   Pause\r"
 --- !u!114 &114812720976147914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1749,7 +1749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1803,7 +1803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1836,7 +1836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
