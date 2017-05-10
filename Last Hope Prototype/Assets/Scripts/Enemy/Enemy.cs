@@ -5,36 +5,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-
-    public Transform enemy;
-    public int life;
-    public int maxLife;
-    public bool dead = false;
-    public long timeToAfterDeadMS;
-    public long timeAttackRefresh;
-    public int attack;
-    public int combatRange;
-    public int attackRange;
-    //public GameObject attackInRange;
-    public Collider katana;
-    public int chaseSpeed;
-    public int combatAngularSpeed;
-    public int frameUpdateInterval;
-
-    [HideInInspector]
-    public double lastAttackTime = 0;
-    [HideInInspector]
-    public IEnemyState currentState;
-    private IEnemyState previousState;
-    [HideInInspector]
-    public Transform target;
-    [HideInInspector]
-    public UnityEngine.AI.NavMeshAgent nav;
-    [HideInInspector]
-    public Animator anim;
-    protected Dictionary<TrashStateTypes, IEnemyState> states;
-
     void Awake()
     {
     }
@@ -47,7 +17,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState == null)
+        /*if (currentState == null)
             return;
         TrashStateTypes newState = currentState.UpdateState();
 
@@ -55,39 +25,37 @@ public class Enemy : MonoBehaviour
         {
             previousState = currentState;
             ChangeState(newState);
-        }
+        }*/
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        currentState.OnTriggerEnter(other);
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    currentState.OnTriggerEnter(other);
+    //}
 
-    void OnTriggerExit(Collider other)
-    {
-        currentState.OnTriggerExit(other);
-    }
+    //void OnTriggerExit(Collider other)
+    //{
+    //    currentState.OnTriggerExit(other);
+    //}
 
-    public void TakeDamage(int damage)
-    {
-        life -= damage;
-    }
+    //public void TakeDamage(int damage)
+    //{
+    //    life -= damage;
+    //}
 
-    public void RecoveryHealth(int quantity)
-    {
-        life += quantity;
-        if (life > maxLife)
-            life = maxLife;
-    }
+    //public void RecoveryHealth(int quantity)
+    //{
+    //    life += quantity;
+    //    if (life > maxLife)
+    //        life = maxLife;
+    //}
 
-    public void Dead()
-    {
-        /**
-         * TODO: Drop items if necessary
-        **/
-        Destroy(gameObject);
-    }
-
+    //public void Dead()
+    //{
+        
+    //    Destroy(gameObject);
+    //}
+    /*
     public void ChangeTarget(Transform target)
     {
         this.target = target;
@@ -144,4 +112,6 @@ public class Enemy : MonoBehaviour
             currentState.StartState();
         }
     }
+
+    */
 }

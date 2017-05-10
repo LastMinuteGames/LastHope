@@ -145,10 +145,14 @@
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UIPlayerStance.cs" />
     <Compile Include="Assets\TrashEnemyAttackState.cs" />
+    <Compile Include="Assets\TrashEnemyChase.cs" />
+    <Compile Include="Assets\TrashEnemyCombatState.cs" />
     <Compile Include="Assets\TrashEnemyDamagedState.cs" />
     <Compile Include="Assets\TrashEnemyDeadState.cs" />
     <Compile Include="Assets\TrashEnemyDieState.cs" />
     <Compile Include="Assets\TrashEnemyIdleState.cs" />
+    <Compile Include="Assets\TrashEnemyMoveAroundtState.cs" />
+    <Compile Include="Assets\TrashEnemyMoveForwardState.cs" />
     <Compile Include="Assets\TrashEnemyWalkState.cs" />
   </ItemGroup>
   <ItemGroup>

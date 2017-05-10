@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class TrashDeadState : TrashState
+/*public class TrashDeadState : TrashState
 {
     public long msToDissappear;
     private double msStartTime;
@@ -31,9 +31,9 @@ public class TrashDeadState : TrashState
     public override void StartState()
     {
         msStartTime = Time.time;
-        /**
-         *  TODO: Mark enemy to know that he's dead
-         * */
+        
+        //TODO: Mark enemy to know that he's dead
+
         trashState.anim.SetBool("die", true);
         go.GetComponent<Renderer>().material.color = Color.yellow;
         Debug.Log("START TrashDeadState");
@@ -51,3 +51,4 @@ public class TrashDeadState : TrashState
     {
     }
 }
+*/
