@@ -19,11 +19,12 @@ class PlayerIdleState : PlayerFSM
 
     public override PlayerStateType Update()
     {
-        if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
-        {
-            return PlayerStateType.PLAYER_STATE_MOVE;
-        }
-        else if (InputManager.Block())
+        //if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
+        //{
+        //    return PlayerStateType.PLAYER_STATE_MOVE;
+        //}
+        //else
+        if (InputManager.Block())
         {
             return PlayerStateType.PLAYER_STATE_BLOCK;
         }
