@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -92,6 +94,16 @@
     <Compile Include="Assets\Scripts\ColliderManager.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\Attack.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\AttackManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyAttackState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyChase.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyCombatState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDamagedState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDeadState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDieState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyIdleState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyMoveAroundtState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyMoveForwardState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyWalkState.cs" />
     <Compile Include="Assets\Scripts\Enemy\AttackInRange.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyState.cs" />
@@ -121,6 +133,12 @@
     <Compile Include="Assets\Scripts\InputManager\TestInputManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PickUpController.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerBlockState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerChangeStanceState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerDodgeState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerIdleState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerInteractState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerMoveState.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\IPlayerFSM.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\PlayerFSM.cs" />
@@ -144,16 +162,6 @@
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UIPlayerStance.cs" />
-    <Compile Include="Assets\TrashEnemyAttackState.cs" />
-    <Compile Include="Assets\TrashEnemyChase.cs" />
-    <Compile Include="Assets\TrashEnemyCombatState.cs" />
-    <Compile Include="Assets\TrashEnemyDamagedState.cs" />
-    <Compile Include="Assets\TrashEnemyDeadState.cs" />
-    <Compile Include="Assets\TrashEnemyDieState.cs" />
-    <Compile Include="Assets\TrashEnemyIdleState.cs" />
-    <Compile Include="Assets\TrashEnemyMoveAroundtState.cs" />
-    <Compile Include="Assets\TrashEnemyMoveForwardState.cs" />
-    <Compile Include="Assets\TrashEnemyWalkState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />

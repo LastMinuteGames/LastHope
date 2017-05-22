@@ -91,8 +91,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private PlayerStateType currentStateType;
-    public IPlayerFSM currentState;
-    private Dictionary<PlayerStateType, IPlayerFSM> states;
+    //public IPlayerFSM currentState;
+    //private Dictionary<PlayerStateType, IPlayerFSM> states;
 
     void Start()
     {
@@ -125,54 +125,54 @@ public class PlayerController : MonoBehaviour
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rigidBody = GetComponent<Rigidbody>();
 
-        IPlayerFSM state = new PlayerIdleState(gameObject);
-        PlayerStateType defaultState = state.Type();
-        states = new Dictionary<PlayerStateType, IPlayerFSM>();
-        states.Add(state.Type(), state);
+        //IPlayerFSM state = new PlayerIdleState(gameObject);
+        //PlayerStateType defaultState = state.Type();
+        //states = new Dictionary<PlayerStateType, IPlayerFSM>();
+        //states.Add(state.Type(), state);
 
-        state = new PlayerBlockState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerBlockState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerMoveBlockState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerMoveBlockState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerDamageState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerDamageState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerDeadState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerDeadState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerRespawnState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerRespawnState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerDodgeState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerDodgeState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerInteractState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerInteractState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerAttackState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerAttackState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerSpecialAttackState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerSpecialAttackState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerChangeStanceState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerChangeStanceState(gameObject);
+        //states.Add(state.Type(), state);
 
-        state = new PlayerMoveState(gameObject);
-        states.Add(state.Type(), state);
+        //state = new PlayerMoveState(gameObject);
+        //states.Add(state.Type(), state);
 
-        ChangeState(defaultState);
+        //ChangeState(defaultState);
     }
 
     void Update()
     {
-        PlayerStateType state = currentState.Update();
-        if (state != PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
-        {
-            ChangeState(state);
-        }
+        //PlayerStateType state = currentState.Update();
+        //if (state != PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
+        //{
+        //    ChangeState(state);
+        //}
 
         if (InputManager.DebugMode())
         {
@@ -484,14 +484,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
-        {
-            currentState.OnTriggerEnter(other);
-        }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
-        {
-            canInteract = true;
-        }
+        //if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
+        //{
+        //    currentState.OnTriggerEnter(other);
+        //}
+        //else if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        //{
+        //    canInteract = true;
+        //}
     }
     public void OnTriggerExit(Collider other)
     {
@@ -514,15 +514,15 @@ public class PlayerController : MonoBehaviour
         currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
     }
 
-    public void ChangeState(PlayerStateType type)
-    {
-        if (states.ContainsKey(type))
-        {
-            if (currentState != null)
-                currentState.End();
-            currentState = states[type];
-            currentState.Start();
-            currentStateType = currentState.Type();
-        }
-    }
+    //public void ChangeState(PlayerStateType type)
+    //{
+        //if (states.ContainsKey(type))
+        //{
+        //    if (currentState != null)
+        //        currentState.End();
+        //    currentState = states[type];
+        //    currentState.Start();
+        //    currentStateType = currentState.Type();
+        //}
+    //}
 }

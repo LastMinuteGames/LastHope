@@ -22,6 +22,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
     {
         h = InputManager.LeftJoystick().x;
         v = InputManager.LeftJoystick().z;
+        bool change = true;
 
         if (InputManager.Block())
         {
@@ -69,6 +70,15 @@ public class FakePlayerMoveState : StateMachineBehaviour {
         {
             playerController.anim.SetBool("specialAttack", true);
         }
+        else
+        {
+            change = false;
+        }
+
+        if (change)
+        {
+            playerController.anim.SetBool("move", false);
+        }
 
         // TODO: LIGHT, HEAVY AND SPECIAL ATTACK FOR THE COMBO SYSTEM
 
@@ -78,7 +88,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        playerController.anim.SetBool("move", false);
+        //playerController.anim.SetBool("move", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
