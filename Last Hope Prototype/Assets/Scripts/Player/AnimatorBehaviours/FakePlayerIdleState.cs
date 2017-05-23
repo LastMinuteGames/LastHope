@@ -60,7 +60,11 @@ public class FakePlayerIdleState : StateMachineBehaviour {
         }
         else if (InputManager.LightAttack())
         {
-            animator.SetBool("attack", true);
+            animator.SetTrigger("lightAttack");
+        }
+        else if (InputManager.HeavyAttack())
+        {
+            animator.SetTrigger("heavyAttack");
         }
         else if (InputManager.SpecialAttack())
         {
