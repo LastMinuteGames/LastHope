@@ -84,7 +84,6 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
-    <Compile Include="Assets\FakePlayerLightAttack1.cs" />
     <Compile Include="Assets\Scripts\ArtilleryController.cs" />
     <Compile Include="Assets\Scripts\ArtilleryEventTrigger.cs" />
     <Compile Include="Assets\Scripts\BarricadeController.cs" />
@@ -135,8 +134,14 @@
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerBlockState.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerChangeStanceState.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerDodgeState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerHeavyAttack1.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerHeavyAttack2.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerHeavyAttack3.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerIdleState.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerInteractState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerLightAttack1.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerLightAttack2.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerLightAttack3.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerMoveState.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\IPlayerFSM.cs" />

@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
 
     // Attack
     public float attackDamage = 10.0f;
+    private bool inputWindow = false;
 
     // Special Attack
     public GameObject neutralSphere;
@@ -508,7 +509,7 @@ public class PlayerController : MonoBehaviour
         currentHPBar.rectTransform.localScale = new Vector3(ratio * maxHP / initialMaxHP, 1, 1);
     }
 
-    void UpdateEnergyBar()
+    private void UpdateEnergyBar()
     {
         float ratio = (float)currentEnergy / maxEnergy;
         currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
@@ -516,13 +517,30 @@ public class PlayerController : MonoBehaviour
 
     //public void ChangeState(PlayerStateType type)
     //{
-        //if (states.ContainsKey(type))
-        //{
-        //    if (currentState != null)
-        //        currentState.End();
-        //    currentState = states[type];
-        //    currentState.Start();
-        //    currentStateType = currentState.Type();
-        //}
+    //if (states.ContainsKey(type))
+    //{
+    //    if (currentState != null)
+    //        currentState.End();
+    //    currentState = states[type];
+    //    currentState.Start();
+    //    currentStateType = currentState.Type();
     //}
+    //}
+
+    public void OpenInputWindow()
+    {
+        inputWindow = true;
+        Debug.Log("window opened");
+    }
+
+    public void CloseInputWindow()
+    {
+        inputWindow = false;
+        Debug.Log("window closed");
+    }
+
+    public bool GetInputWindowState()
+    {
+        return inputWindow;
+    }
 }
