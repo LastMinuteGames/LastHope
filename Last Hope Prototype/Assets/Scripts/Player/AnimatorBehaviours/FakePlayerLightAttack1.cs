@@ -28,6 +28,10 @@ public class FakePlayerLightAttack1 : StateMachineBehaviour
             {
                 animator.SetTrigger("heavyAttack");
             }
+            else if (InputManager.SpecialAttack())
+            {
+
+            }
         }
     }
 

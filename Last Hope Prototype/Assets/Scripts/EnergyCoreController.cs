@@ -15,7 +15,7 @@ public class EnergyCoreController : MonoBehaviour {
         rend.enabled = true;
         switch (color)
         {
-            case PlayerStance.STANCE_GREY:
+            case PlayerStance.STANCE_BLUE:
                 rend.sharedMaterial = greyMat;
                 break;
             case PlayerStance.STANCE_RED:
@@ -36,7 +36,7 @@ public class EnergyCoreController : MonoBehaviour {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
             switch (color)
             {
-                case PlayerStance.STANCE_GREY:
+                case PlayerStance.STANCE_BLUE:
                     player.EnableGreyAbility();
                     player.ChangeStance(color);
                     Debug.Log("Grey special ability learned");

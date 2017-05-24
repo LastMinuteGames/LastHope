@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public enum PlayerStance
 {
     STANCE_NONE,
-    STANCE_GREY,
+    STANCE_BLUE,
     STANCE_RED,
     STANCE_UNDEFINED
 }
@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour
     {
         switch (stance)
         {
-            case PlayerStance.STANCE_GREY:
+            case PlayerStance.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
                     Debug.Log("NEUTRAL STANCE");
@@ -427,6 +427,11 @@ public class PlayerController : MonoBehaviour
         blocking = value;
     }
 
+    public PlayerStance SpecialAttackToPerform()
+    {
+        return PlayerStance.STANCE_UNDEFINED;
+    }
+
     public void StartSpecialAttack()
     {
         canSpecialAttack = false;
@@ -437,7 +442,7 @@ public class PlayerController : MonoBehaviour
                 canSpecialAttack = true;
                 switch (stance)
                 {
-                    case PlayerStance.STANCE_GREY:
+                    case PlayerStance.STANCE_BLUE:
                         neutralSphere.gameObject.SetActive(true);
                         spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
                         break;
@@ -454,7 +459,7 @@ public class PlayerController : MonoBehaviour
         {
             switch (stance)
             {
-                case PlayerStance.STANCE_GREY:
+                case PlayerStance.STANCE_BLUE:
                     break;
                 case PlayerStance.STANCE_RED:
                     movement = rigidBody.velocity;
@@ -472,7 +477,7 @@ public class PlayerController : MonoBehaviour
         {
             switch (stance)
             {
-                case PlayerStance.STANCE_GREY:
+                case PlayerStance.STANCE_BLUE:
                     neutralSphere.gameObject.SetActive(false);
                     Destroy(spawnedParticle);
                     break;

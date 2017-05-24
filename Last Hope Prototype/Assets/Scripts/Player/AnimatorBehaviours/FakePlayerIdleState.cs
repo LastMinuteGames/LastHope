@@ -38,7 +38,7 @@ public class FakePlayerIdleState : StateMachineBehaviour {
             {
                 if (playerController.IsGreyAbilityEnabled())
                 {
-                    playerController.newStance = PlayerStance.STANCE_GREY;
+                    playerController.newStance = PlayerStance.STANCE_BLUE;
                     if (playerController.newStance != playerController.stance)
                     {
                         animator.SetBool("changeStance", true);
