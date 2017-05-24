@@ -168,6 +168,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject.Find("FxCaller").GetComponent<FxCaller_OnKey_Pools>().ThrowFX(); ;
+        }
+
         PlayerStateType state = currentState.Update();
         if (state != PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
         {

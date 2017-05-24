@@ -12,9 +12,15 @@ public class FxCaller_OnKey_Pools : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		/*if (Input.GetKeyDown(KeyCode.Space))
 		{
 			FxManager_Pools.Instance.GetFx(FxPrefab, Receiver_Predefined.HitEmitter.position);
-		}
+		}*/
 	}
+
+    public void ThrowFX()
+    {
+        FxManager_Pools.Instance.GetFx(FxPrefab, Receiver_Predefined.HitEmitter.position);
+    }
+    
 }
