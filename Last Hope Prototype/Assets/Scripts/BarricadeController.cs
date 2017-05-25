@@ -16,9 +16,11 @@ public class BarricadeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(broke);
 		if (broke)
         {
-            anim.SetBool("break", true);
+            Debug.Log("hola holqrfnowifhwiof");
+            anim.SetTrigger("Break");
         }
 	}
 
