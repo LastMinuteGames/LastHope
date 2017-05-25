@@ -29,6 +29,18 @@ public class FakePlayerHeavyAttack2 : StateMachineBehaviour
             {
                 animator.SetTrigger("heavyAttack");
             }
+            else if (InputManager.SpecialAttack())
+            {
+                switch (playerController.SpecialAttackToPerform())
+                {
+                    case PlayerStance.STANCE_BLUE:
+                        animator.SetTrigger("blueSpecialAttack");
+                        break;
+                    case PlayerStance.STANCE_RED:
+                        animator.SetTrigger("redSpecialAttack");
+                        break;
+                }
+            }
         }
     }
 

@@ -30,6 +30,18 @@ public class FakePlayerHeavyAttack1 : StateMachineBehaviour
                 animator.SetTrigger("heavyAttack");
             }
         }
+        else if (InputManager.SpecialAttack())
+        {
+            switch (playerController.SpecialAttackToPerform())
+            {
+                case PlayerStance.STANCE_BLUE:
+                    animator.SetTrigger("blueSpecialAttack");
+                    break;
+                case PlayerStance.STANCE_RED:
+                    animator.SetTrigger("redSpecialAttack");
+                    break;
+            }
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
