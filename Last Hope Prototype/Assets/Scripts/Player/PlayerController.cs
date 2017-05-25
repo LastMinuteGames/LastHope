@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     public Transform camT;
     public Vector3 movement;
     public Vector3 targetDirection;
-    public float dodgeThrust = 25;
+    public float dodgeThrust = 1;
     public bool pendingMove = false;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;

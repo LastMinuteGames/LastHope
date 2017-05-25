@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class FakePlayerMoveState : StateMachineBehaviour {
     PlayerController playerController;
+    bool attacking = false;
     private float h, v = 0;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        attacking = false;
         if (playerController == null)
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
@@ -24,72 +26,78 @@ public class FakePlayerMoveState : StateMachineBehaviour {
         v = InputManager.LeftJoystick().z;
         bool change = true;
 
-        if (InputManager.Block())
+        if (!attacking)
         {
-            playerController.anim.SetBool("block", true);
-        }
-        else if (InputManager.Interact() && playerController.canInteract)
-        {
-            playerController.anim.SetBool("interact", true);
-        }
-        else if (InputManager.Stance1())
-        {
-            if (playerController.IsGreyAbilityEnabled())
+            if (InputManager.Block())
             {
-                playerController.newStance = PlayerStance.STANCE_BLUE;
-                if (playerController.newStance != playerController.stance)
+                playerController.anim.SetBool("block", true);
+            }
+            else if (InputManager.Interact() && playerController.canInteract)
+            {
+                playerController.anim.SetBool("interact", true);
+            }
+            else if (InputManager.Stance1())
+            {
+                if (playerController.IsGreyAbilityEnabled())
                 {
-                    playerController.anim.SetBool("changeStance", true);
+                    playerController.newStance = PlayerStance.STANCE_BLUE;
+                    if (playerController.newStance != playerController.stance)
+                    {
+                        playerController.anim.SetBool("changeStance", true);
+                    }
                 }
             }
-        }
-        else if (InputManager.Stance2())
-        {
-            if (playerController.IsRedAbilityEnabled())
+            else if (InputManager.Stance2())
             {
-                playerController.newStance = PlayerStance.STANCE_RED;
-                if (playerController.newStance != playerController.stance)
+                if (playerController.IsRedAbilityEnabled())
                 {
-                    playerController.anim.SetBool("changeStance", true);
+                    playerController.newStance = PlayerStance.STANCE_RED;
+                    if (playerController.newStance != playerController.stance)
+                    {
+                        playerController.anim.SetBool("changeStance", true);
+                    }
                 }
             }
-        }
-        else if (InputManager.Dodge())
-        {
-            playerController.anim.SetBool("dodge", true);
-        }
-        else if (h == 0 && v == 0)
-        {
-            playerController.anim.SetBool("idle", true);
-        }
-        else if (InputManager.LightAttack())
-        {
-            playerController.anim.SetBool("attack", true);
-        }
-        else if (InputManager.SpecialAttack())
-        {
-            switch (playerController.SpecialAttackToPerform())
+            else if (InputManager.Dodge())
             {
-                case PlayerStance.STANCE_BLUE:
-                    animator.SetTrigger("blueSpecialAttack");
-                    break;
-                case PlayerStance.STANCE_RED:
-                    animator.SetTrigger("redSpecialAttack");
-                    break;
+                playerController.anim.SetBool("dodge", true);
+            }
+            else if (h == 0 && v == 0)
+            {
+                playerController.anim.SetBool("idle", true);
+            }
+            else if (InputManager.LightAttack())
+            {
+                animator.SetTrigger("lightAttack");
+                attacking = true;
+            }
+            else if (InputManager.HeavyAttack())
+            {
+                animator.SetTrigger("heavyAttack");
+                attacking = true;
+            }
+            else if (InputManager.SpecialAttack())
+            {
+                switch (playerController.SpecialAttackToPerform())
+                {
+                    case PlayerStance.STANCE_BLUE:
+                        animator.SetTrigger("blueSpecialAttack");
+                        break;
+                    case PlayerStance.STANCE_RED:
+                        animator.SetTrigger("redSpecialAttack");
+                        break;
+                }
+            }
+            else
+            {
+                change = false;
+            }
+
+            if (change)
+            {
+                playerController.anim.SetBool("move", false);
             }
         }
-        else
-        {
-            change = false;
-        }
-
-        if (change)
-        {
-            playerController.anim.SetBool("move", false);
-        }
-
-        // TODO: LIGHT, HEAVY AND SPECIAL ATTACK FOR THE COMBO SYSTEM
-
         playerController.PendingMovement(h, v);
     }
 
