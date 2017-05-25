@@ -322,6 +322,16 @@ public class PlayerController : MonoBehaviour
         dead = false;
     }
 
+    public bool CanLoseEnergy(int value)
+    {
+        bool ret = false;
+        if (currentEnergy >= value)
+        {
+            ret = true;
+        }
+        return ret;
+    }
+
     public bool LoseEnergy(int value)
     {
         bool ret = false;
@@ -429,7 +439,25 @@ public class PlayerController : MonoBehaviour
 
     public PlayerStance SpecialAttackToPerform()
     {
-        return PlayerStance.STANCE_UNDEFINED;
+        PlayerStance ret = PlayerStance.STANCE_UNDEFINED;
+        canSpecialAttack = false;
+        if (stance != PlayerStance.STANCE_NONE)
+        {
+            if (CanLoseEnergy(1))
+            {
+                canSpecialAttack = true;
+                ret = stance;
+            }
+            else
+            {
+                ret = PlayerStance.STANCE_NONE;
+            }
+        }
+        else
+        {
+            ret = PlayerStance.STANCE_NONE;
+        }
+        return ret;
     }
 
     public void StartSpecialAttack()

@@ -68,7 +68,15 @@ public class FakePlayerMoveState : StateMachineBehaviour {
         }
         else if (InputManager.SpecialAttack())
         {
-            playerController.anim.SetBool("specialAttack", true);
+            switch (playerController.SpecialAttackToPerform())
+            {
+                case PlayerStance.STANCE_BLUE:
+                    animator.SetTrigger("blueSpecialAttack");
+                    break;
+                case PlayerStance.STANCE_RED:
+                    animator.SetTrigger("redSpecialAttack");
+                    break;
+            }
         }
         else
         {
