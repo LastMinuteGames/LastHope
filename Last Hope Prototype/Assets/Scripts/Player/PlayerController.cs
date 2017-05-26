@@ -563,13 +563,13 @@ public class PlayerController : MonoBehaviour
     public void OpenInputWindow()
     {
         inputWindow = true;
-        Debug.Log("window opened");
+        //Debug.Log("window opened");
     }
 
     public void CloseInputWindow()
     {
         inputWindow = false;
-        Debug.Log("window closed");
+        //Debug.Log("window closed");
     }
 
     public bool GetInputWindowState()

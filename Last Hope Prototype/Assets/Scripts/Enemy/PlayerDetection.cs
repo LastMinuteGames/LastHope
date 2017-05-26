@@ -18,14 +18,14 @@ public class PlayerDetection : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
+        //Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             gameObject.transform.parent.GetComponent<EnemyTrash>().OnTriggerEnter(other);
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
+        //Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             gameObject.transform.parent.GetComponent<EnemyTrash>().OnTriggerExit(other);
     }

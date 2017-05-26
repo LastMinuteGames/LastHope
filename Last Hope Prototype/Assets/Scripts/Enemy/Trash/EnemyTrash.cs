@@ -120,15 +120,25 @@ public class EnemyTrash : MonoBehaviour//: Enemy
 
     public void TakeDamage(int damage)
     {
-        life -= damage;
-        if(life <= 0)
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Damage") == false)
         {
-            anim.SetBool("dead", true);
-        }
-        else
-        {
+            life -= damage;
             anim.SetTrigger("damaged");
+
         }
+        //if(life <= 0)
+        //{
+        //    anim.SetBool("dead", true);
+        //}
+        //else
+        //{
+        //}
+    }
+
+    public bool IsDead()
+    {
+        Debug.Log("Current life is: " + life);
+        return life <= 0;
     }
 
     public void RecoveryHealth(int quantity)
