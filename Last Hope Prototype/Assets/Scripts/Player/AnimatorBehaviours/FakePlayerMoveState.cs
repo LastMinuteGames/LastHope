@@ -34,7 +34,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
             }
             else if (InputManager.Interact() && playerController.canInteract)
             {
-                playerController.anim.SetBool("interact", true);
+                playerController.anim.SetTrigger("interact");
             }
             else if (InputManager.Stance1())
             {
@@ -43,7 +43,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
                     playerController.newStance = PlayerStance.STANCE_BLUE;
                     if (playerController.newStance != playerController.stance)
                     {
-                        playerController.anim.SetBool("changeStance", true);
+                        playerController.anim.SetTrigger("changeStance");
                     }
                 }
             }
@@ -54,13 +54,13 @@ public class FakePlayerMoveState : StateMachineBehaviour {
                     playerController.newStance = PlayerStance.STANCE_RED;
                     if (playerController.newStance != playerController.stance)
                     {
-                        playerController.anim.SetBool("changeStance", true);
+                        playerController.anim.SetTrigger("changeStance");
                     }
                 }
             }
             else if (InputManager.Dodge())
             {
-                playerController.anim.SetBool("dodge", true);
+                playerController.anim.SetTrigger("dodge");
             }
             else if (h == 0 && v == 0)
             {
@@ -104,7 +104,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //playerController.anim.SetBool("move", false);
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

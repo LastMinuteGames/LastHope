@@ -522,10 +522,10 @@ public class PlayerController : MonoBehaviour
         //{
         //    currentState.OnTriggerEnter(other);
         //}
-        //else if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
-        //{
-        //    canInteract = true;
-        //}
+        if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        {
+            canInteract = true;
+        }
     }
     public void OnTriggerExit(Collider other)
     {

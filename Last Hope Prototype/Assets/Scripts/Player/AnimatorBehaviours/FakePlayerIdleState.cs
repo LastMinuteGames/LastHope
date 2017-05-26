@@ -32,7 +32,7 @@ public class FakePlayerIdleState : StateMachineBehaviour {
             }
             else if (InputManager.Interact() && playerController.canInteract)
             {
-                animator.SetBool("interact", true);
+                animator.SetTrigger("interact");
             }
             else if (InputManager.Stance1())
             {
@@ -41,7 +41,7 @@ public class FakePlayerIdleState : StateMachineBehaviour {
                     playerController.newStance = PlayerStance.STANCE_BLUE;
                     if (playerController.newStance != playerController.stance)
                     {
-                        animator.SetBool("changeStance", true);
+                        animator.SetTrigger("changeStance");
                     }
                 }
             }
@@ -52,13 +52,13 @@ public class FakePlayerIdleState : StateMachineBehaviour {
                     playerController.newStance = PlayerStance.STANCE_RED;
                     if (playerController.newStance != playerController.stance)
                     {
-                        animator.SetBool("changeStance", true);
+                        animator.SetTrigger("changeStance");
                     }
                 }
             }
             else if (InputManager.Dodge())
             {
-                animator.SetBool("dodge", true);
+                animator.SetTrigger("dodge");
             }
             else if (InputManager.LightAttack())
             {

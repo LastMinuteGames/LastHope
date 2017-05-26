@@ -13,7 +13,6 @@ public class FakePlayerInteractState : StateMachineBehaviour
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
-        playerController.anim.SetBool("interact", true);
 
     }
 
@@ -24,7 +23,7 @@ public class FakePlayerInteractState : StateMachineBehaviour
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        playerController.anim.SetBool("interact", false);
+
     }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
