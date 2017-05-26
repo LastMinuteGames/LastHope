@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     public PlayerPassiveStats blueStats;
     public PlayerPassiveStats redStats;
 
+    private Attack currentAttack;
+
     // HP
     public int maxHP = 100;
     public int currentHP;
@@ -115,7 +117,6 @@ public class PlayerController : MonoBehaviour
         redStats.movementSpeed = 12.0f;
         redStats.specialAttackDamage = 30.0f;
 
-
         stance = PlayerStance.STANCE_NONE;
 
         initialMaxHP = maxHP;
@@ -126,54 +127,10 @@ public class PlayerController : MonoBehaviour
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         rigidBody = GetComponent<Rigidbody>();
 
-        //IPlayerFSM state = new PlayerIdleState(gameObject);
-        //PlayerStateType defaultState = state.Type();
-        //states = new Dictionary<PlayerStateType, IPlayerFSM>();
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerBlockState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerMoveBlockState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerDamageState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerDeadState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerRespawnState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerDodgeState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerInteractState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerAttackState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerSpecialAttackState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerChangeStanceState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //state = new PlayerMoveState(gameObject);
-        //states.Add(state.Type(), state);
-
-        //ChangeState(defaultState);
     }
 
     void Update()
     {
-        //PlayerStateType state = currentState.Update();
-        //if (state != PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
-        //{
-        //    ChangeState(state);
-        //}
 
         if (InputManager.DebugMode())
         {
@@ -356,6 +313,17 @@ public class PlayerController : MonoBehaviour
                 currentEnergy = maxEnergy;
             }
         }
+    }
+
+    public void ChangeAttack(string name, int damage)
+    {
+        if(currentAttack == null)
+        {
+            currentAttack = new Attack();
+        }
+
+        currentAttack.name = name;
+        currentAttack.damage = damage;
     }
 
     public void IncreaseMaxEnergy(int value)
@@ -575,5 +543,10 @@ public class PlayerController : MonoBehaviour
     public bool GetInputWindowState()
     {
         return inputWindow;
+    }
+
+    public Attack GetAttack()
+    {
+        return currentAttack;
     }
 }

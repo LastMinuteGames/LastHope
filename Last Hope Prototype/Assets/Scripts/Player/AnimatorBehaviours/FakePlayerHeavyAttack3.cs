@@ -13,6 +13,7 @@ public class FakePlayerHeavyAttack3 : StateMachineBehaviour
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
+        playerController.ChangeAttack("H3", 20);
         playerController.CloseInputWindow();
         playerController.EndAttack();
     }

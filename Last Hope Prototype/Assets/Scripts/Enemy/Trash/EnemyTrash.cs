@@ -46,6 +46,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     private static readonly int moveAroundState = Animator.StringToHash("MoveAround");
     private static readonly int AttackState = Animator.StringToHash("Attack");
 
+    Attack lastAttackReceived;
 
 
     void Awake()
@@ -86,25 +87,19 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         //currentState.OnTriggerEnter(other);
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
-            //if (anim.GetCurrentAnimatorStateInfo(0).IsName("damage"))
-            //{
-                //trashState.ChangeState(TrashStateTypes.DAMAGED_STATE);
-
-                /**
-                 *  TODO: Get damage from player!
-                **/
-                int damage = 10;
-                TakeDamage(damage);
-                //trashState.TakeDamage(damage);
-            //}
+            PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
+            Attack currentAttackReceived = playerScript.GetAttack();
+            if(lastAttackReceived == null || currentAttackReceived.name != lastAttackReceived.name)
+            {
+                TakeDamage(currentAttackReceived.damage);
+            }
+            lastAttackReceived = currentAttackReceived;
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //this.target = other.transform;
             ChangeTarget(other.transform);
             anim.SetBool("iddle", false);
             anim.SetTrigger("chase");
-            //trashState.ChangeState(TrashStateTypes.CHASE_STATE);
         }
     }
 
@@ -120,19 +115,8 @@ public class EnemyTrash : MonoBehaviour//: Enemy
 
     public void TakeDamage(int damage)
     {
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Damage") == false)
-        {
             life -= damage;
             anim.SetTrigger("damaged");
-
-        }
-        //if(life <= 0)
-        //{
-        //    anim.SetBool("dead", true);
-        //}
-        //else
-        //{
-        //}
     }
 
     public bool IsDead()
@@ -161,5 +145,10 @@ public class EnemyTrash : MonoBehaviour//: Enemy
          * TODO: Drop items if necessary
         **/
         Destroy(gameObject);
+    }
+
+    public void ClearLastAttackReceived()
+    {
+        lastAttackReceived = null;
     }
 }
