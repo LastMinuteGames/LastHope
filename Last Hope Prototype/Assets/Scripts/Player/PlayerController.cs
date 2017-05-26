@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private int initialMaxEnergy;
 
     // Movement
-    public float turnSpeed = 3;
+    public float turnSpeed = 50;
     public float speed = 10;
     public float normalSpeed = 10;
     public float blockingSpeed = 6;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FakePlayerHeavyAttack2 : StateMachineBehaviour
 {
     PlayerController playerController;
+    private float h, v = 0;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -16,6 +17,10 @@ public class FakePlayerHeavyAttack2 : StateMachineBehaviour
         playerController.ChangeAttack("H2", 15);
         playerController.CloseInputWindow();
         playerController.EndAttack();
+
+        h = InputManager.LeftJoystick().x;
+        v = InputManager.LeftJoystick().z;
+        playerController.PendingMovement(h, v);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
