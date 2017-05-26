@@ -13,6 +13,7 @@ public class FakePlayerLightAttack1 : StateMachineBehaviour
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
+        playerController.ChangeAttack("L1", 5);
         playerController.CloseInputWindow();
         playerController.EndAttack();
     }
