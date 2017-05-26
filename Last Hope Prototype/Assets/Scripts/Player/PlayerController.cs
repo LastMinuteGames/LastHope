@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     public Image currentEnergyBar;
 
     public PlayerPassiveStats noneStats;
-    public PlayerPassiveStats neutralStats;
+    public PlayerPassiveStats blueStats;
     public PlayerPassiveStats redStats;
 
     // HP
@@ -105,10 +105,10 @@ public class PlayerController : MonoBehaviour
         noneStats.movementSpeed = 12.0f;
         noneStats.specialAttackDamage = 0.0f;
 
-        neutralStats.attackDamage = 10.0f;
-        neutralStats.blockingMovementSpeed = 8.0f;
-        neutralStats.movementSpeed = 14.0f;
-        neutralStats.specialAttackDamage = 40.0f;
+        blueStats.attackDamage = 10.0f;
+        blueStats.blockingMovementSpeed = 8.0f;
+        blueStats.movementSpeed = 14.0f;
+        blueStats.specialAttackDamage = 40.0f;
 
         redStats.attackDamage = 15.0f;
         redStats.blockingMovementSpeed = 6.0f;
@@ -224,10 +224,10 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("NEUTRAL STANCE");
                     this.stance = stance;
-                    normalSpeed = neutralStats.movementSpeed;
-                    blockingSpeed = neutralStats.blockingMovementSpeed;
-                    attackDamage = neutralStats.attackDamage;
-                    specialAttackDamage = neutralStats.specialAttackDamage;
+                    normalSpeed = blueStats.movementSpeed;
+                    blockingSpeed = blueStats.blockingMovementSpeed;
+                    attackDamage = blueStats.attackDamage;
+                    specialAttackDamage = blueStats.specialAttackDamage;
                 }
                 break;
             case PlayerStance.STANCE_RED:
