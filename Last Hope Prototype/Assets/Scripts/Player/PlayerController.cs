@@ -168,7 +168,15 @@ public class PlayerController : MonoBehaviour
 
     public void CallFX()
     {
-        GameObject.Find("FxCaller").GetComponent<FxCaller_OnKey_Pools>().ThrowFX();
+        GameObject temp1 = GameObject.Find("FxCaller");
+        if (temp1 != null)
+        {
+            FxCaller_OnKey_Pools temp = temp1.GetComponent<FxCaller_OnKey_Pools>();
+            if (temp != null)
+            {
+                temp.ThrowFX();
+            }
+        }
     }
 
     void Update()

@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097734768266868}
   m_LocalRotation: {x: -0.24184473, y: 0.66446304, z: 0.24184473, w: 0.66446304}
-  m_LocalPosition: {x: -5, y: 3, z: 0}
+  m_LocalPosition: {x: -13.59, y: 14.5, z: 106.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +48,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097734768266868}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 8
   speed: 1
   looping: 1
   prewarm: 1
@@ -96,12 +96,12 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2106748223
+  randomSeed: -722003093
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
-      scalar: 5
+      scalar: 8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -140,7 +140,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 1.8
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -158,7 +158,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0.5555556
+          value: 0.4
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -257,10 +257,10 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.08235294, g: 0.08235294, b: 0.08235294, a: 1}
+      maxColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
       minMaxState: 0
     startSize:
-      scalar: 4
+      scalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -278,7 +278,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0.75
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -426,7 +426,7 @@ ParticleSystem:
     size3D: 0
     rotation3D: 0
     gravityModifier:
-      scalar: -0.05
+      scalar: -0.03
       maxCurve:
         serializedVersion: 2
         m_Curve:
