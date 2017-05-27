@@ -47,6 +47,8 @@ public class TrashState : EnemyState, IEnemyState
                 **/
                 int damage = 10;
                 trashState.TakeDamage(damage);
+                //Throw particles
+                GameObject.Find("Player").GetComponent<PlayerController>().CallFX();
             }
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
