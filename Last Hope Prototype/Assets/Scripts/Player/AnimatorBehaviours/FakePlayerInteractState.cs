@@ -13,17 +13,31 @@ public class FakePlayerInteractState : StateMachineBehaviour
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
-
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	
-	}
+        
+    }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-
+        //If get damage before animations ends, cannot interact!
+        if (animator.GetNextAnimatorStateInfo(0).IsName("Damage") == false){
+            int layerMask = 1 << LayerMask.NameToLayer("Interactable");
+            Collider[] colliders = Physics.OverlapSphere(playerController.transform.position, 1, layerMask);
+            Interactable interactable = null;
+            foreach (Collider col in colliders)
+            {
+                interactable = col.gameObject.GetComponent<Interactable>();
+                if (interactable != null && interactable.CanInteract())
+                {
+                    interactable.Run();
+                    playerController.canInteract = false;
+                    break;
+                }
+            }
+        }
     }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

@@ -34,7 +34,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
             }
             else if (InputManager.Interact() && playerController.canInteract)
             {
-                playerController.anim.SetTrigger("interact");
+                animator.SetTrigger("interact");
             }
             else if (InputManager.Stance1())
             {
@@ -97,8 +97,11 @@ public class FakePlayerMoveState : StateMachineBehaviour {
             {
                 playerController.anim.SetBool("move", false);
             }
+            else
+            {
+                playerController.PendingMovement(h, v);
+            }
         }
-        playerController.PendingMovement(h, v);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

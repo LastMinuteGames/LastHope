@@ -486,13 +486,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
-        //{
-        //    currentState.OnTriggerEnter(other);
-        //}
         if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
-            canInteract = true;
+            Interactable interactable = other.gameObject.GetComponent<Interactable>();
+            if(interactable != null && interactable.CanInteract())
+            {
+                canInteract = true;
+            }
         }
     }
     public void OnTriggerExit(Collider other)

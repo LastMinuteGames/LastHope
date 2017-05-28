@@ -28,7 +28,8 @@ public class TrashEnemyMoveForwardState : StateMachineBehaviour {
         }
         else
         {
-            enemyTrash.nav.SetDestination(enemyTrash.target.position);
+            if(enemyTrash.target != null)
+                enemyTrash.nav.SetDestination(enemyTrash.target.position);
         }
 
     }

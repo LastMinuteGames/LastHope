@@ -26,25 +26,11 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     [HideInInspector]
     public double lastAttackTime = 0;
     [HideInInspector]
-    public IEnemyState currentState;
-    private IEnemyState previousState;
-    [HideInInspector]
     public Transform target;
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector]
     public Animator anim;
-
-    private static readonly int iddleState = Animator.StringToHash("Iddle");
-    private static readonly int chaseState = Animator.StringToHash("Chase");
-    private static readonly int damageState = Animator.StringToHash("Damage");
-    private static readonly int dieState = Animator.StringToHash("Die");
-    private static readonly int deadState = Animator.StringToHash("Dead");
-    private static readonly int inCombatState = Animator.StringToHash("Combat");
-    private static readonly int moveBackState = Animator.StringToHash("MoveBack");
-    private static readonly int moveForwardState = Animator.StringToHash("MoveForward");
-    private static readonly int moveAroundState = Animator.StringToHash("MoveAround");
-    private static readonly int AttackState = Animator.StringToHash("Attack");
 
     Attack lastAttackReceived;
 
@@ -64,27 +50,10 @@ public class EnemyTrash : MonoBehaviour//: Enemy
 
     void Update()
     {
-        int currentState = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
-        if (currentState == iddleState)
-        {
-            
-        } else if(currentState == chaseState)
-        {
-
-        }
-        //Cant use switch; must to find a pass around to const compilation error
-        /*switch (anim.GetCurrentAnimatorStateInfo(0).shortNameHash)
-        {
-            case iddleState:
-                break;
-            default:
-                break;
-        }*/
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        //currentState.OnTriggerEnter(other);
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
             PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
