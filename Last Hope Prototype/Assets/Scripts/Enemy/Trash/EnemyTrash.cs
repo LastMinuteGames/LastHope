@@ -77,15 +77,18 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             nav.Stop();
-            this.target = null;
+            //this.target = null;
             anim.SetBool("iddle", true);
         }
     }
 
     public void TakeDamage(int damage)
     {
+        if(life > 0)
+        {
             life -= damage;
             anim.SetTrigger("damaged");
+        }
     }
 
     public bool IsDead()

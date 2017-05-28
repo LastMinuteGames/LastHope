@@ -9,26 +9,35 @@ public class TrashEnemyMoveForwardState : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log("MoveForward Enter");
         if (enemyTrash == null)
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
+        enemyTrash.nav.speed = 5;
         enemyTrash.nav.Resume();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log("MoveForward Update");
         int probability = UnityEngine.Random.Range(0, 100);
-        if (enemyTrash.attackProbability >= probability /*&& enemyTrash.nav.remainingDistance <= enemyTrash.attackRange*/)
+        if (enemyTrash.nav.remainingDistance <= enemyTrash.attackRange)
         {
             enemyTrash.nav.Stop();
+            animator.SetBool("moveForward", false);
             animator.SetTrigger("attack");
             //return enemyTrashTypes.ATTACK_STATE;
+        } else if (enemyTrash.nav.remainingDistance > enemyTrash.combatRange)
+        {
+            animator.SetBool("moveForward", false);
+            animator.SetBool("chase", true);
         }
         else
         {
-            if(enemyTrash.target != null)
+            enemyTrash.nav.Resume();
+            if (enemyTrash.target != null)
                 enemyTrash.nav.SetDestination(enemyTrash.target.position);
         }
 

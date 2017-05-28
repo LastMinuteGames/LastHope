@@ -15,52 +15,58 @@ public class TrashEnemyMoveAroundtState : StateMachineBehaviour {
         if (enemyTrash == null)
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
+            enemyTrash.nav.Stop();
         }
 
         attackProbability = enemyTrash.attackProbability;
         approachProbability = enemyTrash.approachProbability;
         startTime = Time.time;
+        enemyTrash.transform.RotateAround(enemyTrash.target.transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (enemyTrash.target != null)
-        {
-            if (Time.time - startTime >= 2)
+            if (Time.time - startTime >= 1)
             {
                 int probability = UnityEngine.Random.Range(0, 100);
-
-                if (enemyTrash.approachProbability >= probability && enemyTrash.nav.remainingDistance >= enemyTrash.attackRange)
+                bool change = true;
+                if (enemyTrash.nav.remainingDistance > enemyTrash.attackRange)
                 {
-                    enemyTrash.nav.SetDestination(enemyTrash.target.position);
-                    enemyTrash.nav.Resume();
+                    //enemyTrash.nav.SetDestination(enemyTrash.target.position);
+                    //enemyTrash.nav.Resume();
+                    animator.SetBool("moveAround", false);
                     animator.SetTrigger("moveForward");
-                    //return enemyTrashTypes.COMBAT_MOVE_FORWARD_STATE;
                 }
 
-                if (enemyTrash.attackProbability >= probability /*&& enemyTrash.nav.remainingDistance <= enemyTrash.attackRange*/)
+                else if (enemyTrash.nav.remainingDistance <= enemyTrash.attackRange)
                 {
                     enemyTrash.nav.Stop();
                     animator.SetTrigger("attack");
-                    //return enemyTrashTypes.ATTACK_STATE;
                 }
+                else
+                {
+                    change = false;
+                }
+
+                if(change)
+                    animator.SetBool("moveAround", false);
 
                 startTime = Time.time;
             }
             else
             {
-                enemyTrash.nav.Stop();
+                //enemyTrash.nav.Stop();
                 enemyTrash.transform.RotateAround(enemyTrash.target.transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
             }
             //return type;
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        enemyTrash.transform.RotateAround(enemyTrash.target.transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

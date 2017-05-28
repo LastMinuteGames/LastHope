@@ -493,6 +493,10 @@ public class PlayerController : MonoBehaviour
             {
                 canInteract = true;
             }
+        } else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
+        {
+            int damage = 10;
+            TakeDmg(damage);
         }
     }
     public void OnTriggerExit(Collider other)
