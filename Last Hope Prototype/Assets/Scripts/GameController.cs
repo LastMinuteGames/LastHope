@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour {
         isMenu = false;
     }
 
-    IEnumerator Shake(float duration = 0.01f, float magnitude = 1f)
+    IEnumerator Shake(float duration = 0.1f, float magnitude = 1f)
     {
 
         float elapsed = 0.0f;
@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour {
         //Vector3 originalCamPos = Camera.main.transform.position;
         Vector3 originalCamPos = camera.transform.position;
         Debug.Log("Dentro");
+        Debug.Log(originalCamPos);
 
         while (elapsed < duration)
         {
@@ -73,7 +74,7 @@ public class GameController : MonoBehaviour {
             x *= magnitude * damper;
             y *= magnitude * damper;
 
-            Camera.main.transform.position = new Vector3(x, y, originalCamPos.z);
+            Camera.main.transform.position = new Vector3(originalCamPos.x + x, originalCamPos.y + y, originalCamPos.z);
 
             yield return null;
         }
