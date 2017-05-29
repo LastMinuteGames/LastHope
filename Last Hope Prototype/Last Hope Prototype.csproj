@@ -126,6 +126,10 @@
     <Compile Include="Assets\Scripts\InputManager\InputManager.cs" />
     <Compile Include="Assets\Scripts\InputManager\TestInputManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Particle Manager\AutoDisableFx.cs" />
+    <Compile Include="Assets\Scripts\Particle Manager\FxCaller_OnKey_Pools.cs" />
+    <Compile Include="Assets\Scripts\Particle Manager\FxManager_Pools.cs" />
+    <Compile Include="Assets\Scripts\Particle Manager\FxReceiver_Basic.cs" />
     <Compile Include="Assets\Scripts\PickUpController.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\IPlayerFSM.cs" />
@@ -154,6 +158,7 @@
   <ItemGroup>
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
     <None Include="Assets\Models\EnemyTrash1\EnemiTrash1_FrameAnimations.txt" />
+    <None Include="Assets\Scripts\Particle Manager\how to particulas.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\Bloom\Resources\Bloom.cginc" />
     <None Include="Assets\Standard Assets\Effects\Bloom\Resources\Bloom.shader" />
