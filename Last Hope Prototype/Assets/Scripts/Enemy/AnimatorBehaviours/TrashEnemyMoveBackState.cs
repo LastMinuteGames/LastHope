@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrashEnemyMoveBackState : StateMachineBehaviour {
 
     EnemyTrash enemyTrash;
-    float speed = 10;
+    float speed = 5;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

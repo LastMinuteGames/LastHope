@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -90,11 +84,14 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+    <Compile Include="Assets\ParticleSystems\Results\AutoDestroy.cs" />
+    <Compile Include="Assets\ParticleSystems\Results\CapsuleController.cs" />
     <Compile Include="Assets\Scripts\ArtilleryController.cs" />
     <Compile Include="Assets\Scripts\ArtilleryEventTrigger.cs" />
     <Compile Include="Assets\Scripts\BarricadeController.cs" />
     <Compile Include="Assets\Scripts\CameraGod.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\CameraShake.cs" />
     <Compile Include="Assets\Scripts\ColliderManager.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\Attack.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\AttackManager.cs" />
@@ -147,6 +144,8 @@
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerBlockState.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerBlueSpecialAttack.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerChangeStanceState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerDamaged.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerDie.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerDodgeState.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerHeavyAttack1.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerHeavyAttack2.cs" />
@@ -184,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
+    <None Include="Assets\Models\EnemyMelee1\EnemyMelee1_AnimationFrames.txt" />
     <None Include="Assets\Models\EnemyTrash1\EnemiTrash1_FrameAnimations.txt" />
     <None Include="Assets\Scripts\Particle Manager\how to particulas.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

@@ -64,22 +64,6 @@ public class EnemyTrash : MonoBehaviour//: Enemy
             }
             lastAttackReceived = currentAttackReceived;
         }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            ChangeTarget(other.transform);
-            anim.SetBool("iddle", false);
-            anim.SetTrigger("chase");
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            nav.Stop();
-            //this.target = null;
-            anim.SetBool("iddle", true);
-        }
     }
 
     public void TakeDamage(int damage)
