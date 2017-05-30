@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour
 {
+    EnemyTrash enemyTrash;
 
     // Use this for initialization
     void Start()
     {
+        enemyTrash = transform.gameObject.GetComponentInParent<EnemyTrash>();
     }
 
     // Update is called once per frame
@@ -18,15 +20,16 @@ public class PlayerDetection : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            gameObject.transform.parent.GetComponent<EnemyTrash>().OnTriggerEnter(other);
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        //Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            gameObject.transform.parent.GetComponent<EnemyTrash>().OnTriggerExit(other);
+        {
+            enemyTrash.ChangeTarget(other.transform);
+            enemyTrash.anim.SetBool("iddle", false);
+            enemyTrash.anim.SetBool("chase", true);
+        } else
+        {
+            enemyTrash.nav.Stop();
+            enemyTrash.anim.SetBool("iddle", true);
+            enemyTrash.anim.SetBool("chase", false);
+        }
     }
 }

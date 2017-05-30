@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public PlayerPassiveStats redStats;
 
     private Attack currentAttack;
+    private Attack lastAttackReceived;
 
     // HP
     public int maxHP = 100;
@@ -110,12 +111,12 @@ public class PlayerController : MonoBehaviour
 
         blueStats.attackDamage = 10.0f;
         blueStats.blockingMovementSpeed = 8.0f;
-        blueStats.movementSpeed = 14.0f;
+        blueStats.movementSpeed = 16.0f;
         blueStats.specialAttackDamage = 40.0f;
 
         redStats.attackDamage = 15.0f;
         redStats.blockingMovementSpeed = 6.0f;
-        redStats.movementSpeed = 12.0f;
+        redStats.movementSpeed = 10.0f;
         redStats.specialAttackDamage = 30.0f;
 
         playerAttacks = new Dictionary<string, Attack>();
@@ -129,6 +130,10 @@ public class PlayerController : MonoBehaviour
         playerAttacks.Add("H1", new Attack("H1", 25));
         playerAttacks.Add("H2", new Attack("H2", 30));
         playerAttacks.Add("H3", new Attack("H3", 35));
+
+        //Special Attacks
+        playerAttacks.Add("Red", new Attack("Red", 30));
+        playerAttacks.Add("Blue", new Attack("Blue", 40));
 
 
         stance = PlayerStance.STANCE_NONE;
@@ -514,9 +519,15 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
         {
-            int damage = 10;
-            TakeDamage(damage);
-            anim.SetTrigger("damaged");
+            EnemyTrash trashScript = other.gameObject.GetComponentInParent<EnemyTrash>();
+            Attack currentAttackReceived = trashScript.GetAttack();
+            //int damage = 10;
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damage") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false)
+            {
+                TakeDamage(currentAttackReceived.damage);
+                anim.SetTrigger("damaged");
+            }
+            lastAttackReceived = currentAttackReceived;
         }
     }
     public void OnTriggerExit(Collider other)

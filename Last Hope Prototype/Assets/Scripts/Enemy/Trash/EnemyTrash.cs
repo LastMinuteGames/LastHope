@@ -32,8 +32,9 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     [HideInInspector]
     public Animator anim;
 
-    Attack lastAttackReceived;
-
+    private Attack lastAttackReceived;
+    private Dictionary<String, Attack> enemyAttacks;
+    private Attack currentAttack;
 
     void Awake()
     {
@@ -46,6 +47,9 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         nav.speed = chaseSpeed;
         anim = GetComponent<Animator>();
         anim.SetBool("iddle", true);
+
+        enemyAttacks = new Dictionary<string, Attack>();
+        enemyAttacks.Add("Attack", new Attack("Attack", 10));
     }
 
     void Update()
@@ -63,22 +67,6 @@ public class EnemyTrash : MonoBehaviour//: Enemy
                 TakeDamage(currentAttackReceived.damage);
             }
             lastAttackReceived = currentAttackReceived;
-        }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            ChangeTarget(other.transform);
-            anim.SetBool("iddle", false);
-            anim.SetTrigger("chase");
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            nav.Stop();
-            //this.target = null;
-            anim.SetBool("iddle", true);
         }
     }
 
@@ -122,5 +110,15 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     public void ClearLastAttackReceived()
     {
         lastAttackReceived = null;
+    }
+
+    public Attack GetAttack()
+    {
+        return currentAttack == null ? null : enemyAttacks[currentAttack.name];
+    }
+
+    public void ChangeAttack(string name)
+    {
+        currentAttack = enemyAttacks[name];
     }
 }
