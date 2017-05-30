@@ -221,9 +221,9 @@ public class PlayerController : MonoBehaviour
         return redAbilityEnabled;
     }
 
-    public bool TakeDmg(int value)
+    public bool TakeDamage(int value)
     {
-        if ((!dead) && (!debugMode))
+        if ((!IsDead()) && (!debugMode))
         {
             return LoseHp(value);
         }
@@ -237,18 +237,13 @@ public class PlayerController : MonoBehaviour
             dmged = true;
             timer = 0;
             currentHP -= value;
-            if (currentHP <= 0 && !dead)
-            {
-                Die();
-                return true;
-            }
         }
         return false;
     }
 
     public void Heal(int value)
     {
-        if (!dead && currentHP < maxHP)
+        if (!IsDead() && currentHP < maxHP)
         {
             currentHP += value;
             if (currentHP > maxHP)
@@ -264,13 +259,19 @@ public class PlayerController : MonoBehaviour
         currentHP = maxHP;
     }
 
-    private void Die()
+    public void Die()
     {
         dead = true;
     }
 
+    public bool IsDead()
+    {
+        return dead;
+    }
+
     public void Respawn()
     {
+        anim.SetTrigger("respawn");
         if (respawnManager != null)
         {
             transform.position = respawnManager.GetRespawnPoint();
@@ -496,7 +497,8 @@ public class PlayerController : MonoBehaviour
         } else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
         {
             int damage = 10;
-            TakeDmg(damage);
+            TakeDamage(damage);
+            anim.SetTrigger("damaged");
         }
     }
     public void OnTriggerExit(Collider other)
