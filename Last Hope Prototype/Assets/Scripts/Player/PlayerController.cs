@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidBody;
     private Vector3 camForward;
     private Vector3 camRight;
+    private Dictionary<string, Attack> playerAttacks;
 
     // Interact
     public bool canInteract = false;
@@ -116,6 +117,19 @@ public class PlayerController : MonoBehaviour
         redStats.blockingMovementSpeed = 6.0f;
         redStats.movementSpeed = 12.0f;
         redStats.specialAttackDamage = 30.0f;
+
+        playerAttacks = new Dictionary<string, Attack>();
+
+        //Light attacks
+        playerAttacks.Add("L1", new Attack("L1", 10));
+        playerAttacks.Add("L2", new Attack("L2", 15));
+        playerAttacks.Add("L3", new Attack("L3", 20));
+        
+        //Heavy attacks
+        playerAttacks.Add("H1", new Attack("H1", 25));
+        playerAttacks.Add("H2", new Attack("H2", 30));
+        playerAttacks.Add("H3", new Attack("H3", 35));
+
 
         stance = PlayerStance.STANCE_NONE;
 
@@ -328,15 +342,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ChangeAttack(string name, int damage)
+    public void ChangeAttack(string name)
     {
-        if (currentAttack == null)
-        {
-            currentAttack = new Attack();
-        }
-
-        currentAttack.name = name;
-        currentAttack.damage = damage;
+        currentAttack = playerAttacks[name];
     }
 
     public void IncreaseMaxEnergy(int value)
@@ -563,6 +571,6 @@ public class PlayerController : MonoBehaviour
 
     public Attack GetAttack()
     {
-        return currentAttack;
+        return currentAttack == null ? null : playerAttacks[currentAttack.name];
     }
 }

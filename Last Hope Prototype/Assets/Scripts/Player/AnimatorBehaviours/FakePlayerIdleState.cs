@@ -22,17 +22,10 @@ public class FakePlayerIdleState : StateMachineBehaviour {
     {
         if (!attacking)
         {
+            bool change = true;
             if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
             {
                 animator.SetBool("move", true);
-            }
-            else if (InputManager.Block())
-            {
-                animator.SetBool("block", true);
-            }
-            else if (!InputManager.Block())
-            {
-                animator.SetBool("block", false);
             }
             else if (InputManager.Interact() && playerController.canInteract)
             {
@@ -82,13 +75,27 @@ public class FakePlayerIdleState : StateMachineBehaviour {
                         break;
                 }
             }
+            else if (InputManager.Block())
+            {
+                animator.SetBool("block", true);
+            }
+            else
+            {
+                change = false;
+            }
+            if(change)
+                animator.SetBool("idle", false);
+            if (change == false && !InputManager.Block())
+            {
+                animator.SetBool("block", false);
+            }
         } 
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("idle", false);
+        
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

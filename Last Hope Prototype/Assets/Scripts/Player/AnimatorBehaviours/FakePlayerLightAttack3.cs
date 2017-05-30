@@ -14,7 +14,7 @@ public class FakePlayerLightAttack3 : StateMachineBehaviour
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
-        playerController.ChangeAttack("L3", 10);
+        playerController.ChangeAttack("L3");
         playerController.CloseInputWindow();
         playerController.EndAttack();
 
