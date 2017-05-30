@@ -20,7 +20,7 @@ public class CameraShake : MonoBehaviour {
         }
     }
 
-    IEnumerator Shake(float duration = 0.2f, float magnitude = 0.5f)
+    IEnumerator Shake(float duration = 0.2f, float magnitude = 0.5f, float xMultiplier = 1.0f, float yMultiplier = 1.0f)
     {
 
         float elapsed = 0.0f;
@@ -39,8 +39,8 @@ public class CameraShake : MonoBehaviour {
             // map value to [-1, 1]
             float x = Random.value * 2.0f - 1.0f;
             float y = Random.value * 2.0f - 1.0f;
-            x *= magnitude * damper;
-            y *= magnitude * damper;
+            x *= magnitude * damper * xMultiplier;
+            y *= magnitude * damper * yMultiplier;
 
             Camera.main.transform.position = new Vector3(originalCamPos.x + x, originalCamPos.y + y, originalCamPos.z);
 
