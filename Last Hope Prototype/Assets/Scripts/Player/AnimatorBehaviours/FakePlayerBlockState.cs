@@ -20,51 +20,9 @@ public class FakePlayerBlockState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
-        {
-            playerController.anim.SetBool("move", true);
-        }
-        else if (!InputManager.Block())
+        if (!InputManager.Block())
         {
             playerController.anim.SetBool("block", false);
-        }
-        else if (InputManager.Interact() && playerController.canInteract)
-        {
-            playerController.anim.SetBool("interact", true);
-        }
-        else if (InputManager.Stance1())
-        {
-            if (playerController.IsGreyAbilityEnabled())
-            {
-                playerController.newStance = PlayerStance.STANCE_BLUE;
-                if (playerController.newStance != playerController.stance)
-                {
-                    playerController.anim.SetBool("changeStance", true);
-                }
-            }
-        }
-        else if (InputManager.Stance2())
-        {
-            if (playerController.IsRedAbilityEnabled())
-            {
-                playerController.newStance = PlayerStance.STANCE_RED;
-                if (playerController.newStance != playerController.stance)
-                {
-                    playerController.anim.SetBool("changeStance", true);
-                }
-            }
-        }
-        else if (InputManager.Dodge())
-        {
-            playerController.anim.SetBool("dodge", true);
-        }
-        else if (InputManager.LightAttack())
-        {
-            playerController.anim.SetBool("attack", true);
-        }
-        else if (InputManager.SpecialAttack())
-        {
-            playerController.anim.SetBool("specialAttack", true);
         }
     }
 
