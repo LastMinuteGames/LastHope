@@ -30,6 +30,10 @@ public class FakePlayerIdleState : StateMachineBehaviour {
             {
                 animator.SetBool("block", true);
             }
+            else if (!InputManager.Block())
+            {
+                animator.SetBool("block", false);
+            }
             else if (InputManager.Interact() && playerController.canInteract)
             {
                 animator.SetTrigger("interact");
@@ -55,10 +59,6 @@ public class FakePlayerIdleState : StateMachineBehaviour {
                         animator.SetTrigger("changeStance");
                     }
                 }
-            }
-            else if (InputManager.Dodge())
-            {
-                animator.SetTrigger("dodge");
             }
             else if (InputManager.LightAttack())
             {

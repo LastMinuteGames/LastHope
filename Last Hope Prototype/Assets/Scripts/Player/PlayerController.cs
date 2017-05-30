@@ -322,7 +322,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeAttack(string name, int damage)
     {
-        if(currentAttack == null)
+        if (currentAttack == null)
         {
             currentAttack = new Attack();
         }
@@ -433,59 +433,56 @@ public class PlayerController : MonoBehaviour
         return ret;
     }
 
-    public void StartSpecialAttack()
+    public void StartBlueSpecialAttack()
     {
         canSpecialAttack = false;
-        if (stance != PlayerStance.STANCE_NONE)
+        if (stance == PlayerStance.STANCE_BLUE)
         {
             if (LoseEnergy(1))
             {
                 canSpecialAttack = true;
-                switch (stance)
-                {
-                    case PlayerStance.STANCE_BLUE:
-                        neutralSphere.gameObject.SetActive(true);
-                        spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
-                        break;
-                    case PlayerStance.STANCE_RED:
-                        redSpehre.gameObject.SetActive(true);
-                        break;
-                }
+                neutralSphere.gameObject.SetActive(true);
+                spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
             }
         }
     }
-    public void SpecialAttack()
+    public void StartRedSpecialAttack()
+    {
+        canSpecialAttack = false;
+        if (stance == PlayerStance.STANCE_RED)
+        {
+            if (LoseEnergy(1))
+            {
+                canSpecialAttack = true;
+                redSpehre.gameObject.SetActive(true);
+            }
+        }
+    }
+    public void UpdateRedSpecialAttack()
     {
         if (canSpecialAttack)
         {
-            switch (stance)
-            {
-                case PlayerStance.STANCE_BLUE:
-                    break;
-                case PlayerStance.STANCE_RED:
-                    movement = rigidBody.velocity;
-                    Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
-                    movement += impulse;
-                    rigidBody.velocity = movement;
-                    break;
-            }
+            movement = rigidBody.velocity;
+            Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
+            movement += impulse;
+            rigidBody.velocity = movement;
         }
     }
 
-    public void EndSpecialAttack()
+    public void EndBlueSpecialAttack()
     {
         if (canSpecialAttack)
         {
-            switch (stance)
-            {
-                case PlayerStance.STANCE_BLUE:
-                    neutralSphere.gameObject.SetActive(false);
-                    Destroy(spawnedParticle);
-                    break;
-                case PlayerStance.STANCE_RED:
-                    redSpehre.gameObject.SetActive(false);
-                    break;
-            }
+            neutralSphere.gameObject.SetActive(false);
+            Destroy(spawnedParticle);
+        }
+    }
+
+    public void EndRedSpecialAttack()
+    {
+        if (canSpecialAttack)
+        {
+            redSpehre.gameObject.SetActive(false);
         }
     }
 
@@ -494,11 +491,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
             Interactable interactable = other.gameObject.GetComponent<Interactable>();
-            if(interactable != null && interactable.CanInteract())
+            if (interactable != null && interactable.CanInteract())
             {
                 canInteract = true;
             }
-        } else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
         {
             int damage = 10;
             TakeDamage(damage);

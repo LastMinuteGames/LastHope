@@ -28,11 +28,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
 
         if (!attacking)
         {
-            if (InputManager.Block())
-            {
-                playerController.anim.SetBool("block", true);
-            }
-            else if (InputManager.Interact() && playerController.canInteract)
+            if (InputManager.Interact() && playerController.canInteract)
             {
                 animator.SetTrigger("interact");
             }
