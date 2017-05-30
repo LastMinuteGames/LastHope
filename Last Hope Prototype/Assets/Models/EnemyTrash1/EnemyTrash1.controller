@@ -81,116 +81,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114078242854782478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b80d3fa433132340be9bcd87284dd93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114232744186912862
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b474ab91eab8774d9756a16a13afb93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114336800925513786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a27db372c2a24245914dc44e91df5f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114394622040816808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8078abb42ba8348a318be9372c7405, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114442733155299460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 114e1690043c37e48999b32f1d632951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114524832403765238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 663c410a8bf7020439c573999ce20904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114580772909782678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03dfea7943c84c04986bdabc3e37c9b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114697008640637582
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1992ca39f3971646b7d5a943b3cdd25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114739585029333472
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b203c14ef69ef5d478e5a0fe9a646048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114790003120089746
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53fc680afa889da4f8b850cd9a243c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1101 &1101017226183441464
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -891,7 +781,7 @@ AnimatorState:
   - {fileID: 1101631276470684790}
   - {fileID: 1101274306709617992}
   m_StateMachineBehaviours:
-  - {fileID: 114790003120089746}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -918,7 +808,7 @@ AnimatorState:
   - {fileID: 1101504554840704778}
   - {fileID: 1101306322126530806}
   m_StateMachineBehaviours:
-  - {fileID: 114580772909782678}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -943,7 +833,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101403915173832540}
   m_StateMachineBehaviours:
-  - {fileID: 114336800925513786}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -970,7 +860,7 @@ AnimatorState:
   - {fileID: 1101529881088573534}
   - {fileID: 1101184058086666920}
   m_StateMachineBehaviours:
-  - {fileID: 114697008640637582}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -996,7 +886,7 @@ AnimatorState:
   - {fileID: 1101306777930940684}
   - {fileID: 1101737694191823308}
   m_StateMachineBehaviours:
-  - {fileID: 114232744186912862}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1024,7 +914,7 @@ AnimatorState:
   - {fileID: 1101771098215041698}
   - {fileID: 1101450890974008572}
   m_StateMachineBehaviours:
-  - {fileID: 114442733155299460}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1049,7 +939,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101984750460300628}
   m_StateMachineBehaviours:
-  - {fileID: 114394622040816808}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1075,7 +965,7 @@ AnimatorState:
   - {fileID: 1101686647196756832}
   - {fileID: 1101112759636297938}
   m_StateMachineBehaviours:
-  - {fileID: 114078242854782478}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1103,7 +993,7 @@ AnimatorState:
   - {fileID: 1101168988366128134}
   - {fileID: 1101193231506132320}
   m_StateMachineBehaviours:
-  - {fileID: 114739585029333472}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1130,7 +1020,7 @@ AnimatorState:
   - {fileID: 1101631118648126734}
   - {fileID: 1101086376871826730}
   m_StateMachineBehaviours:
-  - {fileID: 114524832403765238}
+  - {fileID: 0}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

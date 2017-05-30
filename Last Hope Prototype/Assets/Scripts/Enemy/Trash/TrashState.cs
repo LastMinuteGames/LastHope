@@ -54,8 +54,6 @@
 //            trashState.ChangeState(TrashStateTypes.CHASE_STATE);
 //        }
 //    }
->>>>>>> feature/fsm-refactor
-
 //    public virtual void OnTriggerExit(Collider other)
 //    {
 //        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
