@@ -6,11 +6,15 @@ public class GameController : MonoBehaviour {
 
     public Canvas menuInGame;
     public bool isMenu = false;
+    public Camera camera;
     
 	void Start () {
         Time.timeScale = 1;
-        menuInGame = menuInGame.GetComponent<Canvas>();
-        menuInGame.gameObject.SetActive(false);
+        if(menuInGame != null)
+        {
+            menuInGame = menuInGame.GetComponent<Canvas>();
+            menuInGame.gameObject.SetActive(false);
+        }
         isMenu = false;
     }
 	
@@ -38,4 +42,5 @@ public class GameController : MonoBehaviour {
         Time.timeScale = 1.0F;
         isMenu = false;
     }
+
 }
