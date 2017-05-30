@@ -3,12 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTrash : Enemy
+public class EnemyTrash : MonoBehaviour//: Enemy
 {
 
     public int attackProbability;
     public int approachProbability;
-    //public int moveAroundPlayerProbability;
+    //public int moveAroundPlayerProbability
+    public Transform enemy;
+    public int life;
+    public int maxLife;
+    public bool dead = false;
+    public long timeToAfterDeadMS;
+    public long timeAttackRefresh;
+    public int attack;
+    public int combatRange;
+    public int attackRange;
+    public Collider katana;
+    public int chaseSpeed;
+    public int combatAngularSpeed;
+    public int frameUpdateInterval;
+
+    [HideInInspector]
+    public double lastAttackTime = 0;
+    [HideInInspector]
+    public Transform target;
+    [HideInInspector]
+    public UnityEngine.AI.NavMeshAgent nav;
+    [HideInInspector]
+    public Animator anim;
+
+    Attack lastAttackReceived;
+
 
     void Awake()
     {
@@ -19,53 +44,83 @@ public class EnemyTrash : Enemy
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         nav.speed = chaseSpeed;
-
-        currentState = new TrashIdleState(gameObject);
         anim = GetComponent<Animator>();
-
-        katana.enabled = false;
-        states = new Dictionary<TrashStateTypes, IEnemyState>();
-
-        IEnemyState state = null;
-
-        state = new TrashIdleState(this.gameObject);
-        states.Add(state.Type(), state);
-        TrashStateTypes defaultState = state.Type();
-
-        state = new TrashDeadState(this.gameObject);
-        states.Add(state.Type(), state);
-
-        state = new TrashDamagedState(this.gameObject);
-        states.Add(state.Type(), state);
-
-        state = new TrashChaseState(this.gameObject);
-        states.Add(state.Type(), state);
-
-        state = new TrashEnemyAttack(this.gameObject);
-        states.Add(state.Type(), state);
-
-        state = new TrashCombatState(this.gameObject);
-        states.Add(state.Type(), state);
-
-        state = new TrashCombatMoveAround(this.gameObject);
-        states.Add(state.Type(), state);
-
-        state = new TrashCombatMoveForwardState(this.gameObject);
-        states.Add(state.Type(), state);
-
-        state = new TrashCombatMoveBackState(this.gameObject);
-        states.Add(state.Type(), state);
-
-        ChangeState(defaultState);
+        anim.SetBool("iddle", true);
     }
 
-    void OnTriggerEnter(Collider other)
+    void Update()
     {
-        currentState.OnTriggerEnter(other);
     }
 
-    void OnTriggerExit(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        currentState.OnTriggerExit(other);
+        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
+        {
+            PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
+            Attack currentAttackReceived = playerScript.GetAttack();
+            if(lastAttackReceived == null || currentAttackReceived.name != lastAttackReceived.name)
+            {
+                TakeDamage(currentAttackReceived.damage);
+            }
+            lastAttackReceived = currentAttackReceived;
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            ChangeTarget(other.transform);
+            anim.SetBool("iddle", false);
+            anim.SetTrigger("chase");
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            nav.Stop();
+            //this.target = null;
+            anim.SetBool("iddle", true);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if(life > 0)
+        {
+            life -= damage;
+            anim.SetTrigger("damaged");
+        }
+    }
+
+    public bool IsDead()
+    {
+        Debug.Log("Current life is: " + life);
+        return life <= 0;
+    }
+
+    public void RecoveryHealth(int quantity)
+    {
+        life += quantity;
+        if (life > maxLife)
+            life = maxLife;
+    }
+
+    public void ChangeTarget(Transform target)
+    {
+        this.target = target;
+        if (this.target != null)
+            nav.SetDestination(this.target.position);
+    }
+
+    public void Dead()
+    {
+        /**
+         * TODO: Drop items if necessary
+        **/
+        Destroy(gameObject);
+    }
+
+    public void ClearLastAttackReceived()
+    {
+        lastAttackReceived = null;
     }
 }

@@ -21,7 +21,7 @@ public class UIPlayerStance : MonoBehaviour {
         Color color = new Color();
         switch (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().stance)
         {
-            case (PlayerStance.STANCE_GREY):
+            case (PlayerStance.STANCE_BLUE):
                 color.r = 0.5f;
                 color.g = 0.5f;
                 color.b = 0.5f;

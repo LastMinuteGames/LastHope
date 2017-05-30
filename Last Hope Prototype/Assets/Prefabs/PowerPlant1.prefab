@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 33608896098937100}
   - component: {fileID: 65324403471803794}
   - component: {fileID: 23437395463845200}
-  m_Layer: 0
+  - component: {fileID: 135286489920444626}
+  m_Layer: 18
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +41,7 @@ GameObject:
   - component: {fileID: 64278209444790938}
   - component: {fileID: 114313039877532914}
   - component: {fileID: 65544613256170298}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: PowerPlant1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +58,7 @@ GameObject:
   - component: {fileID: 4811173342319852}
   - component: {fileID: 33430562429991874}
   - component: {fileID: 23349429148390946}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Deco_PowerPlant1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +75,7 @@ GameObject:
   - component: {fileID: 4274227412997636}
   - component: {fileID: 33553789593056160}
   - component: {fileID: 23713648798253710}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Col_PowerPlant1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,3 +302,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bridge: {fileID: 0}
   bridgeFloor: {fileID: 0}
+--- !u!135 &135286489920444626
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321343726141594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}

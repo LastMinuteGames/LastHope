@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDetection : MonoBehaviour {
+public class PlayerDetection : MonoBehaviour
+{
 
     // Use this for initialization
     void Start()
@@ -10,21 +11,22 @@ public class PlayerDetection : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
+        //Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            gameObject.transform.parent.GetComponent<EnemyTrash>().OnPlayerDetected(other);
+            gameObject.transform.parent.GetComponent<EnemyTrash>().OnTriggerEnter(other);
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
+        //Debug.Log("Other Layer: " + other.gameObject.layer + " Player index: " + LayerMask.NameToLayer("Player"));
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            gameObject.transform.parent.GetComponent<EnemyTrash>().OnPlayerFlees(other);
+            gameObject.transform.parent.GetComponent<EnemyTrash>().OnTriggerExit(other);
     }
 }

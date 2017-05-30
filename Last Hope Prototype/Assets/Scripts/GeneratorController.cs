@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneratorController : MonoBehaviour {
+public class GeneratorController : Interactable {
 
     public GameObject energyCore;
     public Vector3 spawnPointPos;
     public Quaternion spawnPointQuat;
 
-    private bool canSpawn = false;
-    private bool spawned = false;
+    bool running = false;
 
     void Start () {
 		
 	}
 	
 	void Update () {
-        if (canSpawn)
+        /*if (canSpawn)
         {
             if (InputManager.Interact())
             {
@@ -26,29 +25,40 @@ public class GeneratorController : MonoBehaviour {
                 canSpawn = false;
                 Invoke("SpawnSpecialAbility", 5);
             }
+        }*/
+    }
+
+    public override void Run()
+    {
+        if(CanInteract())
+        {
+            //TODO: Hide message
+            Debug.Log("Generator charging...");
+            Debug.Log("Wait for 5 seconds");
+            running = true;
+            Invoke("SpawnSpecialAbility", 5);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (spawned == false)
+        if (CanInteract() && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                canSpawn = true;
-                Debug.Log("Press Interact to charge the generator");
-            }
+            //TODO: Show message
+            Debug.Log("Press Interact to charge the generator");
         }
+    }
+
+    public override bool CanInteract()
+    {
+        return !running;
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (spawned == false)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                canSpawn = false;
-            }
+            //TODO: Hide messages
         }
     }
 
