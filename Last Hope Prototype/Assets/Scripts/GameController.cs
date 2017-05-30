@@ -27,13 +27,6 @@ public class GameController : MonoBehaviour {
         {
             closeMenu();
         }
-
-        if (InputManager.Interact())
-        {
-            Debug.Log("Hola");
-            StartCoroutine(Shake()); 
-            Debug.Log("Adios");
-        }
     }
 
     public void openMenu()
@@ -48,38 +41,6 @@ public class GameController : MonoBehaviour {
         menuInGame.gameObject.SetActive(false);
         Time.timeScale = 1.0F;
         isMenu = false;
-    }
-
-    IEnumerator Shake(float duration = 0.1f, float magnitude = 1f)
-    {
-
-        float elapsed = 0.0f;
-
-        //Vector3 originalCamPos = Camera.main.transform.position;
-        Vector3 originalCamPos = camera.transform.position;
-        Debug.Log("Dentro");
-        Debug.Log(originalCamPos);
-
-        while (elapsed < duration)
-        {
-
-            elapsed += Time.deltaTime;
-
-            float percentComplete = elapsed / duration;
-            float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
-
-            // map value to [-1, 1]
-            float x = Random.value * 2.0f - 1.0f;
-            float y = Random.value * 2.0f - 1.0f;
-            x *= magnitude * damper;
-            y *= magnitude * damper;
-
-            Camera.main.transform.position = new Vector3(originalCamPos.x + x, originalCamPos.y + y, originalCamPos.z);
-
-            yield return null;
-        }
-
-        Camera.main.transform.position = originalCamPos;
     }
 
 }
