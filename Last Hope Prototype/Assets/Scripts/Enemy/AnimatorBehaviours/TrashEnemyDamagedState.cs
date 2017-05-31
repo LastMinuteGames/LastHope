@@ -9,7 +9,8 @@ public class TrashEnemyDamagedState : StateMachineBehaviour {
     {
         if (enemyTrash == null)
         {
-            enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();            
+            enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
+            enemyTrash.ClearAnimatorParameters();
         }
     }
 
@@ -19,6 +20,9 @@ public class TrashEnemyDamagedState : StateMachineBehaviour {
         if (enemyTrash.IsDead())
         {
             animator.SetBool("die", true);
+        } else if (enemyTrash.target != null)
+        {
+            animator.SetBool("chase", true);
         }
     }
 
