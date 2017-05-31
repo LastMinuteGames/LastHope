@@ -27,7 +27,10 @@ public class PlayerDetection : MonoBehaviour
             enemyTrash.anim.SetBool("chase", true);
         } else
         {
-            enemyTrash.nav.Stop();
+            if (enemyTrash.nav != null)
+            {
+                enemyTrash.nav.Stop();
+            }
             enemyTrash.anim.SetBool("iddle", true);
             enemyTrash.anim.SetBool("chase", false);
         }

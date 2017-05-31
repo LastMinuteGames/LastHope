@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     public float normalSpeed = 10;
     public float blockingSpeed = 6;
     public Transform camT;
+    private CameraShake camShake;
     public Vector3 movement;
     public Vector3 targetDirection;
     public float dodgeThrust = 1;
@@ -160,6 +161,7 @@ public class PlayerController : MonoBehaviour
         currentEnergy = maxEnergy;
 
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        camShake = camT.GetComponent<CameraShake>();
         rigidBody = GetComponent<Rigidbody>();
 
     }
@@ -181,7 +183,10 @@ public class PlayerController : MonoBehaviour
     {
         //llamada a camera shake de la camara con parámetros razonables, no muy exagerado
         Debug.Log("TERREMOTO!!");
-        StartCoroutine(camT.GetComponent<CameraShake>().Shake(0.1f, 0.25f));
+        if (camShake != null)
+        {
+            StartCoroutine(camShake.Shake(0.1f, 0.25f));
+        }
         //TODO: Add attack sound fx when we have one
     }
 

@@ -54,6 +54,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
 
     void Update()
     {
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -98,7 +99,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     public void ChangeTarget(Transform target)
     {
         this.target = target;
-        if (this.target != null)
+        if (this.target != null && nav != null)
             nav.SetDestination(this.target.position);
     }
 
