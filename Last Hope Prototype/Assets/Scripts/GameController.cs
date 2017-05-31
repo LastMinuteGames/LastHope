@@ -6,7 +6,6 @@ public class GameController : MonoBehaviour {
 
     public Canvas menuInGame;
     public bool isMenu = false;
-    public Camera camera;
     
 	void Start () {
         Time.timeScale = 1;

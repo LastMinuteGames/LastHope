@@ -20,9 +20,9 @@ public class CameraShake : MonoBehaviour {
         }
     }
 
-    IEnumerator Shake(float duration = 0.2f, float magnitude = 0.5f, float xMultiplier = 1.0f, float yMultiplier = 1.0f)
+    public IEnumerator Shake(float duration = 0.2f, float magnitude = 0.5f, float xMultiplier = 1.0f, float yMultiplier = 1.0f)
     {
-
+        Debug.Log("Hola!");
         float elapsed = 0.0f;
 
         //Vector3 originalCamPos = Camera.main.transform.position;

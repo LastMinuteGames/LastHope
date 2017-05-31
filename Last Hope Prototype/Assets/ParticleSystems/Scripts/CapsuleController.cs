@@ -35,6 +35,7 @@ public class CapsuleController : MonoBehaviour
         gameObject.transform.position = currentPos;
         if (currentHeight <= destinationY)
         {
+            StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake());
             SpawnParticles();
             SpawnDecal();
             Destroy(gameObject);

@@ -161,6 +161,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void HeavyAttackEffect()
+    {
+        //llamada a camera shake de la camara con parámetros razonables, no muy exagerado
+        Debug.Log("TERREMOTO!!");
+        StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake());
+        //TODO: Add attack sound fx when we have one
+    }
+
     void Update()
     {
         if (InputManager.DebugMode())
