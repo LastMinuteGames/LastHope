@@ -135,4 +135,14 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     {
         katana.enabled = false;
     }
+
+    public void ClearAnimatorParameters()
+    {
+        anim.SetBool("combat", false);
+        anim.SetBool("iddle", false);
+        anim.SetBool("walk", false);
+        anim.SetBool("chase", false);
+        anim.SetBool("moveAround", false);
+        anim.SetBool("moveForward", false);
+    }
 }
