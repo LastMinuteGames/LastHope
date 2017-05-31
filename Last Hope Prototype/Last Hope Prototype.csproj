@@ -84,6 +84,11 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\LookAtTarget.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\MouseMove.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\SwooshTest.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Scripts\Interpolate.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Scripts\MeleeWeaponTrail.cs" />
     <Compile Include="Assets\ParticleSystems\Scripts\CapsuleController.cs" />
     <Compile Include="Assets\Scripts\ArtilleryController.cs" />
     <Compile Include="Assets\Scripts\ArtilleryEventTrigger.cs" />
@@ -182,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
+    <None Include="Assets\MeleeWeaponTrail\README.txt" />
     <None Include="Assets\Models\EnemyMelee1\EnemyMelee1_AnimationFrames.txt" />
     <None Include="Assets\Models\EnemyTrash1\EnemiTrash1_FrameAnimations.txt" />
     <None Include="Assets\Scripts\Particle Manager\how to particulas.txt" />

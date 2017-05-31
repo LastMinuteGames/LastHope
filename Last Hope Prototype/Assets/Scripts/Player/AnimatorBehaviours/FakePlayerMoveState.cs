@@ -32,27 +32,18 @@ public class FakePlayerMoveState : StateMachineBehaviour {
             {
                 animator.SetTrigger("interact");
             }
-            else if (InputManager.Stance1())
+            else if (InputManager.Stance1() && playerController.IsBlueAbilityEnabled() &&
+                playerController.stance != PlayerStance.STANCE_BLUE)
             {
-                if (playerController.IsBlueAbilityEnabled())
-                {
-                    playerController.newStance = PlayerStance.STANCE_BLUE;
-                    if (playerController.newStance != playerController.stance)
-                    {
-                        playerController.anim.SetTrigger("changeStance");
-                    }
-                }
+                playerController.newStance = PlayerStance.STANCE_BLUE;
+                playerController.anim.SetTrigger("changeStance");
             }
-            else if (InputManager.Stance2())
+            else if (InputManager.Stance2() && playerController.IsRedAbilityEnabled() &&
+                playerController.stance != PlayerStance.STANCE_RED)
             {
-                if (playerController.IsRedAbilityEnabled())
-                {
                     playerController.newStance = PlayerStance.STANCE_RED;
-                    if (playerController.newStance != playerController.stance)
-                    {
-                        playerController.anim.SetTrigger("changeStance");
-                    }
-                }
+                    playerController.anim.SetTrigger("changeStance");
+
             }
             else if (InputManager.Dodge())
             {
