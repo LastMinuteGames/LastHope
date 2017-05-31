@@ -5,10 +5,10 @@ public class CameraController : MonoBehaviour
     public Transform playerT;
 
     //Offset from player pos to camera focus point (pivot point)
-    public Vector3 pivotOffset = new Vector3(0, 4, 0);
+    public Vector3 pivotOffset = new Vector3(0, 2, 0);
 
     //Offset from pivot to actual camera position
-    public Vector3 camOffset = new Vector3(0, 0, -7);
+    public Vector3 camOffset = new Vector3(0, 3, -9);
     public float camSpeed = 350f;
 
     private float h, v;
