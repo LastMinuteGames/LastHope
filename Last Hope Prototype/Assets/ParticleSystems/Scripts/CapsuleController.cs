@@ -39,7 +39,7 @@ public class CapsuleController : MonoBehaviour
         {
             if (!spawned)
             {
-                StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake());
+                StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake(0.3f, 1.75f));
                 SpawnParticles();
                 SpawnDecal();
                 spawned = true;

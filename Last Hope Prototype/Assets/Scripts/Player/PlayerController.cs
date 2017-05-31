@@ -20,6 +20,14 @@ public struct PlayerPassiveStats
     public float specialAttackDamage;
 }
 
+public struct CameraShakeStats
+{
+    public float duration;
+    public float magnitude;
+    public float xMultiplier;
+    public float yMultiplier;
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
@@ -39,6 +47,8 @@ public class PlayerController : MonoBehaviour
     public PlayerPassiveStats noneStats;
     public PlayerPassiveStats blueStats;
     public PlayerPassiveStats redStats;
+
+    public CameraShakeStats defaultCameraShakeStats;
 
     private Attack currentAttack;
     private Attack lastAttackReceived;
@@ -135,6 +145,12 @@ public class PlayerController : MonoBehaviour
         playerAttacks.Add("Red", new Attack("Red", 30));
         playerAttacks.Add("Blue", new Attack("Blue", 40));
 
+        //Camera Shake Default Stats
+        defaultCameraShakeStats.duration = 0.2f;
+        defaultCameraShakeStats.magnitude = 0.5f;
+        defaultCameraShakeStats.xMultiplier = 1.0f;
+        defaultCameraShakeStats.yMultiplier = 1.0f;
+
 
         stance = PlayerStance.STANCE_NONE;
 
@@ -165,7 +181,7 @@ public class PlayerController : MonoBehaviour
     {
         //llamada a camera shake de la camara con parámetros razonables, no muy exagerado
         Debug.Log("TERREMOTO!!");
-        StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake());
+        StartCoroutine(camT.GetComponent<CameraShake>().Shake(0.1f, 0.25f));
         //TODO: Add attack sound fx when we have one
     }
 
