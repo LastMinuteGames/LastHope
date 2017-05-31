@@ -51829,6 +51829,16 @@ Prefab:
       propertyPath: respawnManager
       value: 
       objectReference: {fileID: 1733716130}
+    - target: {fileID: 224430799750780026, guid: 707430ca36cb294408e3f828cbefef96,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224430799750780026, guid: 707430ca36cb294408e3f828cbefef96,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
   m_IsPrefabParent: 0
@@ -65511,7 +65521,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2006127140}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e9ef7b9c861efd946b78e27562a474ae, type: 3}
