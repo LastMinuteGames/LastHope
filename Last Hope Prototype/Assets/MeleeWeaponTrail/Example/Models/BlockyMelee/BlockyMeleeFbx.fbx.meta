@@ -1,20 +1,13 @@
 fileFormatVersion: 2
-guid: edcdf10dd99940c4dad39480c34db926
-timeCreated: 1489314403
-licenseType: Free
+guid: 7ef2d512f9ae17f4ba1a3479acb96d5e
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: BladeLOW
-    100002: //RootNode
-    400000: BladeLOW
-    400002: //RootNode
-    2300000: BladeLOW
-    3300000: BladeLOW
-    4300000: BladeLOW
+    4300000: CubeGuy
+    4300002: Cube
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 3
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
@@ -30,13 +23,13 @@ ModelImporter:
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
-    animationWrapMode: 0
+    animationWrapMode: 2
     extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.4
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -50,11 +43,11 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
-    tangentImportMode: 3
+    normalImportMode: 0
+    tangentImportMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -74,7 +67,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

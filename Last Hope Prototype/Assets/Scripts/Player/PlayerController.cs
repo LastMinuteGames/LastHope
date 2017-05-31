@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 {
     public Animator anim;
     public Collider katana;
+    public MeleeWeaponTrail katanaEmitter;
     public PlayerStance stance = PlayerStance.STANCE_NONE;
     [HideInInspector]
     public PlayerStance newStance = PlayerStance.STANCE_UNDEFINED;
@@ -164,6 +165,7 @@ public class PlayerController : MonoBehaviour
         camShake = camT.GetComponent<CameraShake>();
         rigidBody = GetComponent<Rigidbody>();
 
+        DisableSwordEmitter();
     }
 
     public void CallFX()
@@ -620,5 +622,15 @@ public class PlayerController : MonoBehaviour
     public Attack GetAttack()
     {
         return currentAttack == null ? null : playerAttacks[currentAttack.name];
+    }
+
+    public void EnableSwordEmitter()
+    {
+        katanaEmitter.Emit = true;
+    }
+
+    public void DisableSwordEmitter()
+    {
+        katanaEmitter.Emit = false;
     }
 }

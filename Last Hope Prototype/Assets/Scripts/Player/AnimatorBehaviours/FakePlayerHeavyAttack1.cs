@@ -15,6 +15,7 @@ public class FakePlayerHeavyAttack1 : StateMachineBehaviour
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
         playerController.ChangeAttack("H1");
+        playerController.DisableSwordEmitter();
         playerController.CloseInputWindow();
         playerController.EndAttack();
 

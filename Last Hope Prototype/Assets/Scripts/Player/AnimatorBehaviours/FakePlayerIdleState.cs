@@ -14,6 +14,7 @@ public class FakePlayerIdleState : StateMachineBehaviour {
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
+        playerController.DisableSwordEmitter();
         animator.SetBool("idle", true);
     }
 

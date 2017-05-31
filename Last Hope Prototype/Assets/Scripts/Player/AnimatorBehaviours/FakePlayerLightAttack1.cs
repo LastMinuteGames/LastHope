@@ -15,6 +15,7 @@ public class FakePlayerLightAttack1 : StateMachineBehaviour
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
         playerController.ChangeAttack("L1");
+        playerController.DisableSwordEmitter();
         playerController.CloseInputWindow();
         playerController.EndAttack();
 

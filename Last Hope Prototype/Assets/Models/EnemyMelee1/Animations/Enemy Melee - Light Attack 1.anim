@@ -17821,8 +17821,15 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_IsEmpty: 0
   m_Events:
-  - time: 0.083333336
+  - time: 0.45833334
     functionName: StartAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: EnableSwordEmitter
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
