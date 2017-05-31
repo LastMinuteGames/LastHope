@@ -171,6 +171,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if (InputManager.Interact())
+        {
+            HeavyAttackEffect();
+        }
+
         if (InputManager.DebugMode())
         {
             debugMode = !debugMode;

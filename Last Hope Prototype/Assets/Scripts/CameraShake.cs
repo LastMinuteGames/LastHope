@@ -14,15 +14,20 @@ public class CameraShake : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (InputManager.Interact())
+        /*if (InputManager.Interact())
         {
             StartCoroutine(Shake());
-        }
+        }*/
     }
 
     public IEnumerator Shake(float duration = 0.2f, float magnitude = 0.5f, float xMultiplier = 1.0f, float yMultiplier = 1.0f)
     {
-        Debug.Log("Hola!");
+        
+        if (this.GetComponent<CameraController>())
+        {
+            Debug.Log("A false!");
+            this.GetComponent<CameraController>().enabled = false;
+        }
         float elapsed = 0.0f;
 
         //Vector3 originalCamPos = Camera.main.transform.position;
@@ -46,8 +51,13 @@ public class CameraShake : MonoBehaviour {
 
             yield return null;
         }
-
+ 
         Camera.main.transform.position = originalCamPos;
+        if (this.GetComponent<CameraController>())
+        {
+            Debug.Log("A true!");
+            this.GetComponent<CameraController>().enabled = true;
+        }
     }
 
 }
