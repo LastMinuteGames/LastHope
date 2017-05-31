@@ -34,7 +34,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
             }
             else if (InputManager.Stance1())
             {
-                if (playerController.IsGreyAbilityEnabled())
+                if (playerController.IsBlueAbilityEnabled())
                 {
                     playerController.newStance = PlayerStance.STANCE_BLUE;
                     if (playerController.newStance != playerController.stance)
