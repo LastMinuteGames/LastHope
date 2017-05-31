@@ -193,11 +193,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (InputManager.Interact())
-        {
-            HeavyAttackEffect();
-        }
-
         if (InputManager.DebugMode())
         {
             debugMode = !debugMode;
@@ -499,6 +494,7 @@ public class PlayerController : MonoBehaviour
                 canSpecialAttack = true;
                 neutralSphere.gameObject.SetActive(true);
                 spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
+                StartCoroutine(camT.GetComponent<CameraShake>().Shake());
             }
         }
     }
