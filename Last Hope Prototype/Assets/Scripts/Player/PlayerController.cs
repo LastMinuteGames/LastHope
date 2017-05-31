@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour
         redAbilityEnabled = true;
     }
 
-    public bool IsGreyAbilityEnabled()
+    public bool IsBlueAbilityEnabled()
     {
         return greyAbilityEnabled;
     }
