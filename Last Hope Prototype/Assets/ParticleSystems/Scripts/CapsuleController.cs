@@ -57,7 +57,7 @@ public class CapsuleController : MonoBehaviour
 
     void SpawnParticles()
     {
-        Vector3 landingPos = transform.position - new Vector3(0, destinationY, 0);
+        Vector3 landingPos = transform.position;
         Instantiate(landingParticles, transform.position, transform.rotation);
         Instantiate(enemy, landingPos, transform.rotation);
     }
