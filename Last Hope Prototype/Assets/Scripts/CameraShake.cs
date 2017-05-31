@@ -6,7 +6,8 @@ public class CameraShake : MonoBehaviour {
 
 
     Camera camera;
-    
+    public bool done = false;
+
     // Use this for initialization
     void Start () {
         camera = this.GetComponent<Camera>();
@@ -22,7 +23,7 @@ public class CameraShake : MonoBehaviour {
 
     public IEnumerator Shake(float duration = 0.2f, float magnitude = 0.5f, float xMultiplier = 1.0f, float yMultiplier = 1.0f)
     {
-        
+        done = false;
         if (this.GetComponent<CameraController>())
         {
             Debug.Log("A false!");
@@ -58,6 +59,7 @@ public class CameraShake : MonoBehaviour {
             Debug.Log("A true!");
             this.GetComponent<CameraController>().enabled = true;
         }
+        done = true;
     }
 
 }

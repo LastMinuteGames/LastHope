@@ -16,6 +16,8 @@ public class CapsuleController : MonoBehaviour
     private float currentHeight;
     private float capsuleHeight;
 
+    private bool spawned = false;
+
     void Start()
     {
         startOffset = new Vector3(0, heightOffset, 0);
@@ -35,10 +37,21 @@ public class CapsuleController : MonoBehaviour
         gameObject.transform.position = currentPos;
         if (currentHeight <= destinationY)
         {
-            StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake());
-            SpawnParticles();
-            SpawnDecal();
-            Destroy(gameObject);
+            if (!spawned)
+            {
+                StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake());
+                SpawnParticles();
+                SpawnDecal();
+                spawned = true;
+
+            }else
+            {
+                if (GameObject.Find("Main Camera").GetComponent<CameraShake>().done)
+                {
+                    Destroy(gameObject);
+                }
+            }
+
         }
     }
 
