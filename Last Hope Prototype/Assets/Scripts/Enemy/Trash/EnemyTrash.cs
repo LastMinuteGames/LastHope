@@ -121,4 +121,14 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     {
         currentAttack = enemyAttacks[name];
     }
+
+    public void StartAttack()
+    {
+        katana.enabled = true;
+    }
+
+    public void EndAttack()
+    {
+        katana.enabled = false;
+    }
 }
