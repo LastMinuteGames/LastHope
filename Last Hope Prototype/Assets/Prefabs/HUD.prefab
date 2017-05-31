@@ -562,7 +562,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1649462610877642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0678b64ecaebd40991b8076f27bafb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d40959693a9ad74eac03827290ebe07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stance1Sprite: {fileID: 21300000, guid: 5487317131218f942a76d876a0cea8bf, type: 3}
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328765103553708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08ad96afaccd20442a52736f38fe82b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 23d486800603c834f8f81414cb7711b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiHealth: {fileID: 114420780969151108}
@@ -616,10 +616,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1821698310843324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0feab0d7c562a9c4186ec0128452a846, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b82fbe03b3a80141bb0bcb134216c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 60
+  startingHealth: 10
   maxHealth: 100
   testModeOn: 0
   currentHealth: 0
@@ -701,11 +701,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1166895024608720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bf28a48f8d75354ab41ed130cbd37cf, type: 3}
+  m_Script: {fileID: 11500000, guid: fde611f2595c33c48841a7bf309498e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnergy: 7
-  startingEnergy: 5
+  startingEnergy: 1
   energyBars:
   - {fileID: 114586168360631616}
   - {fileID: 114124316414571660}

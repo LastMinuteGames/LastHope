@@ -87,6 +87,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 camRight;
     private Dictionary<string, Attack> playerAttacks;
 
+    //UI
+    [SerializeField]
+    private UIManager uiManager;
+
     // Interact
     public bool canInteract = false;
 
@@ -166,6 +170,12 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         DisableSwordEmitter();
+
+        uiManager.UpdateMaxHealth(initialMaxHP);
+        uiManager.UpdateHealth(currentHP);
+        uiManager.UpdateEnergyCapacity(initialMaxEnergy);
+        uiManager.UpdateEnergy(currentEnergy);
+        uiManager.UpdatePlayerStance(stance);
     }
 
     public void CallFX()
@@ -222,8 +232,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        UpdateHPBar();
-        UpdateEnergyBar();
+        //UpdateHPBar();
+        //UpdateEnergyBar();
     }
 
     void FixedUpdate()
@@ -262,6 +272,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
         }
+        uiManager.UpdatePlayerStance(stance);
     }
 
     public void EnableGreyAbility()
@@ -300,6 +311,7 @@ public class PlayerController : MonoBehaviour
             dmged = true;
             timer = 0;
             currentHP -= value;
+            uiManager.UpdateHealth(currentHP);
         }
         return false;
     }
@@ -313,6 +325,7 @@ public class PlayerController : MonoBehaviour
             {
                 currentHP = maxHP;
             }
+            uiManager.UpdateHealth(currentHP);
         }
     }
 
@@ -320,6 +333,8 @@ public class PlayerController : MonoBehaviour
     {
         maxHP += value;
         currentHP = maxHP;
+        uiManager.UpdateMaxHealth(maxHP);
+        uiManager.UpdateHealth(currentHP);
     }
 
     public void Die()
@@ -340,6 +355,7 @@ public class PlayerController : MonoBehaviour
             transform.position = respawnManager.GetRespawnPoint();
         }
         currentHP = maxHP;
+        uiManager.UpdateHealth(currentHP);
         dead = false;
     }
 
@@ -364,6 +380,7 @@ public class PlayerController : MonoBehaviour
             {
                 currentEnergy = 0;
             }
+            uiManager.UpdateEnergy(currentEnergy);
         }
         return ret;
     }
@@ -376,6 +393,7 @@ public class PlayerController : MonoBehaviour
             {
                 currentEnergy = maxEnergy;
             }
+            uiManager.UpdateEnergy(currentEnergy);
         }
     }
 
@@ -388,6 +406,8 @@ public class PlayerController : MonoBehaviour
     {
         maxEnergy += value;
         currentEnergy = maxEnergy;
+        uiManager.UpdateEnergyCapacity(maxEnergy);
+        uiManager.UpdateEnergy(currentEnergy);
     }
 
     public void Rotate()
