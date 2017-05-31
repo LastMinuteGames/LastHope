@@ -62,11 +62,14 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         {
             PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
             Attack currentAttackReceived = playerScript.GetAttack();
-            if(lastAttackReceived == null || currentAttackReceived.name != lastAttackReceived.name)
+            if (currentAttackReceived != null)
             {
-                TakeDamage(currentAttackReceived.damage);
+                if (lastAttackReceived == null || currentAttackReceived.name != lastAttackReceived.name)
+                {
+                    TakeDamage(currentAttackReceived.damage);
+                }
+                lastAttackReceived = currentAttackReceived;
             }
-            lastAttackReceived = currentAttackReceived;
         }
     }
 

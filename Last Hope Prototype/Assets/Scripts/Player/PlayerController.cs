@@ -530,10 +530,13 @@ public class PlayerController : MonoBehaviour
             EnemyTrash trashScript = other.gameObject.GetComponentInParent<EnemyTrash>();
             Attack currentAttackReceived = trashScript.GetAttack();
             //int damage = 10;
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damage") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false)
+            if (currentAttackReceived != null)
             {
-                TakeDamage(currentAttackReceived.damage);
-                anim.SetTrigger("damaged");
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false)
+                {
+                    TakeDamage(currentAttackReceived.damage);
+                    anim.SetTrigger("damaged");
+                }
             }
             lastAttackReceived = currentAttackReceived;
         }

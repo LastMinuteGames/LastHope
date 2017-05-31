@@ -13,6 +13,7 @@ public class FakePlayerBlueSpecialAttack : StateMachineBehaviour
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
+        playerController.ChangeAttack("Blue");
         playerController.CloseInputWindow();
     }
 

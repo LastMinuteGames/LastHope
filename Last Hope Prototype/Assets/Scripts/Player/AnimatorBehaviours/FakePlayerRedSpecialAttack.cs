@@ -13,6 +13,7 @@ public class FakePlayerRedSpecialAttack : StateMachineBehaviour
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
+        playerController.ChangeAttack("Red");
         playerController.CloseInputWindow();
         playerController.StartRedSpecialAttack();
     }

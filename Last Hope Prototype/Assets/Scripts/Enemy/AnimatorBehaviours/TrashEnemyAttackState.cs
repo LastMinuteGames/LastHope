@@ -12,6 +12,7 @@ public class TrashEnemyAttackState : StateMachineBehaviour {
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
+        enemyTrash.ChangeAttack("Attack");
         enemyTrash.nav.Stop();
     }
 
