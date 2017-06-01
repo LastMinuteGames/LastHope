@@ -1,0 +1,21 @@
+FxReceiver_Basic en el player
+
+Crear objeto FxCaller con FxCaller_OnKey_Pools y tiene el receiver del player y el prefab de la particula
+
+Crear objeto que será parent de las particulas creadas (FxDefaultParent)
+
+Crear objeto FxManager con FxManager_Pools y tiene la transform del FxDefaultParent
+
+Añadir AutoDisableFx al prefab de la particula.
+
+
+ERRORES:
+
+Las particulas se activan con espacio y no con la colision al atacar.
+Las particulas no se instancian donde toca.
+
+
+COMMIT:
+
+
+

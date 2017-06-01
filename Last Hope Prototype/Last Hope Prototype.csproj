@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -90,14 +84,32 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\LookAtTarget.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\MouseMove.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\SwooshTest.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Scripts\Interpolate.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Scripts\MeleeWeaponTrail.cs" />
+    <Compile Include="Assets\ParticleSystems\Scripts\CapsuleController.cs" />
     <Compile Include="Assets\Scripts\ArtilleryController.cs" />
     <Compile Include="Assets\Scripts\ArtilleryEventTrigger.cs" />
     <Compile Include="Assets\Scripts\BarricadeController.cs" />
     <Compile Include="Assets\Scripts\CameraGod.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\CameraShake.cs" />
     <Compile Include="Assets\Scripts\ColliderManager.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\Attack.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\AttackManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyAttackState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyChase.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyCombatState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDamagedState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDeadState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDieState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyIdleState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyMoveAroundtState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyMoveBackState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyMoveForwardState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyWalkState.cs" />
     <Compile Include="Assets\Scripts\Enemy\AttackInRange.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyState.cs" />
@@ -122,11 +134,33 @@
     <Compile Include="Assets\Scripts\FPSDisplay.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GeneratorController.cs" />
+    <Compile Include="Assets\Scripts\Generic\Attack.cs" />
+    <Compile Include="Assets\Scripts\Generic\Interactable.cs" />
     <Compile Include="Assets\Scripts\InGameMenu.cs" />
     <Compile Include="Assets\Scripts\InputManager\InputManager.cs" />
     <Compile Include="Assets\Scripts\InputManager\TestInputManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Particle Manager\AutoDisableFx.cs" />
+    <Compile Include="Assets\Scripts\Particle Manager\FxCaller_OnKey_Pools.cs" />
+    <Compile Include="Assets\Scripts\Particle Manager\FxManager_Pools.cs" />
+    <Compile Include="Assets\Scripts\Particle Manager\FxReceiver_Basic.cs" />
     <Compile Include="Assets\Scripts\PickUpController.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerBlockState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerBlueSpecialAttack.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerChangeStanceState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerDamaged.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerDie.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerDodgeState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerHeavyAttack1.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerHeavyAttack2.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerHeavyAttack3.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerIdleState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerInteractState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerLightAttack1.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerLightAttack2.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerLightAttack3.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerMoveState.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerRedSpecialAttack.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\IPlayerFSM.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\PlayerFSM.cs" />
@@ -153,7 +187,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
+    <None Include="Assets\MeleeWeaponTrail\README.txt" />
+    <None Include="Assets\Models\EnemyMelee1\EnemyMelee1_AnimationFrames.txt" />
     <None Include="Assets\Models\EnemyTrash1\EnemiTrash1_FrameAnimations.txt" />
+    <None Include="Assets\Scripts\Particle Manager\how to particulas.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\Bloom\Resources\Bloom.cginc" />
     <None Include="Assets\Standard Assets\Effects\Bloom\Resources\Bloom.shader" />

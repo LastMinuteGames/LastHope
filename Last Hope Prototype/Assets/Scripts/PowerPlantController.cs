@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerPlantController : MonoBehaviour {
+public class PowerPlantController : Interactable {
 
-    private bool bridgeDown = false;
-    private bool canActivateBridge = false;
+    private bool running = false;
     public GameObject bridge;
     public GameObject bridgeFloor;
 
@@ -15,40 +14,40 @@ public class PowerPlantController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (canActivateBridge)
-        {
-            if (InputManager.Interact())
-            {
-                bridgeDown = true;
-                Debug.Log("Power plant charging...");
-                Debug.Log("Wait for 5 seconds");
-                canActivateBridge = false;
-                Invoke("ActivateBridge", 5);
-            }
-        }
+
 	}
+
+    public override void Run()
+    {
+        if(CanInteract())
+        {
+            //TODO: Hide message
+            Debug.Log("Power plant charging...");
+            Debug.Log("Wait for 5 seconds");
+            running = true;
+            Invoke("ActivateBridge", 5);
+        }
+    }
+
+    public override bool CanInteract()
+    {
+        return !running;
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (bridgeDown == false)
+        if (running == false && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-
-            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                canActivateBridge = true;
-                Debug.Log("Press E to activate the bridge.");
-            }
+            //TODO: Show message in screen
+            Debug.Log("Press E to activate the bridge.");
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (bridgeDown == false)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                canActivateBridge = false;
-            }
+            //TODO: Hide message
         }
     }
 

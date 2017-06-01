@@ -1,0 +1,1568 @@
+fileFormatVersion: 2
+guid: b667cd22eb6539c4e8c7cabf2965a3af
+timeCreated: 1496098986
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: EnemyMelee1_base
+    100004: EnemyMelee1_extra
+    100006: EnemyMelee1_weaponry
+    100008: Head
+    100010: HeadEnd
+    100012: L_Biceps
+    100014: L_Clavicle
+    100016: L_Elbow
+    100018: L_Finger
+    100020: L_Foot
+    100022: L_FootGuard
+    100024: L_Hand
+    100026: L_Shin
+    100028: L_Shoulder
+    100030: L_Shoulderpad
+    100032: L_Thigh
+    100034: L_Toe
+    100036: R_Biceps
+    100038: R_Clavicle
+    100040: R_Elbow
+    100042: R_Finger
+    100044: R_Foot
+    100046: R_FootGuard
+    100048: R_Hand
+    100050: R_Shin
+    100052: R_Shoulder
+    100054: R_Shoulderpad
+    100056: R_Thigh
+    100058: R_Toe
+    100060: Reactor
+    100062: Root
+    100064: Shield
+    100066: Skeleton_GRP
+    100068: Sword
+    100070: Torso
+    400000: //RootNode
+    400002: EnemyMelee1_base
+    400004: EnemyMelee1_extra
+    400006: EnemyMelee1_weaponry
+    400008: Head
+    400010: HeadEnd
+    400012: L_Biceps
+    400014: L_Clavicle
+    400016: L_Elbow
+    400018: L_Finger
+    400020: L_Foot
+    400022: L_FootGuard
+    400024: L_Hand
+    400026: L_Shin
+    400028: L_Shoulder
+    400030: L_Shoulderpad
+    400032: L_Thigh
+    400034: L_Toe
+    400036: R_Biceps
+    400038: R_Clavicle
+    400040: R_Elbow
+    400042: R_Finger
+    400044: R_Foot
+    400046: R_FootGuard
+    400048: R_Hand
+    400050: R_Shin
+    400052: R_Shoulder
+    400054: R_Shoulderpad
+    400056: R_Thigh
+    400058: R_Toe
+    400060: Reactor
+    400062: Root
+    400064: Shield
+    400066: Skeleton_GRP
+    400068: Sword
+    400070: Torso
+    4300000: EnemyMelee1_weaponry
+    4300002: EnemyMelee1_extra
+    4300004: EnemyMelee1_base
+    7400000: Idle
+    7400002: Combat Idle
+    7400004: Walk
+    7400006: Run MISSING
+    7400008: Light Attack 1
+    7400010: Heavy Attack 1
+    7400012: Light Attack 2
+    7400014: Heavy Attack 2
+    7400016: Heavy Attack 3
+    7400018: Blue Special Attack
+    7400020: Red Special Attack
+    7400022: Block
+    7400024: Damaged
+    7400026: Dodge
+    9500000: //RootNode
+    13700000: EnemyMelee1_base
+    13700002: EnemyMelee1_extra
+    13700004: EnemyMelee1_weaponry
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 173
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Combat Idle
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 248
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 260
+      lastFrame: 320
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run MISSING
+      takeName: Take 001
+      firstFrame: 360
+      lastFrame: 400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Light Attack 1
+      takeName: Take 001
+      firstFrame: 420
+      lastFrame: 456
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Heavy Attack 1
+      takeName: Take 001
+      firstFrame: 480
+      lastFrame: 507
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Light Attack 2
+      takeName: Take 001
+      firstFrame: 520
+      lastFrame: 550
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Heavy Attack 2
+      takeName: Take 001
+      firstFrame: 570
+      lastFrame: 590
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Heavy Attack 3
+      takeName: Take 001
+      firstFrame: 610
+      lastFrame: 636
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Blue Special Attack
+      takeName: Take 001
+      firstFrame: 650
+      lastFrame: 690
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Red Special Attack
+      takeName: Take 001
+      firstFrame: 710
+      lastFrame: 740
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Block
+      takeName: Take 001
+      firstFrame: 750
+      lastFrame: 774
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Damaged
+      takeName: Take 001
+      firstFrame: 790
+      lastFrame: 814
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Dodge
+      takeName: Take 001
+      firstFrame: 830
+      lastFrame: 860
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EnemyMelee1_base
+        weight: 1
+      - path: EnemyMelee1_extra
+        weight: 1
+      - path: EnemyMelee1_weaponry
+        weight: 1
+      - path: Skeleton_GRP
+        weight: 1
+      - path: Skeleton_GRP/Root
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_FootGuard
+        weight: 1
+      - path: Skeleton_GRP/Root/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Head/HeadEnd
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/L_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Biceps/L_Elbow/L_Hand/Sword
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/L_Clavicle/L_Shoulder/L_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/R_Hand/R_Finger
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Biceps/R_Elbow/Shield
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/R_Clavicle/R_Shoulder/R_Shoulderpad
+        weight: 1
+      - path: Skeleton_GRP/Root/Torso/Reactor
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

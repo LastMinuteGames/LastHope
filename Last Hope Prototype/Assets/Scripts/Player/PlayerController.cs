@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public enum PlayerStance
 {
     STANCE_NONE,
-    STANCE_GREY,
+    STANCE_BLUE,
     STANCE_RED,
     STANCE_UNDEFINED
 }
@@ -20,11 +20,20 @@ public struct PlayerPassiveStats
     public float specialAttackDamage;
 }
 
+public struct CameraShakeStats
+{
+    public float duration;
+    public float magnitude;
+    public float xMultiplier;
+    public float yMultiplier;
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public Animator anim;
     public Collider katana;
+    public MeleeWeaponTrail katanaEmitter;
     public PlayerStance stance = PlayerStance.STANCE_NONE;
     [HideInInspector]
     public PlayerStance newStance = PlayerStance.STANCE_UNDEFINED;
@@ -37,8 +46,13 @@ public class PlayerController : MonoBehaviour
     public Image currentEnergyBar;
 
     public PlayerPassiveStats noneStats;
-    public PlayerPassiveStats neutralStats;
+    public PlayerPassiveStats blueStats;
     public PlayerPassiveStats redStats;
+
+    public CameraShakeStats defaultCameraShakeStats;
+
+    private Attack currentAttack;
+    private Attack lastAttackReceived;
 
     // HP
     public int maxHP = 100;
@@ -57,19 +71,25 @@ public class PlayerController : MonoBehaviour
     private int initialMaxEnergy;
 
     // Movement
-    public float turnSpeed = 3;
+    public float turnSpeed = 50;
     public float speed = 10;
     public float normalSpeed = 10;
     public float blockingSpeed = 6;
     public Transform camT;
+    private CameraShake camShake;
     public Vector3 movement;
     public Vector3 targetDirection;
-    public float dodgeThrust = 25;
+    public float dodgeThrust = 1;
     public bool pendingMove = false;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
     private Vector3 camForward;
     private Vector3 camRight;
+    private Dictionary<string, Attack> playerAttacks;
+
+    //UI
+    [SerializeField]
+    private UIManager uiManager;
 
     // Interact
     public bool canInteract = false;
@@ -79,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
     // Attack
     public float attackDamage = 10.0f;
+    private bool inputWindow = false;
 
     // Special Attack
     public GameObject neutralSphere;
@@ -91,8 +112,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private PlayerStateType currentStateType;
-    public IPlayerFSM currentState;
-    private Dictionary<PlayerStateType, IPlayerFSM> states;
+    //public IPlayerFSM currentState;
+    //private Dictionary<PlayerStateType, IPlayerFSM> states;
 
     void Start()
     {
@@ -104,15 +125,37 @@ public class PlayerController : MonoBehaviour
         noneStats.movementSpeed = 12.0f;
         noneStats.specialAttackDamage = 0.0f;
 
-        neutralStats.attackDamage = 10.0f;
-        neutralStats.blockingMovementSpeed = 8.0f;
-        neutralStats.movementSpeed = 14.0f;
-        neutralStats.specialAttackDamage = 40.0f;
+        blueStats.attackDamage = 10.0f;
+        blueStats.blockingMovementSpeed = 8.0f;
+        blueStats.movementSpeed = 16.0f;
+        blueStats.specialAttackDamage = 40.0f;
 
         redStats.attackDamage = 15.0f;
         redStats.blockingMovementSpeed = 6.0f;
-        redStats.movementSpeed = 12.0f;
+        redStats.movementSpeed = 10.0f;
         redStats.specialAttackDamage = 30.0f;
+
+        playerAttacks = new Dictionary<string, Attack>();
+
+        //Light attacks
+        playerAttacks.Add("L1", new Attack("L1", 10));
+        playerAttacks.Add("L2", new Attack("L2", 15));
+        playerAttacks.Add("L3", new Attack("L3", 20));
+        
+        //Heavy attacks
+        playerAttacks.Add("H1", new Attack("H1", 25));
+        playerAttacks.Add("H2", new Attack("H2", 30));
+        playerAttacks.Add("H3", new Attack("H3", 35));
+
+        //Special Attacks
+        playerAttacks.Add("Red", new Attack("Red", 30));
+        playerAttacks.Add("Blue", new Attack("Blue", 40));
+
+        //Camera Shake Default Stats
+        defaultCameraShakeStats.duration = 0.2f;
+        defaultCameraShakeStats.magnitude = 0.5f;
+        defaultCameraShakeStats.xMultiplier = 1.0f;
+        defaultCameraShakeStats.yMultiplier = 1.0f;
 
 
         stance = PlayerStance.STANCE_NONE;
@@ -123,56 +166,44 @@ public class PlayerController : MonoBehaviour
         currentEnergy = maxEnergy;
 
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        camShake = camT.GetComponent<CameraShake>();
         rigidBody = GetComponent<Rigidbody>();
 
-        IPlayerFSM state = new PlayerIdleState(gameObject);
-        PlayerStateType defaultState = state.Type();
-        states = new Dictionary<PlayerStateType, IPlayerFSM>();
-        states.Add(state.Type(), state);
+        DisableSwordEmitter();
 
-        state = new PlayerBlockState(gameObject);
-        states.Add(state.Type(), state);
+        uiManager.UpdateMaxHealth(initialMaxHP);
+        uiManager.UpdateHealth(currentHP);
+        uiManager.UpdateEnergyCapacity(initialMaxEnergy);
+        uiManager.UpdateEnergy(currentEnergy);
+        uiManager.UpdatePlayerStance(stance);
+    }
 
-        state = new PlayerMoveBlockState(gameObject);
-        states.Add(state.Type(), state);
+    public void CallFX()
+    {
+        GameObject temp1 = GameObject.Find("FxCaller");
+        if (temp1 != null)
+        {
+            FxCaller_OnKey_Pools temp = temp1.GetComponent<FxCaller_OnKey_Pools>();
+            if (temp != null)
+            {
+                temp.ThrowFX();
+            }
+        }
+    }
 
-        state = new PlayerDamageState(gameObject);
-        states.Add(state.Type(), state);
-
-        state = new PlayerDeadState(gameObject);
-        states.Add(state.Type(), state);
-
-        state = new PlayerRespawnState(gameObject);
-        states.Add(state.Type(), state);
-
-        state = new PlayerDodgeState(gameObject);
-        states.Add(state.Type(), state);
-
-        state = new PlayerInteractState(gameObject);
-        states.Add(state.Type(), state);
-
-        state = new PlayerAttackState(gameObject);
-        states.Add(state.Type(), state);
-
-        state = new PlayerSpecialAttackState(gameObject);
-        states.Add(state.Type(), state);
-
-        state = new PlayerChangeStanceState(gameObject);
-        states.Add(state.Type(), state);
-
-        state = new PlayerMoveState(gameObject);
-        states.Add(state.Type(), state);
-
-        ChangeState(defaultState);
+    public void HeavyAttackEffect()
+    {
+        //llamada a camera shake de la camara con parámetros razonables, no muy exagerado
+        Debug.Log("TERREMOTO!!");
+        if (camShake != null)
+        {
+            StartCoroutine(camShake.Shake(0.1f, 0.25f));
+        }
+        //TODO: Add attack sound fx when we have one
     }
 
     void Update()
     {
-        PlayerStateType state = currentState.Update();
-        if (state != PlayerStateType.PLAYER_STATE_UNDEFINED && state != currentStateType)
-        {
-            ChangeState(state);
-        }
 
         if (InputManager.DebugMode())
         {
@@ -201,8 +232,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        UpdateHPBar();
-        UpdateEnergyBar();
+        //UpdateHPBar();
+        //UpdateEnergyBar();
     }
 
     void FixedUpdate()
@@ -218,15 +249,15 @@ public class PlayerController : MonoBehaviour
     {
         switch (stance)
         {
-            case PlayerStance.STANCE_GREY:
+            case PlayerStance.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
                     Debug.Log("NEUTRAL STANCE");
                     this.stance = stance;
-                    normalSpeed = neutralStats.movementSpeed;
-                    blockingSpeed = neutralStats.blockingMovementSpeed;
-                    attackDamage = neutralStats.attackDamage;
-                    specialAttackDamage = neutralStats.specialAttackDamage;
+                    normalSpeed = blueStats.movementSpeed;
+                    blockingSpeed = blueStats.blockingMovementSpeed;
+                    attackDamage = blueStats.attackDamage;
+                    specialAttackDamage = blueStats.specialAttackDamage;
                 }
                 break;
             case PlayerStance.STANCE_RED:
@@ -241,6 +272,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
         }
+        uiManager.UpdatePlayerStance(stance);
     }
 
     public void EnableGreyAbility()
@@ -253,7 +285,7 @@ public class PlayerController : MonoBehaviour
         redAbilityEnabled = true;
     }
 
-    public bool IsGreyAbilityEnabled()
+    public bool IsBlueAbilityEnabled()
     {
         return greyAbilityEnabled;
     }
@@ -263,9 +295,9 @@ public class PlayerController : MonoBehaviour
         return redAbilityEnabled;
     }
 
-    public bool TakeDmg(int value)
+    public bool TakeDamage(int value)
     {
-        if ((!dead) && (!debugMode))
+        if ((!IsDead()) && (!debugMode))
         {
             return LoseHp(value);
         }
@@ -279,24 +311,21 @@ public class PlayerController : MonoBehaviour
             dmged = true;
             timer = 0;
             currentHP -= value;
-            if (currentHP <= 0 && !dead)
-            {
-                Die();
-                return true;
-            }
+            uiManager.UpdateHealth(currentHP);
         }
         return false;
     }
 
     public void Heal(int value)
     {
-        if (!dead && currentHP < maxHP)
+        if (!IsDead() && currentHP < maxHP)
         {
             currentHP += value;
             if (currentHP > maxHP)
             {
                 currentHP = maxHP;
             }
+            uiManager.UpdateHealth(currentHP);
         }
     }
 
@@ -304,21 +333,40 @@ public class PlayerController : MonoBehaviour
     {
         maxHP += value;
         currentHP = maxHP;
+        uiManager.UpdateMaxHealth(maxHP);
+        uiManager.UpdateHealth(currentHP);
     }
 
-    private void Die()
+    public void Die()
     {
         dead = true;
     }
 
+    public bool IsDead()
+    {
+        return dead;
+    }
+
     public void Respawn()
     {
+        anim.SetTrigger("respawn");
         if (respawnManager != null)
         {
             transform.position = respawnManager.GetRespawnPoint();
         }
         currentHP = maxHP;
+        uiManager.UpdateHealth(currentHP);
         dead = false;
+    }
+
+    public bool CanLoseEnergy(int value)
+    {
+        bool ret = false;
+        if (currentEnergy >= value)
+        {
+            ret = true;
+        }
+        return ret;
     }
 
     public bool LoseEnergy(int value)
@@ -332,6 +380,7 @@ public class PlayerController : MonoBehaviour
             {
                 currentEnergy = 0;
             }
+            uiManager.UpdateEnergy(currentEnergy);
         }
         return ret;
     }
@@ -344,13 +393,21 @@ public class PlayerController : MonoBehaviour
             {
                 currentEnergy = maxEnergy;
             }
+            uiManager.UpdateEnergy(currentEnergy);
         }
+    }
+
+    public void ChangeAttack(string name)
+    {
+        currentAttack = playerAttacks[name];
     }
 
     public void IncreaseMaxEnergy(int value)
     {
         maxEnergy += value;
         currentEnergy = maxEnergy;
+        uiManager.UpdateEnergyCapacity(maxEnergy);
+        uiManager.UpdateEnergy(currentEnergy);
     }
 
     public void Rotate()
@@ -426,71 +483,110 @@ public class PlayerController : MonoBehaviour
         blocking = value;
     }
 
-    public void StartSpecialAttack()
+    public PlayerStance SpecialAttackToPerform()
     {
+        PlayerStance ret = PlayerStance.STANCE_UNDEFINED;
         canSpecialAttack = false;
         if (stance != PlayerStance.STANCE_NONE)
+        {
+            if (CanLoseEnergy(1))
+            {
+                canSpecialAttack = true;
+                ret = stance;
+            }
+            else
+            {
+                ret = PlayerStance.STANCE_NONE;
+            }
+        }
+        else
+        {
+            ret = PlayerStance.STANCE_NONE;
+        }
+        return ret;
+    }
+
+    public void StartBlueSpecialAttack()
+    {
+        canSpecialAttack = false;
+        if (stance == PlayerStance.STANCE_BLUE)
         {
             if (LoseEnergy(1))
             {
                 canSpecialAttack = true;
-                switch (stance)
+                neutralSphere.gameObject.SetActive(true);
+                spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
+                if (camShake != null)
                 {
-                    case PlayerStance.STANCE_GREY:
-                        neutralSphere.gameObject.SetActive(true);
-                        spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
-                        break;
-                    case PlayerStance.STANCE_RED:
-                        redSpehre.gameObject.SetActive(true);
-                        break;
+                    StartCoroutine(camShake.Shake());
                 }
             }
         }
     }
-    public void SpecialAttack()
+    public void StartRedSpecialAttack()
     {
-        if (canSpecialAttack)
+        canSpecialAttack = false;
+        if (stance == PlayerStance.STANCE_RED)
         {
-            switch (stance)
+            if (LoseEnergy(1))
             {
-                case PlayerStance.STANCE_GREY:
-                    break;
-                case PlayerStance.STANCE_RED:
-                    movement = rigidBody.velocity;
-                    Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
-                    movement += impulse;
-                    rigidBody.velocity = movement;
-                    break;
+                canSpecialAttack = true;
+                redSpehre.gameObject.SetActive(true);
             }
         }
     }
-
-    public void EndSpecialAttack()
+    public void UpdateRedSpecialAttack()
     {
         if (canSpecialAttack)
         {
-            switch (stance)
-            {
-                case PlayerStance.STANCE_GREY:
-                    neutralSphere.gameObject.SetActive(false);
-                    Destroy(spawnedParticle);
-                    break;
-                case PlayerStance.STANCE_RED:
-                    redSpehre.gameObject.SetActive(false);
-                    break;
-            }
+            movement = rigidBody.velocity;
+            Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
+            movement += impulse;
+            rigidBody.velocity = movement;
+        }
+    }
+
+    public void EndBlueSpecialAttack()
+    {
+        if (canSpecialAttack)
+        {
+            neutralSphere.gameObject.SetActive(false);
+            Destroy(spawnedParticle);
+        }
+    }
+
+    public void EndRedSpecialAttack()
+    {
+        if (canSpecialAttack)
+        {
+            redSpehre.gameObject.SetActive(false);
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
-            currentState.OnTriggerEnter(other);
+            Interactable interactable = other.gameObject.GetComponent<Interactable>();
+            if (interactable != null && interactable.CanInteract())
+            {
+                canInteract = true;
+            }
         }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
         {
-            canInteract = true;
+            EnemyTrash trashScript = other.gameObject.GetComponentInParent<EnemyTrash>();
+            Attack currentAttackReceived = trashScript.GetAttack();
+            //int damage = 10;
+            if (currentAttackReceived != null)
+            {
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false)
+                {
+                    TakeDamage(currentAttackReceived.damage);
+                    anim.SetTrigger("damaged");
+                }
+            }
+            lastAttackReceived = currentAttackReceived;
         }
     }
     public void OnTriggerExit(Collider other)
@@ -508,21 +604,53 @@ public class PlayerController : MonoBehaviour
         currentHPBar.rectTransform.localScale = new Vector3(ratio * maxHP / initialMaxHP, 1, 1);
     }
 
-    void UpdateEnergyBar()
+    private void UpdateEnergyBar()
     {
         float ratio = (float)currentEnergy / maxEnergy;
         currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
     }
 
-    public void ChangeState(PlayerStateType type)
+    //public void ChangeState(PlayerStateType type)
+    //{
+    //if (states.ContainsKey(type))
+    //{
+    //    if (currentState != null)
+    //        currentState.End();
+    //    currentState = states[type];
+    //    currentState.Start();
+    //    currentStateType = currentState.Type();
+    //}
+    //}
+
+    public void OpenInputWindow()
     {
-        if (states.ContainsKey(type))
-        {
-            if (currentState != null)
-                currentState.End();
-            currentState = states[type];
-            currentState.Start();
-            currentStateType = currentState.Type();
-        }
+        inputWindow = true;
+        //Debug.Log("window opened");
+    }
+
+    public void CloseInputWindow()
+    {
+        inputWindow = false;
+        //Debug.Log("window closed");
+    }
+
+    public bool GetInputWindowState()
+    {
+        return inputWindow;
+    }
+
+    public Attack GetAttack()
+    {
+        return currentAttack == null ? null : playerAttacks[currentAttack.name];
+    }
+
+    public void EnableSwordEmitter()
+    {
+        katanaEmitter.Emit = true;
+    }
+
+    public void DisableSwordEmitter()
+    {
+        katanaEmitter.Emit = false;
     }
 }

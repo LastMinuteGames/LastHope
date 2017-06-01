@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-class TrashEnemyAttack : TrashState
+/*class TrashEnemyAttack : TrashState
 {
     double msStartTime;
 
@@ -48,5 +48,5 @@ class TrashEnemyAttack : TrashState
         trashState.anim.SetBool("attack", false);
         trashState.EndAttack();
     }
-}
+}*/
 
