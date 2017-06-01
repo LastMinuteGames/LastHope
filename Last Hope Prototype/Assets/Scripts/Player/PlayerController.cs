@@ -580,7 +580,7 @@ public class PlayerController : MonoBehaviour
             //int damage = 10;
             if (currentAttackReceived != null)
             {
-                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false)
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == false)
                 {
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");

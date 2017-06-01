@@ -183,7 +183,10 @@
     <Compile Include="Assets\Scripts\PowerPlantController.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
-    <Compile Include="Assets\Scripts\UIPlayerStance.cs" />
+    <Compile Include="Assets\Scripts\UI\UIEnergy.cs" />
+    <Compile Include="Assets\Scripts\UI\UIHealth.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\UIPlayerStance.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
