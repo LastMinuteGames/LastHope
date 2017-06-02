@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class MainMenu : MonoBehaviour {
 
     public Button start;
@@ -40,6 +41,12 @@ public class MainMenu : MonoBehaviour {
     bool downInUse = false;
     bool leftInUse = false;
     bool rightInUse = false;
+
+    //Audio
+    AudioSource audio;
+    public AudioClip moveFx;
+    public AudioClip selectFx;
+    
 
     // Use this for initialization
     void Start () {
@@ -114,6 +121,9 @@ public class MainMenu : MonoBehaviour {
         //Flag isHelp to false
         isCredits = false;
 
+        //Initialize audio
+        audio = GetComponent<AudioSource>();
+
     }
 
     //Move focus up
@@ -123,6 +133,7 @@ public class MainMenu : MonoBehaviour {
         if (focus != 0)
         {
             focus = focus - 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -135,6 +146,7 @@ public class MainMenu : MonoBehaviour {
         if (focus != 3)
         {
             focus = focus + 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -147,6 +159,7 @@ public class MainMenu : MonoBehaviour {
         if (focus == 0)
         {
             focus = 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -159,6 +172,7 @@ public class MainMenu : MonoBehaviour {
         if (focus == 1)
         {
             focus = 0;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -350,8 +364,8 @@ public class MainMenu : MonoBehaviour {
             //Go back to main menu
             if (InputManager.Pause())
             {
-                if (isHelp) closeHelp();
-                if (isCredits) closeCredits();
+                if (isHelp) closeHelp(); audio.PlayOneShot(selectFx, 1F);
+                if (isCredits) closeCredits(); audio.PlayOneShot(selectFx, 1F);
             }
         }
         else
@@ -366,6 +380,7 @@ public class MainMenu : MonoBehaviour {
                         upInUse = true;
                         focus = MoveFocusUp(focus);
                         UpdateFocus(focus);
+                        
                     }
                 }
                 else
@@ -379,6 +394,7 @@ public class MainMenu : MonoBehaviour {
                         downInUse = true;
                         focus = MoveFocusDown(focus);
                         UpdateFocus(focus);
+                        
                     }
                 }
                 else
@@ -423,10 +439,12 @@ public class MainMenu : MonoBehaviour {
             if (isConfirmExit)
             {
                 EnterPress(focusExit);
+                audio.PlayOneShot(selectFx, 1F);
             }
             else
             {
                 EnterPress(focus);
+                audio.PlayOneShot(selectFx, 1F);
             }
         }
     }
