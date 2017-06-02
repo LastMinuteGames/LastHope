@@ -32,6 +32,11 @@ public class InGameMenu : MonoBehaviour
     bool leftInUse = false;
     bool rightInUse = false;
 
+    //Audio
+    AudioSource audio;
+    public AudioClip moveFx;
+    public AudioClip selectFx;
+
     // Use this for initialization
     void Start()
     {
@@ -76,6 +81,9 @@ public class InGameMenu : MonoBehaviour
 
         //focus exit menu
         focusExit = 1;
+
+        //Initialize audio
+        audio = GetComponent<AudioSource>();
     }
 
     //Move focus up
@@ -85,6 +93,7 @@ public class InGameMenu : MonoBehaviour
         if (focus != 0)
         {
             focus = focus - 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -97,6 +106,7 @@ public class InGameMenu : MonoBehaviour
         if (focus != 1)
         {
             focus = focus + 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -109,6 +119,7 @@ public class InGameMenu : MonoBehaviour
         if (focus == 0)
         {
             focus = 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -121,6 +132,7 @@ public class InGameMenu : MonoBehaviour
         if (focus == 1)
         {
             focus = 0;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -186,10 +198,11 @@ public class InGameMenu : MonoBehaviour
             switch (focus)
             {
                 case 0:
-                    this.GetComponentInParent<GameController>().closeMenu();
+                    this.GetComponentInParent<GameController>().closeMenu(true);
                     break;
                 case 1:
                     openExitMenu();
+                    audio.PlayOneShot(selectFx, 1F);
                     break;
             }
         }
@@ -199,9 +212,11 @@ public class InGameMenu : MonoBehaviour
             {
                 case 0:
                     GetComponentInParent<GameController>().isMenu = false;
+                    audio.PlayOneShot(selectFx, 1F);
                     SceneManager.LoadScene("Menu");
                     break;
                 case 1:
+                    audio.PlayOneShot(selectFx, 1F);
                     closeExitMenu();
                     break;
             }
