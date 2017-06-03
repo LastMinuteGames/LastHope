@@ -45,13 +45,13 @@ public class FakePlayerMoveState : StateMachineBehaviour {
                     playerController.anim.SetTrigger("changeStance");
 
             }
-            else if (InputManager.Dodge())
-            {
-                playerController.anim.SetTrigger("dodge");
-            }
             else if (h == 0 && v == 0)
             {
                 playerController.anim.SetBool("idle", true);
+            }
+            else if (InputManager.Dodge())
+            {
+                playerController.anim.SetTrigger("dodge");
             }
             else if (InputManager.LightAttack())
             {
