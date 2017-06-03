@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     public Collider sword;
     public MeleeWeaponTrail swordEmitter;
     public Collider shield;
-    //public MeleeWeaponTrail shieldEmitter;
+    public MeleeWeaponTrail shieldEmitter;
     public PlayerStance stance = PlayerStance.STANCE_NONE;
     [HideInInspector]
     public PlayerStance newStance = PlayerStance.STANCE_UNDEFINED;
@@ -669,11 +669,11 @@ public class PlayerController : MonoBehaviour
 
     public void EnableShieldEmitter()
     {
-        //shieldEmitter.Emit = true;
+        shieldEmitter.Emit = true;
     }
 
     public void DisableShieldEmitter()
     {
-        //shieldEmitter.Emit = false;
+        shieldEmitter.Emit = false;
     }
 }
