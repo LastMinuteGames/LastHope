@@ -356,12 +356,31 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114286968067442116, guid: 4951d92067ab87d4ba980b239d2565ea,
+    - target: {fileID: 1935710914205072, guid: 4951d92067ab87d4ba980b239d2565ea, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114035898800108962, guid: 4951d92067ab87d4ba980b239d2565ea,
         type: 2}
       propertyPath: m_Text
       value: Settings
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114048656618519230, guid: 4951d92067ab87d4ba980b239d2565ea,
+        type: 2}
+      propertyPath: m_Text
+      value: Quality
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283240029286514, guid: 4951d92067ab87d4ba980b239d2565ea,
+        type: 2}
+      propertyPath: m_Text
+      value: Music volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710214204959902, guid: 4951d92067ab87d4ba980b239d2565ea, type: 2}
+      propertyPath: m_Name
+      value: Settings
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114842286403035408, guid: 4951d92067ab87d4ba980b239d2565ea, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4951d92067ab87d4ba980b239d2565ea, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1008319549

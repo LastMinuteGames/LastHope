@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour {
     public Canvas helpCanvas;
     //Settings
     public bool isSettings = false;
-    //public Canvas settingsCanvas;
+    public Canvas settingsCanvas;
     //Credits
     public bool isCredits = false;
     public Canvas creditsCanvas;
@@ -124,6 +124,10 @@ public class MainMenu : MonoBehaviour {
 
         //Flag isHelp to false
         isHelp = false;
+
+        //SettingsCanvas
+        settingsCanvas = settingsCanvas.GetComponent<Canvas>();
+        settingsCanvas.gameObject.SetActive(false);
 
         //Flag isSettings to false
         isSettings = false;
@@ -309,6 +313,7 @@ public class MainMenu : MonoBehaviour {
                     openHelp();
                     break;
                 case 2:
+                    openSettings();
                     break;
                 case 3:
                     openCredits();
@@ -358,6 +363,7 @@ public class MainMenu : MonoBehaviour {
         isHelp = true;
         start.gameObject.SetActive(false);
         help.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
         credits.gameObject.SetActive(false);
         exit.gameObject.SetActive(false);
     }
@@ -369,6 +375,31 @@ public class MainMenu : MonoBehaviour {
         isHelp = false;
         start.gameObject.SetActive(true);
         help.gameObject.SetActive(true);
+        settings.gameObject.SetActive(true);
+        credits.gameObject.SetActive(true);
+        exit.gameObject.SetActive(true);
+    }
+
+    //Open Settings
+    void openSettings()
+    {
+        settingsCanvas.gameObject.SetActive(true);
+        isSettings = true;
+        start.gameObject.SetActive(false);
+        help.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        credits.gameObject.SetActive(false);
+        exit.gameObject.SetActive(false);
+    }
+
+    //Close Settings
+    void closeSettings()
+    {
+        settingsCanvas.gameObject.SetActive(false);
+        isSettings = true;
+        start.gameObject.SetActive(true);
+        help.gameObject.SetActive(true);
+        settings.gameObject.SetActive(true);
         credits.gameObject.SetActive(true);
         exit.gameObject.SetActive(true);
     }
@@ -380,6 +411,7 @@ public class MainMenu : MonoBehaviour {
         isCredits = true;
         start.gameObject.SetActive(false);
         help.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
         credits.gameObject.SetActive(false);
         exit.gameObject.SetActive(false);
     }
@@ -391,19 +423,21 @@ public class MainMenu : MonoBehaviour {
         isCredits = false;
         start.gameObject.SetActive(true);
         help.gameObject.SetActive(true);
+        settings.gameObject.SetActive(true);
         credits.gameObject.SetActive(true);
         exit.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update () {
-        if (isHelp || isCredits)
+        if (isHelp || isCredits || isSettings)
         {
             //Go back to main menu
             if (InputManager.Pause())
             {
                 if (isHelp) closeHelp(); audio.PlayOneShot(selectFx, 1F);
                 if (isCredits) closeCredits(); audio.PlayOneShot(selectFx, 1F);
+                if (isSettings) closeSettings(); audio.PlayOneShot(selectFx, 1F);
             }
         }
         else
