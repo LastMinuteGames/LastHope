@@ -32,8 +32,10 @@ public struct CameraShakeStats
 public class PlayerController : MonoBehaviour
 {
     public Animator anim;
-    public Collider katana;
-    public MeleeWeaponTrail katanaEmitter;
+    public Collider sword;
+    public MeleeWeaponTrail swordEmitter;
+    public Collider shield;
+    //public MeleeWeaponTrail shieldEmitter;
     public PlayerStance stance = PlayerStance.STANCE_NONE;
     [HideInInspector]
     public PlayerStance newStance = PlayerStance.STANCE_UNDEFINED;
@@ -170,6 +172,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         DisableSwordEmitter();
+        DisableShieldEmitter();
 
         uiManager.UpdateMaxHealth(initialMaxHP);
         uiManager.UpdateHealth(currentHP);
@@ -460,14 +463,24 @@ public class PlayerController : MonoBehaviour
         pendingMove = false;
     }
 
-    public void StartAttack()
+    public void StartSwordAttack()
     {
-        katana.enabled = true;
+        sword.enabled = true;
     }
 
-    public void EndAttack()
+    public void EndSwordAttack()
     {
-        katana.enabled = false;
+        sword.enabled = false;
+    }
+
+    public void StartShieldAttack()
+    {
+        shield.enabled = true;
+    }
+
+    public void EndShieldAttack()
+    {
+        shield.enabled = false;
     }
 
     public void Dodge()
@@ -646,11 +659,21 @@ public class PlayerController : MonoBehaviour
 
     public void EnableSwordEmitter()
     {
-        katanaEmitter.Emit = true;
+        swordEmitter.Emit = true;
     }
 
     public void DisableSwordEmitter()
     {
-        katanaEmitter.Emit = false;
+        swordEmitter.Emit = false;
+    }
+
+    public void EnableShieldEmitter()
+    {
+        //shieldEmitter.Emit = true;
+    }
+
+    public void DisableShieldEmitter()
+    {
+        //shieldEmitter.Emit = false;
     }
 }

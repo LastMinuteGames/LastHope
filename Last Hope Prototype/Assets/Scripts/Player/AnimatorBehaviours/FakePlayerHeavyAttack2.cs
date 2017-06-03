@@ -16,8 +16,10 @@ public class FakePlayerHeavyAttack2 : StateMachineBehaviour
         }
         playerController.ChangeAttack("H2");
         playerController.DisableSwordEmitter();
+        playerController.DisableShieldEmitter();
         playerController.CloseInputWindow();
-        playerController.EndAttack();
+        playerController.EndSwordAttack();
+        playerController.EndShieldAttack();
 
         h = InputManager.LeftJoystick().x;
         v = InputManager.LeftJoystick().z;
@@ -48,7 +50,7 @@ public class FakePlayerHeavyAttack2 : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         playerController.CloseInputWindow();
-        playerController.EndAttack();
+        playerController.EndShieldAttack();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
