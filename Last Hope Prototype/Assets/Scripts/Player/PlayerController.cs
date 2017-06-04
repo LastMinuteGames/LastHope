@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     private CameraShake camShake;
     public Vector3 movement;
     public Vector3 targetDirection;
-    public float dodgeThrust = 1;
+    public float dodgeThrust;// = 5;
     public bool pendingMove = false;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
@@ -112,8 +112,11 @@ public class PlayerController : MonoBehaviour
     public float specialAttackDamage = 40;
     private bool canSpecialAttack = false;
 
+    private bool isDodge = false;
+
     [SerializeField]
     private PlayerStateType currentStateType;
+
     //public IPlayerFSM currentState;
     //private Dictionary<PlayerStateType, IPlayerFSM> states;
 
@@ -241,7 +244,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (pendingMove)
+        if (IsDodge)
+        {
+            Dodge();
+        }
+        else if (pendingMove)
         {
             Rotate();
             Move();
@@ -485,10 +492,11 @@ public class PlayerController : MonoBehaviour
 
     public void Dodge()
     {
-        movement = rigidBody.velocity;
-        Vector3 impulse = targetDirection.normalized * dodgeThrust;
-        movement += impulse;
-        rigidBody.velocity = movement;
+        rigidBody.MovePosition(transform.position + transform.forward * dodgeThrust);
+        //movement = rigidBody.velocity;
+        //Vector3 impulse = targetDirection.normalized * dodgeThrust;
+        //movement += impulse;
+        //rigidBody.velocity = movement;
     }
 
     public void SetBlocking(bool value)
@@ -675,5 +683,17 @@ public class PlayerController : MonoBehaviour
     public void DisableShieldEmitter()
     {
         shieldEmitter.Emit = false;
+   }
+    public bool IsDodge
+    {
+        get
+        {
+            return isDodge;
+        }
+
+        set
+        {
+            isDodge = value;
+        }
     }
 }
