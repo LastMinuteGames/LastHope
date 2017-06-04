@@ -2550,9 +2550,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ee01e34310a0e49a9e88cf8022473d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  qualityText: {fileID: 114048656618519230}
+  volumeText: {fileID: 114411154112324588}
   qualitySlider: {fileID: 114028289847757168}
   volumeSlider: {fileID: 114528495181669872}
   qualityValue: {fileID: 114438750377128922}
+  unselectedTextColor: {r: 0, g: 0, b: 0, a: 0}
+  selectedTextColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114783159764433220
 MonoBehaviour:
   m_ObjectHideFlags: 1
