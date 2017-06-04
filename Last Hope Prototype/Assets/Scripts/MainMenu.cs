@@ -396,7 +396,7 @@ public class MainMenu : MonoBehaviour {
     void closeSettings()
     {
         settingsCanvas.gameObject.SetActive(false);
-        isSettings = true;
+        isSettings = false;
         start.gameObject.SetActive(true);
         help.gameObject.SetActive(true);
         settings.gameObject.SetActive(true);
@@ -435,9 +435,9 @@ public class MainMenu : MonoBehaviour {
             //Go back to main menu
             if (InputManager.Pause())
             {
-                if (isHelp) closeHelp(); audio.PlayOneShot(selectFx, 1F);
-                if (isCredits) closeCredits(); audio.PlayOneShot(selectFx, 1F);
-                if (isSettings) closeSettings(); audio.PlayOneShot(selectFx, 1F);
+                if (isHelp) { closeHelp(); audio.PlayOneShot(selectFx, 1F); }
+                if (isCredits) { closeCredits(); audio.PlayOneShot(selectFx, 1F); }
+                if (isSettings) { closeSettings(); audio.PlayOneShot(selectFx, 1F); }
             }
         }
         else
