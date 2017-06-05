@@ -48,7 +48,7 @@ public class MainMenu : MonoBehaviour {
     bool rightInUse = false;
 
     //Audio
-    AudioSource audio;
+    new AudioSource audio;
     public AudioClip moveFx;
     public AudioClip selectFx;
 

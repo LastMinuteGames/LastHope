@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour {
 
 
-    Camera camera;
+    new Camera camera;
     public bool done = false;
 
     // Use this for initialization

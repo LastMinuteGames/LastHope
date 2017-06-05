@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrashEnemyCombatState : StateMachineBehaviour {
-    private int attackProbability = 0;
-    private int approachProbability = 0;
     EnemyTrash enemyTrash;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -14,8 +12,6 @@ public class TrashEnemyCombatState : StateMachineBehaviour {
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
-        attackProbability = enemyTrash.attackProbability;
-        approachProbability = enemyTrash.approachProbability;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

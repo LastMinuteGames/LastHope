@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnergyCoreController : MonoBehaviour {
-    public PlayerStance color;
+    public PlayerStanceType color;
     public Material greyMat;
     public Material redMat;
     
@@ -15,10 +16,10 @@ public class EnergyCoreController : MonoBehaviour {
         rend.enabled = true;
         switch (color)
         {
-            case PlayerStance.STANCE_BLUE:
+            case PlayerStanceType.STANCE_BLUE:
                 rend.sharedMaterial = greyMat;
                 break;
-            case PlayerStance.STANCE_RED:
+            case PlayerStanceType.STANCE_RED:
                 rend.sharedMaterial = redMat;
                 break;
         }
@@ -36,12 +37,12 @@ public class EnergyCoreController : MonoBehaviour {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
             switch (color)
             {
-                case PlayerStance.STANCE_BLUE:
+                case PlayerStanceType.STANCE_BLUE:
                     player.EnableGreyAbility();
                     player.ChangeStance(color);
                     Debug.Log("Grey special ability learned");
                     break;
-                case PlayerStance.STANCE_RED:
+                case PlayerStanceType.STANCE_RED:
                     player.EnableRedAbility();
                     player.ChangeStance(color);
                     Debug.Log("Red special ability learned");

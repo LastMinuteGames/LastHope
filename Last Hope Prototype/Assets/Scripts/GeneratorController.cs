@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -66,6 +67,6 @@ public class GeneratorController : Interactable {
     {
         GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
         EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();
-        coreParameters.color = PlayerStance.STANCE_RED;
+        coreParameters.color = PlayerStanceType.STANCE_RED;
     }
 }
