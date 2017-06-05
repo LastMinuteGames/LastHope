@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
     public bool isMenu = false;
 
     //Audio
-    AudioSource audio;
+    new AudioSource audio;
     public AudioClip openFx;
     public AudioClip selectFx;
 

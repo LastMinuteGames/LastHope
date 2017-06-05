@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Player;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIPlayerStance : MonoBehaviour
@@ -48,16 +49,15 @@ public class UIPlayerStance : MonoBehaviour
 
     public void UpdatePlayerStance(PlayerStance playerStance)
     {
-        switch (playerStance)
+        switch (playerStance.type)
         {
-            case (PlayerStance.STANCE_BLUE):
+            case (PlayerStanceType.STANCE_BLUE):
                 stanceImage.sprite = stance1Sprite;
                 break;
 
-            case (PlayerStance.STANCE_RED):
+            case (PlayerStanceType.STANCE_RED):
                 stanceImage.sprite = stance2Sprite;
                 break;
-
         }
     }
 }

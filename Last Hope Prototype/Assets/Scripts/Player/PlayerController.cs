@@ -1,24 +1,12 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PlayerStance
-{
-    STANCE_NONE,
-    STANCE_BLUE,
-    STANCE_RED,
-    STANCE_UNDEFINED
-}
 
-public struct PlayerPassiveStats
-{
-    public float attackDamage;
-    //public float attackSpeed;
-    public float blockingMovementSpeed;
-    public float movementSpeed;
-    public float specialAttackDamage;
-}
+
+
 
 public struct CameraShakeStats
 {
@@ -36,9 +24,10 @@ public class PlayerController : MonoBehaviour
     public MeleeWeaponTrail swordEmitter;
     public Collider shield;
     public MeleeWeaponTrail shieldEmitter;
-    public PlayerStance stance = PlayerStance.STANCE_NONE;
     [HideInInspector]
-    public PlayerStance newStance = PlayerStance.STANCE_UNDEFINED;
+    public PlayerStance stance;// = PlayerStance.STANCE_NONE;
+    [HideInInspector]
+    public PlayerStanceType newStance;
     public bool debugMode = false;
 
     private bool redAbilityEnabled = false;
@@ -47,14 +36,17 @@ public class PlayerController : MonoBehaviour
     public Image currentHPBar;
     public Image currentEnergyBar;
 
-    public PlayerPassiveStats noneStats;
-    public PlayerPassiveStats blueStats;
-    public PlayerPassiveStats redStats;
+    //public PlayerPassiveStats noneStats;
+    public PlayerPassiveStatsAbsolute baseStats;
+    public PlayerPassiveStatsRelative blueStats;
+    public PlayerPassiveStatsRelative redStats;
+
+    public PlayerPassiveStatsAbsolute currentStats;
 
     public CameraShakeStats defaultCameraShakeStats;
 
     private Attack currentAttack;
-    private Attack lastAttackReceived;
+    //private Attack lastAttackReceived;
 
     // HP
     public int maxHP = 100;
@@ -74,14 +66,12 @@ public class PlayerController : MonoBehaviour
 
     // Movement
     public float turnSpeed = 50;
-    public float speed = 10;
-    public float normalSpeed = 10;
-    public float blockingSpeed = 6;
+    //public float speed = 10;
     public Transform camT;
     private CameraShake camShake;
     public Vector3 movement;
     public Vector3 targetDirection;
-    public float dodgeThrust = 1;
+    public float dodgeThrust;// = 5;
     public bool pendingMove = false;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
@@ -100,7 +90,6 @@ public class PlayerController : MonoBehaviour
     public bool blocking = false;
 
     // Attack
-    public float attackDamage = 10.0f;
     private bool inputWindow = false;
 
     // Special Attack
@@ -112,30 +101,19 @@ public class PlayerController : MonoBehaviour
     public float specialAttackDamage = 40;
     private bool canSpecialAttack = false;
 
-    [SerializeField]
-    private PlayerStateType currentStateType;
-    //public IPlayerFSM currentState;
-    //private Dictionary<PlayerStateType, IPlayerFSM> states;
+    private bool isDodge = false;
+    public Dictionary<PlayerStanceType, PlayerStance> stances;
 
     void Start()
     {
         anim = GetComponent<Animator>();
 
         // Stats setup
-        noneStats.attackDamage = 10.0f;
-        noneStats.blockingMovementSpeed = 6.0f;
-        noneStats.movementSpeed = 12.0f;
-        noneStats.specialAttackDamage = 0.0f;
-
-        blueStats.attackDamage = 10.0f;
-        blueStats.blockingMovementSpeed = 8.0f;
-        blueStats.movementSpeed = 16.0f;
-        blueStats.specialAttackDamage = 40.0f;
-
-        redStats.attackDamage = 15.0f;
-        redStats.blockingMovementSpeed = 6.0f;
-        redStats.movementSpeed = 10.0f;
-        redStats.specialAttackDamage = 30.0f;
+        stances = new Dictionary<PlayerStanceType, PlayerStance>();
+        stances.Add(PlayerStanceType.STANCE_NONE, new PlayerStance(PlayerStanceType.STANCE_NONE, new PlayerPassiveStatsRelative(1, 1, 1, 1)));
+        stances.Add(PlayerStanceType.STANCE_BLUE, new PlayerStance(PlayerStanceType.STANCE_BLUE, new PlayerPassiveStatsRelative(1, 0.66f, 1.33f, 40)));
+        stances.Add(PlayerStanceType.STANCE_RED, new PlayerStance(PlayerStanceType.STANCE_RED, new PlayerPassiveStatsRelative(1.5f, 1, 0.85f, 30)));
+        currentStats = baseStats;
 
         playerAttacks = new Dictionary<string, Attack>();
 
@@ -159,8 +137,7 @@ public class PlayerController : MonoBehaviour
         defaultCameraShakeStats.xMultiplier = 1.0f;
         defaultCameraShakeStats.yMultiplier = 1.0f;
 
-
-        stance = PlayerStance.STANCE_NONE;
+        stance = stances[PlayerStanceType.STANCE_NONE];
 
         initialMaxHP = maxHP;
         currentHP = maxHP;
@@ -241,37 +218,39 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (pendingMove)
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Dodge"))
+        {
+            Dodge();
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("RedSpecialAttack"))
+        {
+            UpdateRedSpecialAttack();
+        }
+        else if (pendingMove)
         {
             Rotate();
             Move();
+            pendingMove = false;
         }
     }
 
-    public void ChangeStance(PlayerStance stance)
+    public void ChangeStance(PlayerStanceType typeStance)
     {
-        switch (stance)
+        switch (typeStance)
         {
-            case PlayerStance.STANCE_BLUE:
+            case PlayerStanceType.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
                     Debug.Log("NEUTRAL STANCE");
-                    this.stance = stance;
-                    normalSpeed = blueStats.movementSpeed;
-                    blockingSpeed = blueStats.blockingMovementSpeed;
-                    attackDamage = blueStats.attackDamage;
-                    specialAttackDamage = blueStats.specialAttackDamage;
+                    this.stance = stances[typeStance];
+                    currentStats = baseStats * blueStats;
                 }
                 break;
-            case PlayerStance.STANCE_RED:
+            case PlayerStanceType.STANCE_RED:
                 if (redAbilityEnabled)
                 {
                     Debug.Log("RED STANCE");
-                    this.stance = stance;
-                    normalSpeed = redStats.movementSpeed;
-                    blockingSpeed = redStats.blockingMovementSpeed;
-                    attackDamage = redStats.attackDamage;
-                    specialAttackDamage = redStats.specialAttackDamage;
+                    this.stance = stances[typeStance];
+                    currentStats = baseStats * redStats;
                 }
                 break;
         }
@@ -444,23 +423,18 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        movement = rigidBody.velocity;
 
-        movement.z = 0;
+        movement = Vector3.zero;
+        //movement.z = 0;
         movementHorizontal = Mathf.Abs(movementHorizontal);
         movementVertical = Mathf.Abs(movementVertical);
         float totalImpulse = movementHorizontal + movementVertical;
         totalImpulse = (totalImpulse > 1) ? 1 : totalImpulse;
-        movement.z += totalImpulse * speed;
+        movement.x = totalImpulse * targetDirection.x;
+        movement.z = totalImpulse * targetDirection.z;
 
-        movement.x = 0;
+        rigidBody.MovePosition(rigidBody.position  +  movement * currentStats.movementSpeed * Time.deltaTime);
 
-        if (movement.y > 2)
-            movement.y = 2;
-
-        rigidBody.velocity = transform.TransformDirection(movement);
-
-        pendingMove = false;
     }
 
     public void StartSwordAttack()
@@ -485,10 +459,11 @@ public class PlayerController : MonoBehaviour
 
     public void Dodge()
     {
-        movement = rigidBody.velocity;
-        Vector3 impulse = targetDirection.normalized * dodgeThrust;
-        movement += impulse;
-        rigidBody.velocity = movement;
+        rigidBody.MovePosition(transform.position + transform.forward * dodgeThrust * Time.deltaTime);
+        //movement = rigidBody.velocity;
+        //Vector3 impulse = targetDirection.normalized * dodgeThrust;
+        //movement += impulse;
+        //rigidBody.velocity = movement;
     }
 
     public void SetBlocking(bool value)
@@ -496,36 +471,24 @@ public class PlayerController : MonoBehaviour
         blocking = value;
     }
 
-    public PlayerStance SpecialAttackToPerform()
+    public PlayerStanceType SpecialAttackToPerform()
     {
-        PlayerStance ret = PlayerStance.STANCE_UNDEFINED;
+        PlayerStanceType ret = PlayerStanceType.STANCE_NONE;
         canSpecialAttack = false;
-        if (stance != PlayerStance.STANCE_NONE)
+        if (stance.type != PlayerStanceType.STANCE_NONE && CanLoseEnergy(1))
         {
-            if (CanLoseEnergy(1))
-            {
-                canSpecialAttack = true;
-                ret = stance;
-            }
-            else
-            {
-                ret = PlayerStance.STANCE_NONE;
-            }
+            canSpecialAttack = true;
+            ret = stance.type;
         }
-        else
-        {
-            ret = PlayerStance.STANCE_NONE;
-        }
+
         return ret;
     }
 
     public void StartBlueSpecialAttack()
     {
         canSpecialAttack = false;
-        if (stance == PlayerStance.STANCE_BLUE)
+        if (stance.type == PlayerStanceType.STANCE_BLUE && LoseEnergy(1))
         {
-            if (LoseEnergy(1))
-            {
                 canSpecialAttack = true;
                 neutralSphere.gameObject.SetActive(true);
                 spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
@@ -533,13 +496,12 @@ public class PlayerController : MonoBehaviour
                 {
                     StartCoroutine(camShake.Shake());
                 }
-            }
         }
     }
     public void StartRedSpecialAttack()
     {
         canSpecialAttack = false;
-        if (stance == PlayerStance.STANCE_RED)
+        if (stance.type == PlayerStanceType.STANCE_RED)
         {
             if (LoseEnergy(1))
             {
@@ -552,10 +514,13 @@ public class PlayerController : MonoBehaviour
     {
         if (canSpecialAttack)
         {
-            movement = rigidBody.velocity;
+            rigidBody.MovePosition(transform.position + transform.forward * redSpecialAttackThrust * Time.deltaTime);
+            /*movement = rigidBody.velocity;
             Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
             movement += impulse;
             rigidBody.velocity = movement;
+            */
+
         }
     }
 
@@ -599,7 +564,7 @@ public class PlayerController : MonoBehaviour
                     anim.SetTrigger("damaged");
                 }
             }
-            lastAttackReceived = currentAttackReceived;
+            //lastAttackReceived = currentAttackReceived;
         }
     }
     public void OnTriggerExit(Collider other)
@@ -622,18 +587,6 @@ public class PlayerController : MonoBehaviour
         float ratio = (float)currentEnergy / maxEnergy;
         currentEnergyBar.rectTransform.localScale = new Vector3(ratio * maxEnergy / initialMaxEnergy, 1, 1);
     }
-
-    //public void ChangeState(PlayerStateType type)
-    //{
-    //if (states.ContainsKey(type))
-    //{
-    //    if (currentState != null)
-    //        currentState.End();
-    //    currentState = states[type];
-    //    currentState.Start();
-    //    currentStateType = currentState.Type();
-    //}
-    //}
 
     public void OpenInputWindow()
     {
@@ -675,5 +628,17 @@ public class PlayerController : MonoBehaviour
     public void DisableShieldEmitter()
     {
         shieldEmitter.Emit = false;
+   }
+    public bool IsDodge
+    {
+        get
+        {
+            return isDodge;
+        }
+
+        set
+        {
+            isDodge = value;
+        }
     }
 }

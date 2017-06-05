@@ -5,8 +5,6 @@ using UnityEngine;
 public class TrashEnemyMoveAroundtState : StateMachineBehaviour {
 
     EnemyTrash enemyTrash;
-    private int attackProbability = 0;
-    private int approachProbability = 0;
     private float startTime = 0;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -18,8 +16,6 @@ public class TrashEnemyMoveAroundtState : StateMachineBehaviour {
             enemyTrash.nav.Stop();
         }
 
-        attackProbability = enemyTrash.attackProbability;
-        approachProbability = enemyTrash.approachProbability;
         startTime = Time.time;
         enemyTrash.transform.RotateAround(enemyTrash.target.transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
     }
@@ -29,7 +25,6 @@ public class TrashEnemyMoveAroundtState : StateMachineBehaviour {
     {
             if (Time.time - startTime >= 1)
             {
-                int probability = UnityEngine.Random.Range(0, 100);
                 bool change = true;
                 if (enemyTrash.nav.remainingDistance > enemyTrash.attackRange)
                 {

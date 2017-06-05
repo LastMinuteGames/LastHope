@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,10 +36,10 @@ public class FakePlayerHeavyAttack3 : StateMachineBehaviour
             {
                 switch (playerController.SpecialAttackToPerform())
                 {
-                    case PlayerStance.STANCE_BLUE:
+                    case PlayerStanceType.STANCE_BLUE:
                         animator.SetTrigger("blueSpecialAttack");
                         break;
-                    case PlayerStance.STANCE_RED:
+                    case PlayerStanceType.STANCE_RED:
                         animator.SetTrigger("redSpecialAttack");
                         break;
                 }
