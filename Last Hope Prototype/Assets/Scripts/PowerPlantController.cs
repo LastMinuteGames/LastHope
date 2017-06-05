@@ -58,24 +58,9 @@ public class PowerPlantController : Interactable {
         for (int i = 0; i < bridge.transform.childCount; ++i)
         {
             GameObject child = bridge.transform.GetChild(i).gameObject;
-            if (child.activeInHierarchy)
+            if (child.name.Contains("Energy") && !child.activeInHierarchy)
             {
-                if (child.name.Contains("Energy")) {
-                    for (int j = 0; j < child.transform.childCount; ++j)
-                    {
-                        GameObject childOfChild = child.transform.GetChild(j).gameObject;
-                        if (childOfChild.activeInHierarchy)
-                        {
-                            if (childOfChild.name.Contains("Deco"))
-                            {
-                                childOfChild.GetComponent<MeshRenderer>().enabled = true;
-                                Debug.Log(childOfChild.name);
-                            }
-                        }
-                            
-                    }
-                        
-                }
+                child.SetActive(true);
             }
         }
     }
