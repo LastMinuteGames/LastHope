@@ -51,7 +51,7 @@ public class FreeLookCam : MonoBehaviour
         HandleRotationMovement();
     }
 
-    private void FixedUpdate ()
+    private void LateUpdate ()
     {
         FollowTarget(Time.deltaTime);
     }

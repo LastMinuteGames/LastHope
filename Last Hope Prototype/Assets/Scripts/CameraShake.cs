@@ -8,6 +8,14 @@ public class CameraShake : MonoBehaviour {
     Camera camera;
     public bool done = false;
 
+    private Vector3 offsetToPivot;
+
+
+    void Awake()
+    {
+        offsetToPivot = transform.localPosition;
+    }
+
     // Use this for initialization
     void Start () {
         camera = this.GetComponent<Camera>();
@@ -31,12 +39,8 @@ public class CameraShake : MonoBehaviour {
         }
         float elapsed = 0.0f;
 
-        //Vector3 originalCamPos = Camera.main.transform.position;
-        Vector3 originalCamPos = camera.transform.position;
-
         while (elapsed < duration)
         {
-
             elapsed += Time.deltaTime;
 
             float percentComplete = elapsed / duration;
@@ -48,12 +52,12 @@ public class CameraShake : MonoBehaviour {
             x *= magnitude * damper * xMultiplier;
             y *= magnitude * damper * yMultiplier;
 
-            Camera.main.transform.position = new Vector3(originalCamPos.x + x, originalCamPos.y + y, originalCamPos.z);
+            transform.localPosition = new Vector3(offsetToPivot.x + x, offsetToPivot.y + y, offsetToPivot.z);
 
             yield return null;
         }
- 
-        Camera.main.transform.position = originalCamPos;
+
+        transform.localPosition = offsetToPivot;
         if (this.GetComponent<CameraController>())
         {
             Debug.Log("A true!");
