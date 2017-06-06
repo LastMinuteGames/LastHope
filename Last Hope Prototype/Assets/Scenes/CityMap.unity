@@ -62151,6 +62151,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4140870439673768, guid: 11445c8b7bdcd20449fa78454167ff71,
     type: 2}
   m_PrefabInternal: {fileID: 416089819}
+--- !u!4 &1901982520 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4808517993003868, guid: 707430ca36cb294408e3f828cbefef96,
+    type: 2}
+  m_PrefabInternal: {fileID: 1255541734}
 --- !u!1001 &1906035104
 Prefab:
   m_ObjectHideFlags: 0
@@ -64027,6 +64032,16 @@ Prefab:
     - target: {fileID: 4235005824050830, guid: 33787175598fc3d4b8ee4a390b5490c1, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114953412024891950, guid: 33787175598fc3d4b8ee4a390b5490c1,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1901982520}
+    - target: {fileID: 114953412024891950, guid: 33787175598fc3d4b8ee4a390b5490c1,
+        type: 2}
+      propertyPath: distanceShake
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33787175598fc3d4b8ee4a390b5490c1, type: 2}
