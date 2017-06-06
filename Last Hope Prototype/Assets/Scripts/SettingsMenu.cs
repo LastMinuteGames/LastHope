@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsMenu : MonoBehaviour {
+public class SettingsMenu : MonoBehaviour
+{
 
     public Text qualityText;
     public Text volumeText;
@@ -14,8 +15,12 @@ public class SettingsMenu : MonoBehaviour {
     public Color unselectedTextColor;
     public Color selectedTextColor;
 
+    private bool leftInUse = false;
+    private bool rightInUse = false;
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         qualityValue.text = QualitySettings.names[QualitySettings.GetQualityLevel()];
         qualitySlider.value = QualitySettings.GetQualityLevel();
 
@@ -50,35 +55,48 @@ public class SettingsMenu : MonoBehaviour {
             }
         }
 
-        if(focus == 0)
+        switch (focus)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                qualitySlider.value--;
-            }
-            if (InputManager.LeftJoystickLeft())
-            {
-                qualitySlider.value--;
-                System.Threading.Thread.Sleep(1000);
-            }
-            if (InputManager.LeftJoystickRight() || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                qualitySlider.value++;
-            }
-        }
-        else
-        {
-            if (InputManager.LeftJoystickLeft() || Input.GetKey(KeyCode.LeftArrow))
-            {
-                volumeSlider.value -= 0.01f;
-            }
-            if (InputManager.LeftJoystickRight() || Input.GetKey(KeyCode.RightArrow))
-            {
-                volumeSlider.value += 0.01f;
-            }
+            case 0:
+                if (InputManager.LeftJoystickLeft() || Input.GetKeyDown("left"))
+                {
+                    if (!leftInUse)
+                    {
+                        qualitySlider.value--;
+                        leftInUse = true;
+                    }
+                }
+                else
+                {
+                    leftInUse = false;
+                }
+
+                if (InputManager.LeftJoystickRight() || Input.GetKeyDown("right"))
+                {
+                    if (!rightInUse)
+                    {
+                        qualitySlider.value++;
+                        rightInUse = true;
+                    }
+                }
+                else
+                {
+                    rightInUse = false;
+                }
+                break;
+            case 1:
+                if (InputManager.LeftJoystickLeft() || Input.GetKey(KeyCode.LeftArrow))
+                {
+                    volumeSlider.value -= 0.01f;
+                }
+                if (InputManager.LeftJoystickRight() || Input.GetKey(KeyCode.RightArrow))
+                {
+                    volumeSlider.value += 0.01f;
+                }
+                break;
         }
 
-        
+
         if (InputManager.LightAttack() || Input.GetKeyDown(KeyCode.Return))
         {
 
@@ -100,7 +118,7 @@ public class SettingsMenu : MonoBehaviour {
         Debug.Log(newValue);
         //sound.volume = newValue;
         AudioListener.volume = newValue;
-        
+
     }
 
 }
