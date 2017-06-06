@@ -84,7 +84,7 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -6173,6 +6173,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnPointTrash (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 114274392070863628, guid: 9b78ebe08069c5848971bb3c0a97e4d9,
+        type: 2}
+      propertyPath: delay
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b78ebe08069c5848971bb3c0a97e4d9, type: 2}
   m_IsPrefabParent: 0
@@ -8928,6 +8933,11 @@ Prefab:
     - target: {fileID: 1244720920703524, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
       propertyPath: m_Name
       value: EnemySpawnPointMelee (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114475572013386138, guid: 7cae4ffdf74943a438ddac2cde3e3b48,
+        type: 2}
+      propertyPath: delay
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
@@ -13980,6 +13990,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnPointTrash (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 114274392070863628, guid: 9b78ebe08069c5848971bb3c0a97e4d9,
+        type: 2}
+      propertyPath: delay
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b78ebe08069c5848971bb3c0a97e4d9, type: 2}
   m_IsPrefabParent: 0
@@ -18156,6 +18171,11 @@ Prefab:
     - target: {fileID: 1247464204298122, guid: dda5b06407a208f40a6fe580fe1d75b6, type: 2}
       propertyPath: m_Name
       value: EnemySpawnPointRanged (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114652316840158656, guid: dda5b06407a208f40a6fe580fe1d75b6,
+        type: 2}
+      propertyPath: delay
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dda5b06407a208f40a6fe580fe1d75b6, type: 2}
@@ -24931,6 +24951,11 @@ Prefab:
     - target: {fileID: 1142602527410390, guid: 9b78ebe08069c5848971bb3c0a97e4d9, type: 2}
       propertyPath: m_Name
       value: EnemySpawnPointTrash (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114274392070863628, guid: 9b78ebe08069c5848971bb3c0a97e4d9,
+        type: 2}
+      propertyPath: delay
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b78ebe08069c5848971bb3c0a97e4d9, type: 2}
@@ -32134,6 +32159,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnPointRanged (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114652316840158656, guid: dda5b06407a208f40a6fe580fe1d75b6,
+        type: 2}
+      propertyPath: delay
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dda5b06407a208f40a6fe580fe1d75b6, type: 2}
   m_IsPrefabParent: 0
@@ -36907,6 +36937,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnPointMelee (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114475572013386138, guid: 7cae4ffdf74943a438ddac2cde3e3b48,
+        type: 2}
+      propertyPath: delay
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
   m_IsPrefabParent: 0
@@ -39168,6 +39203,11 @@ Prefab:
     - target: {fileID: 4447798319291216, guid: dda5b06407a208f40a6fe580fe1d75b6, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114652316840158656, guid: dda5b06407a208f40a6fe580fe1d75b6,
+        type: 2}
+      propertyPath: delay
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dda5b06407a208f40a6fe580fe1d75b6, type: 2}
@@ -41476,6 +41516,11 @@ Prefab:
     - target: {fileID: 1244720920703524, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
       propertyPath: m_Name
       value: EnemySpawnPointMelee (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114475572013386138, guid: 7cae4ffdf74943a438ddac2cde3e3b48,
+        type: 2}
+      propertyPath: delay
+      value: 4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
@@ -45738,6 +45783,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnPointRanged (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114652316840158656, guid: dda5b06407a208f40a6fe580fe1d75b6,
+        type: 2}
+      propertyPath: delay
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dda5b06407a208f40a6fe580fe1d75b6, type: 2}
   m_IsPrefabParent: 0
@@ -47046,6 +47096,11 @@ Prefab:
     - target: {fileID: 4761093281627864, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114475572013386138, guid: 7cae4ffdf74943a438ddac2cde3e3b48,
+        type: 2}
+      propertyPath: delay
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
@@ -52856,6 +52911,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnPointTrash (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 114274392070863628, guid: 9b78ebe08069c5848971bb3c0a97e4d9,
+        type: 2}
+      propertyPath: delay
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b78ebe08069c5848971bb3c0a97e4d9, type: 2}
   m_IsPrefabParent: 0
@@ -56457,6 +56517,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnPointRanged (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114652316840158656, guid: dda5b06407a208f40a6fe580fe1d75b6,
+        type: 2}
+      propertyPath: delay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dda5b06407a208f40a6fe580fe1d75b6, type: 2}
   m_IsPrefabParent: 0
@@ -57107,7 +57172,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1730516702}
-  m_LocalRotation: {x: -0.10284741, y: 0.8962009, z: -0.282571, w: -0.32619038}
+  m_LocalRotation: {x: -0.1028474, y: 0.8962008, z: -0.28257096, w: -0.32619035}
   m_LocalPosition: {x: 138, y: 91, z: 433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -58661,6 +58726,11 @@ Prefab:
     - target: {fileID: 1244720920703524, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
       propertyPath: m_Name
       value: EnemySpawnPointMelee (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114475572013386138, guid: 7cae4ffdf74943a438ddac2cde3e3b48,
+        type: 2}
+      propertyPath: delay
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cae4ffdf74943a438ddac2cde3e3b48, type: 2}
