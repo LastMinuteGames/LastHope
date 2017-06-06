@@ -173,11 +173,9 @@ public class PlayerController : MonoBehaviour
 
     public void HeavyAttackEffect()
     {
-        //llamada a camera shake de la camara con parámetros razonables, no muy exagerado
-        Debug.Log("TERREMOTO!!");
         if (camShake != null)
         {
-            StartCoroutine(camShake.Shake(0.1f, 0.25f));
+            StartCoroutine(camShake.Shake(0.1f, 0.25f,1,1,this.transform));
         }
         //TODO: Add attack sound fx when we have one
     }

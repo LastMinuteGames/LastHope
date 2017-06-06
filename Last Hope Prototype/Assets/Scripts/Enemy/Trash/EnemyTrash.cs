@@ -62,6 +62,13 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
             PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
+            //If the attack is a heavy one, call camera shake
+            AnimatorStateInfo currentState = playerScript.anim.GetCurrentAnimatorStateInfo(0);
+            if (currentState.IsName("H1") || currentState.IsName("H2") || currentState.IsName("H3"))
+            {
+                playerScript.HeavyAttackEffect();
+            }
+
             Attack currentAttackReceived = playerScript.GetAttack();
             if (currentAttackReceived != null)
             {
