@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,8 +17,10 @@ public class FakePlayerHeavyAttack1 : StateMachineBehaviour
         }
         playerController.ChangeAttack("H1");
         playerController.DisableSwordEmitter();
+        playerController.DisableShieldEmitter();
         playerController.CloseInputWindow();
-        playerController.EndAttack();
+        playerController.EndSwordAttack();
+        playerController.EndShieldAttack();
 
         h = InputManager.LeftJoystick().x;
         v = InputManager.LeftJoystick().z;
@@ -31,10 +34,10 @@ public class FakePlayerHeavyAttack1 : StateMachineBehaviour
         {
             switch (playerController.SpecialAttackToPerform())
             {
-                case PlayerStance.STANCE_BLUE:
+                case PlayerStanceType.STANCE_BLUE:
                     animator.SetTrigger("blueSpecialAttack");
                     break;
-                case PlayerStance.STANCE_RED:
+                case PlayerStanceType.STANCE_RED:
                     animator.SetTrigger("redSpecialAttack");
                     break;
             }
@@ -45,7 +48,7 @@ public class FakePlayerHeavyAttack1 : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         playerController.CloseInputWindow();
-        playerController.EndAttack();
+        playerController.EndSwordAttack();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
-        playerController.speed = playerController.normalSpeed;
+        //playerController.speed = playerController.normalSpeed;
         playerController.anim.SetBool("move", true);
     }
 
@@ -33,25 +34,25 @@ public class FakePlayerMoveState : StateMachineBehaviour {
                 animator.SetTrigger("interact");
             }
             else if (InputManager.Stance1() && playerController.IsBlueAbilityEnabled() &&
-                playerController.stance != PlayerStance.STANCE_BLUE)
+                playerController.stance != PlayerStanceType.STANCE_BLUE)
             {
-                playerController.newStance = PlayerStance.STANCE_BLUE;
+                playerController.newStance = PlayerStanceType.STANCE_BLUE;
                 playerController.anim.SetTrigger("changeStance");
             }
             else if (InputManager.Stance2() && playerController.IsRedAbilityEnabled() &&
-                playerController.stance != PlayerStance.STANCE_RED)
+                playerController.stance != PlayerStanceType.STANCE_RED)
             {
-                    playerController.newStance = PlayerStance.STANCE_RED;
+                    playerController.newStance = PlayerStanceType.STANCE_RED;
                     playerController.anim.SetTrigger("changeStance");
 
-            }
-            else if (InputManager.Dodge())
-            {
-                playerController.anim.SetTrigger("dodge");
             }
             else if (h == 0 && v == 0)
             {
                 playerController.anim.SetBool("idle", true);
+            }
+            else if (InputManager.Dodge())
+            {
+                playerController.anim.SetTrigger("dodge");
             }
             else if (InputManager.LightAttack())
             {
@@ -67,10 +68,10 @@ public class FakePlayerMoveState : StateMachineBehaviour {
             {
                 switch (playerController.SpecialAttackToPerform())
                 {
-                    case PlayerStance.STANCE_BLUE:
+                    case PlayerStanceType.STANCE_BLUE:
                         animator.SetTrigger("blueSpecialAttack");
                         break;
-                    case PlayerStance.STANCE_RED:
+                    case PlayerStanceType.STANCE_RED:
                         animator.SetTrigger("redSpecialAttack");
                         break;
                 }

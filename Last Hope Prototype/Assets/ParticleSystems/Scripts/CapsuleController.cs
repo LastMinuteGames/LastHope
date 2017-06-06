@@ -39,14 +39,14 @@ public class CapsuleController : MonoBehaviour
         {
             if (!spawned)
             {
-                StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake(0.3f, 1.75f));
+                StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(0.3f, 1.75f));
                 SpawnParticles();
                 SpawnDecal();
                 spawned = true;
 
             }else
             {
-                if (GameObject.Find("Main Camera").GetComponent<CameraShake>().done)
+                if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done)
                 {
                     Destroy(gameObject);
                 }
@@ -67,6 +67,6 @@ public class CapsuleController : MonoBehaviour
         float verticalRotation = Random.Range(0, 360);
         Quaternion hitRotation = Quaternion.Euler(90, verticalRotation, 0);
         float verticalPosition = capsuleHeight / 2 * transform.localScale.y - 0.001f;
-        GameObject a = Instantiate(decal, transform.position - new Vector3(0, verticalPosition, 0), hitRotation);
+        Instantiate(decal, transform.position - new Vector3(0, verticalPosition, 0), hitRotation);
     }
 }

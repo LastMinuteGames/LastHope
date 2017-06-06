@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class MainMenu : MonoBehaviour {
 
     public Button start;
     public Button help;
+    public Button settings;
     public Button credits;
     public Button exit;
     public Text startText;
     public Text helpText;
+    public Text settingsText;
     public Text creditsText;
     public Text exitText;
     public int focus;
@@ -26,6 +29,9 @@ public class MainMenu : MonoBehaviour {
     //Help
     public bool isHelp = false;
     public Canvas helpCanvas;
+    //Settings
+    public bool isSettings = false;
+    public Canvas settingsCanvas;
     //Credits
     public bool isCredits = false;
     public Canvas creditsCanvas;
@@ -40,6 +46,12 @@ public class MainMenu : MonoBehaviour {
     bool downInUse = false;
     bool leftInUse = false;
     bool rightInUse = false;
+
+    //Audio
+    new AudioSource audio;
+    public AudioClip moveFx;
+    public AudioClip selectFx;
+
 
     // Use this for initialization
     void Start () {
@@ -62,6 +74,12 @@ public class MainMenu : MonoBehaviour {
         help.image.color = unselectedBGColor;
         helpText = helpText.GetComponent<Text>();
         helpText.color = unselectedTextColor;
+
+        //Boton Controles - Initial state: Unselected
+        settings = settings.GetComponent<Button>();
+        settings.image.color = unselectedBGColor;
+        settingsText = settingsText.GetComponent<Text>();
+        settingsText.color = unselectedTextColor;
 
         //Boton Controles - Initial state: Unselected
         credits = credits.GetComponent<Button>();
@@ -107,12 +125,22 @@ public class MainMenu : MonoBehaviour {
         //Flag isHelp to false
         isHelp = false;
 
+        //SettingsCanvas
+        settingsCanvas = settingsCanvas.GetComponent<Canvas>();
+        settingsCanvas.gameObject.SetActive(false);
+
+        //Flag isSettings to false
+        isSettings = false;
+
         //CreditCanvas
         creditsCanvas = creditsCanvas.GetComponent<Canvas>();
         creditsCanvas.gameObject.SetActive(false);
 
         //Flag isHelp to false
         isCredits = false;
+
+        //Initialize audio
+        audio = GetComponent<AudioSource>();
 
     }
 
@@ -123,6 +151,7 @@ public class MainMenu : MonoBehaviour {
         if (focus != 0)
         {
             focus = focus - 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -132,9 +161,10 @@ public class MainMenu : MonoBehaviour {
     public int MoveFocusDown(int focus)
     {
 
-        if (focus != 3)
+        if (focus != 4)
         {
             focus = focus + 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -147,6 +177,7 @@ public class MainMenu : MonoBehaviour {
         if (focus == 0)
         {
             focus = 1;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -159,6 +190,7 @@ public class MainMenu : MonoBehaviour {
         if (focus == 1)
         {
             focus = 0;
+            audio.PlayOneShot(moveFx, 1F);
         }
 
         return focus;
@@ -173,44 +205,65 @@ public class MainMenu : MonoBehaviour {
             case 0:
                 start.image.color = selectedBGColor;
                 help.image.color = unselectedBGColor;
+                settings.image.color = unselectedBGColor;
                 credits.image.color = unselectedBGColor;
                 exit.image.color = unselectedBGColor;
 
                 startText.color = selectedTextColor;
                 helpText.color = unselectedTextColor;
+                settingsText.color = unselectedTextColor;
                 creditsText.color = unselectedTextColor;
                 exitText.color = unselectedTextColor;
                 break;
             case 1:
                 start.image.color = unselectedBGColor;
                 help.image.color = selectedBGColor;
+                settings.image.color = unselectedBGColor;
                 credits.image.color = unselectedBGColor;
                 exit.image.color = unselectedBGColor;
 
                 startText.color = unselectedTextColor;
                 helpText.color = selectedTextColor;
+                settingsText.color = unselectedTextColor;
                 creditsText.color = unselectedTextColor;
                 exitText.color = unselectedTextColor;
                 break;
             case 2:
                 start.image.color = unselectedBGColor;
                 help.image.color = unselectedBGColor;
-                credits.image.color = selectedBGColor;
+                settings.image.color = selectedBGColor;
+                credits.image.color = unselectedBGColor;
                 exit.image.color = unselectedBGColor;
 
                 startText.color = unselectedTextColor;
                 helpText.color = unselectedTextColor;
-                creditsText.color = selectedTextColor;
+                settingsText.color = selectedTextColor;
+                creditsText.color = unselectedTextColor;
                 exitText.color = unselectedTextColor;
                 break;
             case 3:
                 start.image.color = unselectedBGColor;
                 help.image.color = unselectedBGColor;
+                settings.image.color = unselectedBGColor;
+                credits.image.color = selectedBGColor;
+                exit.image.color = unselectedBGColor;
+
+                startText.color = unselectedTextColor;
+                helpText.color = unselectedTextColor;
+                settingsText.color = unselectedTextColor;
+                creditsText.color = selectedTextColor;
+                exitText.color = unselectedTextColor;
+                break;
+            case 4:
+                start.image.color = unselectedBGColor;
+                help.image.color = unselectedBGColor;
+                settings.image.color = unselectedBGColor;
                 credits.image.color = unselectedBGColor;
                 exit.image.color = selectedBGColor;
 
                 startText.color = unselectedTextColor;
                 helpText.color = unselectedTextColor;
+                settingsText.color = unselectedTextColor;
                 creditsText.color = unselectedTextColor;
                 exitText.color = selectedTextColor;
                 break;
@@ -243,8 +296,9 @@ public class MainMenu : MonoBehaviour {
     /*
 		0: Start
 		1: Help
-		2: Credits
-		3: Exit
+        2: Settings
+		3: Credits
+		4: Exit
 	*/
     void EnterPress(int focus)
     {
@@ -259,9 +313,12 @@ public class MainMenu : MonoBehaviour {
                     openHelp();
                     break;
                 case 2:
-                    openCredits();
+                    openSettings();
                     break;
                 case 3:
+                    openCredits();
+                    break;
+                case 4:
                     openExitMenu();
                     break;
             }
@@ -306,6 +363,7 @@ public class MainMenu : MonoBehaviour {
         isHelp = true;
         start.gameObject.SetActive(false);
         help.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
         credits.gameObject.SetActive(false);
         exit.gameObject.SetActive(false);
     }
@@ -317,6 +375,31 @@ public class MainMenu : MonoBehaviour {
         isHelp = false;
         start.gameObject.SetActive(true);
         help.gameObject.SetActive(true);
+        settings.gameObject.SetActive(true);
+        credits.gameObject.SetActive(true);
+        exit.gameObject.SetActive(true);
+    }
+
+    //Open Settings
+    void openSettings()
+    {
+        settingsCanvas.gameObject.SetActive(true);
+        isSettings = true;
+        start.gameObject.SetActive(false);
+        help.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        credits.gameObject.SetActive(false);
+        exit.gameObject.SetActive(false);
+    }
+
+    //Close Settings
+    void closeSettings()
+    {
+        settingsCanvas.gameObject.SetActive(false);
+        isSettings = false;
+        start.gameObject.SetActive(true);
+        help.gameObject.SetActive(true);
+        settings.gameObject.SetActive(true);
         credits.gameObject.SetActive(true);
         exit.gameObject.SetActive(true);
     }
@@ -328,6 +411,7 @@ public class MainMenu : MonoBehaviour {
         isCredits = true;
         start.gameObject.SetActive(false);
         help.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
         credits.gameObject.SetActive(false);
         exit.gameObject.SetActive(false);
     }
@@ -339,19 +423,21 @@ public class MainMenu : MonoBehaviour {
         isCredits = false;
         start.gameObject.SetActive(true);
         help.gameObject.SetActive(true);
+        settings.gameObject.SetActive(true);
         credits.gameObject.SetActive(true);
         exit.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update () {
-        if (isHelp || isCredits)
+        if (isHelp || isCredits || isSettings)
         {
             //Go back to main menu
             if (InputManager.Pause())
             {
-                if (isHelp) closeHelp();
-                if (isCredits) closeCredits();
+                if (isHelp) { closeHelp(); audio.PlayOneShot(selectFx, 1F); }
+                if (isCredits) { closeCredits(); audio.PlayOneShot(selectFx, 1F); }
+                if (isSettings) { closeSettings(); audio.PlayOneShot(selectFx, 1F); }
             }
         }
         else
@@ -366,6 +452,7 @@ public class MainMenu : MonoBehaviour {
                         upInUse = true;
                         focus = MoveFocusUp(focus);
                         UpdateFocus(focus);
+                        
                     }
                 }
                 else
@@ -379,6 +466,7 @@ public class MainMenu : MonoBehaviour {
                         downInUse = true;
                         focus = MoveFocusDown(focus);
                         UpdateFocus(focus);
+                        
                     }
                 }
                 else
@@ -423,11 +511,17 @@ public class MainMenu : MonoBehaviour {
             if (isConfirmExit)
             {
                 EnterPress(focusExit);
+                audio.PlayOneShot(selectFx, 1F);
             }
             else
             {
                 EnterPress(focus);
+                audio.PlayOneShot(selectFx, 1F);
             }
         }
+
     }
+
+
+    
 }

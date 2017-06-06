@@ -22,7 +22,6 @@ public class TrashEnemyMoveForwardState : StateMachineBehaviour {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("MoveForward Update");
-        int probability = UnityEngine.Random.Range(0, 100);
         if (enemyTrash.nav.remainingDistance <= enemyTrash.attackRange)
         {
             enemyTrash.nav.Stop();
