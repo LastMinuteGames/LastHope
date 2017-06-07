@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public MeleeWeaponTrail swordEmitter;
     public Collider shield;
     public MeleeWeaponTrail shieldEmitter;
-    public ParticleSystem hitParticles;
+    public GameObject hitParticles;
     [HideInInspector]
     public PlayerStance stance;// = PlayerStance.STANCE_NONE;
     [HideInInspector]
@@ -641,6 +641,9 @@ public class PlayerController : MonoBehaviour
 
     public void SpawnHitParticles(Vector3 position)
     {
-        Instantiate(hitParticles, position, transform.rotation);
+        GameObject particle = (GameObject)Instantiate(hitParticles, position, transform.rotation);
+        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(particle, totalDuration);
     }
 }
