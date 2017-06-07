@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public MeleeWeaponTrail swordEmitter;
     public Collider shield;
     public MeleeWeaponTrail shieldEmitter;
+    public ParticleSystem hitParticles;
     [HideInInspector]
     public PlayerStance stance;// = PlayerStance.STANCE_NONE;
     [HideInInspector]
@@ -553,7 +554,6 @@ public class PlayerController : MonoBehaviour
         {
             EnemyTrash trashScript = other.gameObject.GetComponentInParent<EnemyTrash>();
             Attack currentAttackReceived = trashScript.GetAttack();
-            //int damage = 10;
             if (currentAttackReceived != null)
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == false)
@@ -562,7 +562,6 @@ public class PlayerController : MonoBehaviour
                     anim.SetTrigger("damaged");
                 }
             }
-            //lastAttackReceived = currentAttackReceived;
         }
     }
     public void OnTriggerExit(Collider other)
@@ -638,5 +637,10 @@ public class PlayerController : MonoBehaviour
         {
             isDodge = value;
         }
+    }
+
+    public void SpawnHitParticles(Vector3 position)
+    {
+        Instantiate(hitParticles, position, transform.rotation);
     }
 }
