@@ -164,6 +164,7 @@
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerMoveState.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerRedSpecialAttack.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Player\DashTest.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\IPlayerFSM.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\PlayerFSM.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerAttackState.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerRespawnState.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerSpecialAttackState.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\States\PlayerStateIdle.cs" />
+    <Compile Include="Assets\Scripts\Player\FreeLookCam.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStance.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="Assets\Scripts\UI\UIHealth.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\UIPlayerStance.cs" />
+    <Compile Include="Assets\TrafficLightController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />

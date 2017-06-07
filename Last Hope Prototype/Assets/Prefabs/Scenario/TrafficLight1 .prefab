@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4433546700071680}
   - component: {fileID: 33076696645905718}
   - component: {fileID: 23355029436044352}
+  - component: {fileID: 114263687828738652}
   m_Layer: 0
   m_Name: Deco_TrafficLight1
   m_TagString: Untagged
@@ -69,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1327821894209274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2049861, y: 0.49999905, z: 113.67543}
+  m_LocalPosition: {x: 9.517704, y: 0.000000033449915, z: 22.294413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4856006584791210}
@@ -210,3 +211,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114263687828738652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275243581728608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b12ca10cee5484996ca9e3f3dd0b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emissiveRed: {fileID: 2100000, guid: 6f385ab9e4a3e7b459cb5b5906feba71, type: 2}
+  emissiveYellow: {fileID: 2100000, guid: d74e4f0587bb6c14da16f58e3e09f133, type: 2}
+  emissiveGreen: {fileID: 2100000, guid: cd7d1707efd16524d8d0c27571e7742e, type: 2}
+  currentTime: 0

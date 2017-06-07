@@ -11,6 +11,9 @@ public class FreeLookCam : MonoBehaviour
     [SerializeField] private float tiltMin = 10f;
     [SerializeField] private bool invertHorizontalAxis = false;
     [SerializeField] private bool invertVerticalAxis = true;
+    [SerializeField] private float vSmooth = 0.5f;
+    [SerializeField] private float hSmooth = 0.5f;
+
 
     private Transform camT;
     private Transform pivotT;
@@ -53,7 +56,7 @@ public class FreeLookCam : MonoBehaviour
 
     private void LateUpdate ()
     {
-        FollowTarget(Time.deltaTime);
+        FollowTarget();
     }
 
     private void HandleRotationMovement ()
@@ -61,23 +64,23 @@ public class FreeLookCam : MonoBehaviour
         var x = InputManager.RightJoystick().x;
         var y = InputManager.RightJoystick().z;
 
-        lookAngle += x * turnSpeed * hAxis;
+        lookAngle += x * turnSpeed * Time.deltaTime* hAxis * 100f;
 
         transformTargetRot = Quaternion.Euler(0f, lookAngle, 0f);
 
-        tiltAngle -= y * turnSpeed * vAxis;
+        tiltAngle -= y * turnSpeed * Time.deltaTime * vAxis * 100f;
         tiltAngle = Mathf.Clamp(tiltAngle, -tiltMin, tiltMax);
 
-        pivotTargetRot = Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z);
+        pivotTargetRot = Quaternion.Lerp(pivotTargetRot, Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z), vSmooth);
 
         pivotT.localRotation = pivotTargetRot;
-        transform.localRotation = transformTargetRot;
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, transformTargetRot, hSmooth);
 
     }
 
-    private void FollowTarget (float deltaTime)
+    private void FollowTarget ()
     {
-        transform.position = Vector3.Lerp(transform.position, targetT.position, deltaTime * moveSpeed);
+        transform.position = Vector3.Lerp(transform.position, targetT.position, Time.deltaTime * moveSpeed);
     }
 
 

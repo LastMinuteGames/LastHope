@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: TrafficLight1
+  m_Name: TrafficLight2Yellow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 5a72c3983df40934a9cad61995cd5798, type: 3}
+        m_Texture: {fileID: 2800000, guid: 25673d1ed61730945a63e81ef101fd59, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -42,25 +42,25 @@ Material:
     - first:
         name: _EmissionMap
       second:
-        m_Texture: {fileID: 2800000, guid: df5dff3ba004df141822821ceea3fc9e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 674682ecd5732524c83be7f2749fc4dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 1f1b4c6f40638d24d8fed80efc45f756, type: 3}
+        m_Texture: {fileID: 2800000, guid: 06dd167f3a242594f91c05ac4fa1a8e5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 2800000, guid: 83bf40e17f413904ea1c722a566cd122, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9bacc602427e7fa46bff78bb641e40bd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 2800000, guid: 8639269e56440ec4da0370908ec45c1b, type: 3}
+        m_Texture: {fileID: 2800000, guid: ebeaed76571997146943ac5781b09c7a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:

@@ -8,6 +8,10 @@ public class ArtilleryController : MonoBehaviour
     public float maxHp = 100;
     public float currentHp;
     public bool alive = false;
+    [SerializeField]
+    private ParticleSystem leftBarrelParticles;
+    [SerializeField]
+    private ParticleSystem rightBarrelParticles;
 
     public float countDown = 20;
     
@@ -53,5 +57,20 @@ public class ArtilleryController : MonoBehaviour
         alive = false;
         Debug.Log("You lose");
         Destroy(this.gameObject);
+    }
+
+    void LeftBarrelShoot()
+    {
+        if (leftBarrelParticles != null)
+        {
+            leftBarrelParticles.Play();
+        }
+    }
+    void RightBarrelShoot()
+    {
+        if (rightBarrelParticles != null)
+        {
+            rightBarrelParticles.Play();
+        }
     }
 }

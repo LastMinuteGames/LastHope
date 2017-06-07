@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4248462064726470}
-  - component: {fileID: 64286704169285022}
+  - component: {fileID: 95717564079980514}
   m_Layer: 0
   m_Name: Building4
   m_TagString: Untagged
@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 4537026099157646}
   - component: {fileID: 33043165289200426}
   - component: {fileID: 23652678294461820}
+  - component: {fileID: 65057754017017722}
   m_Layer: 0
   m_Name: Col_Building4
   m_TagString: Untagged
@@ -67,8 +68,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1644931483385722}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25, y: 0, z: 105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.4438195, y: 0.5000006, z: 83.51642}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4537026099157646}
@@ -82,8 +83,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1958829079104030}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0.0000104904175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4248462064726470}
@@ -95,7 +96,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585347218942386}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -115,7 +116,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: 5c79deba1904b424a95c33535ff699e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,7 +147,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89ec4ac16a94d364fbbcb237280fac90, type: 2}
+  - {fileID: 2100000, guid: ef5621e194ed131419b9809694ce5fd2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,25 +171,40 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1958829079104030}
-  m_Mesh: {fileID: 4300000, guid: a7d777ba25173164cafca177434ded8e, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 72088d347ee1f8f4b97bbafe842d91ea, type: 3}
 --- !u!33 &33658429841018198
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585347218942386}
-  m_Mesh: {fileID: 4300002, guid: a7d777ba25173164cafca177434ded8e, type: 3}
---- !u!64 &64286704169285022
-MeshCollider:
+  m_Mesh: {fileID: 4300002, guid: 72088d347ee1f8f4b97bbafe842d91ea, type: 3}
+--- !u!65 &65057754017017722
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1644931483385722}
+  m_GameObject: {fileID: 1958829079104030}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: a7d777ba25173164cafca177434ded8e, type: 3}
+  m_Size: {x: 20, y: 20.000004, z: 60.700005}
+  m_Center: {x: 0, y: 0, z: 30.350002}
+--- !u!95 &95717564079980514
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644931483385722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 72088d347ee1f8f4b97bbafe842d91ea, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
