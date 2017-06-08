@@ -6015,27 +6015,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114007836392273374, guid: 707430ca36cb294408e3f828cbefef96,
-        type: 2}
-      propertyPath: respawnManager
-      value: 
-      objectReference: {fileID: 1733716130}
-    - target: {fileID: 4083096971287852, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.66560656
-      objectReference: {fileID: 0}
-    - target: {fileID: 4083096971287852, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.1416925
-      objectReference: {fileID: 0}
-    - target: {fileID: 4083096971287852, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.25546646
-      objectReference: {fileID: 0}
-    - target: {fileID: 4083096971287852, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.6867518
-      objectReference: {fileID: 0}
     - target: {fileID: 4135814248002686, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.6656066
@@ -6052,6 +6031,27 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.68675184
       objectReference: {fileID: 0}
+    - target: {fileID: 4083096971287852, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.66560656
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083096971287852, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.1416925
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083096971287852, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.25546646
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083096971287852, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.6867518
+      objectReference: {fileID: 0}
+    - target: {fileID: 114007836392273374, guid: 707430ca36cb294408e3f828cbefef96,
+        type: 2}
+      propertyPath: respawnManager
+      value: 
+      objectReference: {fileID: 1733716130}
     - target: {fileID: 224430799750780026, guid: 707430ca36cb294408e3f828cbefef96,
         type: 2}
       propertyPath: m_AnchorMax.x
@@ -60346,6 +60346,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1811892452}
+  - component: {fileID: 1811892453}
   m_Layer: 0
   m_Name: Military6Wall
   m_TagString: Untagged
@@ -60372,6 +60373,18 @@ Transform:
   m_Father: {fileID: 1239517303}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1811892453
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811892451}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 45, y: 15, z: 5}
+  m_Center: {x: 5, y: 6, z: 0}
 --- !u!1001 &1812117647
 Prefab:
   m_ObjectHideFlags: 0
