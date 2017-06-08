@@ -21,9 +21,20 @@ public class ArtilleryEventTrigger : MonoBehaviour {
             {
                 artillery.alive = true;
                 Debug.Log("Artillery event started");
-                blockExit1.SetActive(true);
-                blockExit2.SetActive(true);
+                BlockExits();
             }
         }
+    }
+
+    public void BlockExits()
+    {
+        blockExit1.SetActive(true);
+        blockExit2.SetActive(true);
+    }
+
+    public void UnblockExits()
+    {
+        Destroy(blockExit1);
+        Destroy(blockExit2);
     }
 }
