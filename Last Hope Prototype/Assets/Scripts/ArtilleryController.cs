@@ -10,12 +10,12 @@ public class ArtilleryController : MonoBehaviour
     public bool alive = true;
     public ParticleSystem leftBarrelParticles;
     public ParticleSystem rightBarrelParticles;
-    
+
     void Start()
     {
         currentHp = maxHp;
     }
-    
+
     void Update()
     {
         if (alive)
@@ -31,12 +31,16 @@ public class ArtilleryController : MonoBehaviour
             }
         }
     }
-    public virtual void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack") && alive)
         {
-            int damage = 10;
-            TakeDamage(damage);
+            EnemyTrash trashScript = other.gameObject.GetComponentInParent<EnemyTrash>();
+            Attack currentAttackReceived = trashScript.GetAttack();
+            if (currentAttackReceived != null)
+            {
+                TakeDamage(currentAttackReceived.damage);
+            }
         }
     }
     public void TakeDamage(int damage)

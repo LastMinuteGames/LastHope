@@ -44,9 +44,12 @@ public class PlayerDetection : MonoBehaviour
                     enemyTrash.anim.SetBool("chase", false);
                     break;
                 case EnemyBehaviour.EB_ARTILLERY:
-                    enemyTrash.ChangeTarget(artillery.transform, TargetType.TT_ARTILLERY);
-                    enemyTrash.anim.SetBool("chase", true);
-                    enemyTrash.anim.SetBool("iddle", false);
+                    if (artillery.transform != null)
+                    {
+                        enemyTrash.ChangeTarget(artillery.transform, TargetType.TT_ARTILLERY);
+                        enemyTrash.anim.SetBool("chase", true);
+                        enemyTrash.anim.SetBool("iddle", false);
+                    }
                     break;
             }
         }
