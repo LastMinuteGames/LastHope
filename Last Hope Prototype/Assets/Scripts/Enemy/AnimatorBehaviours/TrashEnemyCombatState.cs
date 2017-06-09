@@ -17,19 +17,34 @@ public class TrashEnemyCombatState : StateMachineBehaviour {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (enemyTrash != null && enemyTrash.target != null && enemyTrash.target.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (enemyTrash != null && enemyTrash.GetTarget() != null && enemyTrash.GetTarget().type == TargetType.TT_PLAYER)
         {
+            Vector3 direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
+            
+            // Cast ray to target in combat range
+            RaycastHit hitC;
+            bool combatRayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hitC, enemyTrash.combatRange);
+
+            // Cast ray to target in attack range
+            RaycastHit hitA;
+            bool attackRayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hitA, enemyTrash.attackRange);
+
+            // Debug draw combat ray
+            Color rayColor;
+            rayColor = combatRayHit ? Color.green : Color.red;
+            Debug.DrawRay(enemyTrash.transform.position, direction, rayColor);
+
             bool change = true;
-            if (enemyTrash.nav.remainingDistance >= enemyTrash.combatRange)
+            if (!combatRayHit)
             {
                 animator.SetTrigger("chase");
             }
-            else if (enemyTrash.nav.remainingDistance > enemyTrash.attackRange)
+            else if (combatRayHit && !attackRayHit)
             {
                 enemyTrash.nav.Stop();
                 animator.SetTrigger("moveAround");
             }
-            else if (enemyTrash.nav.remainingDistance <= enemyTrash.attackRange)
+            else if (attackRayHit)
             {
                 enemyTrash.nav.Stop();
                 animator.SetTrigger("attack");

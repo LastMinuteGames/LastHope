@@ -64,9 +64,9 @@ public class CapsuleController : MonoBehaviour
 
     void SpawnDecal()
     {
-        float verticalRotation = Random.Range(0, 360);
-        Quaternion hitRotation = Quaternion.Euler(90, verticalRotation, 0);
-        float verticalPosition = capsuleHeight / 2 * transform.localScale.y - 0.001f;
-        Instantiate(decal, transform.position - new Vector3(0, verticalPosition, 0), hitRotation);
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit);
+        Quaternion hitRotation = Quaternion.Euler(90, Random.Range(0, 360), 0);
+        Instantiate(decal, hit.point + new Vector3(0, 0.001f, 0), hitRotation);
     }
 }
