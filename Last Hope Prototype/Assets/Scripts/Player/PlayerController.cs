@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-
-
 public struct CameraShakeStats
 {
     public float duration;
@@ -25,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public Collider shield;
     public MeleeWeaponTrail shieldEmitter;
     public GameObject hitParticles;
+    public ParticleSystem redAbilityParticles;
     [HideInInspector]
     public PlayerStance stance;// = PlayerStance.STANCE_NONE;
     [HideInInspector]
@@ -645,5 +642,15 @@ public class PlayerController : MonoBehaviour
         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
         Destroy(particle, totalDuration);
+    }
+
+    public void PlayRedAbilityParticles()
+    {
+        redAbilityParticles.Play();
+    }
+
+    public void StopRedAbilityParticles()
+    {
+        redAbilityParticles.Stop();
     }
 }

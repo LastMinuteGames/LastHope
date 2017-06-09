@@ -67,7 +67,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
             {
                 playerScript.HeavyAttackEffect();
             }
-            if (!currentState.IsName("BlueSpecialAttack") && !currentState.IsName("RedSpecialAttack"))
+            if (!currentState.IsName("RedSpecialAttack"))
             {
                 playerScript.SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
             }
