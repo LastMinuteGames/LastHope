@@ -1,47 +1,39 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShake : MonoBehaviour {
-
-
-    new Camera camera;
-    public bool done = false;
-    private bool shaking = false;
+public class CameraShake : MonoBehaviour
+{
     public float distanceShake = 40f;
-    public Transform player;
-    private Vector3 offsetToPivot;
+    public bool done = false;
 
+    private Camera cam;
+    private bool shaking = false;
+    private Vector3 offsetToPivot;
+    private Transform camT;
+    private Transform pivotT;
+    private CameraCollision camCollision;
 
     void Awake()
     {
-        offsetToPivot = transform.localPosition;
-        
+        camT = GetComponentInChildren<Camera>().transform;
+        pivotT = camT.parent;
+        offsetToPivot = camT.localPosition;
+        camCollision = GetComponent<CameraCollision>();
     }
 
-    // Use this for initialization
-    void Start () {
-        camera = this.GetComponent<Camera>();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        /*if (InputManager.Interact())
-        {
-            StartCoroutine(Shake());
-        }*/
+    void Start()
+    {
+        cam = GetComponent<Camera>();
     }
 
     public IEnumerator Shake(float duration = 0.2f, float magnitude = 0.5f, float xMultiplier = 1.0f, float yMultiplier = 1.0f, Transform positionCalled = null)
     {
         if (!shaking && CanShake(positionCalled))
         {
+            camCollision.enabled = false;
             done = false;
             shaking = true;
-            if (this.GetComponent<CameraController>())
-            {
-                this.GetComponent<CameraController>().enabled = false;
-            }
+
             float elapsed = 0.0f;
 
             while (elapsed < duration)
@@ -57,21 +49,20 @@ public class CameraShake : MonoBehaviour {
                 x *= magnitude * damper * xMultiplier;
                 y *= magnitude * damper * yMultiplier;
 
-                transform.localPosition = new Vector3(offsetToPivot.x + x, offsetToPivot.y + y, offsetToPivot.z);
+                camT.localPosition = new Vector3(offsetToPivot.x + x, offsetToPivot.y + y, offsetToPivot.z);
 
                 yield return null;
             }
 
-            transform.localPosition = offsetToPivot;
-            if (this.GetComponent<CameraController>())
-            {
-                this.GetComponent<CameraController>().enabled = true;
-            }
+            camT.localPosition = offsetToPivot;
+
+
             done = true;
             shaking = false;
+            camCollision.enabled = true;
 
         }
-        
+
     }
 
     public bool CanShake(Transform positionCalled)
@@ -82,7 +73,7 @@ public class CameraShake : MonoBehaviour {
         }
         else
         {
-            float distance = Vector3.Distance(positionCalled.position, player.position);
+            float distance = Vector3.Distance(positionCalled.position, pivotT.position);
             if (distance <= distanceShake)
             {
                 return true;
