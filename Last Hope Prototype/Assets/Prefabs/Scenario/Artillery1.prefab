@@ -791,7 +791,9 @@ MonoBehaviour:
   alive: 0
   leftBarrelParticles: {fileID: 198051739582403860}
   rightBarrelParticles: {fileID: 198471724503631654}
-  countDown: 80
+  deadExplosion: {fileID: 1397054726585476, guid: 0b45f635f311ee7439462d110bac4df8,
+    type: 2}
+  deadDecal: {fileID: 1930662934816432, guid: 60992ba07b42f1c488a1c4b87af1de1e, type: 2}
 --- !u!136 &136456476197077692
 CapsuleCollider:
   m_ObjectHideFlags: 1

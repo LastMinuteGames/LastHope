@@ -10,6 +10,8 @@ public class ArtilleryController : MonoBehaviour
     public bool alive = true;
     public ParticleSystem leftBarrelParticles;
     public ParticleSystem rightBarrelParticles;
+    public GameObject deadExplosion;
+    public GameObject deadDecal;
 
     void Start()
     {
@@ -49,12 +51,28 @@ public class ArtilleryController : MonoBehaviour
     }
     void Die()
     {
-        alive = false;
         Debug.Log("You lose");
-        Destroy(this.gameObject);
+        SpawnExplosion();
+        SpawnDecal();
+        alive = false;
+        Destroy(gameObject);
     }
 
-    void LeftBarrelShoot()
+    void SpawnExplosion()
+    {
+        Instantiate(deadExplosion, transform.position, transform.rotation);
+    }
+
+    void SpawnDecal()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit);
+        Quaternion hitRotation = Quaternion.Euler(90, Random.Range(0, 360), 0);
+        GameObject spawnedDecal = Instantiate(deadDecal, hit.point + new Vector3(0, 0.001f, 0), hitRotation);
+        spawnedDecal.transform.localScale *= 5;
+    }
+
+        void LeftBarrelShoot()
     {
         if (leftBarrelParticles != null)
         {
