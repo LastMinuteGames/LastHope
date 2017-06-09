@@ -107,6 +107,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //Hide cursor
+        Cursor.visible = false;
+
         anim = GetComponent<Animator>();
 
         // Stats setup
