@@ -44,7 +44,7 @@ public class PlayerDetection : MonoBehaviour
                     enemyTrash.anim.SetBool("chase", false);
                     break;
                 case EnemyBehaviour.EB_ARTILLERY:
-                    if (artillery.transform != null)
+                    if (artillery != null)
                     {
                         enemyTrash.ChangeTarget(artillery.transform, TargetType.TT_ARTILLERY);
                         enemyTrash.anim.SetBool("chase", true);
