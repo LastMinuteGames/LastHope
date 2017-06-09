@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyBehaviour
+{
+    EB_ARTILLERY,
+    EB_DEFAULT
+}
+
 public class EnemyTrash : MonoBehaviour//: Enemy
 {
-
+    public EnemyBehaviour behaviour;
     public int attackProbability;
     public int approachProbability;
     //public int moveAroundPlayerProbability
@@ -25,8 +31,8 @@ public class EnemyTrash : MonoBehaviour//: Enemy
 
     [HideInInspector]
     public double lastAttackTime = 0;
-    [HideInInspector]
-    public Transform target;
+    [SerializeField]
+    private Transform target;
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector]
@@ -111,6 +117,11 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         this.target = target;
         if (this.target != null && nav != null)
             nav.SetDestination(this.target.position);
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
     }
 
     public void Dead()

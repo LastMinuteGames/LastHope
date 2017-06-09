@@ -17,7 +17,7 @@ public class TrashEnemyMoveAroundtState : StateMachineBehaviour {
         }
 
         startTime = Time.time;
-        enemyTrash.transform.RotateAround(enemyTrash.target.transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
+        enemyTrash.transform.RotateAround(enemyTrash.GetTarget().transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -52,7 +52,7 @@ public class TrashEnemyMoveAroundtState : StateMachineBehaviour {
             else
             {
                 //enemyTrash.nav.Stop();
-                enemyTrash.transform.RotateAround(enemyTrash.target.transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
+                enemyTrash.transform.RotateAround(enemyTrash.GetTarget().transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
             }
             //return type;
     }
@@ -60,7 +60,7 @@ public class TrashEnemyMoveAroundtState : StateMachineBehaviour {
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyTrash.transform.RotateAround(enemyTrash.target.transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
+        enemyTrash.transform.RotateAround(enemyTrash.GetTarget().transform.position, Vector3.up, enemyTrash.combatAngularSpeed * Time.deltaTime);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

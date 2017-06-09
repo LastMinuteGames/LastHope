@@ -17,7 +17,7 @@ public class TrashEnemyCombatState : StateMachineBehaviour {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (enemyTrash != null && enemyTrash.target != null && enemyTrash.target.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (enemyTrash != null && enemyTrash.GetTarget() != null && enemyTrash.GetTarget().gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             bool change = true;
             if (enemyTrash.nav.remainingDistance >= enemyTrash.combatRange)

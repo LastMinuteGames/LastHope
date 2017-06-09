@@ -20,7 +20,7 @@ public class TrashEnemyDamagedState : StateMachineBehaviour {
         if (enemyTrash.IsDead())
         {
             animator.SetBool("die", true);
-        } else if (enemyTrash.target != null)
+        } else if (enemyTrash.GetTarget() != null)
         {
             animator.SetBool("chase", true);
         }

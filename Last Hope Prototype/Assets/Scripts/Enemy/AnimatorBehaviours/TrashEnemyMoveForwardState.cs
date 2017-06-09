@@ -36,8 +36,8 @@ public class TrashEnemyMoveForwardState : StateMachineBehaviour {
         else
         {
             enemyTrash.nav.Resume();
-            if (enemyTrash.target != null)
-                enemyTrash.nav.SetDestination(enemyTrash.target.position);
+            if (enemyTrash.GetTarget() != null)
+                enemyTrash.nav.SetDestination(enemyTrash.GetTarget().position);
         }
 
     }
