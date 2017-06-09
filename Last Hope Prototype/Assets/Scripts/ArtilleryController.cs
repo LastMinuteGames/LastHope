@@ -7,13 +7,9 @@ public class ArtilleryController : MonoBehaviour
 
     public float maxHp = 100;
     public float currentHp;
-    public bool alive = false;
-    [SerializeField]
-    private ParticleSystem leftBarrelParticles;
-    [SerializeField]
-    private ParticleSystem rightBarrelParticles;
-
-    public float countDown = 20;
+    public bool alive = true;
+    public ParticleSystem leftBarrelParticles;
+    public ParticleSystem rightBarrelParticles;
     
     void Start()
     {
@@ -28,15 +24,10 @@ public class ArtilleryController : MonoBehaviour
             {
                 Die();
             }
-            else if (countDown > 0)
-            {
-                countDown -= Time.deltaTime;
-            }
             else
             {
                 // TODO: Wait for all enemies to be killed to finish the event. Unlock main square doors to proceed
                 Debug.Log("You win");
-                alive = false;
             }
         }
     }

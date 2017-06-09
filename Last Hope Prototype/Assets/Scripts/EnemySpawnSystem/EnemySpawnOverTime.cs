@@ -74,10 +74,6 @@ public class EnemySpawnOverTime : MonoBehaviour
 
     void Update()
     {
-        if (artillery.countDown <= 0)
-        {
-            spawning = false;
-        }
         if (spawning)
         {
             int waveCopy = currentWave;

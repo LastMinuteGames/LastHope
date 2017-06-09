@@ -17,8 +17,18 @@ public class TrashEnemyCombatState : StateMachineBehaviour {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (enemyTrash != null && enemyTrash.GetTarget() != null && enemyTrash.GetTarget().gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (enemyTrash != null && enemyTrash.GetTarget() != null && enemyTrash.GetTarget().type == TargetType.TT_PLAYER)
         {
+            // Cast ray to target
+            RaycastHit hit;
+            Vector3 direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
+            bool rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.combatRange);
+
+            // Debug draw ray
+            Color rayColor;
+            rayColor = rayHit ? Color.green : Color.red;
+            Debug.DrawRay(enemyTrash.transform.position, direction, rayColor);
+
             bool change = true;
             if (enemyTrash.nav.remainingDistance >= enemyTrash.combatRange)
             {

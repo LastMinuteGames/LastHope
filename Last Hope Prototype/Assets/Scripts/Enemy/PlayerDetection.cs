@@ -23,10 +23,9 @@ public class PlayerDetection : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            enemyTrash.ChangeTarget(other.transform);
+            enemyTrash.ChangeTarget(other.transform, TargetType.TT_PLAYER);
             enemyTrash.anim.SetBool("iddle", false);
             enemyTrash.anim.SetBool("chase", true);
-            enemyTrash.anim.SetBool("chaseArtillery", false);
         }
     }
 
@@ -43,12 +42,10 @@ public class PlayerDetection : MonoBehaviour
                     }
                     enemyTrash.anim.SetBool("iddle", true);
                     enemyTrash.anim.SetBool("chase", false);
-                    enemyTrash.anim.SetBool("chaseArtillery", false);
                     break;
                 case EnemyBehaviour.EB_ARTILLERY:
-                    enemyTrash.ChangeTarget(artillery.transform);
-                    enemyTrash.anim.SetBool("chaseArtillery", true);
-                    enemyTrash.anim.SetBool("chase", false);
+                    enemyTrash.ChangeTarget(artillery.transform, TargetType.TT_ARTILLERY);
+                    enemyTrash.anim.SetBool("chase", true);
                     enemyTrash.anim.SetBool("iddle", false);
                     break;
             }

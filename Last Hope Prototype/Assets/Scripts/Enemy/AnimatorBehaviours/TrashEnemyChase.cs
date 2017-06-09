@@ -11,7 +11,6 @@ public class TrashEnemyChase : StateMachineBehaviour {
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
-        animator.SetBool("chaseArtillery", false);
         Debug.Log("Chase Enter");
     }
 
@@ -19,24 +18,58 @@ public class TrashEnemyChase : StateMachineBehaviour {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Chase Update");
-        if (enemyTrash.GetTarget() != null)
+        RaycastHit hit;
+        Vector3 direction;
+        bool rayHit;
+        Color rayColor;
+        switch (enemyTrash.GetTarget().type)
         {
-            if (enemyTrash.nav.remainingDistance >= enemyTrash.combatRange)
-            {
-                enemyTrash.nav.SetDestination(enemyTrash.GetTarget().position);
-                enemyTrash.nav.Resume();
-            }
-            else
-            {
+            case TargetType.TT_PLAYER:
+                // Cast ray to target in combat range
+                direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
+                rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.combatRange);
+
+                // Debug draw ray
+                rayColor = rayHit ? Color.green : Color.red;
+                Debug.DrawRay(enemyTrash.transform.position, direction, rayColor);
+
+                if (!rayHit)
+                {
+                    enemyTrash.nav.SetDestination(enemyTrash.GetTarget().transf.position);
+                    enemyTrash.nav.Resume();
+                }
+                else
+                {
+                    animator.SetBool("chase", false);
+                    animator.SetBool("combat", true);
+                    enemyTrash.nav.Stop();
+                }
+                break;
+            case TargetType.TT_ARTILLERY:
+                // Cast ray to target in attack range
+                direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
+                rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.attackRange);
+
+                // Debug draw ray
+                rayColor = rayHit ? Color.green : Color.red;
+                Debug.DrawRay(enemyTrash.transform.position, direction, rayColor);
+
+                if (!rayHit)
+                {
+                    enemyTrash.nav.SetDestination(enemyTrash.GetTarget().transf.position);
+                    enemyTrash.nav.Resume();
+                }
+                else
+                {
+                    animator.SetBool("chase", false);
+                    animator.SetBool("attackArtillery", true);
+                    enemyTrash.nav.Stop();
+                }
+                break;
+            default:
                 animator.SetBool("chase", false);
-                animator.SetBool("combat", true);
-                enemyTrash.nav.Stop();
-            }
-        }
-        else
-        {
-            animator.SetBool("chase", false);
-            animator.SetBool("iddle", true);
+                animator.SetBool("iddle", true);
+                break;
         }
     }
 

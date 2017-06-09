@@ -9,6 +9,18 @@ public enum EnemyBehaviour
     EB_DEFAULT
 }
 
+public enum TargetType
+{
+    TT_PLAYER,
+    TT_ARTILLERY
+}
+
+public class Target
+{
+    public Transform transf;
+    public TargetType type;
+}
+
 public class EnemyTrash : MonoBehaviour//: Enemy
 {
     public EnemyBehaviour behaviour;
@@ -31,8 +43,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
 
     [HideInInspector]
     public double lastAttackTime = 0;
-    [SerializeField]
-    private Transform target;
+    private Target target;
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector]
@@ -56,6 +67,8 @@ public class EnemyTrash : MonoBehaviour//: Enemy
 
         enemyAttacks = new Dictionary<string, Attack>();
         enemyAttacks.Add("Attack", new Attack("Attack", 10));
+
+        target = new Target();
     }
 
     void Update()
@@ -112,14 +125,22 @@ public class EnemyTrash : MonoBehaviour//: Enemy
             life = maxLife;
     }
 
-    public void ChangeTarget(Transform target)
+    public void ChangeTarget(Target target)
     {
         this.target = target;
         if (this.target != null && nav != null)
-            nav.SetDestination(this.target.position);
+            nav.SetDestination(this.target.transf.position);
     }
 
-    public Transform GetTarget()
+    public void ChangeTarget(Transform transf, TargetType type)
+    {
+        target.transf = transf;
+        target.type = type;
+        if (target != null && nav != null)
+            nav.SetDestination(target.transf.position);
+    }
+
+    public Target GetTarget()
     {
         return target;
     }
