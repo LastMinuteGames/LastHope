@@ -39,7 +39,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4235005824050830}
   - component: {fileID: 114927127023673054}
-  - component: {fileID: 114466206402264718}
   - component: {fileID: 114840340349363962}
   m_Layer: 0
   m_Name: MainCameraRig
@@ -84,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328730495930134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4779279262329720}
@@ -152,22 +151,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328730495930134}
   m_Enabled: 1
---- !u!114 &114466206402264718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620519260192016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f0f92b7a780754e929456c6d580222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipMoveTime: 0.05
-  returnTime: 0.4
-  sphereCastRadius: 0.1
-  closestDistance: 0.5
-  dontClipTag: Player
 --- !u!114 &114840340349363962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,9 +179,9 @@ MonoBehaviour:
   moveSpeed: 10
   turnSpeed: 3
   tiltMax: 75
-  tiltMin: 5
+  tiltMin: 15
   invertHorizontalAxis: 0
-  invertVerticalAxis: 0
+  invertVerticalAxis: 1
   vSmooth: 0.5
   hSmooth: 0.5
 --- !u!124 &124388541635092762
