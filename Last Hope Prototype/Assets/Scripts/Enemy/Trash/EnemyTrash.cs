@@ -37,6 +37,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     public int combatRange;
     public int attackRange;
     public Collider katana;
+    public MeleeWeaponTrail swordEmitter;
     public int chaseSpeed;
     public int combatAngularSpeed;
     public int frameUpdateInterval;
@@ -86,16 +87,16 @@ public class EnemyTrash : MonoBehaviour//: Enemy
             {
                 playerScript.HeavyAttackEffect();
             }
-            if (!currentState.IsName("RedSpecialAttack"))
-            {
-                playerScript.SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
-            }
 
             Attack currentAttackReceived = playerScript.GetAttack();
             if (currentAttackReceived != null)
             {
                 if (lastAttackReceived == null || currentAttackReceived.name != lastAttackReceived.name)
                 {
+                    if (!currentState.IsName("RedSpecialAttack"))
+                    {
+                        playerScript.SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+                    }
                     TakeDamage(currentAttackReceived.damage);
                 }
                 lastAttackReceived = currentAttackReceived;
@@ -186,5 +187,15 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         anim.SetBool("chase", false);
         anim.SetBool("moveAround", false);
         anim.SetBool("moveForward", false);
+    }
+
+    public void EnableSwordEmitter()
+    {
+        swordEmitter.Emit = true;
+    }
+
+    public void DisableSwordEmitter()
+    {
+        swordEmitter.Emit = false;
     }
 }

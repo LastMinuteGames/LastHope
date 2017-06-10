@@ -10,8 +10,9 @@ public class TrashEnemyDamagedState : StateMachineBehaviour {
         if (enemyTrash == null)
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
-            enemyTrash.ClearAnimatorParameters();
         }
+        enemyTrash.ClearAnimatorParameters();
+        enemyTrash.DisableSwordEmitter();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

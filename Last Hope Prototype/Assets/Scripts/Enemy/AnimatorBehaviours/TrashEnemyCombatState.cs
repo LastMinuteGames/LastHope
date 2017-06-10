@@ -12,6 +12,7 @@ public class TrashEnemyCombatState : StateMachineBehaviour {
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
+        enemyTrash.DisableSwordEmitter();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

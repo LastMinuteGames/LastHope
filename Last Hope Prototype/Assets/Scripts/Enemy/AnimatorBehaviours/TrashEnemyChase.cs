@@ -12,6 +12,7 @@ public class TrashEnemyChase : StateMachineBehaviour
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
+        enemyTrash.DisableSwordEmitter();
         Debug.Log("Chase Enter");
     }
 

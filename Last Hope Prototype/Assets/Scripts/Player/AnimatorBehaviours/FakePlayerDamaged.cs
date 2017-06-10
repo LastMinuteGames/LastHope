@@ -12,6 +12,8 @@ public class FakePlayerDamaged : StateMachineBehaviour {
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
+        playerController.DisableSwordEmitter();
+        playerController.DisableShieldEmitter();
         if (playerController.currentHP <= 0 && !playerController.IsDead())
         {
             playerController.Die();

@@ -120,9 +120,6 @@ public class MeleeWeaponTrail : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		// early out if there is no camera
-		if (!Camera.main) return;
-
 		// if we have moved enough, create a new vertex and make sure we rebuild the mesh
 		float theDistanceSqr = (_lastPosition - transform.position).sqrMagnitude;
 		if (_emit)
