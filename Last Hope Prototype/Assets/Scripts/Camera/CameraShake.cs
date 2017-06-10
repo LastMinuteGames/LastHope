@@ -30,7 +30,10 @@ public class CameraShake : MonoBehaviour
     {
         if (!shaking && CanShake(positionCalled))
         {
-            camCollision.enabled = false;
+            if (camCollision)
+            {
+                camCollision.enabled = false;
+            }
             done = false;
             shaking = true;
 
@@ -59,7 +62,10 @@ public class CameraShake : MonoBehaviour
 
             done = true;
             shaking = false;
-            camCollision.enabled = true;
+            if (camCollision)
+            {
+                camCollision.enabled = true;
+            }
 
         }
 
