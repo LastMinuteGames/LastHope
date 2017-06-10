@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
         uiManager.UpdatePlayerStance(stance);
     }
 
-    public void EnableGreyAbility()
+    public void EnableBlueAbility()
     {
         greyAbilityEnabled = true;
     }

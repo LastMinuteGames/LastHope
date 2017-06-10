@@ -67,6 +67,6 @@ public class GeneratorController : Interactable {
     {
         GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
         EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();
-        coreParameters.color = PlayerStanceType.STANCE_RED;
+        coreParameters.stance = PlayerStanceType.STANCE_RED;
     }
 }
