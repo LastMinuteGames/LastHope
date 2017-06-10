@@ -158,7 +158,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -250,6 +250,8 @@ MonoBehaviour:
   tiltMin: 5
   invertHorizontalAxis: 0
   invertVerticalAxis: 0
+  vSmooth: 0.5
+  hSmooth: 0.5
 --- !u!114 &114953412024891950
 MonoBehaviour:
   m_ObjectHideFlags: 1
