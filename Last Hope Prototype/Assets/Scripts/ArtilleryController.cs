@@ -13,9 +13,12 @@ public class ArtilleryController : MonoBehaviour
     public GameObject deadExplosion;
     public GameObject deadDecal;
 
+    private ArtilleryEventTrigger eventTrigger;
+
     void Start()
     {
         currentHp = maxHp;
+        eventTrigger = GetComponentInChildren<ArtilleryEventTrigger>();
     }
 
     void Update()
@@ -30,6 +33,7 @@ public class ArtilleryController : MonoBehaviour
             {
                 // TODO: Wait for all enemies to be killed to finish the event. Unlock main square doors to proceed
                 Debug.Log("You win");
+                //eventTrigger.UnblockExits();
             }
         }
     }
