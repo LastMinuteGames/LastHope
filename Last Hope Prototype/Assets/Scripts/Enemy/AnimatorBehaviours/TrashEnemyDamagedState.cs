@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrashEnemyDamagedState : StateMachineBehaviour {
     EnemyTrash enemyTrash;
+    bool spawnedParticles = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,6 +22,11 @@ public class TrashEnemyDamagedState : StateMachineBehaviour {
         if (enemyTrash.IsDead())
         {
             animator.SetBool("die", true);
+            if (!spawnedParticles)
+            {
+                spawnedParticles = true;
+                enemyTrash.SpawnDeadParticles();
+            }
         } else if (enemyTrash.GetTarget() != null)
         {
             animator.SetBool("chase", true);

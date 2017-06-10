@@ -638,7 +638,7 @@ public class PlayerController : MonoBehaviour
 
     public void SpawnHitParticles(Vector3 position)
     {
-        GameObject particle = (GameObject)Instantiate(hitParticles, position, transform.rotation);
+        GameObject particle = Instantiate(hitParticles, position, transform.rotation);
         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
         Destroy(particle, totalDuration);

@@ -38,6 +38,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     public int attackRange;
     public Collider katana;
     public MeleeWeaponTrail swordEmitter;
+    public GameObject deadParticles;
     public int chaseSpeed;
     public int combatAngularSpeed;
     public int frameUpdateInterval;
@@ -197,5 +198,13 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     public void DisableSwordEmitter()
     {
         swordEmitter.Emit = false;
+    }
+    
+    public void SpawnDeadParticles()
+    {
+        GameObject particle = Instantiate(deadParticles, transform.position + new Vector3(0,1,0), transform.rotation);
+        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(particle, totalDuration);
     }
 }
