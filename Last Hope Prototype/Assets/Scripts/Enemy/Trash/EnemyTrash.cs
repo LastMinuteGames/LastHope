@@ -3,32 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyBehaviour
-{
-    EB_ARTILLERY,
-    EB_DEFAULT
-}
 
-public enum TargetType
-{
-    TT_PLAYER,
-    TT_ARTILLERY
-}
 
-public class Target
-{
-    public Transform transf;
-    public TargetType type;
-}
 
-public class EnemyTrash : MonoBehaviour//: Enemy
+public class EnemyTrash : Enemy //MonoBehaviour
 {
-    public EnemyBehaviour behaviour;
     //public int moveAroundPlayerProbability
     public Transform enemy;
-    public int life;
-    public int maxLife;
-    public bool dead = false;
+
     public int combatRange;
     public int attackRange;
     public Collider katana;
@@ -36,14 +18,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     public GameObject deadParticles;
     public int chaseSpeed;
     public int combatAngularSpeed;
-    public GameObject lifeDrop;
-    public int lifeDropProbability;
-    public GameObject EnergyDrop;
-    public int energyDropProbability;
-
-    [HideInInspector]
-    public double lastAttackTime = 0;
-    private Target target;
+    
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector]
@@ -52,6 +27,9 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     private Attack lastAttackReceived;
     private Dictionary<String, Attack> enemyAttacks;
     private Attack currentAttack;
+    
+
+
 
     void Awake()
     {
@@ -69,6 +47,8 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         enemyAttacks.Add("Attack", new Attack("Attack", 10));
 
         target = new Target();
+
+        enemyType = EnemyType.ET_TRASH;
     }
 
     void Update()
@@ -80,6 +60,7 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
+            //TODO: Use attacks instead of animator to know what attack has received...animator sometimes "lies"...
             PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
             AnimatorStateInfo currentState = playerScript.anim.GetCurrentAnimatorStateInfo(0);
             if (currentState.IsName("H1") || currentState.IsName("H2") || currentState.IsName("H3"))
@@ -103,27 +84,12 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         }
     }
 
-    public void TakeDamage(int damage)
+
+    protected override void OnDamageTaken()
     {
-        if(life > 0)
-        {
-            life -= damage;
-            anim.SetTrigger("damaged");
-        }
+        anim.SetTrigger("damaged");
     }
 
-    public bool IsDead()
-    {
-        Debug.Log("Current life is: " + life);
-        return life <= 0;
-    }
-
-    public void RecoveryHealth(int quantity)
-    {
-        life += quantity;
-        if (life > maxLife)
-            life = maxLife;
-    }
 
     public void ChangeTarget(Target target)
     {
@@ -143,27 +109,6 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     public Target GetTarget()
     {
         return target;
-    }
-
-    public void Dead()
-    {
-        /**
-         * TODO: Drop items if necessary
-        **/
-        float lifeRandomNumber =  UnityEngine.Random.Range(0, 100.0f);
-        float energyRandomNumber = UnityEngine.Random.Range(0, 100.0f);
-
-        if(lifeRandomNumber < lifeDropProbability)
-        {
-            Instantiate(lifeDrop, transform.position, Quaternion.identity);
-        }
-
-        if(energyRandomNumber < energyDropProbability)
-        {
-            Instantiate(EnergyDrop, transform.position, Quaternion.identity);
-        }
-
-        Destroy(gameObject);
     }
 
     public void ClearLastAttackReceived()
@@ -195,7 +140,6 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     {
         anim.SetBool("combat", false);
         anim.SetBool("iddle", false);
-        anim.SetBool("walk", false);
         anim.SetBool("chase", false);
         anim.SetBool("moveAround", false);
         anim.SetBool("moveForward", false);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.EnemySpawnSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +16,22 @@ public class CapsuleController : MonoBehaviour
     private float interpolationTime = 0;
     private float currentHeight;
     private float capsuleHeight;
+    private EnemyObserver observer = null;
 
     private bool spawned = false;
+
+    public EnemyObserver Observer
+    {
+        get
+        {
+            return observer;
+        }
+
+        set
+        {
+            observer = value;
+        }
+    }
 
     void Start()
     {
@@ -59,7 +74,12 @@ public class CapsuleController : MonoBehaviour
     {
         Vector3 landingPos = transform.position;
         Instantiate(landingParticles, transform.position, transform.rotation);
-        Instantiate(enemy, landingPos, transform.rotation);
+        GameObject go = Instantiate(enemy, landingPos, transform.rotation);
+        Enemy instantiatedEnemy = go.GetComponent<Enemy>();
+        if(instantiatedEnemy != null && observer != null)
+        {
+            observer.AddEnemy(instantiatedEnemy);
+        }
     }
 
     void SpawnDecal()
