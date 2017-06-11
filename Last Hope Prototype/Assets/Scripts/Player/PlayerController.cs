@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public MeleeWeaponTrail shieldEmitter;
     public GameObject hitParticles;
     public ParticleSystem redAbilityParticles;
+    public ParticleSystem dodgeParticles;
     [HideInInspector]
     public PlayerStance stance;// = PlayerStance.STANCE_NONE;
     [HideInInspector]
@@ -689,5 +690,15 @@ public class PlayerController : MonoBehaviour
     public void StopRedAbilityParticles()
     {
         redAbilityParticles.Stop();
+    }
+
+    public void PlayDodgeParticles()
+    {
+        dodgeParticles.Play();
+    }
+
+    public void StopDodgeParticles()
+    {
+        dodgeParticles.Stop();
     }
 }
