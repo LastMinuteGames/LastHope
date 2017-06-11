@@ -38,6 +38,15 @@ public class GeneratorController : Interactable {
             Debug.Log("Wait for 5 seconds");
             running = true;
             Invoke("SpawnSpecialAbility", 5);
+            //Dialogue
+            string[] a = new string[2];
+            a[0] = "El generador se activará en 5 segundos";
+            a[1] = "Gracias por esperar";
+            string[] b = new string[2];
+            b[0] = "Generador";
+            b[1] = "Generador";
+            DialogueSystem.Instance.AddNewDialogue(a, b);
+            DialogueSystem.Instance.ShowDialogue();
         }
     }
 
