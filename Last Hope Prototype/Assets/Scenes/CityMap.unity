@@ -6500,6 +6500,10 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1095597026848270, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
   m_IsPrefabParent: 0
@@ -20633,6 +20637,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 931744131}
   dialogueText: {fileID: 164415812}
   dialogueFrom: {fileID: 380282769}
+  show: 0
 --- !u!1001 &623830677
 Prefab:
   m_ObjectHideFlags: 0
@@ -60346,7 +60351,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1730516702}
-  m_LocalRotation: {x: -0.1028474, y: 0.8962008, z: -0.28257096, w: -0.32619035}
+  m_LocalRotation: {x: -0.10284741, y: 0.8962009, z: -0.282571, w: -0.32619038}
   m_LocalPosition: {x: 138, y: 91, z: 433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -67023,7 +67028,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1525026864440992, guid: 9d7084c8aa6fd3647834a95f9683f351, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d7084c8aa6fd3647834a95f9683f351, type: 2}
@@ -68053,6 +68058,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1573995628}
+    - target: {fileID: 81044480536674500, guid: 33787175598fc3d4b8ee4a390b5490c1,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33787175598fc3d4b8ee4a390b5490c1, type: 2}
   m_IsPrefabParent: 0

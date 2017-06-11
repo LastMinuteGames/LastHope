@@ -10,8 +10,11 @@ public class DialogueSystem : MonoBehaviour {
     public GameObject dialogueBox;
     public Text dialogueText;
     public Text dialogueFrom;
-    private bool show;
+    public bool show;
     private bool next;
+    private float timeDialogue = 5f;
+    private float timeLeft;
+    
 
     // Use this for initialization
     void Awake () {
@@ -24,11 +27,12 @@ public class DialogueSystem : MonoBehaviour {
             Instance = this;
         }
         dialogueBox.SetActive(false);
-	}
+        timeLeft = timeDialogue;
+    }
 
     void Update()
     {
-        if (show && next)
+        /*if (show && next)
         {
             next = false;
             if (dialogueLines.Count > 0)
@@ -50,7 +54,38 @@ public class DialogueSystem : MonoBehaviour {
         {
             Debug.Log("ENTER!");
             NextDialogue();
+        }*/
+
+        if (show)
+        {
+            timeLeft -= Time.deltaTime;
+            Debug.Log(timeLeft);
+            if (timeLeft < 0)
+            {
+                NextDialogue();
+            }
         }
+
+        if (show && next)
+        {
+            next = false;
+            
+
+            if (dialogueLines.Count > 0)
+            {
+                dialogueBox.SetActive(true);
+                dialogueText.text = dialogueLines[0];
+                dialogueFrom.text = fromLines[0];
+            }
+            else
+            {
+                dialogueBox.SetActive(false);
+                show = false;
+                next = false;
+            }
+
+        }
+
     }
 	
 	public void AddNewDialogue(string[] lines, string[] from)
@@ -65,6 +100,7 @@ public class DialogueSystem : MonoBehaviour {
     {
         show = true;
         next = true;
+        timeLeft = timeDialogue;
     }
 
     public void NextDialogue()
@@ -72,5 +108,6 @@ public class DialogueSystem : MonoBehaviour {
         next = true;
         dialogueLines.RemoveAt(0);
         fromLines.RemoveAt(0);
+        timeLeft = timeDialogue;
     }
 }

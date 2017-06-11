@@ -39,12 +39,10 @@ public class GeneratorController : Interactable {
             running = true;
             Invoke("SpawnSpecialAbility", 5);
             //Dialogue
-            string[] a = new string[2];
+            string[] a = new string[1];
             a[0] = "El generador se activará en 5 segundos";
-            a[1] = "Gracias por esperar";
-            string[] b = new string[2];
+            string[] b = new string[1];
             b[0] = "Generador";
-            b[1] = "Generador";
             DialogueSystem.Instance.AddNewDialogue(a, b);
             DialogueSystem.Instance.ShowDialogue();
         }
@@ -56,6 +54,16 @@ public class GeneratorController : Interactable {
         {
             //TODO: Show message
             Debug.Log("Press Interact to charge the generator");
+            if (!DialogueSystem.Instance.show)
+            {
+                string[] a = new string[1];
+                a[0] = "Press Interact to charge the generator";
+                string[] b = new string[1];
+                b[0] = "Generator";
+                DialogueSystem.Instance.AddNewDialogue(a, b);
+                DialogueSystem.Instance.ShowDialogue();
+            }
+            
         }
     }
 
