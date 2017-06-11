@@ -666,10 +666,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5af7013744e2cf4cbbeee306f7b7308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerT: {fileID: 0}
   pivotOffset: {x: 0, y: 3, z: 0}
   camOffset: {x: 0, y: 3, z: -6}
-  camSpeed: 200
+  moveSpeed: 1
+  turnSpeed: 5
+  invertHorizontalAxis: 0
+  invertVerticalAxis: 0
+  m_TiltMax: 30
+  m_TiltMin: 30
 --- !u!1 &1178873693
 GameObject:
   m_ObjectHideFlags: 0

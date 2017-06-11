@@ -24,16 +24,11 @@ public class Target
 public class EnemyTrash : MonoBehaviour//: Enemy
 {
     public EnemyBehaviour behaviour;
-    public int attackProbability;
-    public int approachProbability;
     //public int moveAroundPlayerProbability
     public Transform enemy;
     public int life;
     public int maxLife;
     public bool dead = false;
-    public long timeToAfterDeadMS;
-    public long timeAttackRefresh;
-    public int attack;
     public int combatRange;
     public int attackRange;
     public Collider katana;
@@ -41,7 +36,10 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     public GameObject deadParticles;
     public int chaseSpeed;
     public int combatAngularSpeed;
-    public int frameUpdateInterval;
+    public GameObject lifeDrop;
+    public int lifeDropProbability;
+    public GameObject EnergyDrop;
+    public int energyDropProbability;
 
     [HideInInspector]
     public double lastAttackTime = 0;
@@ -152,6 +150,19 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         /**
          * TODO: Drop items if necessary
         **/
+        float lifeRandomNumber =  UnityEngine.Random.Range(0, 100.0f);
+        float energyRandomNumber = UnityEngine.Random.Range(0, 100.0f);
+
+        if(lifeRandomNumber < lifeDropProbability)
+        {
+            Instantiate(lifeDrop, transform.position, Quaternion.identity);
+        }
+
+        if(energyRandomNumber < energyDropProbability)
+        {
+            Instantiate(EnergyDrop, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 
