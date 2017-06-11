@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -66,6 +69,9 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -102,39 +108,33 @@
     <Compile Include="Assets\Scripts\ColliderManager.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\Attack.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\AttackManager.cs" />
+    <Compile Include="Assets\Scripts\DialogueSystem.cs" />
     <Compile Include="Assets\Scripts\ElevatorController.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyAttackArtillery.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyAttackState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyChase.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyCombatState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDamagedState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDeadState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyDieState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyIdleState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyMoveAroundtState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyMoveBackState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyMoveForwardState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\AnimatorBehaviours\TrashEnemyWalkState.cs" />
     <Compile Include="Assets\Scripts\Enemy\AttackInRange.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyState.cs" />
     <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
     <Compile Include="Assets\Scripts\Enemy\PlayerDetection.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyAttackArtillery.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyAttackState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyChase.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyCombatState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyDamagedState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyDeadState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyDieState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyIdleState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyMoveAroundtState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyMoveBackState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyMoveForwardState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Trash\AnimatorBehaviours\TrashEnemyWalkState.cs" />
     <Compile Include="Assets\Scripts\Enemy\Trash\EnemyTrash.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashChaseState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashCombatMoveAround.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashCombatMoveBackState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashCombatMoveForwardState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashCombatState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashDamagedState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashDeadState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashEnemyAttack.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashIdleState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Trash\TrashState.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawnSystem\EnemyObserver.cs" />
     <Compile Include="Assets\Scripts\EnemySpawnSystem\EnemySpawnManager.cs" />
     <Compile Include="Assets\Scripts\EnemySpawnSystem\EnemySpawnOverTime.cs" />
     <Compile Include="Assets\Scripts\EnemySpawnSystem\EnemySpawnPoint.cs" />
     <Compile Include="Assets\Scripts\EnemySpawnSystem\EnemySpawnTrigger.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawnSystem\Spawn.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawnSystem\Wave.cs" />
     <Compile Include="Assets\Scripts\EnergyCoreController.cs" />
     <Compile Include="Assets\Scripts\FPSDisplay.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />

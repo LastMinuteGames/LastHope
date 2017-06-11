@@ -2129,6 +2129,16 @@ Prefab:
       propertyPath: blockExit2
       value: 
       objectReference: {fileID: 612289493}
+    - target: {fileID: 114560277200974232, guid: afce1dc66d138e042bd2a878af70de48,
+        type: 2}
+      propertyPath: reusableSpawnPointsParent
+      value: 
+      objectReference: {fileID: 1459472329}
+    - target: {fileID: 114560277200974232, guid: afce1dc66d138e042bd2a878af70de48,
+        type: 2}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 849360103}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
   m_IsPrefabParent: 0
@@ -6449,6 +6459,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114007836392273374, guid: 707430ca36cb294408e3f828cbefef96,
+        type: 2}
+      propertyPath: respawnManager
+      value: 
+      objectReference: {fileID: 1733716130}
     - target: {fileID: 4135814248002686, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.6656066
@@ -6481,11 +6496,6 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.6867518
       objectReference: {fileID: 0}
-    - target: {fileID: 114007836392273374, guid: 707430ca36cb294408e3f828cbefef96,
-        type: 2}
-      propertyPath: respawnManager
-      value: 
-      objectReference: {fileID: 1733716130}
     - target: {fileID: 224430799750780026, guid: 707430ca36cb294408e3f828cbefef96,
         type: 2}
       propertyPath: m_AnchorMax.x
