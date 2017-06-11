@@ -69,8 +69,14 @@ public class PlayerController : MonoBehaviour
     private CameraShake camShake;
     public Vector3 movement;
     public Vector3 targetDirection;
-    public float dodgeThrust;// = 5;
+    public float dodgeThrust;
     public bool pendingMove = false;
+    public bool canDodge;
+    [SerializeField]
+    private float dodgeMaxCooldown;
+    [SerializeField]
+    private float dodgeCurrentCooldown;
+    private float dodgeTimer;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
     private Vector3 camForward;
@@ -142,6 +148,8 @@ public class PlayerController : MonoBehaviour
         initialMaxEnergy = maxEnergy;
         currentEnergy = maxEnergy;
 
+        canDodge = true;
+
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         camShake = camT.GetComponent<CameraShake>();
         rigidBody = GetComponent<Rigidbody>();
@@ -205,6 +213,15 @@ public class PlayerController : MonoBehaviour
             if (timer > timeBetweenDmg)
             {
                 dmged = false;
+            }
+        }
+
+        if (!canDodge)
+        {
+            dodgeCurrentCooldown = dodgeMaxCooldown - (Time.time - dodgeTimer);
+            if (Time.time - dodgeTimer >= dodgeMaxCooldown)
+            {
+                canDodge = true;
             }
         }
 
@@ -460,6 +477,11 @@ public class PlayerController : MonoBehaviour
         //Vector3 impulse = targetDirection.normalized * dodgeThrust;
         //movement += impulse;
         //rigidBody.velocity = movement;
+    }
+
+    public void StartDodgeTimer()
+    {
+        dodgeTimer = Time.time;
     }
 
     public void SetBlocking(bool value)
