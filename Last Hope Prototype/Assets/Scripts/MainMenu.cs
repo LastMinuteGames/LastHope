@@ -56,6 +56,9 @@ public class MainMenu : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        //Hide cursor
+        Cursor.visible = false;
+
         unselectedBGColor = new Color(0.529F, 0.407F, 0.239F, 1);
         selectedBGColor = new Color(0.364F, 0.305F, 0.227F, 1);
         //unselectedTextColor = new Color(0.333F, 0.239F, 0.086F, 1);

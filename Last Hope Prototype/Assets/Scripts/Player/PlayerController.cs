@@ -110,6 +110,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //Hide cursor
+        Cursor.visible = false;
+
         anim = GetComponent<Animator>();
 
         // Stats setup
@@ -188,6 +191,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKey(KeyCode.Keypad1))
+        {
+            string[] a = new string[2];
+            a[0] = "El generador se activará en 5 segundos";
+            a[1] = "Gracias por esperar";
+            string[] b = new string[2];
+            b[0] = "Generador";
+            b[1] = "Generador";
+            DialogueSystem.Instance.AddNewDialogue(a, b);
+            DialogueSystem.Instance.ShowDialogue();
+        }
 
         if (InputManager.DebugMode())
         {
