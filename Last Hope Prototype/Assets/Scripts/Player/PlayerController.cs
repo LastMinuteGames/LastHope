@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
         playerAttacks.Add("L1", new Attack("L1", 10));
         playerAttacks.Add("L2", new Attack("L2", 15));
         playerAttacks.Add("L3", new Attack("L3", 20));
-        
+
         //Heavy attacks
         playerAttacks.Add("H1", new Attack("H1", 25));
         playerAttacks.Add("H2", new Attack("H2", 30));
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
     {
         if (camShake != null)
         {
-            StartCoroutine(camShake.Shake(0.1f, 0.25f,1,1,this.transform));
+            StartCoroutine(camShake.Shake(0.1f, 0.25f, 1, 1, this.transform));
         }
         //TODO: Add attack sound fx when we have one
     }
@@ -250,7 +250,8 @@ public class PlayerController : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Dodge"))
         {
             Dodge();
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("RedSpecialAttack"))
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("RedSpecialAttack"))
         {
             UpdateRedSpecialAttack();
         }
@@ -462,7 +463,7 @@ public class PlayerController : MonoBehaviour
         movement.x = totalImpulse * targetDirection.x;
         movement.z = totalImpulse * targetDirection.z;
 
-        rigidBody.MovePosition(rigidBody.position  +  movement * currentStats.movementSpeed * Time.deltaTime);
+        rigidBody.MovePosition(rigidBody.position + movement * currentStats.movementSpeed * Time.deltaTime);
 
     }
 
@@ -523,13 +524,16 @@ public class PlayerController : MonoBehaviour
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_BLUE && LoseEnergy(1))
         {
-                canSpecialAttack = true;
-                neutralSphere.gameObject.SetActive(true);
-                spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
-                if (camShake != null)
-                {
-                    StartCoroutine(camShake.Shake());
-                }
+            canSpecialAttack = true;
+            neutralSphere.gameObject.SetActive(true);
+            spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
+            ParticleSystem ps = spawnedParticle.GetComponent<ParticleSystem>();
+            float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+            Destroy(spawnedParticle, totalDuration);
+            if (camShake != null)
+            {
+                StartCoroutine(camShake.Shake());
+            }
         }
     }
     public void StartRedSpecialAttack()
@@ -563,7 +567,6 @@ public class PlayerController : MonoBehaviour
         if (canSpecialAttack)
         {
             neutralSphere.gameObject.SetActive(false);
-            Destroy(spawnedParticle);
         }
     }
 
@@ -660,7 +663,7 @@ public class PlayerController : MonoBehaviour
     public void DisableShieldEmitter()
     {
         shieldEmitter.Emit = false;
-   }
+    }
     public bool IsDodge
     {
         get
