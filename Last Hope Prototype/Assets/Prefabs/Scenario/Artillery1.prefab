@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 136456476197077692}
   m_Layer: 0
   m_Name: Artillery1
-  m_TagString: Untagged
+  m_TagString: EventTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -777,6 +777,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockExit1: {fileID: 0}
   blockExit2: {fileID: 0}
+  manager: {fileID: 0}
+  reusableSpawnPointsParent: {fileID: 0}
+  delayBetweenSpawns: 2
 --- !u!114 &114865554976319480
 MonoBehaviour:
   m_ObjectHideFlags: 1

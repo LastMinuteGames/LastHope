@@ -11,6 +11,29 @@ public class PlayerDetection : MonoBehaviour
     void Start()
     {
         enemyTrash = transform.gameObject.GetComponentInParent<EnemyTrash>();
+        artillery = GameObject.FindGameObjectWithTag("EventTarget").GetComponent<ArtilleryController>();
+        if (enemyTrash.anim != null)
+        {
+            switch (enemyTrash.behaviour)
+            {
+                case EnemyBehaviour.EB_DEFAULT:
+                    if (enemyTrash.nav != null)
+                    {
+                        enemyTrash.nav.Stop();
+                    }
+                    enemyTrash.anim.SetBool("iddle", true);
+                    enemyTrash.anim.SetBool("chase", false);
+                    break;
+                case EnemyBehaviour.EB_ARTILLERY:
+                    if (artillery != null)
+                    {
+                        enemyTrash.ChangeTarget(artillery.transform, TargetType.TT_ARTILLERY);
+                        enemyTrash.anim.SetBool("chase", true);
+                        enemyTrash.anim.SetBool("iddle", false);
+                    }
+                    break;
+            }
+        }
     }
 
     // Update is called once per frame

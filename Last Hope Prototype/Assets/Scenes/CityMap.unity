@@ -2131,14 +2131,14 @@ Prefab:
       objectReference: {fileID: 612289493}
     - target: {fileID: 114560277200974232, guid: afce1dc66d138e042bd2a878af70de48,
         type: 2}
-      propertyPath: reusableSpawnPointsParent
-      value: 
-      objectReference: {fileID: 1459472329}
-    - target: {fileID: 114560277200974232, guid: afce1dc66d138e042bd2a878af70de48,
-        type: 2}
       propertyPath: manager
       value: 
       objectReference: {fileID: 849360103}
+    - target: {fileID: 114560277200974232, guid: afce1dc66d138e042bd2a878af70de48,
+        type: 2}
+      propertyPath: reusableSpawnPointsParent
+      value: 
+      objectReference: {fileID: 1459472329}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afce1dc66d138e042bd2a878af70de48, type: 2}
   m_IsPrefabParent: 0
@@ -6433,11 +6433,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4808517993003868, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4808517993003868, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 9
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 4808517993003868, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
       propertyPath: m_LocalRotation.x
