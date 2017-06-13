@@ -117,7 +117,7 @@ namespace LastHope.SoundManager
         }
         private void StopLoopingSounds()
         {
-            for (int i = loopingSoundsList.Count; i >= 0; i--)
+            for (int i = loopingSoundsList.Count-1; i >= 0; i--)
             {
                 if (!loopingSoundsList[i].isPersist || !loopingSoundsList[i].audioSource.isPlaying)
                 {
@@ -127,7 +127,7 @@ namespace LastHope.SoundManager
         }
         private void StopLoopingMusics()
         {
-            for (int i = loopingMusicList.Count; i >= 0; i--)
+            for (int i = loopingMusicList.Count-1; i >= 0; i--)
             {
                 if (!loopingMusicList[i].isPersist || !loopingMusicList[i].audioSource.isPlaying)
                 {
@@ -167,7 +167,6 @@ namespace LastHope.SoundManager
                     }
                     loopingMusicList.RemoveAt(i);
                 }
-
             }
         }
 
@@ -268,6 +267,7 @@ namespace LastHope.SoundManager
         //If you unselect or select the game all sound should be paused/unpaused
         private void OnApplicationFocus(bool paused)
         {
+        Debug.Log("qwoufhqwofuqwhfouqwh");
             if (paused)
             {
                 Resume();
