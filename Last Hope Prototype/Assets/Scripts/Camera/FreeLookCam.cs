@@ -18,11 +18,13 @@ public class FreeLookCam : MonoBehaviour
     private Transform camT;
     private Transform pivotT;
     private float lookAngle;
+    [SerializeField]
     private float tiltAngle;
     private Vector3 pivotEulers;
     private Quaternion pivotTargetRot;
     private Quaternion transformTargetRot;
     private int hAxis, vAxis;
+    public float y = 0;
 
 
     private void Awake ()
@@ -68,8 +70,8 @@ public class FreeLookCam : MonoBehaviour
 
         transformTargetRot = Quaternion.Euler(0f, lookAngle, 0f);
 
-        tiltAngle -= y * turnSpeed * Time.deltaTime * vAxis * 100f;
-        tiltAngle = Mathf.Clamp(tiltAngle, -tiltMin, tiltMax);
+        //tiltAngle -= y * turnSpeed * Time.deltaTime * vAxis * 100f;
+        //tiltAngle = Mathf.Clamp(tiltAngle, -tiltMin, tiltMax);
 
         pivotTargetRot = Quaternion.Lerp(pivotTargetRot, Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z), vSmooth);
 
