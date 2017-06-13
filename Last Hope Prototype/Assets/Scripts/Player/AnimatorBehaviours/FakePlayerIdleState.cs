@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FakePlayerIdleState : StateMachineBehaviour {
     PlayerController playerController;
+    PlayerController playerController2;
     bool attacking = false;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
