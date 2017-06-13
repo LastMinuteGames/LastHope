@@ -20,6 +20,9 @@ public class CapsuleController : MonoBehaviour
 
     private bool spawned = false;
 
+    private float timer = 0f;
+    private float timeToLive = 1f;
+
     public EnemyObserver Observer
     {
         get
@@ -58,10 +61,12 @@ public class CapsuleController : MonoBehaviour
                 SpawnParticles();
                 SpawnDecal();
                 spawned = true;
+                timer = 0f;
 
             }else
             {
-                if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done)
+                timer += Time.deltaTime;
+                if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done || timer >= timeToLive)
                 {
                     Destroy(gameObject);
                 }
