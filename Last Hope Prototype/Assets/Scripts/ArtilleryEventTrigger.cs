@@ -72,6 +72,7 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
                 {
                     currentWave = waves[0];
                     List<Spawn> spawns = currentWave.StartWave();
+                    Debug.Log("Spawns Start Wave: " + spawns.Count);
                     AddSpawnsToPendingEnemies(spawns);
                 }
                 else
@@ -154,7 +155,7 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
                 if (result.ContainsKey(enemies[i].enemyType) == false)
                     result[enemies[i].enemyType] = 0;
                 enemies[i].Dead();
-                //result[enemies[i].enemyType]++;
+                result[enemies[i].enemyType]++;
                 //Destroy(enemies[i].gameObject);
                 enemies.RemoveAt(i);
                 --i;

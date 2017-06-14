@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine.Assertions;
+using UnityEngine;
 
 namespace Assets.Scripts.EnemySpawnSystem
 {
@@ -57,14 +58,14 @@ namespace Assets.Scripts.EnemySpawnSystem
                 Assert.IsTrue(currentEnemies[type] > 0);
                 currentEnemies[type] -= number;
                 uint maxNumberOfPossibleEnemiesToSpawn = totalEnemiesAtTime[type] - currentEnemies[type];
-                if (maxNumberOfPossibleEnemiesToSpawn > 0 && totalEnemies[type] >= maxNumberOfPossibleEnemiesToSpawn)
+                uint resultToSpawn = 0;
+                if (maxNumberOfPossibleEnemiesToSpawn > 0)
                 {
-                    uint resultToSpawn = Math.Min(maxNumberOfPossibleEnemiesToSpawn, totalEnemies[type]);
+                    resultToSpawn = Math.Min(maxNumberOfPossibleEnemiesToSpawn, totalEnemies[type]);
                     result = new Spawn(type, resultToSpawn);
-
                     totalEnemies[type] -= resultToSpawn;
                 }
-
+                Debug.Log("Number: " + number + " ResultToSpawn " + resultToSpawn + " Max: " + maxNumberOfPossibleEnemiesToSpawn + " Total: " + totalEnemies[type] + " totalAtTime: " + totalEnemiesAtTime[type] + " current: " + currentEnemies[type]);
             }
 
             return result;
@@ -83,6 +84,7 @@ namespace Assets.Scripts.EnemySpawnSystem
                         result.Add(spawn);
                     }
                 }
+                Debug.Log("Spawns Added: " + result.Count + " Enemies Sended: " + enemies.Count);
             }
 
             return result;
