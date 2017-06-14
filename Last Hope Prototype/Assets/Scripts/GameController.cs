@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+using LastHope.SoundManager;
+
 public class GameController : MonoBehaviour {
 
     public Canvas menuInGame;
     public bool isMenu = false;
 
-    //Audio
-    new AudioSource audio;
-    public AudioClip openFx;
-    public AudioClip selectFx;
+    public AudioSource pause;
+    public AudioSource unpause;
+    public AudioSource swapSelection;
 
     void Start () {
         Time.timeScale = 1;
@@ -22,20 +22,19 @@ public class GameController : MonoBehaviour {
         }
         isMenu = false;
 
-        //Initialize audio
-        audio = GetComponent<AudioSource>();
     }
 	
 	void Update () {
         if (InputManager.Pause() && !isMenu)
         {
             openMenu();
-            audio.PlayOneShot(openFx, 1F);
+            pause.PlaySound(pause.clip, 1f);
         }
         else if (InputManager.Pause() && isMenu)
         {
             closeMenu();
-            audio.PlayOneShot(openFx, 1F);
+            unpause.PlaySound(unpause.clip, 1f);
+
         }
     }
 
@@ -49,7 +48,7 @@ public class GameController : MonoBehaviour {
     public void closeMenu(bool hasAudio = false)
     {
         if (hasAudio) {
-            audio.PlayOneShot(selectFx, 1F);
+            swapSelection.PlaySound(swapSelection.clip, 1f);
         }
         menuInGame.gameObject.SetActive(false);
         Time.timeScale = 1.0F;

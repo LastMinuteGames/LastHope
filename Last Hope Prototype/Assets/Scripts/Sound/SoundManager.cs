@@ -26,7 +26,7 @@ namespace LastHope.SoundManager
         private static HashSet<AudioSourceLoop> persistedMusic = new HashSet<AudioSourceLoop>();
         private static Dictionary<AudioClip, List<float>> soundsList = new Dictionary<AudioClip, List<float>>();
 
-        public static int ParalelAudioClipsCap = 4;
+        public static int ParalelAudioClipsCap = 8;
 
 
         //Properties...
@@ -98,7 +98,7 @@ namespace LastHope.SoundManager
             soundManagerGO.name = "SoundManager";
             soundManagerGO.hideFlags = HideFlags.DontSave;
             instance = soundManagerGO.AddComponent<SoundManager>();
-            GameObject.DontDestroyOnLoad(soundManagerGO);
+            DontDestroyOnLoad(soundManagerGO);
         }
 
 
@@ -242,22 +242,30 @@ namespace LastHope.SoundManager
             //simple way of managic volume when we have duplicates of the same audioclip
             //not the best algorithm - could be improved
             float targetVolume = volume * soundVolume;
-            if (volumes.Count > 2)
-            {
-                targetVolume = targetVolume / volumes.Count;
-            }
+            //if (volumes.Count > 2)
+            //{
+            //    targetVolume = targetVolume / (volumes.Count/2);
+            //}
             volumes.Add(targetVolume);
             audioSource.PlayOneShot(audioClip, targetVolume);
             instance.StartCoroutine(CleanVolumeFromClip(audioClip, targetVolume));
         }
         private static IEnumerator CleanVolumeFromClip(AudioClip audioClip, float volume)
         {
+            Debug.Log(audioClip.length);
             yield return new WaitForSeconds(audioClip.length);
 
             List<float> volumes;
             if (soundsList.TryGetValue(audioClip, out volumes))
             {
+                Debug.Log("volume FIND");
+
                 volumes.Remove(volume);
+            }
+            else
+            {
+                Debug.Log("volume NO FIND");
+
             }
         }
 
@@ -267,7 +275,6 @@ namespace LastHope.SoundManager
         //If you unselect or select the game all sound should be paused/unpaused
         private void OnApplicationFocus(bool paused)
         {
-        Debug.Log("qwoufhqwofuqwhfouqwh");
             if (paused)
             {
                 Resume();
