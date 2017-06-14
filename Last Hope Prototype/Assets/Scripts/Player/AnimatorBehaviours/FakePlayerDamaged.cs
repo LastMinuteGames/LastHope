@@ -14,6 +14,7 @@ public class FakePlayerDamaged : StateMachineBehaviour {
         }
         playerController.DisableSwordEmitter();
         playerController.DisableShieldEmitter();
+        playerController.StopRedAbilityParticles();
         if (playerController.currentHP <= 0 && !playerController.IsDead())
         {
             playerController.Die();

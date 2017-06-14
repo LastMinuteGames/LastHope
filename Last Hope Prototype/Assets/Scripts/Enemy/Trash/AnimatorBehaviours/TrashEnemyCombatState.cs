@@ -21,14 +21,15 @@ public class TrashEnemyCombatState : StateMachineBehaviour {
         if (enemyTrash != null && enemyTrash.GetTarget() != null && enemyTrash.GetTarget().type == TargetType.TT_PLAYER)
         {
             Vector3 direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
-            
+
+            var playerLayerMask = 1 << 12;
             // Cast ray to target in combat range
             RaycastHit hitC;
-            bool combatRayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hitC, enemyTrash.combatRange);
+            bool combatRayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hitC, enemyTrash.combatRange, playerLayerMask);
 
             // Cast ray to target in attack range
             RaycastHit hitA;
-            bool attackRayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hitA, enemyTrash.attackRange);
+            bool attackRayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hitA, enemyTrash.attackRange, playerLayerMask);
 
             // Debug draw combat ray
             Color rayColor;

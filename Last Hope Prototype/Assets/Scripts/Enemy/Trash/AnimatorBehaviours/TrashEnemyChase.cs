@@ -24,6 +24,7 @@ public class TrashEnemyChase : StateMachineBehaviour
         Vector3 direction;
         bool rayHit;
         Color rayColor;
+        var playerLayerMask = 1 << 12;
         if (enemyTrash.GetTarget().transf != null)
         {
             switch (enemyTrash.GetTarget().type)
@@ -31,18 +32,18 @@ public class TrashEnemyChase : StateMachineBehaviour
                 case TargetType.TT_PLAYER:
                     // Cast ray to target in combat range
                     direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
-                    rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.combatRange);
+                    rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.combatRange, playerLayerMask);
 
                     // Debug draw ray
                     rayColor = rayHit ? Color.green : Color.red;
                     Debug.DrawRay(enemyTrash.transform.position, direction, rayColor);
 
-                    if (!rayHit)
+                    if (!rayHit && !animator.GetBool("iddle"))
                     {
                         enemyTrash.nav.SetDestination(enemyTrash.GetTarget().transf.position);
                         enemyTrash.nav.Resume();
                     }
-                    else
+                    else if (rayHit)
                     {
                         animator.SetBool("chase", false);
                         animator.SetBool("combat", true);
@@ -52,13 +53,13 @@ public class TrashEnemyChase : StateMachineBehaviour
                 case TargetType.TT_ARTILLERY:
                     // Cast ray to target in attack range
                     direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
-                    rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.attackRange);
+                    rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.attackRange, playerLayerMask);
 
                     // Debug draw ray
                     rayColor = rayHit ? Color.green : Color.red;
                     Debug.DrawRay(enemyTrash.transform.position, direction, rayColor);
 
-                    if (!rayHit)
+                    if (!rayHit && !animator.GetBool("iddle"))
                     {
                         enemyTrash.nav.SetDestination(enemyTrash.GetTarget().transf.position);
                         enemyTrash.nav.Resume();
@@ -75,7 +76,8 @@ public class TrashEnemyChase : StateMachineBehaviour
                     animator.SetBool("iddle", true);
                     break;
             }
-        } else
+        }
+        else
         {
             animator.SetBool("chase", false);
             animator.SetBool("attackArtillery", false);
