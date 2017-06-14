@@ -3,8 +3,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    ET_TRASH,
+    ET_MELEE,
+    ET_RANGED
+}
+
+public enum EnemyBehaviour
+{
+    EB_ARTILLERY,
+    EB_DEFAULT
+}
+
+public enum TargetType
+{
+    TT_PLAYER,
+    TT_ARTILLERY
+}
+
+public class Target
+{
+    public Transform transf;
+    public TargetType type;
+}
+
+
 public class Enemy : MonoBehaviour
 {
+    protected bool autokill = true;
+    [SerializeField]
+    protected int life;
+    [SerializeField]
+    protected int maxLife;
+
+    [SerializeField]
+    protected GameObject lifeDrop;
+    [SerializeField]
+    protected int lifeDropProbability;
+    [SerializeField]
+    protected GameObject EnergyDrop;
+    [SerializeField]
+    protected int energyDropProbability;
+
+    [HideInInspector]
+    public EnemyType enemyType;
+    [HideInInspector]
+    public EnemyBehaviour behaviour;
+    protected Target target;
+
     void Awake()
     {
     }
@@ -17,101 +64,71 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (currentState == null)
-            return;
-        TrashStateTypes newState = currentState.UpdateState();
 
-        if (newState != TrashStateTypes.UNDEFINED_STATE && currentState.Type() != newState)
+    }
+
+    public bool Autokill
+    {
+        get
         {
-            previousState = currentState;
-            ChangeState(newState);
-        }*/
-    }
+            return autokill;
+        }
 
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    currentState.OnTriggerEnter(other);
-    //}
-
-    //void OnTriggerExit(Collider other)
-    //{
-    //    currentState.OnTriggerExit(other);
-    //}
-
-    //public void TakeDamage(int damage)
-    //{
-    //    life -= damage;
-    //}
-
-    //public void RecoveryHealth(int quantity)
-    //{
-    //    life += quantity;
-    //    if (life > maxLife)
-    //        life = maxLife;
-    //}
-
-    //public void Dead()
-    //{
-        
-    //    Destroy(gameObject);
-    //}
-    /*
-    public void ChangeTarget(Transform target)
-    {
-        this.target = target;
-        Debug.Log("Changed Target!!!");
-        if (this.target != null)
-            nav.SetDestination(this.target.position);
-    }
-
-    public void OnPlayerDetected(Collider player)
-    {
-        ChangeTarget(player.gameObject.transform);
-        currentState.OnTriggerEnter(player);
-    }
-
-    public void OnPlayerFlees(Collider player)
-    {
-        ChangeTarget(null);
-        currentState.OnTriggerExit(player);
-    }
-
-    public void OnPlayerInRange(Collider player)
-    {
-        currentState.OnPlayerInRange(player);
-    }
-
-    public void StartAttack()
-    {
-        katana.enabled = true;
-    }
-
-    public void EndAttack()
-    {
-        katana.enabled = false;
-    }
-
-    public void ChangeToPreviousState()
-    {
-        if (previousState != null)
+        set
         {
-            currentState.EndState();
-            currentState = previousState;
-            currentState.StartState();
+            autokill = value;
         }
     }
 
-    public void ChangeState(TrashStateTypes type)
+    public void RecoveryHealth(int quantity)
     {
-        if (states.ContainsKey(type))
-        {
-            if (currentState != null)
-                currentState.EndState();
+        life += quantity;
+        if (life > maxLife)
+            life = maxLife;
+    }
 
-            currentState = states[type];
-            currentState.StartState();
+    public void Dead()
+    {
+        if (autokill == true)
+        {
+            float lifeRandomNumber = UnityEngine.Random.Range(0, 100.0f);
+            float energyRandomNumber = UnityEngine.Random.Range(0, 100.0f);
+
+            if (lifeRandomNumber < lifeDropProbability)
+            {
+                Instantiate(lifeDrop, transform.position, Quaternion.identity);
+            }
+
+            if (energyRandomNumber < energyDropProbability)
+            {
+                Instantiate(EnergyDrop, transform.position, Quaternion.identity);
+            }
+
+            Destroy(gameObject);
+        }
+        else
+        {
+            autokill = true;
+        }
+
+    }
+
+    public bool IsDead()
+    {
+        return life <= 0;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (life > 0)
+        {
+            life -= damage;
+            OnDamageTaken();
         }
     }
 
-    */
+    virtual protected void OnDamageTaken()
+    {
+
+    }
 }

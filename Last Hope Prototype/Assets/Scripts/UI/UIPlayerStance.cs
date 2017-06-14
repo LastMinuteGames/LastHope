@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UIPlayerStance : MonoBehaviour
 {
+    public Sprite stance0Sprite;
     public Sprite stance1Sprite;
     public Sprite stance2Sprite;
 
@@ -57,6 +58,9 @@ public class UIPlayerStance : MonoBehaviour
 
             case (PlayerStanceType.STANCE_RED):
                 stanceImage.sprite = stance2Sprite;
+                break;
+            default:
+                stanceImage.sprite = stance0Sprite;
                 break;
         }
     }

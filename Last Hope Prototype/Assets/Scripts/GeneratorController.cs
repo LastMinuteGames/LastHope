@@ -38,6 +38,13 @@ public class GeneratorController : Interactable {
             Debug.Log("Wait for 5 seconds");
             running = true;
             Invoke("SpawnSpecialAbility", 5);
+            //Dialogue
+            string[] a = new string[1];
+            a[0] = "El generador se activará en 5 segundos";
+            string[] b = new string[1];
+            b[0] = "Generador";
+            DialogueSystem.Instance.AddNewDialogue(a, b);
+            DialogueSystem.Instance.ShowDialogue();
         }
     }
 
@@ -47,6 +54,16 @@ public class GeneratorController : Interactable {
         {
             //TODO: Show message
             Debug.Log("Press Interact to charge the generator");
+            if (!DialogueSystem.Instance.show)
+            {
+                string[] a = new string[1];
+                a[0] = "Press Interact to charge the generator";
+                string[] b = new string[1];
+                b[0] = "Generator";
+                DialogueSystem.Instance.AddNewDialogue(a, b);
+                DialogueSystem.Instance.ShowDialogue();
+            }
+            
         }
     }
 
@@ -67,6 +84,6 @@ public class GeneratorController : Interactable {
     {
         GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
         EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();
-        coreParameters.color = PlayerStanceType.STANCE_RED;
+        coreParameters.stance = PlayerStanceType.STANCE_RED;
     }
 }

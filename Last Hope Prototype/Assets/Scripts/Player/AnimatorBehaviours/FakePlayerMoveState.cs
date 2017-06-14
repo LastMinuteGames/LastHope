@@ -50,7 +50,7 @@ public class FakePlayerMoveState : StateMachineBehaviour {
             {
                 playerController.anim.SetBool("idle", true);
             }
-            else if (InputManager.Dodge())
+            else if (InputManager.Dodge() && playerController.canDodge)
             {
                 playerController.anim.SetTrigger("dodge");
             }

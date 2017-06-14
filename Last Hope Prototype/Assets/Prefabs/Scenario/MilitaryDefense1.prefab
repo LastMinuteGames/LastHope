@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4674476401020458}
-  - component: {fileID: 64316720417519444}
   m_Layer: 0
   m_Name: MilitaryDefense1
   m_TagString: Untagged
@@ -177,18 +176,4 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952478607447312}
-  m_Mesh: {fileID: 4300002, guid: adad5797f3d824a478da444b0aa83b6d, type: 3}
---- !u!64 &64316720417519444
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1591916019282316}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: adad5797f3d824a478da444b0aa83b6d, type: 3}

@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-
-
 public struct CameraShakeStats
 {
     public float duration;
@@ -25,11 +21,21 @@ public class PlayerController : MonoBehaviour
     public Collider shield;
     public MeleeWeaponTrail shieldEmitter;
     public GameObject hitParticles;
+    public ParticleSystem redAbilityParticles;
+    public ParticleSystem dodgeParticles;
     [HideInInspector]
-    public PlayerStance stance;// = PlayerStance.STANCE_NONE;
+    public PlayerStance stance;
     [HideInInspector]
     public PlayerStanceType newStance;
     public bool debugMode = false;
+    [SerializeField]
+    private GameObject swordBlueOrb;
+    [SerializeField]
+    private GameObject swordRedOrb;
+    [SerializeField]
+    private GameObject swordBlueLine;
+    [SerializeField]
+    private GameObject swordRedLine;
 
     private bool redAbilityEnabled = false;
     private bool greyAbilityEnabled = false;
@@ -72,8 +78,14 @@ public class PlayerController : MonoBehaviour
     private CameraShake camShake;
     public Vector3 movement;
     public Vector3 targetDirection;
-    public float dodgeThrust;// = 5;
+    public float dodgeThrust;
     public bool pendingMove = false;
+    public bool canDodge;
+    [SerializeField]
+    private float dodgeMaxCooldown;
+    [SerializeField]
+    private float dodgeCurrentCooldown;
+    private float dodgeTimer;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
     private Vector3 camForward;
@@ -107,6 +119,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //Hide cursor
+        Cursor.visible = false;
+
         anim = GetComponent<Animator>();
 
         // Stats setup
@@ -122,7 +137,7 @@ public class PlayerController : MonoBehaviour
         playerAttacks.Add("L1", new Attack("L1", 10));
         playerAttacks.Add("L2", new Attack("L2", 15));
         playerAttacks.Add("L3", new Attack("L3", 20));
-        
+
         //Heavy attacks
         playerAttacks.Add("H1", new Attack("H1", 25));
         playerAttacks.Add("H2", new Attack("H2", 30));
@@ -144,6 +159,8 @@ public class PlayerController : MonoBehaviour
         currentHP = maxHP;
         initialMaxEnergy = maxEnergy;
         currentEnergy = maxEnergy;
+
+        canDodge = true;
 
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         camShake = camT.GetComponent<CameraShake>();
@@ -176,13 +193,25 @@ public class PlayerController : MonoBehaviour
     {
         if (camShake != null)
         {
-            StartCoroutine(camShake.Shake(0.1f, 0.25f,1,1,this.transform));
+            StartCoroutine(camShake.Shake(0.1f, 0.25f, 1, 1, this.transform));
         }
         //TODO: Add attack sound fx when we have one
     }
 
     void Update()
     {
+
+        if (Input.GetKey(KeyCode.Keypad1))
+        {
+            string[] a = new string[2];
+            a[0] = "El generador se activará en 5 segundos";
+            a[1] = "Gracias por esperar";
+            string[] b = new string[2];
+            b[0] = "Generador";
+            b[1] = "Generador";
+            DialogueSystem.Instance.AddNewDialogue(a, b);
+            DialogueSystem.Instance.ShowDialogue();
+        }
 
         if (InputManager.DebugMode())
         {
@@ -211,6 +240,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (!canDodge)
+        {
+            dodgeCurrentCooldown = dodgeMaxCooldown - (Time.time - dodgeTimer);
+            if (Time.time - dodgeTimer >= dodgeMaxCooldown)
+            {
+                canDodge = true;
+            }
+        }
+
         //UpdateHPBar();
         //UpdateEnergyBar();
     }
@@ -220,7 +258,8 @@ public class PlayerController : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Dodge"))
         {
             Dodge();
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("RedSpecialAttack"))
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("RedSpecialAttack"))
         {
             UpdateRedSpecialAttack();
         }
@@ -239,9 +278,10 @@ public class PlayerController : MonoBehaviour
             case PlayerStanceType.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
-                    Debug.Log("NEUTRAL STANCE");
+                    Debug.Log("BLUE STANCE");
                     this.stance = stances[typeStance];
                     currentStats = baseStats * blueStats;
+                    ChangeSwordParticles(typeStance);
                 }
                 break;
             case PlayerStanceType.STANCE_RED:
@@ -250,13 +290,35 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("RED STANCE");
                     this.stance = stances[typeStance];
                     currentStats = baseStats * redStats;
+                    ChangeSwordParticles(typeStance);
                 }
                 break;
         }
         uiManager.UpdatePlayerStance(stance);
     }
 
-    public void EnableGreyAbility()
+    private void ChangeSwordParticles(PlayerStanceType value)
+    {
+        switch (value)
+        {
+            case PlayerStanceType.STANCE_BLUE:
+                swordBlueOrb.SetActive(true);
+                swordBlueLine.SetActive(true);
+                swordRedOrb.SetActive(false);
+                swordRedLine.SetActive(false);
+                swordEmitter.ChangeMaterial(1);
+                break;
+            case PlayerStanceType.STANCE_RED:
+                swordBlueOrb.SetActive(false);
+                swordBlueLine.SetActive(false);
+                swordRedOrb.SetActive(true);
+                swordRedLine.SetActive(true);
+                swordEmitter.ChangeMaterial(2);
+                break;
+        }
+    }
+
+    public void EnableBlueAbility()
     {
         greyAbilityEnabled = true;
     }
@@ -432,7 +494,7 @@ public class PlayerController : MonoBehaviour
         movement.x = totalImpulse * targetDirection.x;
         movement.z = totalImpulse * targetDirection.z;
 
-        rigidBody.MovePosition(rigidBody.position  +  movement * currentStats.movementSpeed * Time.deltaTime);
+        rigidBody.MovePosition(rigidBody.position + movement * currentStats.movementSpeed * Time.deltaTime);
 
     }
 
@@ -465,6 +527,11 @@ public class PlayerController : MonoBehaviour
         //rigidBody.velocity = movement;
     }
 
+    public void StartDodgeTimer()
+    {
+        dodgeTimer = Time.time;
+    }
+
     public void SetBlocking(bool value)
     {
         blocking = value;
@@ -488,13 +555,16 @@ public class PlayerController : MonoBehaviour
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_BLUE && LoseEnergy(1))
         {
-                canSpecialAttack = true;
-                neutralSphere.gameObject.SetActive(true);
-                spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
-                if (camShake != null)
-                {
-                    StartCoroutine(camShake.Shake());
-                }
+            canSpecialAttack = true;
+            neutralSphere.gameObject.SetActive(true);
+            spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
+            ParticleSystem ps = spawnedParticle.GetComponent<ParticleSystem>();
+            float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+            Destroy(spawnedParticle, totalDuration);
+            if (camShake != null)
+            {
+                StartCoroutine(camShake.Shake());
+            }
         }
     }
     public void StartRedSpecialAttack()
@@ -528,7 +598,6 @@ public class PlayerController : MonoBehaviour
         if (canSpecialAttack)
         {
             neutralSphere.gameObject.SetActive(false);
-            Destroy(spawnedParticle);
         }
     }
 
@@ -625,7 +694,7 @@ public class PlayerController : MonoBehaviour
     public void DisableShieldEmitter()
     {
         shieldEmitter.Emit = false;
-   }
+    }
     public bool IsDodge
     {
         get
@@ -641,9 +710,29 @@ public class PlayerController : MonoBehaviour
 
     public void SpawnHitParticles(Vector3 position)
     {
-        GameObject particle = (GameObject)Instantiate(hitParticles, position, transform.rotation);
+        GameObject particle = Instantiate(hitParticles, position, transform.rotation);
         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
         Destroy(particle, totalDuration);
+    }
+
+    public void PlayRedAbilityParticles()
+    {
+        redAbilityParticles.Play();
+    }
+
+    public void StopRedAbilityParticles()
+    {
+        redAbilityParticles.Stop();
+    }
+
+    public void PlayDodgeParticles()
+    {
+        dodgeParticles.Play();
+    }
+
+    public void StopDodgeParticles()
+    {
+        dodgeParticles.Stop();
     }
 }

@@ -3,30 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTrash : MonoBehaviour//: Enemy
-{
 
-    public int attackProbability;
-    public int approachProbability;
+
+
+public class EnemyTrash : Enemy //MonoBehaviour
+{
     //public int moveAroundPlayerProbability
     public Transform enemy;
-    public int life;
-    public int maxLife;
-    public bool dead = false;
-    public long timeToAfterDeadMS;
-    public long timeAttackRefresh;
-    public int attack;
+
     public int combatRange;
     public int attackRange;
     public Collider katana;
+    public MeleeWeaponTrail swordEmitter;
+    public GameObject deadParticles;
     public int chaseSpeed;
     public int combatAngularSpeed;
-    public int frameUpdateInterval;
-
-    [HideInInspector]
-    public double lastAttackTime = 0;
-    [HideInInspector]
-    public Transform target;
+    
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector]
@@ -35,6 +27,9 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     private Attack lastAttackReceived;
     private Dictionary<String, Attack> enemyAttacks;
     private Attack currentAttack;
+    
+
+
 
     void Awake()
     {
@@ -50,6 +45,10 @@ public class EnemyTrash : MonoBehaviour//: Enemy
 
         enemyAttacks = new Dictionary<string, Attack>();
         enemyAttacks.Add("Attack", new Attack("Attack", 10));
+
+        target = new Target();
+
+        enemyType = EnemyType.ET_TRASH;
     }
 
     void Update()
@@ -61,15 +60,12 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
+            //TODO: Use attacks instead of animator to know what attack has received...animator sometimes "lies"...
             PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
             AnimatorStateInfo currentState = playerScript.anim.GetCurrentAnimatorStateInfo(0);
             if (currentState.IsName("H1") || currentState.IsName("H2") || currentState.IsName("H3"))
             {
                 playerScript.HeavyAttackEffect();
-            }
-            if (!currentState.IsName("BlueSpecialAttack") && !currentState.IsName("RedSpecialAttack"))
-            {
-                playerScript.SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
             }
 
             Attack currentAttackReceived = playerScript.GetAttack();
@@ -77,6 +73,10 @@ public class EnemyTrash : MonoBehaviour//: Enemy
             {
                 if (lastAttackReceived == null || currentAttackReceived.name != lastAttackReceived.name)
                 {
+                    if (!currentState.IsName("RedSpecialAttack"))
+                    {
+                        playerScript.SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+                    }
                     TakeDamage(currentAttackReceived.damage);
                 }
                 lastAttackReceived = currentAttackReceived;
@@ -84,41 +84,31 @@ public class EnemyTrash : MonoBehaviour//: Enemy
         }
     }
 
-    public void TakeDamage(int damage)
+
+    protected override void OnDamageTaken()
     {
-        if(life > 0)
-        {
-            life -= damage;
-            anim.SetTrigger("damaged");
-        }
+        anim.SetTrigger("damaged");
     }
 
-    public bool IsDead()
-    {
-        Debug.Log("Current life is: " + life);
-        return life <= 0;
-    }
 
-    public void RecoveryHealth(int quantity)
-    {
-        life += quantity;
-        if (life > maxLife)
-            life = maxLife;
-    }
-
-    public void ChangeTarget(Transform target)
+    public void ChangeTarget(Target target)
     {
         this.target = target;
         if (this.target != null && nav != null)
-            nav.SetDestination(this.target.position);
+            nav.SetDestination(this.target.transf.position);
     }
 
-    public void Dead()
+    public void ChangeTarget(Transform transf, TargetType type)
     {
-        /**
-         * TODO: Drop items if necessary
-        **/
-        Destroy(gameObject);
+        target.transf = transf;
+        target.type = type;
+        if (target != null && nav != null)
+            nav.SetDestination(target.transf.position);
+    }
+
+    public Target GetTarget()
+    {
+        return target;
     }
 
     public void ClearLastAttackReceived()
@@ -150,9 +140,26 @@ public class EnemyTrash : MonoBehaviour//: Enemy
     {
         anim.SetBool("combat", false);
         anim.SetBool("iddle", false);
-        anim.SetBool("walk", false);
         anim.SetBool("chase", false);
         anim.SetBool("moveAround", false);
         anim.SetBool("moveForward", false);
+    }
+
+    public void EnableSwordEmitter()
+    {
+        swordEmitter.Emit = true;
+    }
+
+    public void DisableSwordEmitter()
+    {
+        swordEmitter.Emit = false;
+    }
+    
+    public void SpawnDeadParticles()
+    {
+        GameObject particle = Instantiate(deadParticles, transform.position + new Vector3(0,1,0), transform.rotation);
+        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(particle, totalDuration);
     }
 }

@@ -11,8 +11,9 @@ public class FakePlayerDodgeState : StateMachineBehaviour
         if (playerController == null)
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
-            
         }
+        playerController.canDodge = false;
+        playerController.StartDodgeTimer();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

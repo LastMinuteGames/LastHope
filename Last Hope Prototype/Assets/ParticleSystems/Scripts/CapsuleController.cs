@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.EnemySpawnSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +16,25 @@ public class CapsuleController : MonoBehaviour
     private float interpolationTime = 0;
     private float currentHeight;
     private float capsuleHeight;
+    private EnemyObserver observer = null;
 
     private bool spawned = false;
+
+    private float timer = 0f;
+    private float timeToLive = 1f;
+
+    public EnemyObserver Observer
+    {
+        get
+        {
+            return observer;
+        }
+
+        set
+        {
+            observer = value;
+        }
+    }
 
     void Start()
     {
@@ -43,10 +61,12 @@ public class CapsuleController : MonoBehaviour
                 SpawnParticles();
                 SpawnDecal();
                 spawned = true;
+                timer = 0f;
 
             }else
             {
-                if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done)
+                timer += Time.deltaTime;
+                if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done || timer >= timeToLive)
                 {
                     Destroy(gameObject);
                 }
@@ -59,14 +79,19 @@ public class CapsuleController : MonoBehaviour
     {
         Vector3 landingPos = transform.position;
         Instantiate(landingParticles, transform.position, transform.rotation);
-        Instantiate(enemy, landingPos, transform.rotation);
+        GameObject go = Instantiate(enemy, landingPos, transform.rotation);
+        Enemy instantiatedEnemy = go.GetComponent<Enemy>();
+        if(instantiatedEnemy != null && observer != null)
+        {
+            observer.AddEnemy(instantiatedEnemy);
+        }
     }
 
     void SpawnDecal()
     {
-        float verticalRotation = Random.Range(0, 360);
-        Quaternion hitRotation = Quaternion.Euler(90, verticalRotation, 0);
-        float verticalPosition = capsuleHeight / 2 * transform.localScale.y - 0.001f;
-        Instantiate(decal, transform.position - new Vector3(0, verticalPosition, 0), hitRotation);
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit);
+        Quaternion hitRotation = Quaternion.Euler(90, Random.Range(0, 360), 0);
+        Instantiate(decal, hit.point + new Vector3(0, 0.001f, 0), hitRotation);
     }
 }
