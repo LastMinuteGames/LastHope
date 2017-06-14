@@ -24,10 +24,18 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem redAbilityParticles;
     public ParticleSystem dodgeParticles;
     [HideInInspector]
-    public PlayerStance stance;// = PlayerStance.STANCE_NONE;
+    public PlayerStance stance;
     [HideInInspector]
     public PlayerStanceType newStance;
     public bool debugMode = false;
+    [SerializeField]
+    private GameObject swordBlueOrb;
+    [SerializeField]
+    private GameObject swordRedOrb;
+    [SerializeField]
+    private GameObject swordBlueLine;
+    [SerializeField]
+    private GameObject swordRedLine;
 
     private bool redAbilityEnabled = false;
     private bool greyAbilityEnabled = false;
@@ -270,9 +278,10 @@ public class PlayerController : MonoBehaviour
             case PlayerStanceType.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
-                    Debug.Log("NEUTRAL STANCE");
+                    Debug.Log("BLUE STANCE");
                     this.stance = stances[typeStance];
                     currentStats = baseStats * blueStats;
+                    ChangeSwordParticles(typeStance);
                 }
                 break;
             case PlayerStanceType.STANCE_RED:
@@ -281,10 +290,32 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("RED STANCE");
                     this.stance = stances[typeStance];
                     currentStats = baseStats * redStats;
+                    ChangeSwordParticles(typeStance);
                 }
                 break;
         }
         uiManager.UpdatePlayerStance(stance);
+    }
+
+    private void ChangeSwordParticles(PlayerStanceType value)
+    {
+        switch (value)
+        {
+            case PlayerStanceType.STANCE_BLUE:
+                swordBlueOrb.SetActive(true);
+                swordBlueLine.SetActive(true);
+                swordRedOrb.SetActive(false);
+                swordRedLine.SetActive(false);
+                swordEmitter.ChangeMaterial(1);
+                break;
+            case PlayerStanceType.STANCE_RED:
+                swordBlueOrb.SetActive(false);
+                swordBlueLine.SetActive(false);
+                swordRedOrb.SetActive(true);
+                swordRedLine.SetActive(true);
+                swordEmitter.ChangeMaterial(2);
+                break;
+        }
     }
 
     public void EnableBlueAbility()

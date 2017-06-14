@@ -25,8 +25,12 @@ public class MeleeWeaponTrail : MonoBehaviour
 
 	[SerializeField]
 	Material _material;
+    [SerializeField]
+    Material _material1;
+    [SerializeField]
+    Material _material2;
 
-	[SerializeField]
+    [SerializeField]
 	float _lifeTime = 1.0f;
 
 	[SerializeField]
@@ -350,4 +354,26 @@ public class MeleeWeaponTrail : MonoBehaviour
 			pointList.Remove(p);
 		}
 	}
+
+    public void ChangeMaterial(int matNum)
+    {
+        switch (matNum)
+        {
+            case 1:
+                if (_material1 != null)
+                {
+                    _trailObject.GetComponent<Renderer>().material = _material1;
+                }
+                break;
+            case 2:
+                if (_material2 != null)
+                {
+                    _trailObject.GetComponent<Renderer>().material = _material2;
+                }
+                break;
+            default:
+                _trailObject.GetComponent<Renderer>().material = _material;
+                break;
+        }
+    }
 }
