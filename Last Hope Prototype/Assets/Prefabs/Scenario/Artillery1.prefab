@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4599952953275376}
+  - component: {fileID: 54708901555738554}
   - component: {fileID: 95438749335438000}
   - component: {fileID: 114865554976319480}
-  - component: {fileID: 136456476197077692}
+  - component: {fileID: 136060255555946346}
   m_Layer: 19
   m_Name: Artillery1
   m_TagString: EventTarget
@@ -260,6 +261,7 @@ GameObject:
   - component: {fileID: 4898861063437224}
   - component: {fileID: 33269903585650742}
   - component: {fileID: 23435381596793488}
+  - component: {fileID: 64642245537150894}
   m_Layer: 19
   m_Name: Col_Artillery1
   m_TagString: Untagged
@@ -735,6 +737,35 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1303643641467804}
   m_Mesh: {fileID: 4300008, guid: 4d5d5bac7de583b4e8c25d955979eec3, type: 3}
+--- !u!54 &54708901555738554
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120268160052552}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &64642245537150894
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853177346145706}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 4d5d5bac7de583b4e8c25d955979eec3, type: 3}
 --- !u!65 &65305966999437668
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -799,16 +830,16 @@ MonoBehaviour:
   deadExplosion: {fileID: 1397054726585476, guid: 0b45f635f311ee7439462d110bac4df8,
     type: 2}
   deadDecal: {fileID: 1930662934816432, guid: 60992ba07b42f1c488a1c4b87af1de1e, type: 2}
---- !u!136 &136456476197077692
+--- !u!136 &136060255555946346
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1120268160052552}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 30
+  m_Radius: 28.5
   m_Height: 80
   m_Direction: 1
   m_Center: {x: 0, y: 10, z: 0}

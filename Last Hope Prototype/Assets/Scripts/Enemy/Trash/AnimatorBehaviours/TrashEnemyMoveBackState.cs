@@ -15,6 +15,7 @@ public class TrashEnemyMoveBackState : StateMachineBehaviour {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
         enemyTrash.DisableSwordEmitter();
+        animator.ResetTrigger("attack");
         enemyTrash.nav.Stop();
     }
 
