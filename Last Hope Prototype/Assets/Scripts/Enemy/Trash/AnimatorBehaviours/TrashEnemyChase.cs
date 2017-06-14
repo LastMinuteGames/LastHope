@@ -20,11 +20,11 @@ public class TrashEnemyChase : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Chase Update");
-        RaycastHit hit;
+        RaycastHit attackHit;
         Vector3 direction;
-        bool rayHit;
+        bool rayAttackHit;
         Color rayColor;
-        var playerLayerMask = 1 << 12;
+        var targetLayerMask = 1 << 12;
         if (enemyTrash.GetTarget().transf != null)
         {
             switch (enemyTrash.GetTarget().type)
@@ -32,18 +32,18 @@ public class TrashEnemyChase : StateMachineBehaviour
                 case TargetType.TT_PLAYER:
                     // Cast ray to target in combat range
                     direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
-                    rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.combatRange, playerLayerMask);
+                    rayAttackHit = Physics.Raycast(enemyTrash.transform.position, direction, out attackHit, enemyTrash.combatRange, targetLayerMask);
 
                     // Debug draw ray
-                    rayColor = rayHit ? Color.green : Color.red;
+                    rayColor = rayAttackHit ? Color.green : Color.red;
                     Debug.DrawRay(enemyTrash.transform.position, direction, rayColor);
 
-                    if (!rayHit && !animator.GetBool("iddle"))
+                    if (!rayAttackHit && !animator.GetBool("iddle"))
                     {
                         enemyTrash.nav.SetDestination(enemyTrash.GetTarget().transf.position);
                         enemyTrash.nav.Resume();
                     }
-                    else if (rayHit)
+                    else if (rayAttackHit)
                     {
                         animator.SetBool("chase", false);
                         animator.SetBool("combat", true);
@@ -53,15 +53,19 @@ public class TrashEnemyChase : StateMachineBehaviour
                 case TargetType.TT_ARTILLERY:
                     // Cast ray to target in attack range
                     direction = enemyTrash.GetTarget().transf.position - enemyTrash.transform.position;
-                    rayHit = Physics.Raycast(enemyTrash.transform.position, direction, out hit, enemyTrash.attackRange, playerLayerMask);
+                    targetLayerMask = 1 << 19;
+                    rayAttackHit = Physics.Raycast(enemyTrash.transform.position, direction, out attackHit, enemyTrash.attackRange, targetLayerMask);
 
                     // Debug draw ray
-                    rayColor = rayHit ? Color.green : Color.red;
+                    rayColor = rayAttackHit ? Color.green : Color.red;
                     Debug.DrawRay(enemyTrash.transform.position, direction, rayColor);
-
-                    if (!rayHit && !animator.GetBool("iddle"))
+                    
+                    // If not in attack range and have to go to the artillery calculate the target point out of the artillery and go there.
+                    if (!rayAttackHit && !animator.GetBool("iddle"))
                     {
-                        enemyTrash.nav.SetDestination(enemyTrash.GetTarget().transf.position);
+                        RaycastHit destinationHit;
+                        Physics.Raycast(enemyTrash.transform.position, direction, out destinationHit, targetLayerMask);
+                        enemyTrash.nav.SetDestination(destinationHit.point);
                         enemyTrash.nav.Resume();
                     }
                     else
