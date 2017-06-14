@@ -89,26 +89,26 @@ public class Enemy : MonoBehaviour
 
     public void Dead()
     {
-        float lifeRandomNumber = UnityEngine.Random.Range(0, 100.0f);
-        float energyRandomNumber = UnityEngine.Random.Range(0, 100.0f);
-
-        if (lifeRandomNumber < lifeDropProbability)
-        {
-            Instantiate(lifeDrop, transform.position, Quaternion.identity);
-        }
-
-        if (energyRandomNumber < energyDropProbability)
-        {
-            Instantiate(EnergyDrop, transform.position, Quaternion.identity);
-        }
-
         if (autokill == true)
         {
+            float lifeRandomNumber = UnityEngine.Random.Range(0, 100.0f);
+            float energyRandomNumber = UnityEngine.Random.Range(0, 100.0f);
+
+            if (lifeRandomNumber < lifeDropProbability)
+            {
+                Instantiate(lifeDrop, transform.position, Quaternion.identity);
+            }
+
+            if (energyRandomNumber < energyDropProbability)
+            {
+                Instantiate(EnergyDrop, transform.position, Quaternion.identity);
+            }
+
             Destroy(gameObject);
         }
         else
         {
-            gameObject.SetActive(false);
+            autokill = true;
         }
 
     }

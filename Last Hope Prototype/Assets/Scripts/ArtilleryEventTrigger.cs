@@ -60,46 +60,41 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
 
     void Update()
     {
-        if (isFinished)
+        if (isFinished == true || isStarted == false || currentWave == null)
             return;
 
         if (artillery != null && artillery.alive)
         {
-            if (isStarted)
+            if (currentWave.IsFinished()) //Next wave!
             {
-                if (currentWave == null) //Event Finished!!!
+                waves.RemoveAt(0);
+                if(waves.Count > 0)
                 {
+                    currentWave = waves[0];
+                    List<Spawn> spawns = currentWave.StartWave();
+                    AddSpawnsToPendingEnemies(spawns);
+                }
+                else
+                {
+                    currentWave = null;
                     isFinished = true;
                     UnblockExits();
                 }
-                else if (currentWave.IsFinished()) //Next wave!
+            }
+            else //Update Waves!!!
+            {
+                Dictionary<EnemyType, uint> deadEnemies = CleanUpEnemies();
+                AddSpawnsToPendingEnemies(currentWave.RemoveEnemies(deadEnemies));
+                float seconds = Time.realtimeSinceStartup;
+                List<EnemyType> keys = new List<EnemyType>(enemiesPendingToSpawn.Keys);
+                for(int i = 0; i < keys.Count; ++i)
                 {
-                    waves.RemoveAt(0);
-                    if(waves.Count > 0)
+                    EnemyType type = keys[i];
+                    if (enemiesPendingToSpawn[type] > 0 && (lastSpawnTime == 0 || seconds - lastSpawnTime > delayBetweenSpawns))
                     {
-                        currentWave = waves[0];
-                        List<Spawn> spawns = currentWave.StartWave();
-                    }
-                    else
-                    {
-                        currentWave = null;
-                    }
-                }
-                else //Update Waves!!!
-                {
-                    Dictionary<EnemyType, uint> deadEnemies = CleanUpEnemies();
-                    AddSpawnsToPendingEnemies(currentWave.RemoveEnemies(deadEnemies));
-                    float seconds = Time.realtimeSinceStartup;
-                    List<EnemyType> keys = new List<EnemyType>(enemiesPendingToSpawn.Keys);
-                    for(int i = 0; i < keys.Count; ++i)
-                    {
-                        EnemyType type = keys[i];
-                        if (enemiesPendingToSpawn[type] > 0 && (lastSpawnTime == 0 || seconds - lastSpawnTime > delayBetweenSpawns))
-                        {
-                            enemiesPendingToSpawn[type]--;
-                            SpawnEnemyType(type);
-                            lastSpawnTime = seconds;
-                        }
+                        enemiesPendingToSpawn[type]--;
+                        SpawnEnemyType(type);
+                        lastSpawnTime = seconds;
                     }
                 }
             }
@@ -153,13 +148,14 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
         Dictionary<EnemyType, uint> result = new Dictionary<EnemyType, uint>();
         for (int i = 0; i < enemies.Count; ++i)
         {
-            if (enemies[i].IsDead() && enemies[i].Autokill == false)
+            if (enemies[i].IsDead() && enemies[i].Autokill == true)
             {
+                //enemies[i].Autokill = true;
                 if (result.ContainsKey(enemies[i].enemyType) == false)
                     result[enemies[i].enemyType] = 0;
-                
-                result[enemies[i].enemyType]++;
-                Destroy(enemies[i].gameObject);
+                enemies[i].Dead();
+                //result[enemies[i].enemyType]++;
+                //Destroy(enemies[i].gameObject);
                 enemies.RemoveAt(i);
                 --i;
             }

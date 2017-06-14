@@ -11,6 +11,7 @@ public class TrashEnemyDamagedState : StateMachineBehaviour {
         if (enemyTrash == null)
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
+            enemyTrash.nav.Stop();
         }
         enemyTrash.ClearAnimatorParameters();
         enemyTrash.DisableSwordEmitter();
@@ -37,6 +38,7 @@ public class TrashEnemyDamagedState : StateMachineBehaviour {
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemyTrash.ClearLastAttackReceived();
+        enemyTrash.nav.Resume();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
