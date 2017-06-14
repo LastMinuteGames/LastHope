@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ArtilleryController : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class ArtilleryController : MonoBehaviour
             SpawnExplosion();
             SpawnDecal();
             alive = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     void Die()
@@ -84,7 +86,7 @@ public class ArtilleryController : MonoBehaviour
         spawnedDecal.transform.localScale *= 5;
     }
 
-        void LeftBarrelShoot()
+    void LeftBarrelShoot()
     {
         if (leftBarrelParticles != null)
         {
