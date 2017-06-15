@@ -252,20 +252,12 @@ namespace LastHope.SoundManager
         }
         private static IEnumerator CleanVolumeFromClip(AudioClip audioClip, float volume)
         {
-            Debug.Log(audioClip.length);
             yield return new WaitForSeconds(audioClip.length);
 
             List<float> volumes;
             if (soundsList.TryGetValue(audioClip, out volumes))
             {
-                Debug.Log("volume FIND");
-
                 volumes.Remove(volume);
-            }
-            else
-            {
-                Debug.Log("volume NO FIND");
-
             }
         }
 

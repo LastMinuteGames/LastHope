@@ -665,9 +665,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4939408630167376}
+  - component: {fileID: 114392379406104966}
   m_Layer: 0
   m_Name: AudioSources
-  m_TagString: Untagged
+  m_TagString: AudioSources
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1028,7 +1029,7 @@ Transform:
   - {fileID: 4637112500576004}
   - {fileID: 4204142453277176}
   m_Father: {fileID: 4939408630167376}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4192622789848294
 Transform:
@@ -1163,7 +1164,7 @@ Transform:
   m_Children:
   - {fileID: 4044141170669716}
   m_Father: {fileID: 4939408630167376}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4333900715896952
 Transform:
@@ -1552,8 +1553,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4139274397329036}
-  - {fileID: 4320295480312776}
   - {fileID: 4172869552872634}
+  - {fileID: 4320295480312776}
   - {fileID: 4166325297273392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -4758,3 +4759,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114392379406104966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822810397029802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b98d65c592d1043a78a9aba0a14f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundAudioSources:
+  - {fileID: 82922528496357524}
+  - {fileID: 82986837927786776}
+  - {fileID: 82511304466194420}
+  - {fileID: 82995648848963452}
+  - {fileID: 82526131910158268}
+  - {fileID: 82620217152916866}
+  - {fileID: 82503488653685898}
+  - {fileID: 82290776604201630}
+  - {fileID: 82658338172655038}
+  - {fileID: 82728416118193254}
+  - {fileID: 82272500524636714}
+  - {fileID: 82670035922521424}
+  - {fileID: 82727049250408228}
+  - {fileID: 82732306793351038}
+  - {fileID: 82500424086049254}
+  - {fileID: 82462918610645576}
+  - {fileID: 82199542004633528}
+  - {fileID: 82715360367594610}
+  - {fileID: 82547911960151126}
+  - {fileID: 82734256465599202}
+  MusicAudioSources: []

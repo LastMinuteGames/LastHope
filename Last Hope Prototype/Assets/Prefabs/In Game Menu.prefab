@@ -466,9 +466,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuInGame: {fileID: 223662133528936256}
   isMenu: 0
-  pause: {fileID: 0}
-  unpause: {fileID: 0}
-  swapSelection: {fileID: 0}
 --- !u!114 &114238910724420592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -879,8 +876,6 @@ MonoBehaviour:
   selectedBGColor: {r: 0, g: 0, b: 0, a: 0}
   unselectedTextColor: {r: 0, g: 0, b: 0, a: 0}
   selectedTextColor: {r: 0, g: 0, b: 0, a: 0}
-  swapSelection: {fileID: 0}
-  applySelection: {fileID: 0}
 --- !u!222 &222021488077190890
 CanvasRenderer:
   m_ObjectHideFlags: 1
