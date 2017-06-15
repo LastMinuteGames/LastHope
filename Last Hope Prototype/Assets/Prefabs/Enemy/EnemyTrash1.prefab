@@ -1224,9 +1224,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651550896130278}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 5.2309484, y: 13.537205, z: 48.58}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.9848078, z: -0, w: -0.17364809}
+  m_LocalPosition: {x: -99, y: 1.5, z: 219}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4528517750669500}
   - {fileID: 4811357137841386}
@@ -1951,11 +1951,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e63db76218a82c46954dff80bcdbca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviour: 1
-  enemy: {fileID: 4284180406485762}
   life: 20
   maxLife: 20
-  dead: 0
+  lifeDrop: {fileID: 1486028248230284, guid: a65810c67eb632245967750c8bdf9d02, type: 2}
+  lifeDropProbability: 20
+  EnergyDrop: {fileID: 1534640479891378, guid: 67f1f8095beeb4f4c8acce1e90a874ff, type: 2}
+  energyDropProbability: 5
+  enemyType: 0
+  behaviour: 1
+  enemy: {fileID: 4284180406485762}
   combatRange: 10
   attackRange: 3
   katana: {fileID: 65347807148306148}
@@ -1964,11 +1968,6 @@ MonoBehaviour:
     type: 2}
   chaseSpeed: 5
   combatAngularSpeed: 20
-  lifeDrop: {fileID: 1486028248230284, guid: a65810c67eb632245967750c8bdf9d02, type: 2}
-  lifeDropProbability: 20
-  EnergyDrop: {fileID: 1534640479891378, guid: 67f1f8095beeb4f4c8acce1e90a874ff, type: 2}
-  energyDropProbability: 5
-  lastAttackTime: 0
   nav: {fileID: 0}
   anim: {fileID: 0}
 --- !u!114 &114640696828226250
@@ -1997,6 +1996,8 @@ MonoBehaviour:
   _emit: 1
   _emitTime: 0
   _material: {fileID: 2100000, guid: c3b11578ef4c52d4ebe034e3eb4b68ac, type: 2}
+  _material1: {fileID: 0}
+  _material2: {fileID: 0}
   _lifeTime: 0.5
   _colors: []
   _sizes: []
