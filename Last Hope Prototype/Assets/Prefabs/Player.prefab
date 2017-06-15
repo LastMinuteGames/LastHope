@@ -2125,7 +2125,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177613109062328}
-  m_LocalRotation: {x: 0.66560656, y: 0.1416925, z: 0.25546646, w: 0.6867518}
+  m_LocalRotation: {x: 0.6656066, y: 0.14169252, z: 0.2554665, w: 0.68675184}
   m_LocalPosition: {x: -0.004854761, y: -0.008703081, z: -0.0034854235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2211,7 +2211,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1414334366704716}
-  m_LocalRotation: {x: 0.6656066, y: 0.14169252, z: 0.2554665, w: 0.68675184}
+  m_LocalRotation: {x: 0.66560656, y: 0.1416925, z: 0.25546646, w: 0.6867518}
   m_LocalPosition: {x: -0.008599335, y: -0.008598268, z: 0.0063966457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3445,7 +3445,7 @@ MonoBehaviour:
   baseStats:
     attackDamage: 1
     blockingMovementSpeed: 1
-    movementSpeed: 15
+    movementSpeed: 22
     specialAttackDamage: 1
   blueStats:
     attackDamage: 1
@@ -3943,9 +3943,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _emit: 0
   _emitTime: 0
-  _material: {fileID: 2100000, guid: 8ecd629db956f0045aa0174249bd3416, type: 2}
-  _material1: {fileID: 0}
-  _material2: {fileID: 0}
+  _material: {fileID: 2100000, guid: c3b11578ef4c52d4ebe034e3eb4b68ac, type: 2}
+  _material1: {fileID: 2100000, guid: 8ecd629db956f0045aa0174249bd3416, type: 2}
+  _material2: {fileID: 2100000, guid: af23c1e80ef5ae948a6d9905f2a89f40, type: 2}
   _lifeTime: 0.5
   _colors: []
   _sizes: []

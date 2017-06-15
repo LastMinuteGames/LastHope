@@ -307,6 +307,7 @@ public class PlayerController : MonoBehaviour
                 swordRedOrb.SetActive(false);
                 swordRedLine.SetActive(false);
                 swordEmitter.ChangeMaterial(1);
+                shieldEmitter.ChangeMaterial(1);
                 break;
             case PlayerStanceType.STANCE_RED:
                 swordBlueOrb.SetActive(false);
@@ -314,6 +315,7 @@ public class PlayerController : MonoBehaviour
                 swordRedOrb.SetActive(true);
                 swordRedLine.SetActive(true);
                 swordEmitter.ChangeMaterial(2);
+                shieldEmitter.ChangeMaterial(2);
                 break;
         }
     }
