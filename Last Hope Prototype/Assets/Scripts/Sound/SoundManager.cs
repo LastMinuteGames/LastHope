@@ -26,7 +26,7 @@ namespace LastHope.SoundManager
         private static HashSet<AudioSourceLoop> persistedMusic = new HashSet<AudioSourceLoop>();
         private static Dictionary<AudioClip, List<float>> soundsList = new Dictionary<AudioClip, List<float>>();
 
-        public static int ParalelAudioClipsCap = 8;
+        public static int ParalelAudioClipsCap = 4;
 
 
         //Properties...
@@ -252,7 +252,12 @@ namespace LastHope.SoundManager
         }
         private static IEnumerator CleanVolumeFromClip(AudioClip audioClip, float volume)
         {
-            yield return new WaitForSeconds(audioClip.length);
+            //coroutine independant of timescale. We can pause and have audios now
+            float pauseEndTime = Time.realtimeSinceStartup + audioClip.length;
+            while (Time.realtimeSinceStartup < pauseEndTime)
+            {
+                yield return 0;
+            }
 
             List<float> volumes;
             if (soundsList.TryGetValue(audioClip, out volumes))
