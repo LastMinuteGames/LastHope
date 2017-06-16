@@ -26,7 +26,7 @@ namespace LastHope.SoundManager
         private static HashSet<AudioSourceLoop> persistedMusic = new HashSet<AudioSourceLoop>();
         private static Dictionary<AudioClip, List<float>> soundsList = new Dictionary<AudioClip, List<float>>();
 
-        public static int ParalelAudioClipsCap = 4;
+        public static int ParalelAudioClipsCap = 6;
 
 
         //Properties...
