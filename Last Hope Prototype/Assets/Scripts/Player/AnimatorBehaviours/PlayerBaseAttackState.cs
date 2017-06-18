@@ -34,8 +34,8 @@ public class PlayerBaseAttackState : StateMachineBehaviour
         playerController.DisableSwordEmitter();
         playerController.DisableShieldEmitter();
         //playerController.CloseInputWindow();
-        playerController.EndSwordAttack();
-        playerController.EndShieldAttack();
+        playerController.EndCurrentAttack();
+        //playerController.EndShieldAttack();
 
         h = InputManager.LeftJoystick().x;
         v = InputManager.LeftJoystick().z;
@@ -60,7 +60,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
     {
         Debug.Log("Exit in " + attackName);
         //playerController.CloseInputWindow();
-        playerController.EndSwordAttack();
+        playerController.EndCurrentAttack();
         nextAttack = null;
     }
 

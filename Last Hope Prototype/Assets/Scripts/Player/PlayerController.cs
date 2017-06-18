@@ -554,22 +554,22 @@ public class PlayerController : MonoBehaviour
     }
 
     //TODO: General collider activition method (only depends from which is current attack) 
-    public void StartSwordAttack()
+    protected void StartSwordAttack()
     {
         sword.enabled = true;
     }
 
-    public void EndSwordAttack()
+    protected void EndSwordAttack()
     {
         sword.enabled = false;
     }
 
-    public void StartShieldAttack()
+    protected void StartShieldAttack()
     {
         shield.enabled = true;
     }
 
-    public void EndShieldAttack()
+    protected void EndShieldAttack()
     {
         shield.enabled = false;
     }
@@ -608,7 +608,7 @@ public class PlayerController : MonoBehaviour
         return ret;
     }
 
-    public void StartBlueSpecialAttack()
+    protected void StartBlueSpecialAttack()
     {
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_BLUE && LoseEnergy(1))
@@ -625,7 +625,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void StartRedSpecialAttack()
+    protected void StartRedSpecialAttack()
     {
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_RED)
@@ -637,7 +637,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void UpdateRedSpecialAttack()
+    protected void UpdateRedSpecialAttack()
     {
         if (canSpecialAttack)
         {
@@ -651,7 +651,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EndBlueSpecialAttack()
+    protected void EndBlueSpecialAttack()
     {
         if (canSpecialAttack)
         {
@@ -659,7 +659,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EndRedSpecialAttack()
+    protected void EndRedSpecialAttack()
     {
         if (canSpecialAttack)
         {
