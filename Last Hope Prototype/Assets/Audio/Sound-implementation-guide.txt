@@ -1,0 +1,15 @@
+1 Place music files in assets/audio/... propper folder with proper name.
+
+
+2 All audioSources are gathered in the "AudioSources" gameobject (a prefab) that will be in every scene. This prefab has an script "AudioSources" too which has: a list for sound and a list for music; a public instance and 2 public functions to PlaySound or PlayMusic.
+
+
+3 If you want to play any audio from any place you have to call AudioSources.instance.PlaySound(index). So you need to know the index. Thats why there is an enum created: AudioSounds. To get the id just do as:
+ -SwapSelectionFxId = (int)AudioSounds.SwapSelection
+
+
+4 If you have to the id just call to AudioSources.instance.play
+
+- AudioSources.instance.PlaySound(swapselectionFxId)
+- AudioSources.instance.PlayMusic(mainMusicFxId)
+
