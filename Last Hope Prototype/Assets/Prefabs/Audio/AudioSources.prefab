@@ -233,6 +233,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1219565417641948
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4654883779807016}
+  m_Layer: 0
+  m_Name: Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1225979300806408
 GameObject:
   m_ObjectHideFlags: 1
@@ -668,7 +683,7 @@ GameObject:
   - component: {fileID: 4675595437763656}
   - component: {fileID: 82445453588518822}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: Generator Noise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,7 +1065,7 @@ Transform:
   - {fileID: 4244729130168342}
   - {fileID: 4572460047509286}
   m_Father: {fileID: 4166325297273392}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4006368355481218
 Transform:
@@ -1258,8 +1273,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4675595437763656}
-  - {fileID: 4531455103929454}
+  - {fileID: 4654883779807016}
   - {fileID: 4213859971038660}
   - {fileID: 4239632817919742}
   - {fileID: 4303442385857508}
@@ -1371,7 +1385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4166325297273392}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4239632817919742
 Transform:
@@ -1387,7 +1401,7 @@ Transform:
   - {fileID: 4064457573687706}
   - {fileID: 4771747539674458}
   m_Father: {fileID: 4166325297273392}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4243574493021998
 Transform:
@@ -1459,7 +1473,7 @@ Transform:
   m_Children:
   - {fileID: 4114713423613314}
   m_Father: {fileID: 4166325297273392}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4303859638994160
 Transform:
@@ -1472,7 +1486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4166325297273392}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4320295480312776
 Transform:
@@ -1663,11 +1677,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572637017983918}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4166325297273392}
+  m_Father: {fileID: 4654883779807016}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4542660094147542
@@ -1773,17 +1787,32 @@ Transform:
   m_Father: {fileID: 4172869552872634}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4654883779807016
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219565417641948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4675595437763656}
+  - {fileID: 4531455103929454}
+  m_Father: {fileID: 4166325297273392}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4675595437763656
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1607227896720816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4166325297273392}
+  m_Father: {fileID: 4654883779807016}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4701547736048724
@@ -3399,7 +3428,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5998,4 +6027,12 @@ MonoBehaviour:
   - {fileID: 82121930125811374}
   - {fileID: 82651022223819222}
   - {fileID: 82608796510011324}
+  - {fileID: 82445453588518822}
+  - {fileID: 82703973683677434}
+  - {fileID: 82068195160061776}
+  - {fileID: 82021160119567658}
+  - {fileID: 82434826395942930}
+  - {fileID: 82064813564075624}
+  - {fileID: 82348696846425316}
+  - {fileID: 82672505020015578}
   MusicAudioSources: []

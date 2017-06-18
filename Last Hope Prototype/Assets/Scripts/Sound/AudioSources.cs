@@ -68,6 +68,44 @@ public enum AudiosSoundFX
     Player_HUD_MaxEnergyUp,
     Player_HUD_SelectStanceBlue,
     Player_HUD_SelectStanceRed,
-    Player_HUD_CantDoAction
+    Player_HUD_CantDoAction,
+
+    Player_Combat_LightAttack,
+    Player_Combat_HeavyAttack,
+    Player_Combat_LightAttackHit,
+    Player_Combat_HeavyAttackHit,
+    Player_Combat_BlockPosition,
+    Player_Combat_BlockAttack,
+    Player_Combat_SpecialAttackRed,
+    Player_Combat_SpecialAttackBlue,
+    Player_Combat_ReceiveAttack,
+    Player_Combat_Die,
+    Player_Combat_Respawn,
+
+    Enemy_FSMinfo_TargetDettected,
+    Enemy_FSMinfo_TargetMissing,
+    Enemy_FSMinfo_Spawn,
+
+    Enemy_Move_Idle,
+    Enemy_Move_Walking,
+
+    Enemy_Combat_Attack,
+    Enemy_Combat_AttackHit,
+    Enemy_Combat_ReceiveAttack,
+    Enemy_Combat_Die,
+
+    Environment_Generator_GeneratorNoise,
+    Environment_Generator_GeneratorSpawn,
+
+    Environment_Bridge_Bridge,
+
+    Environment_PlayerToWorld_MessageReceived,
+    Environment_PlayerToWorld_Interact,
+
+    Environment_PickUps_HP,
+    Environment_PickUps_Energy,
+
+    Environment_PowerUps
+
 }
 
