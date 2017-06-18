@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
 
     // Attack
     private bool inputWindow = false;
+    private bool canChangeAttackState = false;
 
     // Special Attack
     public GameObject neutralSphere;
@@ -448,9 +449,11 @@ public class PlayerController : MonoBehaviour
         return ret;
     }
 
-    public void ChangeAttack(string name)
+    public Attack ChangeAttack(string name)
     {
         currentAttack = playerAttacks[name];
+        return playerAttacks[name];
+
     }
 
     public void IncreaseMaxEnergy(int value)
@@ -506,25 +509,78 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void StartSwordAttack()
+
+    // Testing to use generic start and end current attack so we can change easily 
+    // what colliders we want to use for each attack
+    // Use a Enum instead of string would be a good idea for attacks
+    public void StartCurrentAttack()
+    {
+        switch (currentAttack.name)
+        {
+            case "L1":
+            case "L2":
+            case "L3":
+            case "H1":
+                StartSwordAttack();
+                break;
+            case "H2":
+            case "H3":
+                StartShieldAttack();
+                break;
+            case "Red":
+                StartRedSpecialAttack();
+                break;
+            case "Blue":
+                StartBlueSpecialAttack();
+                break;
+        }
+    }
+
+    public void EndCurrentAttack()
+    {
+        switch (currentAttack.name)
+        {
+            case "L1":
+            case "L2":
+            case "L3":
+            case "H1":
+                EndSwordAttack();
+                break;
+            case "H2":
+            case "H3":
+                EndShieldAttack();
+                break;
+            case "Red":
+                EndRedSpecialAttack();
+                break;
+            case "Blue":
+                EndBlueSpecialAttack();
+                break;
+        }
+    }
+
+    //TODO: General collider activition method (only depends from which is current attack) 
+    protected void StartSwordAttack()
     {
         sword.enabled = true;
     }
 
-    public void EndSwordAttack()
+    protected void EndSwordAttack()
     {
         sword.enabled = false;
     }
 
-    public void StartShieldAttack()
+    protected void StartShieldAttack()
     {
         shield.enabled = true;
     }
 
-    public void EndShieldAttack()
+    protected void EndShieldAttack()
     {
         shield.enabled = false;
     }
+
+    //TODO END
 
     public void Dodge()
     {
@@ -558,7 +614,7 @@ public class PlayerController : MonoBehaviour
         return ret;
     }
 
-    public void StartBlueSpecialAttack()
+    protected void StartBlueSpecialAttack()
     {
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_BLUE && LoseEnergy(1))
@@ -575,7 +631,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void StartRedSpecialAttack()
+    protected void StartRedSpecialAttack()
     {
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_RED)
@@ -587,7 +643,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void UpdateRedSpecialAttack()
+    protected void UpdateRedSpecialAttack()
     {
         if (canSpecialAttack)
         {
@@ -601,7 +657,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EndBlueSpecialAttack()
+    protected void EndBlueSpecialAttack()
     {
         if (canSpecialAttack)
         {
@@ -609,7 +665,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EndRedSpecialAttack()
+    protected void EndRedSpecialAttack()
     {
         if (canSpecialAttack)
         {
@@ -678,6 +734,22 @@ public class PlayerController : MonoBehaviour
     {
         return inputWindow;
     }
+
+    public void EnableComboInput()
+    {
+        canChangeAttackState = false;
+    }
+
+    public void DisableComboInput()
+    {
+        canChangeAttackState = true;
+    }
+
+    public bool GetCanChangeAttackState()
+    {
+        return canChangeAttackState;
+    }
+    
 
     public Attack GetAttack()
     {
