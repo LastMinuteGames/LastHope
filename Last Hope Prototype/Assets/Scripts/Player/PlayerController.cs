@@ -361,8 +361,9 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public void Heal(int value)
+    public bool Heal(int value)
     {
+        bool ret = false;
         if (!IsDead() && currentHP < maxHP)
         {
             currentHP += value;
@@ -371,7 +372,9 @@ public class PlayerController : MonoBehaviour
                 currentHP = maxHP;
             }
             uiManager.UpdateHealth(currentHP);
+            ret = true;
         }
+        return ret;
     }
 
     public void IncreaseMaxHealthAndHeal(int value)
@@ -429,8 +432,9 @@ public class PlayerController : MonoBehaviour
         }
         return ret;
     }
-    public void GainEnergy(int value)
+    public bool GainEnergy(int value)
     {
+        bool ret = false;
         if (currentEnergy < maxEnergy)
         {
             currentEnergy += value;
@@ -439,7 +443,9 @@ public class PlayerController : MonoBehaviour
                 currentEnergy = maxEnergy;
             }
             uiManager.UpdateEnergy(currentEnergy);
+            ret = true;
         }
+        return ret;
     }
 
     public void ChangeAttack(string name)

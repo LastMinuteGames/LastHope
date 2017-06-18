@@ -25,6 +25,7 @@ public class PickUpController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        bool destroy = false;
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             if (effect == PickUpEffect.CURRENT)
@@ -33,15 +34,16 @@ public class PickUpController : MonoBehaviour {
                 {
                     case (PickUpType.HP):
 
-                        other.gameObject.GetComponent<PlayerController>().Heal(value);
+                        destroy = other.gameObject.GetComponent<PlayerController>().Heal(value);
                         break;
                     case (PickUpType.ENERGY):
-                        other.gameObject.GetComponent<PlayerController>().GainEnergy(value);
+                        destroy = other.gameObject.GetComponent<PlayerController>().GainEnergy(value);
                         break;
                 }
             }
             if (effect == PickUpEffect.MAX)
             {
+                destroy = true;
                 switch (type)
                 {
                     case (PickUpType.HP):
@@ -52,7 +54,10 @@ public class PickUpController : MonoBehaviour {
                         break;
                 }
             }
-            gameObject.SetActive(false);
+            if (destroy)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
