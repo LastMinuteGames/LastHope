@@ -33,11 +33,13 @@ public class PickUpController : MonoBehaviour {
                 switch (type)
                 {
                     case (PickUpType.HP):
-
+                        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PickUps_HP);
                         destroy = other.gameObject.GetComponent<PlayerController>().Heal(value);
                         break;
                     case (PickUpType.ENERGY):
                         destroy = other.gameObject.GetComponent<PlayerController>().GainEnergy(value);
+AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PickUps_Energy);
+                        other.gameObject.GetComponent<PlayerController>().GainEnergy(value);destroy = other.gameObject.GetComponent<PlayerController>().GainEnergy(value);
                         break;
                 }
             }
@@ -47,9 +49,11 @@ public class PickUpController : MonoBehaviour {
                 switch (type)
                 {
                     case (PickUpType.HP):
+                        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PowerUps);
                         other.gameObject.GetComponent<PlayerController>().IncreaseMaxHealthAndHeal(value);
                         break;
                     case (PickUpType.ENERGY):
+                        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PowerUps);
                         other.gameObject.GetComponent<PlayerController>().IncreaseMaxEnergy(value);
                         break;
                 }

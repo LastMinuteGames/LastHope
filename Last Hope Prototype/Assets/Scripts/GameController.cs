@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+using LastHope.SoundManager;
+
 public class GameController : MonoBehaviour {
 
     public Canvas menuInGame;
     public bool isMenu = false;
 
     //Audio
-    new AudioSource audio;
-    public AudioClip openFx;
-    public AudioClip selectFx;
+    private int pauseFxId;
+    private int unpauseFxId;
+    private int applySelectionFxId;
 
-    void Start () {
+
+
+    void Start ()
+    {
         Time.timeScale = 1;
         if(menuInGame != null)
         {
@@ -22,20 +26,27 @@ public class GameController : MonoBehaviour {
         }
         isMenu = false;
 
-        //Initialize audio
-        audio = GetComponent<AudioSource>();
+        if (!AudioSources.instance)
+        {
+            Debug.LogWarning("PUT AUDIOSOURCES PREFAB IN SCENE!");
+        }
+
+        pauseFxId = (int)AudiosSoundFX.Menu_Pause;
+        unpauseFxId = (int)AudiosSoundFX.Menu_Unpause;
+        applySelectionFxId = (int)AudiosSoundFX.Menu_ApplySelection;
+
     }
 	
 	void Update () {
         if (InputManager.Pause() && !isMenu)
         {
             openMenu();
-            audio.PlayOneShot(openFx, 1F);
+            AudioSources.instance.PlaySound(pauseFxId);
         }
         else if (InputManager.Pause() && isMenu)
         {
             closeMenu();
-            audio.PlayOneShot(openFx, 1F);
+            AudioSources.instance.PlaySound(unpauseFxId);
         }
     }
 
@@ -48,8 +59,9 @@ public class GameController : MonoBehaviour {
 
     public void closeMenu(bool hasAudio = false)
     {
-        if (hasAudio) {
-            audio.PlayOneShot(selectFx, 1F);
+        if (hasAudio)
+        {
+            AudioSources.instance.PlaySound(applySelectionFxId);
         }
         menuInGame.gameObject.SetActive(false);
         Time.timeScale = 1.0F;

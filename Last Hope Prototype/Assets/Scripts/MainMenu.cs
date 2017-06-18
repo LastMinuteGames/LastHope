@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AudioSource))]
 public class MainMenu : MonoBehaviour {
 
     public Button start;
@@ -48,9 +47,8 @@ public class MainMenu : MonoBehaviour {
     bool rightInUse = false;
 
     //Audio
-    new AudioSource audio;
-    public AudioClip moveFx;
-    public AudioClip selectFx;
+    private int swapSelectionFxId;
+    private int applySelectionFxId;
 
 
     // Use this for initialization
@@ -142,8 +140,13 @@ public class MainMenu : MonoBehaviour {
         //Flag isHelp to false
         isCredits = false;
 
-        //Initialize audio
-        audio = GetComponent<AudioSource>();
+        if (!AudioSources.instance)
+        {
+            Debug.LogWarning("PUT AUDIOSOURCES PREFAB IN SCENE!");
+        }
+
+        swapSelectionFxId = (int)AudiosSoundFX.Menu_SwapSelection;
+        applySelectionFxId = (int)AudiosSoundFX.Menu_ApplySelection;
 
     }
 
@@ -154,7 +157,7 @@ public class MainMenu : MonoBehaviour {
         if (focus != 0)
         {
             focus = focus - 1;
-            audio.PlayOneShot(moveFx, 1F);
+            AudioSources.instance.PlaySound(swapSelectionFxId);
         }
 
         return focus;
@@ -167,7 +170,7 @@ public class MainMenu : MonoBehaviour {
         if (focus != 4)
         {
             focus = focus + 1;
-            audio.PlayOneShot(moveFx, 1F);
+            AudioSources.instance.PlaySound(swapSelectionFxId);
         }
 
         return focus;
@@ -180,7 +183,7 @@ public class MainMenu : MonoBehaviour {
         if (focus == 0)
         {
             focus = 1;
-            audio.PlayOneShot(moveFx, 1F);
+            AudioSources.instance.PlaySound(swapSelectionFxId);
         }
 
         return focus;
@@ -193,7 +196,7 @@ public class MainMenu : MonoBehaviour {
         if (focus == 1)
         {
             focus = 0;
-            audio.PlayOneShot(moveFx, 1F);
+            AudioSources.instance.PlaySound(swapSelectionFxId);
         }
 
         return focus;
@@ -438,9 +441,9 @@ public class MainMenu : MonoBehaviour {
             //Go back to main menu
             if (InputManager.Pause())
             {
-                if (isHelp) { closeHelp(); audio.PlayOneShot(selectFx, 1F); }
-                if (isCredits) { closeCredits(); audio.PlayOneShot(selectFx, 1F); }
-                if (isSettings) { closeSettings(); audio.PlayOneShot(selectFx, 1F); }
+                if (isHelp) { closeHelp(); AudioSources.instance.PlaySound(applySelectionFxId); }
+                if (isCredits) { closeCredits(); AudioSources.instance.PlaySound(applySelectionFxId); }
+                if (isSettings) { closeSettings(); AudioSources.instance.PlaySound(applySelectionFxId); }
             }
         }
         else
@@ -514,12 +517,12 @@ public class MainMenu : MonoBehaviour {
             if (isConfirmExit)
             {
                 EnterPress(focusExit);
-                audio.PlayOneShot(selectFx, 1F);
+                AudioSources.instance.PlaySound(applySelectionFxId);
             }
             else
             {
                 EnterPress(focus);
-                audio.PlayOneShot(selectFx, 1F);
+                AudioSources.instance.PlaySound(applySelectionFxId);
             }
         }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using LastHope.SoundManager;
+
 public class InGameMenu : MonoBehaviour
 {
 
@@ -33,9 +35,8 @@ public class InGameMenu : MonoBehaviour
     bool rightInUse = false;
 
     //Audio
-    new AudioSource audio;
-    public AudioClip moveFx;
-    public AudioClip selectFx;
+    private int swapSelectionFxId;
+    private int applySelectionFxId;
 
     // Use this for initialization
     void Start()
@@ -82,8 +83,9 @@ public class InGameMenu : MonoBehaviour
         //focus exit menu
         focusExit = 1;
 
-        //Initialize audio
-        audio = GetComponent<AudioSource>();
+        swapSelectionFxId = (int)AudiosSoundFX.Menu_SwapSelection;
+        applySelectionFxId = (int)AudiosSoundFX.Menu_ApplySelection;
+
     }
 
     //Move focus up
@@ -93,7 +95,7 @@ public class InGameMenu : MonoBehaviour
         if (focus != 0)
         {
             focus = focus - 1;
-            audio.PlayOneShot(moveFx, 1F);
+            AudioSources.instance.PlaySound(swapSelectionFxId);
         }
 
         return focus;
@@ -106,7 +108,7 @@ public class InGameMenu : MonoBehaviour
         if (focus != 1)
         {
             focus = focus + 1;
-            audio.PlayOneShot(moveFx, 1F);
+            AudioSources.instance.PlaySound(swapSelectionFxId);
         }
 
         return focus;
@@ -119,7 +121,7 @@ public class InGameMenu : MonoBehaviour
         if (focus == 0)
         {
             focus = 1;
-            audio.PlayOneShot(moveFx, 1F);
+            AudioSources.instance.PlaySound(swapSelectionFxId);
         }
 
         return focus;
@@ -132,7 +134,7 @@ public class InGameMenu : MonoBehaviour
         if (focus == 1)
         {
             focus = 0;
-            audio.PlayOneShot(moveFx, 1F);
+            AudioSources.instance.PlaySound(swapSelectionFxId);
         }
 
         return focus;
@@ -202,7 +204,7 @@ public class InGameMenu : MonoBehaviour
                     break;
                 case 1:
                     openExitMenu();
-                    audio.PlayOneShot(selectFx, 1F);
+                    AudioSources.instance.PlaySound(applySelectionFxId);
                     break;
             }
         }
@@ -212,11 +214,15 @@ public class InGameMenu : MonoBehaviour
             {
                 case 0:
                     GetComponentInParent<GameController>().isMenu = false;
-                    audio.PlayOneShot(selectFx, 1F);
+                    //audio.PlayOneShot(selectFx, 1F);
+                    AudioSources.instance.PlaySound(applySelectionFxId);
+
+                    //TODO:: add a little delay here so the applyselection sound can be completed before changing scene. Sound are not persistan between scenes!
                     SceneManager.LoadScene("Menu");
                     break;
                 case 1:
-                    audio.PlayOneShot(selectFx, 1F);
+                    //audio.PlayOneShot(selectFx, 1F);
+                    AudioSources.instance.PlaySound(applySelectionFxId);
                     closeExitMenu();
                     break;
             }
