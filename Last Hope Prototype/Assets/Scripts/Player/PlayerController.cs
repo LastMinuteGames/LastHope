@@ -621,7 +621,7 @@ public class PlayerController : MonoBehaviour
         {
             canSpecialAttack = true;
             neutralSphere.gameObject.SetActive(true);
-            spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
+            spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position + new Vector3(0,1,0), neutralSphere.transform.rotation);
             ParticleSystem ps = spawnedParticle.GetComponent<ParticleSystem>();
             float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
             Destroy(spawnedParticle, totalDuration);
