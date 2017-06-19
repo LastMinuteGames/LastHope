@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrashEnemyDieState : StateMachineBehaviour{
+    EnemyTrash enemyTrash;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        if (enemyTrash == null)
+        {
+            enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
+            enemyTrash.nav.Stop();
+        }
+        enemyTrash.GetComponent<CapsuleCollider>().enabled = false;
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
