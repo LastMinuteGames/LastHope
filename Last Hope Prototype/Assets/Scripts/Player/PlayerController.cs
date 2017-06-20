@@ -29,6 +29,24 @@ public class PlayerController : MonoBehaviour
     public PlayerStanceType newStance;
     public bool debugMode = false;
     [SerializeField]
+    private Material baseMat;
+    [SerializeField]
+    private Texture baseBlue;
+    [SerializeField]
+    private Texture baseRed;
+    [SerializeField]
+    private Material extraMat;
+    [SerializeField]
+    private Texture extraBlue;
+    [SerializeField]
+    private Texture extraRed;
+    [SerializeField]
+    private Material shieldMat;
+    [SerializeField]
+    private Texture shieldBlue;
+    [SerializeField]
+    private Texture shieldRed;
+    [SerializeField]
     private GameObject swordBlueOrb;
     [SerializeField]
     private GameObject swordRedOrb;
@@ -283,6 +301,7 @@ public class PlayerController : MonoBehaviour
                     this.stance = stances[typeStance];
                     currentStats = baseStats * blueStats;
                     ChangeSwordParticles(typeStance);
+                    ChangeEmissives(typeStance);
                 }
                 break;
             case PlayerStanceType.STANCE_RED:
@@ -292,6 +311,7 @@ public class PlayerController : MonoBehaviour
                     this.stance = stances[typeStance];
                     currentStats = baseStats * redStats;
                     ChangeSwordParticles(typeStance);
+                    ChangeEmissives(typeStance);
                 }
                 break;
         }
@@ -317,6 +337,23 @@ public class PlayerController : MonoBehaviour
                 swordRedLine.SetActive(true);
                 swordEmitter.ChangeMaterial(2);
                 shieldEmitter.ChangeMaterial(2);
+                break;
+        }
+    }
+
+    private void ChangeEmissives(PlayerStanceType value)
+    {
+        switch (value)
+        {
+            case PlayerStanceType.STANCE_BLUE:
+                baseMat.SetTexture("_EmissionMap", baseBlue);
+                extraMat.SetTexture("_EmissionMap", extraBlue);
+                shieldMat.SetTexture("_EmissionMap", shieldBlue);
+                break;
+            case PlayerStanceType.STANCE_RED:
+                baseMat.SetTexture("_EmissionMap", baseRed);
+                extraMat.SetTexture("_EmissionMap", extraRed);
+                shieldMat.SetTexture("_EmissionMap", shieldRed);
                 break;
         }
     }
@@ -621,7 +658,7 @@ public class PlayerController : MonoBehaviour
         {
             canSpecialAttack = true;
             neutralSphere.gameObject.SetActive(true);
-            spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position + new Vector3(0,1,0), neutralSphere.transform.rotation);
+            spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position + new Vector3(0, 1, 0), neutralSphere.transform.rotation);
             ParticleSystem ps = spawnedParticle.GetComponent<ParticleSystem>();
             float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
             Destroy(spawnedParticle, totalDuration);
@@ -749,7 +786,7 @@ public class PlayerController : MonoBehaviour
     {
         return canChangeAttackState;
     }
-    
+
 
     public Attack GetAttack()
     {

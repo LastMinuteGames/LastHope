@@ -838,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1436065931003518
 GameObject:
   m_ObjectHideFlags: 1
@@ -2604,7 +2604,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483455298139160}
-  m_LocalRotation: {x: -0.81542206, y: 0.47410345, z: -0.16824013, w: 0.28637055}
+  m_LocalRotation: {x: -0.6968967, y: 0.5878553, z: -0.36803198, w: 0.18252072}
   m_LocalPosition: {x: -0.0030548498, y: 1.3877787e-19, z: -8.881784e-18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3063,7 +3063,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525409397675270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 13}
+  m_LocalPosition: {x: 5, y: 1, z: 10}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4990196035050564}
@@ -3436,6 +3436,15 @@ MonoBehaviour:
   dodgeParticles: {fileID: 198561547625885162}
   newStance: 1
   debugMode: 0
+  baseMat: {fileID: 2100000, guid: 8ba23107be6e3fc468754518c1e23d42, type: 2}
+  baseBlue: {fileID: 2800000, guid: 81ef29ae2cacbb9488a501ec3ccb7f38, type: 3}
+  baseRed: {fileID: 2800000, guid: 91d5c37b355754249941a730afcbed3b, type: 3}
+  extraMat: {fileID: 2100000, guid: 7141a05cd27b96941bc2b5c53334cf71, type: 2}
+  extraBlue: {fileID: 2800000, guid: f8dc7fe71ca283c4e86d9c255c6ceca1, type: 3}
+  extraRed: {fileID: 2800000, guid: 2f48422439fa9da418700796754c9ec8, type: 3}
+  shieldMat: {fileID: 2100000, guid: 4192985eb498d814dae4a55f9a2d382f, type: 2}
+  shieldBlue: {fileID: 2800000, guid: 25e07a398985f0c45855d747928b5bea, type: 3}
+  shieldRed: {fileID: 2800000, guid: dbf07d6f05e2e7e458334fb10bef5484, type: 3}
   swordBlueOrb: {fileID: 1097708804255502}
   swordRedOrb: {fileID: 1091128327479234}
   swordBlueLine: {fileID: 1338826720026260}
