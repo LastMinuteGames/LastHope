@@ -359,6 +359,12 @@ public class MeleeWeaponTrail : MonoBehaviour
     {
         switch (matNum)
         {
+            case 0:
+                if (_material != null)
+                {
+                    _trailObject.GetComponent<Renderer>().material = _material;
+                }
+                break;
             case 1:
                 if (_material1 != null)
                 {

@@ -130,6 +130,7 @@
     <Compile Include="Assets\Scripts\EnemySpawnSystem\Spawn.cs" />
     <Compile Include="Assets\Scripts\EnemySpawnSystem\Wave.cs" />
     <Compile Include="Assets\Scripts\EnergyCoreController.cs" />
+    <Compile Include="Assets\Scripts\EnergyRespawnerController.cs" />
     <Compile Include="Assets\Scripts\FPSDisplay.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GeneratorController.cs" />
@@ -182,6 +183,9 @@
     <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
     <Compile Include="Assets\Scripts\PowerPlantController.cs" />
     <Compile Include="Assets\Scripts\SettingsMenu.cs" />
+    <Compile Include="Assets\Scripts\Sound\AudioSources.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\Sound\soundmanagementTest.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\TrafficLightController.cs" />
@@ -191,6 +195,8 @@
     <Compile Include="Assets\Scripts\UI\UIPlayerStance.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Audio\Sound-implementation-guide.txt" />
+    <None Include="Assets\Audio\fx-guideline.txt" />
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
     <None Include="Assets\MeleeWeaponTrail\README.txt" />
     <None Include="Assets\Models\EnemyBoss1\EnemyBoss1_AnimationFrames.txt" />

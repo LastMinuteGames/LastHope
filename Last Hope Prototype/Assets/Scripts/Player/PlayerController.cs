@@ -31,17 +31,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Material baseMat;
     [SerializeField]
+    private Texture baseGrey;
+    [SerializeField]
     private Texture baseBlue;
     [SerializeField]
     private Texture baseRed;
     [SerializeField]
     private Material extraMat;
     [SerializeField]
+    private Texture extraGrey;
+    [SerializeField]
     private Texture extraBlue;
     [SerializeField]
     private Texture extraRed;
     [SerializeField]
     private Material shieldMat;
+    [SerializeField]
+    private Texture shieldGrey;
     [SerializeField]
     private Texture shieldBlue;
     [SerializeField]
@@ -148,7 +154,7 @@ public class PlayerController : MonoBehaviour
         stances.Add(PlayerStanceType.STANCE_NONE, new PlayerStance(PlayerStanceType.STANCE_NONE, new PlayerPassiveStatsRelative(1, 1, 1, 1)));
         stances.Add(PlayerStanceType.STANCE_BLUE, new PlayerStance(PlayerStanceType.STANCE_BLUE, new PlayerPassiveStatsRelative(1, 0.66f, 1.33f, 40)));
         stances.Add(PlayerStanceType.STANCE_RED, new PlayerStance(PlayerStanceType.STANCE_RED, new PlayerPassiveStatsRelative(1.5f, 1, 0.85f, 30)));
-        currentStats = baseStats;
+        ChangeStance(PlayerStanceType.STANCE_NONE);
 
         playerAttacks = new Dictionary<string, Attack>();
 
@@ -294,6 +300,13 @@ public class PlayerController : MonoBehaviour
     {
         switch (typeStance)
         {
+            case PlayerStanceType.STANCE_NONE:
+                Debug.Log("NO STANCE");
+                this.stance = stances[typeStance];
+                currentStats = baseStats;
+                ChangeSwordParticles(typeStance);
+                ChangeEmissives(typeStance);
+                break;
             case PlayerStanceType.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
@@ -322,6 +335,14 @@ public class PlayerController : MonoBehaviour
     {
         switch (value)
         {
+            case PlayerStanceType.STANCE_NONE:
+                swordBlueOrb.SetActive(false);
+                swordBlueLine.SetActive(false);
+                swordRedOrb.SetActive(false);
+                swordRedLine.SetActive(false);
+                swordEmitter.ChangeMaterial(0);
+                shieldEmitter.ChangeMaterial(0);
+                break;
             case PlayerStanceType.STANCE_BLUE:
                 swordBlueOrb.SetActive(true);
                 swordBlueLine.SetActive(true);
@@ -345,6 +366,11 @@ public class PlayerController : MonoBehaviour
     {
         switch (value)
         {
+            case PlayerStanceType.STANCE_NONE:
+                baseMat.SetTexture("_EmissionMap", baseGrey);
+                extraMat.SetTexture("_EmissionMap", extraGrey);
+                shieldMat.SetTexture("_EmissionMap", shieldGrey);
+                break;
             case PlayerStanceType.STANCE_BLUE:
                 baseMat.SetTexture("_EmissionMap", baseBlue);
                 extraMat.SetTexture("_EmissionMap", extraBlue);

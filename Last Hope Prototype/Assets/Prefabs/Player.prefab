@@ -838,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1436065931003518
 GameObject:
   m_ObjectHideFlags: 1
@@ -2125,7 +2125,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177613109062328}
-  m_LocalRotation: {x: 0.66560656, y: 0.1416925, z: 0.25546646, w: 0.6867518}
+  m_LocalRotation: {x: 0.6656066, y: 0.14169252, z: 0.2554665, w: 0.68675184}
   m_LocalPosition: {x: -0.004854761, y: -0.008703081, z: -0.0034854235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2211,7 +2211,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1414334366704716}
-  m_LocalRotation: {x: 0.6656066, y: 0.14169252, z: 0.2554665, w: 0.68675184}
+  m_LocalRotation: {x: 0.66560656, y: 0.1416925, z: 0.25546646, w: 0.6867518}
   m_LocalPosition: {x: -0.008599335, y: -0.008598268, z: 0.0063966457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3063,7 +3063,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525409397675270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 10}
+  m_LocalPosition: {x: 5, y: 1, z: 13}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4990196035050564}
@@ -3437,12 +3437,15 @@ MonoBehaviour:
   newStance: 1
   debugMode: 0
   baseMat: {fileID: 2100000, guid: 8ba23107be6e3fc468754518c1e23d42, type: 2}
+  baseGrey: {fileID: 2800000, guid: 5f41368b63509f546967dd01158dc72b, type: 3}
   baseBlue: {fileID: 2800000, guid: 81ef29ae2cacbb9488a501ec3ccb7f38, type: 3}
   baseRed: {fileID: 2800000, guid: 91d5c37b355754249941a730afcbed3b, type: 3}
   extraMat: {fileID: 2100000, guid: 7141a05cd27b96941bc2b5c53334cf71, type: 2}
+  extraGrey: {fileID: 2800000, guid: 1459f72fbd8077843a028dc3e61795af, type: 3}
   extraBlue: {fileID: 2800000, guid: f8dc7fe71ca283c4e86d9c255c6ceca1, type: 3}
   extraRed: {fileID: 2800000, guid: 2f48422439fa9da418700796754c9ec8, type: 3}
   shieldMat: {fileID: 2100000, guid: 4192985eb498d814dae4a55f9a2d382f, type: 2}
+  shieldGrey: {fileID: 2800000, guid: 3464f04ead6d4ac40abc08283872d5c3, type: 3}
   shieldBlue: {fileID: 2800000, guid: 25e07a398985f0c45855d747928b5bea, type: 3}
   shieldRed: {fileID: 2800000, guid: dbf07d6f05e2e7e458334fb10bef5484, type: 3}
   swordBlueOrb: {fileID: 1097708804255502}
