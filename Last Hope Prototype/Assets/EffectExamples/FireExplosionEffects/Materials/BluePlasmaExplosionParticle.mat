@@ -6,19 +6,20 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: EnemyMelee1_weaponry2
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP
+  m_Name: BluePlasmaExplosionParticle
+  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f343d204ab60b284597aa1742824864c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -42,19 +43,19 @@ Material:
     - first:
         name: _EmissionMap
       second:
-        m_Texture: {fileID: 2800000, guid: 3464f04ead6d4ac40abc08283872d5c3, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: a2a778bc2eb60bd4194e7da762adc8e2, type: 3}
+        m_Texture: {fileID: 2800000, guid: d3c9883e2f0eef44f9241b6f8428f9fc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 2800000, guid: f963bd8f0c9bb9d4981364d0104c0193, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -69,10 +70,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SpecGlossMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: _BumpScale
-      second: 1
+      second: 0.2
     - first:
         name: _Cutoff
       second: 0.5
@@ -81,22 +88,25 @@ Material:
       second: 1
     - first:
         name: _DstBlend
-      second: 0
+      second: 10
     - first:
         name: _GlossMapScale
-      second: 0.5
+      second: 1
     - first:
         name: _Glossiness
-      second: 0.5
+      second: 0
     - first:
         name: _GlossyReflections
+      second: 1
+    - first:
+        name: _InvFade
       second: 1
     - first:
         name: _Metallic
       second: 0
     - first:
         name: _Mode
-      second: 0
+      second: 2
     - first:
         name: _OcclusionStrength
       second: 1
@@ -111,17 +121,23 @@ Material:
       second: 1
     - first:
         name: _SrcBlend
-      second: 1
+      second: 5
     - first:
         name: _UVSec
       second: 0
     - first:
         name: _ZWrite
-      second: 1
+      second: 0
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+      second: {r: 0.21323532, g: 0.21323532, b: 0.21323532, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0.13235293, g: 0.2645538, b: 0.375, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _TintColor
+      second: {r: 1, g: 1, b: 1, a: 0.5}
