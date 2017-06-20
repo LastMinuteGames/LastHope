@@ -19,7 +19,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Enter in " + attackName);
+        //Debug.Log("Enter in " + attackName);
         if (playerController == null)
         {
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
@@ -50,7 +50,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
     {
         if (UpdateAttack())
         {
-            Debug.Log("Trigger Setter in " + attackName);
+            //Debug.Log("Trigger Setter in " + attackName);
             animator.SetTrigger(nextAttack);
         }
     }
@@ -58,7 +58,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Exit in " + attackName);
+        //Debug.Log("Exit in " + attackName);
         //playerController.CloseInputWindow();
         playerController.EndCurrentAttack();
         nextAttack = null;
@@ -86,7 +86,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
                 if(nextAttack == null || tempAttack != null)
                 {
                     nextAttack = tempAttack;
-                    Debug.Log("Next Attack: " + nextAttack + " in " + attackName);
+                    //Debug.Log("Next Attack: " + nextAttack + " in " + attackName);
                 }
             }
         }

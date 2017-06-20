@@ -14,13 +14,15 @@ namespace Assets.Scripts.EnemySpawnSystem
         private Dictionary<EnemyType, uint> totalEnemiesAtTime; //max number of enemies by type
         private Dictionary<EnemyType, uint> totalEnemies; //number of enemies by type in total for this wave
         private bool started = false;
+        private String name;
 
 
-        public Wave()
+        public Wave(String name)
         {
             currentEnemies = new Dictionary<EnemyType, uint>();
             totalEnemiesAtTime = new Dictionary<EnemyType, uint>();
             totalEnemies = new Dictionary<EnemyType, uint>();
+            this.name = name;
         }
 
         public void AddEnemy(EnemyType type, uint numberOfTotalEnemiesAtTime, uint numberOfTotalEnemies)
@@ -55,7 +57,7 @@ namespace Assets.Scripts.EnemySpawnSystem
             Spawn result = null;
             if (started == true && currentEnemies.ContainsKey(type))
             {
-                Assert.IsTrue(currentEnemies[type] > 0);
+                Assert.IsTrue(currentEnemies[type] >= number);
                 currentEnemies[type] -= number;
                 uint maxNumberOfPossibleEnemiesToSpawn = totalEnemiesAtTime[type] - currentEnemies[type];
                 uint resultToSpawn = 0;
@@ -64,8 +66,9 @@ namespace Assets.Scripts.EnemySpawnSystem
                     resultToSpawn = Math.Min(maxNumberOfPossibleEnemiesToSpawn, totalEnemies[type]);
                     result = new Spawn(type, resultToSpawn);
                     totalEnemies[type] -= resultToSpawn;
+                    currentEnemies[type] += resultToSpawn;
                 }
-                Debug.Log("Number: " + number + " ResultToSpawn " + resultToSpawn + " Max: " + maxNumberOfPossibleEnemiesToSpawn + " Total: " + totalEnemies[type] + " totalAtTime: " + totalEnemiesAtTime[type] + " current: " + currentEnemies[type]);
+                //Debug.Log("Number: " + number + " ResultToSpawn " + resultToSpawn + " Max: " + maxNumberOfPossibleEnemiesToSpawn + " Total: " + totalEnemies[type] + " totalAtTime: " + totalEnemiesAtTime[type] + " current: " + currentEnemies[type]);
             }
 
             return result;
@@ -84,7 +87,7 @@ namespace Assets.Scripts.EnemySpawnSystem
                         result.Add(spawn);
                     }
                 }
-                Debug.Log("Spawns Added: " + result.Count + " Enemies Sended: " + enemies.Count);
+                //Debug.Log("Spawns Added: " + result.Count + " Enemies Sended: " + enemies.Count);
             }
 
             return result;
@@ -95,15 +98,24 @@ namespace Assets.Scripts.EnemySpawnSystem
             bool result = true;
             foreach (EnemyType type in totalEnemiesAtTime.Keys)
             {
-                if(currentEnemies[type] != 0 && totalEnemies[type] != 0)
+                if(currentEnemies[type] != 0 || totalEnemies[type] != 0)
                 {
                     result = false;
                     break;
                 }
             }
+
             return result;
         }
 
+        public void FinishDebug()
+        {
+            //Debug.Log("Wave " + name + " has: ");
+            foreach (EnemyType type in totalEnemiesAtTime.Keys)
+            {
+                //Debug.Log("Wave " + name + " has: " + totalEnemiesAtTime[type] + " enemies at time " + totalEnemies[type] + " remaining enemies " + currentEnemies[type] + " current enemies");
+            }
+        }
 
     }
 }
