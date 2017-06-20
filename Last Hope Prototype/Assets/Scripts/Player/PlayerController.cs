@@ -17,12 +17,24 @@ public class PlayerController : MonoBehaviour
 {
     public Animator anim;
     public Collider sword;
+    public Collider swordHeavy;
     public MeleeWeaponTrail swordEmitter;
+    public Transform swordAoeSpawn;
+    public Transform shieldAoeSpawn;
     public Collider shield;
+    public Collider shieldHeavy;
     public MeleeWeaponTrail shieldEmitter;
     public GameObject hitParticles;
     public ParticleSystem redAbilityParticles;
     public ParticleSystem dodgeParticles;
+    [SerializeField]
+    public ParticleSystem greyHeavyAttackParticles;
+    [SerializeField]
+    public ParticleSystem blueHeavyAttackParticles;
+    [SerializeField]
+    public ParticleSystem redHeavyAttackParticles;
+    [HideInInspector]
+    public ParticleSystem currentHeavyAttackParticles;
     [HideInInspector]
     public PlayerStance stance;
     [HideInInspector]
@@ -223,6 +235,40 @@ public class PlayerController : MonoBehaviour
         //TODO: Add attack sound fx when we have one
     }
 
+    public void SwordHeavyAttackAoEParticles()
+    {
+        ParticleSystem ps = Instantiate(currentHeavyAttackParticles, swordAoeSpawn.position, Quaternion.identity);
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(ps.gameObject, totalDuration);
+    }
+
+    public void ShieldHeavyAttackAoEParticles()
+    {
+        ParticleSystem ps = Instantiate(currentHeavyAttackParticles, shieldAoeSpawn.position, Quaternion.identity);
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(ps.gameObject, totalDuration);
+    }
+
+    public void EnableSwordArea()
+    {
+        swordHeavy.enabled = true;
+    }
+
+    public void DisableSwordArea()
+    {
+        swordHeavy.enabled = false;
+    }
+
+    public void EnableShieldArea()
+    {
+        shieldHeavy.enabled = true;
+    }
+
+    public void DisableShieldArea()
+    {
+        shieldHeavy.enabled = false;
+    }
+
     void Update()
     {
 
@@ -342,6 +388,7 @@ public class PlayerController : MonoBehaviour
                 swordRedLine.SetActive(false);
                 swordEmitter.ChangeMaterial(0);
                 shieldEmitter.ChangeMaterial(0);
+                currentHeavyAttackParticles = greyHeavyAttackParticles;
                 break;
             case PlayerStanceType.STANCE_BLUE:
                 swordBlueOrb.SetActive(true);
@@ -350,6 +397,7 @@ public class PlayerController : MonoBehaviour
                 swordRedLine.SetActive(false);
                 swordEmitter.ChangeMaterial(1);
                 shieldEmitter.ChangeMaterial(1);
+                currentHeavyAttackParticles = blueHeavyAttackParticles;
                 break;
             case PlayerStanceType.STANCE_RED:
                 swordBlueOrb.SetActive(false);
@@ -358,6 +406,7 @@ public class PlayerController : MonoBehaviour
                 swordRedLine.SetActive(true);
                 swordEmitter.ChangeMaterial(2);
                 shieldEmitter.ChangeMaterial(2);
+                currentHeavyAttackParticles = redHeavyAttackParticles;
                 break;
         }
     }
@@ -608,10 +657,12 @@ public class PlayerController : MonoBehaviour
             case "L3":
             case "H1":
                 EndSwordAttack();
+                DisableSwordArea();
                 break;
             case "H2":
             case "H3":
                 EndShieldAttack();
+                DisableShieldArea();
                 break;
             case "Red":
                 EndRedSpecialAttack();

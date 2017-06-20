@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlasmaExplosionParticle
+  m_Name: RedPlasmaExplosionParticle
   m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
   m_LightmapFlags: 1
@@ -134,7 +134,7 @@ Material:
       second: {r: 0.21323532, g: 0.21323532, b: 0.21323532, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0.13235293, g: 0.2645538, b: 0.375, a: 1}
+      second: {r: 0.375, g: 0.13235289, b: 0.13235289, a: 1}
     - first:
         name: _SpecColor
       second: {r: 0, g: 0, b: 0, a: 1}
