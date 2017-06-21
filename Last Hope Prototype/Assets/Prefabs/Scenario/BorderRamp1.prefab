@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4569288636170408}
   - component: {fileID: 33242655505601246}
   - component: {fileID: 23759815573942006}
+  - component: {fileID: 64650838779067328}
   m_Layer: 0
   m_Name: Col_BorderRamp1
   m_TagString: Untagged
@@ -36,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4446892668413792}
-  - component: {fileID: 64129692218342158}
+  - component: {fileID: 95535828411443438}
   m_Layer: 0
   m_Name: BorderRamp1
   m_TagString: Untagged
@@ -59,7 +60,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4446892668413792
 Transform:
@@ -67,8 +68,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473052141076302}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 170, y: 0, z: 170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4569288636170408}
@@ -82,8 +83,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006278111245800}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: -0.000006914139, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4446892668413792}
@@ -95,8 +96,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1742581212131858}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.000000053385083, y: 0.7071068, z: 0.7071068, w: 0.000000053385083}
+  m_LocalPosition: {x: -0, y: -0.000004529953, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4446892668413792}
@@ -115,7 +116,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b8ee3dbcb5ceadd48ba4a5e1c0f538d3, type: 2}
+  - {fileID: 2100000, guid: df11aaf1d9c275941a6f4eeaefd94000, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,20 +171,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006278111245800}
-  m_Mesh: {fileID: 4300000, guid: bd8c08d6d0e7e0348bd7f711c3f88c3d, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 02fd6b1ed6187374eb2b909db0cabe82, type: 3}
 --- !u!33 &33441125253662514
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1742581212131858}
-  m_Mesh: {fileID: 4300002, guid: bd8c08d6d0e7e0348bd7f711c3f88c3d, type: 3}
---- !u!64 &64129692218342158
+  m_Mesh: {fileID: 4300002, guid: 02fd6b1ed6187374eb2b909db0cabe82, type: 3}
+--- !u!64 &64650838779067328
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1473052141076302}
+  m_GameObject: {fileID: 1006278111245800}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -191,4 +192,21 @@ MeshCollider:
   m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bd8c08d6d0e7e0348bd7f711c3f88c3d, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 02fd6b1ed6187374eb2b909db0cabe82, type: 3}
+--- !u!95 &95535828411443438
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1473052141076302}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 02fd6b1ed6187374eb2b909db0cabe82, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1

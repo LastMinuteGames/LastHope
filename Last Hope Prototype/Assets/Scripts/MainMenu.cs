@@ -313,7 +313,7 @@ public class MainMenu : MonoBehaviour {
             switch (focus)
             {
                 case 0:
-                    SceneManager.LoadScene("CityMap");
+                    SceneManager.LoadScene("CityMapUpdate");
                     break;
                 case 1:
                     openHelp();

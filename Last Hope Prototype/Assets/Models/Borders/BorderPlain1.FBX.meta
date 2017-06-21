@@ -1,22 +1,23 @@
 fileFormatVersion: 2
-guid: 01e7bce75f3a3a94ea77dc9c3b241134
-timeCreated: 1489164323
+guid: 6ab081f4046b4cd49931e2040482c58a
+timeCreated: 1498067965
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Col_BorderInterior1
-    100004: Deco_BorderInterior1
+    100002: Col_BorderPlain1
+    100004: Deco_BorderPlain1
     400000: //RootNode
-    400002: Col_BorderInterior1
-    400004: Deco_BorderInterior1
-    2300000: Col_BorderInterior1
-    2300002: Deco_BorderInterior1
-    3300000: Col_BorderInterior1
-    3300002: Deco_BorderInterior1
-    4300000: Col_BorderInterior1
-    4300002: Deco_BorderInterior1
+    400002: Col_BorderPlain1
+    400004: Deco_BorderPlain1
+    2300000: Col_BorderPlain1
+    2300002: Deco_BorderPlain1
+    3300000: Col_BorderPlain1
+    3300002: Deco_BorderPlain1
+    4300000: Col_BorderPlain1
+    4300002: Deco_BorderPlain1
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -58,7 +59,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
@@ -79,7 +80,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4162721913328986}
   - component: {fileID: 33386377411370172}
   - component: {fileID: 23568464271494720}
+  - component: {fileID: 64444266485131762}
   m_Layer: 0
   m_Name: Col_BorderInterior1
   m_TagString: Untagged
@@ -43,7 +44,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1431656884517620
 GameObject:
@@ -53,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4547220896099826}
-  - component: {fileID: 64375722583042218}
+  - component: {fileID: 95985001677292358}
   m_Layer: 0
   m_Name: BorderInterior1
   m_TagString: Untagged
@@ -67,8 +68,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1199681438849784}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0.00000023841858, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4547220896099826}
@@ -80,7 +81,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1312711046747064}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -93,15 +94,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431656884517620}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -110, y: 0, z: 250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4162721913328986}
   - {fileID: 4357202786997678}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23568464271494720
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -146,7 +147,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89b9e727024fb024da5d092dd9b3a441, type: 2}
+  - {fileID: 2100000, guid: f32b5a50f86d2994eb0fd903e9530696, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,20 +171,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1312711046747064}
-  m_Mesh: {fileID: 4300002, guid: 01e7bce75f3a3a94ea77dc9c3b241134, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e840758414b8fc544a37aff112cd46ab, type: 3}
 --- !u!33 &33386377411370172
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1199681438849784}
-  m_Mesh: {fileID: 4300000, guid: 01e7bce75f3a3a94ea77dc9c3b241134, type: 3}
---- !u!64 &64375722583042218
+  m_Mesh: {fileID: 4300002, guid: e840758414b8fc544a37aff112cd46ab, type: 3}
+--- !u!64 &64444266485131762
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431656884517620}
+  m_GameObject: {fileID: 1199681438849784}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -191,4 +192,21 @@ MeshCollider:
   m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 01e7bce75f3a3a94ea77dc9c3b241134, type: 3}
+  m_Mesh: {fileID: 4300002, guid: e840758414b8fc544a37aff112cd46ab, type: 3}
+--- !u!95 &95985001677292358
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431656884517620}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: e840758414b8fc544a37aff112cd46ab, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
