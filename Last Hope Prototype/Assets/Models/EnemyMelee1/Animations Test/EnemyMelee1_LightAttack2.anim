@@ -18732,14 +18732,14 @@ AnimationClip:
   m_IsEmpty: 0
   m_Events:
   - time: 0.033333335
-    functionName: StartCurrentAttack
+    functionName: EnableComboInput
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.033333335
-    functionName: EnableComboInput
+    functionName: StartCurrentAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -18752,8 +18752,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.3
+  - time: 0.33333334
     functionName: DisableComboInput
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: EndCurrentAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
