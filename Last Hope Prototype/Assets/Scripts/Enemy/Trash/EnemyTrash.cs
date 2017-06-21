@@ -80,7 +80,7 @@ public class EnemyTrash : Enemy //MonoBehaviour
                     {
                         playerScript.SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
                     }
-                    Debug.Log("DAMAGED!!!");
+                    Debug.Log("DAMAGED!!! By " + currentAttackReceived.name);
                     TakeDamage(currentAttackReceived.damage);
                 }
                 lastAttackReceived = currentAttackReceived;

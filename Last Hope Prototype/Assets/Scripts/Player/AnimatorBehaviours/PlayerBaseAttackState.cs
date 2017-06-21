@@ -14,6 +14,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
     protected String attackName = "";
     protected Attack attack = null;
     protected HashSet<String> availableAttacks = new HashSet<string>();
+    protected bool hasNextAttack = false;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -34,7 +35,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
         playerController.DisableSwordEmitter();
         playerController.DisableShieldEmitter();
         //playerController.CloseInputWindow();
-        playerController.EndCurrentAttack();
+        //playerController.EndCurrentAttack();
         //playerController.EndShieldAttack();
 
         h = InputManager.LeftJoystick().x;
@@ -51,6 +52,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
         if (UpdateAttack())
         {
             //Debug.Log("Trigger Setter in " + attackName);
+            hasNextAttack = true;
             animator.SetTrigger(nextAttack);
         }
     }
@@ -60,7 +62,8 @@ public class PlayerBaseAttackState : StateMachineBehaviour
     {
         //Debug.Log("Exit in " + attackName);
         //playerController.CloseInputWindow();
-        playerController.EndCurrentAttack();
+        //if(hasNextAttack == false)
+        //    playerController.EndCurrentAttack();
         nextAttack = null;
     }
 
