@@ -71,12 +71,16 @@ public class EnemyTrash : Enemy //MonoBehaviour
             Attack currentAttackReceived = playerScript.GetAttack();
             if (currentAttackReceived != null)
             {
+                Debug.Log("CurrentAttackReceived: " + currentAttackReceived.name);
+                if(lastAttackReceived != null)
+                    Debug.Log("LastAttackReceived: " + lastAttackReceived.name);
                 if (lastAttackReceived == null || currentAttackReceived.name != lastAttackReceived.name)
                 {
                     if (!currentState.IsName("RedSpecialAttack"))
                     {
                         playerScript.SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
                     }
+                    Debug.Log("DAMAGED!!! By " + currentAttackReceived.name);
                     TakeDamage(currentAttackReceived.damage);
                 }
                 lastAttackReceived = currentAttackReceived;

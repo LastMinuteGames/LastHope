@@ -13,18 +13,22 @@ public enum PickUpEffect
     MAX
 }
 
-public class PickUpController : MonoBehaviour {
+public class PickUpController : MonoBehaviour
+{
 
     public PickUpEffect effect;
     public PickUpType type;
     public int value;
-    
-    void Update () {
+    private int audioToPlay;
+
+    void Update()
+    {
         transform.Rotate(new Vector3(0, 80, 0) * Time.deltaTime);
-	}
+    }
 
     void OnTriggerEnter(Collider other)
     {
+        bool destroy = false;
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             if (effect == PickUpEffect.CURRENT)
@@ -32,27 +36,35 @@ public class PickUpController : MonoBehaviour {
                 switch (type)
                 {
                     case (PickUpType.HP):
-
-                        other.gameObject.GetComponent<PlayerController>().Heal(value);
+                        destroy = other.gameObject.GetComponent<PlayerController>().Heal(value);
+                        audioToPlay = (int)AudiosSoundFX.Environment_PickUps_HP;
                         break;
                     case (PickUpType.ENERGY):
-                        other.gameObject.GetComponent<PlayerController>().GainEnergy(value);
+                        destroy = other.gameObject.GetComponent<PlayerController>().GainEnergy(value);
+                        audioToPlay = (int)AudiosSoundFX.Environment_PickUps_Energy;
                         break;
                 }
             }
             if (effect == PickUpEffect.MAX)
             {
+                destroy = true;
                 switch (type)
                 {
                     case (PickUpType.HP):
                         other.gameObject.GetComponent<PlayerController>().IncreaseMaxHealthAndHeal(value);
+                        audioToPlay = (int)AudiosSoundFX.Environment_PowerUps;
                         break;
                     case (PickUpType.ENERGY):
                         other.gameObject.GetComponent<PlayerController>().IncreaseMaxEnergy(value);
+                        audioToPlay = (int)AudiosSoundFX.Environment_PowerUps;
                         break;
                 }
             }
-            gameObject.SetActive(false);
+            if (destroy)
+            {
+                AudioSources.instance.PlaySound(audioToPlay);
+                Destroy(gameObject);
+            }
         }
     }
 }

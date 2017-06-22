@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrashEnemyCombatState : StateMachineBehaviour {
     EnemyTrash enemyTrash;
+    bool randomCreated;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -13,6 +14,7 @@ public class TrashEnemyCombatState : StateMachineBehaviour {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
         enemyTrash.DisableSwordEmitter();
+        randomCreated = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -43,8 +45,19 @@ public class TrashEnemyCombatState : StateMachineBehaviour {
             }
             else if (combatRayHit && !attackRayHit)
             {
-                enemyTrash.nav.Stop();
-                animator.SetTrigger("moveAround");
+                if (!randomCreated)
+                {
+                    int num = Random.Range(0, 4);
+                    if (num == 0)
+                    {
+                        animator.SetTrigger("moveForward");
+                    }
+                    else
+                    {
+                        animator.SetTrigger("moveAround");
+                    }
+                    randomCreated = true;
+                }
             }
             else if (attackRayHit)
             {

@@ -11,7 +11,6 @@ public class PlayerDetection : MonoBehaviour
     void Start()
     {
         enemyTrash = transform.gameObject.GetComponentInParent<EnemyTrash>();
-        artillery = GameObject.FindGameObjectWithTag("EventTarget").GetComponent<ArtilleryController>();
         if (enemyTrash.anim != null)
         {
             switch (enemyTrash.behaviour)
@@ -25,6 +24,7 @@ public class PlayerDetection : MonoBehaviour
                     enemyTrash.anim.SetBool("chase", false);
                     break;
                 case EnemyBehaviour.EB_ARTILLERY:
+                    artillery = GameObject.FindGameObjectWithTag("EventTarget").GetComponent<ArtilleryController>();
                     if (artillery != null)
                     {
                         enemyTrash.ChangeTarget(artillery.transform, TargetType.TT_ARTILLERY);

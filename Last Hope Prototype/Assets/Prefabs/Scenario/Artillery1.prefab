@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54708901555738554}
   - component: {fileID: 95438749335438000}
   - component: {fileID: 114865554976319480}
+  - component: {fileID: 136730598307854594}
   - component: {fileID: 136060255555946346}
   m_Layer: 19
   m_Name: Artillery1
@@ -261,7 +262,6 @@ GameObject:
   - component: {fileID: 4898861063437224}
   - component: {fileID: 33269903585650742}
   - component: {fileID: 23435381596793488}
-  - component: {fileID: 64642245537150894}
   m_Layer: 19
   m_Name: Col_Artillery1
   m_TagString: Untagged
@@ -334,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 1460428515154180}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4810633197107558}
   m_Father: {fileID: 4599952953275376}
@@ -404,7 +404,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1120268160052552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65, y: 10.3, z: 375}
+  m_LocalPosition: {x: 5, y: 10.3, z: 355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4898861063437224}
@@ -476,7 +476,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1853177346145706}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -752,20 +752,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64642245537150894
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1853177346145706}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4d5d5bac7de583b4e8c25d955979eec3, type: 3}
 --- !u!65 &65305966999437668
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -776,7 +762,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 170, y: 20, z: 170}
+  m_Size: {x: 120, y: 20, z: 120}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95438749335438000
 Animator:
@@ -808,6 +794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockExit1: {fileID: 0}
   blockExit2: {fileID: 0}
+  blockExit3: {fileID: 0}
   manager: {fileID: 0}
   reusableSpawnPointsParent: {fileID: 0}
   delayBetweenSpawns: 2
@@ -839,8 +826,21 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 30
+  m_Radius: 16
   m_Height: 80
+  m_Direction: 1
+  m_Center: {x: 0, y: 10, z: 0}
+--- !u!136 &136730598307854594
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120268160052552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 15
+  m_Height: 59.088486
   m_Direction: 1
   m_Center: {x: 0, y: 10, z: 0}
 --- !u!198 &198051739582403860

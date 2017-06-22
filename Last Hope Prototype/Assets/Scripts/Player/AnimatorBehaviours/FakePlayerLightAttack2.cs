@@ -3,9 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FakePlayerLightAttack2 : StateMachineBehaviour
+public class FakePlayerLightAttack2 : PlayerBaseAttackState
 {
-    PlayerController playerController;
+
+    protected override void LoadStateSettings()
+    {
+        availableAttacks.Add("lightAttack");
+        availableAttacks.Add("heavyAttack");
+        availableAttacks.Add("blueSpecialAttack");
+        availableAttacks.Add("redSpecialAttack");
+
+        attackName = "L2";
+    }
+    /*PlayerController playerController;
     private float h, v = 0;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -71,4 +81,5 @@ public class FakePlayerLightAttack2 : StateMachineBehaviour
     //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
     //
     //}
+    */
 }

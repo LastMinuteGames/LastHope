@@ -9,6 +9,7 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     private ArtilleryController artillery;
     public GameObject blockExit1;
     public GameObject blockExit2;
+    public GameObject blockExit3;
     public EnemySpawnManager manager;
     public GameObject reusableSpawnPointsParent;
     public float delayBetweenSpawns = 2.0f;
@@ -25,17 +26,17 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     void Start () {
         artillery = transform.GetComponentInParent<ArtilleryController>();
 
-        Wave wave = new Wave();
+        Wave wave = new Wave("1");
         wave.AddEnemy(EnemyType.ET_TRASH, 3, 5);
 
         waves.Add(wave);
 
-        wave = new Wave();
+        wave = new Wave("2");
         wave.AddEnemy(EnemyType.ET_TRASH, 5, 5);
 
         waves.Add(wave);
 
-        wave = new Wave();
+        wave = new Wave("3");
         wave.AddEnemy(EnemyType.ET_TRASH, 7, 15);
 
         waves.Add(wave);
@@ -49,11 +50,12 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             reusableSpawnPoints.Add(child.GetComponent<EnemySpawnPoint>());
         }
 
-        if (blockExit1 != null && blockExit2 != null)
+        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
         {
 
             blockExit1.SetActive(false);
             blockExit2.SetActive(false);
+            blockExit3.SetActive(false);
 
         }
     }
@@ -67,12 +69,13 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
         {
             if (currentWave.IsFinished()) //Next wave!
             {
+                currentWave.FinishDebug();
                 waves.RemoveAt(0);
                 if(waves.Count > 0)
                 {
                     currentWave = waves[0];
                     List<Spawn> spawns = currentWave.StartWave();
-                    Debug.Log("Spawns Start Wave: " + spawns.Count);
+                    //Debug.Log("Spawns Start Wave: " + spawns.Count);
                     AddSpawnsToPendingEnemies(spawns);
                 }
                 else
@@ -106,7 +109,7 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             {
                 Destroy(artillery.gameObject);
                 artillery = null;
-                Debug.Log("Artillery destroyed. You lose");
+                //Debug.Log("Artillery destroyed. You lose");
                 //TODO: Go to screen title? restart from last point?
             }
         }
@@ -128,25 +131,28 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
 
     public void BlockExits()
     {
-        if (blockExit1 != null && blockExit2 != null)
+        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
         {
             blockExit1.SetActive(true);
             blockExit2.SetActive(true);
+            blockExit3.SetActive(true);
         }
     }
 
     public void UnblockExits()
     {
-        if (blockExit1 != null && blockExit2 != null)
+        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
         {
             Destroy(blockExit1);
             Destroy(blockExit2);
+            Destroy(blockExit3);
         }
     }
 
     Dictionary<EnemyType, uint> CleanUpEnemies()
     {
         Dictionary<EnemyType, uint> result = new Dictionary<EnemyType, uint>();
+        int before = enemies.Count;
         for (int i = 0; i < enemies.Count; ++i)
         {
             if (enemies[i].IsDead() && enemies[i].Autokill == true)

@@ -19595,8 +19595,15 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_IsEmpty: 0
   m_Events:
+  - time: 0.033333335
+    functionName: StartCurrentAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.06666667
-    functionName: StartSwordAttack
+    functionName: EnableComboInput
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -19609,8 +19616,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.26666668
-    functionName: OpenInputWindow
+  - time: 0.4
+    functionName: DisableComboInput
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

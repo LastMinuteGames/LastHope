@@ -17,17 +17,53 @@ public class PlayerController : MonoBehaviour
 {
     public Animator anim;
     public Collider sword;
+    public Collider swordHeavy;
     public MeleeWeaponTrail swordEmitter;
+    public Transform swordAoeSpawn;
+    public Transform shieldAoeSpawn;
     public Collider shield;
+    public Collider shieldHeavy;
     public MeleeWeaponTrail shieldEmitter;
     public GameObject hitParticles;
     public ParticleSystem redAbilityParticles;
     public ParticleSystem dodgeParticles;
+    [SerializeField]
+    public ParticleSystem greyHeavyAttackParticles;
+    [SerializeField]
+    public ParticleSystem blueHeavyAttackParticles;
+    [SerializeField]
+    public ParticleSystem redHeavyAttackParticles;
+    [HideInInspector]
+    public ParticleSystem currentHeavyAttackParticles;
     [HideInInspector]
     public PlayerStance stance;
     [HideInInspector]
     public PlayerStanceType newStance;
     public bool debugMode = false;
+    [SerializeField]
+    private Material baseMat;
+    [SerializeField]
+    private Texture baseGrey;
+    [SerializeField]
+    private Texture baseBlue;
+    [SerializeField]
+    private Texture baseRed;
+    [SerializeField]
+    private Material extraMat;
+    [SerializeField]
+    private Texture extraGrey;
+    [SerializeField]
+    private Texture extraBlue;
+    [SerializeField]
+    private Texture extraRed;
+    [SerializeField]
+    private Material shieldMat;
+    [SerializeField]
+    private Texture shieldGrey;
+    [SerializeField]
+    private Texture shieldBlue;
+    [SerializeField]
+    private Texture shieldRed;
     [SerializeField]
     private GameObject swordBlueOrb;
     [SerializeField]
@@ -104,6 +140,7 @@ public class PlayerController : MonoBehaviour
 
     // Attack
     private bool inputWindow = false;
+    private bool canChangeAttackState = false;
 
     // Special Attack
     public GameObject neutralSphere;
@@ -129,7 +166,7 @@ public class PlayerController : MonoBehaviour
         stances.Add(PlayerStanceType.STANCE_NONE, new PlayerStance(PlayerStanceType.STANCE_NONE, new PlayerPassiveStatsRelative(1, 1, 1, 1)));
         stances.Add(PlayerStanceType.STANCE_BLUE, new PlayerStance(PlayerStanceType.STANCE_BLUE, new PlayerPassiveStatsRelative(1, 0.66f, 1.33f, 40)));
         stances.Add(PlayerStanceType.STANCE_RED, new PlayerStance(PlayerStanceType.STANCE_RED, new PlayerPassiveStatsRelative(1.5f, 1, 0.85f, 30)));
-        currentStats = baseStats;
+        ChangeStance(PlayerStanceType.STANCE_NONE);
 
         playerAttacks = new Dictionary<string, Attack>();
 
@@ -196,6 +233,40 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(camShake.Shake(0.1f, 0.25f, 1, 1, this.transform));
         }
         //TODO: Add attack sound fx when we have one
+    }
+
+    public void SwordHeavyAttackAoEParticles()
+    {
+        ParticleSystem ps = Instantiate(currentHeavyAttackParticles, swordAoeSpawn.position, Quaternion.identity);
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(ps.gameObject, totalDuration);
+    }
+
+    public void ShieldHeavyAttackAoEParticles()
+    {
+        ParticleSystem ps = Instantiate(currentHeavyAttackParticles, shieldAoeSpawn.position, Quaternion.identity);
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(ps.gameObject, totalDuration);
+    }
+
+    public void EnableSwordArea()
+    {
+        swordHeavy.enabled = true;
+    }
+
+    public void DisableSwordArea()
+    {
+        swordHeavy.enabled = false;
+    }
+
+    public void EnableShieldArea()
+    {
+        shieldHeavy.enabled = true;
+    }
+
+    public void DisableShieldArea()
+    {
+        shieldHeavy.enabled = false;
     }
 
     void Update()
@@ -275,6 +346,13 @@ public class PlayerController : MonoBehaviour
     {
         switch (typeStance)
         {
+            case PlayerStanceType.STANCE_NONE:
+                Debug.Log("NO STANCE");
+                this.stance = stances[typeStance];
+                currentStats = baseStats;
+                ChangeSwordParticles(typeStance);
+                ChangeEmissives(typeStance);
+                break;
             case PlayerStanceType.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
@@ -282,6 +360,7 @@ public class PlayerController : MonoBehaviour
                     this.stance = stances[typeStance];
                     currentStats = baseStats * blueStats;
                     ChangeSwordParticles(typeStance);
+                    ChangeEmissives(typeStance);
                 }
                 break;
             case PlayerStanceType.STANCE_RED:
@@ -291,6 +370,7 @@ public class PlayerController : MonoBehaviour
                     this.stance = stances[typeStance];
                     currentStats = baseStats * redStats;
                     ChangeSwordParticles(typeStance);
+                    ChangeEmissives(typeStance);
                 }
                 break;
         }
@@ -301,12 +381,23 @@ public class PlayerController : MonoBehaviour
     {
         switch (value)
         {
+            case PlayerStanceType.STANCE_NONE:
+                swordBlueOrb.SetActive(false);
+                swordBlueLine.SetActive(false);
+                swordRedOrb.SetActive(false);
+                swordRedLine.SetActive(false);
+                swordEmitter.ChangeMaterial(0);
+                shieldEmitter.ChangeMaterial(0);
+                currentHeavyAttackParticles = greyHeavyAttackParticles;
+                break;
             case PlayerStanceType.STANCE_BLUE:
                 swordBlueOrb.SetActive(true);
                 swordBlueLine.SetActive(true);
                 swordRedOrb.SetActive(false);
                 swordRedLine.SetActive(false);
                 swordEmitter.ChangeMaterial(1);
+                shieldEmitter.ChangeMaterial(1);
+                currentHeavyAttackParticles = blueHeavyAttackParticles;
                 break;
             case PlayerStanceType.STANCE_RED:
                 swordBlueOrb.SetActive(false);
@@ -314,6 +405,30 @@ public class PlayerController : MonoBehaviour
                 swordRedOrb.SetActive(true);
                 swordRedLine.SetActive(true);
                 swordEmitter.ChangeMaterial(2);
+                shieldEmitter.ChangeMaterial(2);
+                currentHeavyAttackParticles = redHeavyAttackParticles;
+                break;
+        }
+    }
+
+    private void ChangeEmissives(PlayerStanceType value)
+    {
+        switch (value)
+        {
+            case PlayerStanceType.STANCE_NONE:
+                baseMat.SetTexture("_EmissionMap", baseGrey);
+                extraMat.SetTexture("_EmissionMap", extraGrey);
+                shieldMat.SetTexture("_EmissionMap", shieldGrey);
+                break;
+            case PlayerStanceType.STANCE_BLUE:
+                baseMat.SetTexture("_EmissionMap", baseBlue);
+                extraMat.SetTexture("_EmissionMap", extraBlue);
+                shieldMat.SetTexture("_EmissionMap", shieldBlue);
+                break;
+            case PlayerStanceType.STANCE_RED:
+                baseMat.SetTexture("_EmissionMap", baseRed);
+                extraMat.SetTexture("_EmissionMap", extraRed);
+                shieldMat.SetTexture("_EmissionMap", shieldRed);
                 break;
         }
     }
@@ -359,8 +474,9 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public void Heal(int value)
+    public bool Heal(int value)
     {
+        bool ret = false;
         if (!IsDead() && currentHP < maxHP)
         {
             currentHP += value;
@@ -369,7 +485,9 @@ public class PlayerController : MonoBehaviour
                 currentHP = maxHP;
             }
             uiManager.UpdateHealth(currentHP);
+            ret = true;
         }
+        return ret;
     }
 
     public void IncreaseMaxHealthAndHeal(int value)
@@ -427,8 +545,9 @@ public class PlayerController : MonoBehaviour
         }
         return ret;
     }
-    public void GainEnergy(int value)
+    public bool GainEnergy(int value)
     {
+        bool ret = false;
         if (currentEnergy < maxEnergy)
         {
             currentEnergy += value;
@@ -437,12 +556,16 @@ public class PlayerController : MonoBehaviour
                 currentEnergy = maxEnergy;
             }
             uiManager.UpdateEnergy(currentEnergy);
+            ret = true;
         }
+        return ret;
     }
 
-    public void ChangeAttack(string name)
+    public Attack ChangeAttack(string name)
     {
         currentAttack = playerAttacks[name];
+        return playerAttacks[name];
+
     }
 
     public void IncreaseMaxEnergy(int value)
@@ -498,25 +621,80 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void StartSwordAttack()
+
+    // Testing to use generic start and end current attack so we can change easily 
+    // what colliders we want to use for each attack
+    // Use a Enum instead of string would be a good idea for attacks
+    public void StartCurrentAttack()
+    {
+        switch (currentAttack.name)
+        {
+            case "L1":
+            case "L2":
+            case "L3":
+            case "H1":
+                StartSwordAttack();
+                break;
+            case "H2":
+            case "H3":
+                StartShieldAttack();
+                break;
+            case "Red":
+                StartRedSpecialAttack();
+                break;
+            case "Blue":
+                StartBlueSpecialAttack();
+                break;
+        }
+    }
+
+    public void EndCurrentAttack()
+    {
+        switch (currentAttack.name)
+        {
+            case "L1":
+            case "L2":
+            case "L3":
+            case "H1":
+                EndSwordAttack();
+                DisableSwordArea();
+                break;
+            case "H2":
+            case "H3":
+                EndShieldAttack();
+                DisableShieldArea();
+                break;
+            case "Red":
+                EndRedSpecialAttack();
+                break;
+            case "Blue":
+                EndBlueSpecialAttack();
+                break;
+        }
+    }
+
+    //TODO: General collider activition method (only depends from which is current attack) 
+    protected void StartSwordAttack()
     {
         sword.enabled = true;
     }
 
-    public void EndSwordAttack()
+    protected void EndSwordAttack()
     {
         sword.enabled = false;
     }
 
-    public void StartShieldAttack()
+    protected void StartShieldAttack()
     {
         shield.enabled = true;
     }
 
-    public void EndShieldAttack()
+    protected void EndShieldAttack()
     {
         shield.enabled = false;
     }
+
+    //TODO END
 
     public void Dodge()
     {
@@ -550,14 +728,14 @@ public class PlayerController : MonoBehaviour
         return ret;
     }
 
-    public void StartBlueSpecialAttack()
+    protected void StartBlueSpecialAttack()
     {
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_BLUE && LoseEnergy(1))
         {
             canSpecialAttack = true;
             neutralSphere.gameObject.SetActive(true);
-            spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position, neutralSphere.transform.rotation);
+            spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position + new Vector3(0, 1, 0), neutralSphere.transform.rotation);
             ParticleSystem ps = spawnedParticle.GetComponent<ParticleSystem>();
             float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
             Destroy(spawnedParticle, totalDuration);
@@ -567,7 +745,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void StartRedSpecialAttack()
+    protected void StartRedSpecialAttack()
     {
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_RED)
@@ -579,7 +757,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void UpdateRedSpecialAttack()
+    protected void UpdateRedSpecialAttack()
     {
         if (canSpecialAttack)
         {
@@ -593,7 +771,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EndBlueSpecialAttack()
+    protected void EndBlueSpecialAttack()
     {
         if (canSpecialAttack)
         {
@@ -601,7 +779,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EndRedSpecialAttack()
+    protected void EndRedSpecialAttack()
     {
         if (canSpecialAttack)
         {
@@ -670,6 +848,22 @@ public class PlayerController : MonoBehaviour
     {
         return inputWindow;
     }
+
+    public void EnableComboInput()
+    {
+        canChangeAttackState = false;
+    }
+
+    public void DisableComboInput()
+    {
+        canChangeAttackState = true;
+    }
+
+    public bool GetCanChangeAttackState()
+    {
+        return canChangeAttackState;
+    }
+
 
     public Attack GetAttack()
     {

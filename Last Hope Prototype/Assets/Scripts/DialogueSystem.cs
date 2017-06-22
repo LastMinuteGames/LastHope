@@ -12,7 +12,7 @@ public class DialogueSystem : MonoBehaviour {
     public Text dialogueFrom;
     public bool show;
     private bool next;
-    private float timeDialogue = 5f;
+    private float timeDialogue = 3f;
     private float timeLeft;
     
 
