@@ -616,6 +616,7 @@ public class PlayerController : MonoBehaviour
         totalImpulse = (totalImpulse > 1) ? 1 : totalImpulse;
         movement.x = totalImpulse * targetDirection.x;
         movement.z = totalImpulse * targetDirection.z;
+        movement.Normalize();
 
         rigidBody.MovePosition(rigidBody.position + movement * currentStats.movementSpeed * Time.deltaTime);
 
