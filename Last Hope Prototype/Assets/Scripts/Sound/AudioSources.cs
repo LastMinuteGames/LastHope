@@ -105,7 +105,9 @@ public enum AudiosSoundFX
     Environment_PickUps_HP,
     Environment_PickUps_Energy,
 
-    Environment_PowerUps
+    Environment_PowerUps,
+
+    Environment_Core
 
 }
 
