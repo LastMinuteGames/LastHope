@@ -18731,6 +18731,13 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_IsEmpty: 0
   m_Events:
+  - time: 0
+    functionName: StartAttackMovement
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.033333335
     functionName: EnableComboInput
     data: 
@@ -18761,6 +18768,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.33333334
     functionName: EndCurrentAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.36666667
+    functionName: EndAttackMovement
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
