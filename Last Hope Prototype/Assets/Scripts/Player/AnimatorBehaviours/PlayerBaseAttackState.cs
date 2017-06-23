@@ -65,6 +65,7 @@ public class PlayerBaseAttackState : StateMachineBehaviour
         //if(hasNextAttack == false)
         //    playerController.EndCurrentAttack();
         nextAttack = null;
+        playerController.EndAttackMovement();
     }
 
     //Returns true if we have to activate some trigger, false otherwise

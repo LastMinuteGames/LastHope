@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour
     public float dodgeThrust;
     public bool pendingMove = false;
     public bool canDodge;
+    private bool attackMoving = false;
     [SerializeField]
     private float dodgeMaxCooldown;
     [SerializeField]
@@ -271,19 +272,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKey(KeyCode.Keypad1))
-        {
-            string[] a = new string[2];
-            a[0] = "El generador se activará en 5 segundos";
-            a[1] = "Gracias por esperar";
-            string[] b = new string[2];
-            b[0] = "Generador";
-            b[1] = "Generador";
-            DialogueSystem.Instance.AddNewDialogue(a, b);
-            DialogueSystem.Instance.ShowDialogue();
-        }
-
         if (InputManager.DebugMode())
         {
             debugMode = !debugMode;
@@ -339,6 +327,11 @@ public class PlayerController : MonoBehaviour
             Rotate();
             Move();
             pendingMove = false;
+        }
+        else if (attackMoving)
+        {
+            Rotate();
+            Move();
         }
     }
 
@@ -610,9 +603,9 @@ public class PlayerController : MonoBehaviour
 
         movement = Vector3.zero;
         //movement.z = 0;
-        movementHorizontal = Mathf.Abs(movementHorizontal);
-        movementVertical = Mathf.Abs(movementVertical);
-        float totalImpulse = movementHorizontal + movementVertical;
+        float movementHorizontalTemp = Mathf.Abs(movementHorizontal);
+        float movementVerticalTemp = Mathf.Abs(movementVertical);
+        float totalImpulse = movementHorizontalTemp + movementVerticalTemp;
         totalImpulse = (totalImpulse > 1) ? 1 : totalImpulse;
         movement.x = totalImpulse * targetDirection.x;
         movement.z = totalImpulse * targetDirection.z;
@@ -622,6 +615,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void StartAttackMovement()
+    {
+        attackMoving = true;
+    }
+
+    public void EndAttackMovement()
+    {
+        attackMoving = false;
+    }
 
     // Testing to use generic start and end current attack so we can change easily 
     // what colliders we want to use for each attack
@@ -700,10 +702,6 @@ public class PlayerController : MonoBehaviour
     public void Dodge()
     {
         rigidBody.MovePosition(transform.position + transform.forward * dodgeThrust * Time.deltaTime);
-        //movement = rigidBody.velocity;
-        //Vector3 impulse = targetDirection.normalized * dodgeThrust;
-        //movement += impulse;
-        //rigidBody.velocity = movement;
     }
 
     public void StartDodgeTimer()
