@@ -770,6 +770,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    protected void PlayFXRedSpecialAttack()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_SpecialAttackRed);
+    }
+
     protected void EndBlueSpecialAttack()
     {
         if (canSpecialAttack)
