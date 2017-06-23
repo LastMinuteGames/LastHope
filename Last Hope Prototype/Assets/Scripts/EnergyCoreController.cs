@@ -34,6 +34,7 @@ public class EnergyCoreController : MonoBehaviour {
                     Debug.Log("Red special ability learned");
                     break;
             }
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PowerUps);
             gameObject.SetActive(false);
         }
     }
