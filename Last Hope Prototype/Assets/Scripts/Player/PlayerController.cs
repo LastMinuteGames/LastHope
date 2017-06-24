@@ -760,6 +760,7 @@ public class PlayerController : MonoBehaviour
                 canSpecialAttack = true;
                 redSpehre.gameObject.SetActive(true);
             }
+            controllerEvents.AddRumble(0.8f, new Vector2(0.1f, 0.2f), 0.2f);
         }
     }
     protected void UpdateRedSpecialAttack()
@@ -767,12 +768,6 @@ public class PlayerController : MonoBehaviour
         if (canSpecialAttack)
         {
             rigidBody.MovePosition(transform.position + transform.forward * redSpecialAttackThrust * Time.deltaTime);
-            /*movement = rigidBody.velocity;
-            Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
-            movement += impulse;
-            rigidBody.velocity = movement;
-            */
-
         }
     }
 
