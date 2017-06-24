@@ -102,4 +102,9 @@ public class ArtilleryController : MonoBehaviour
         }
         AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
     }
+
+    void MovementSound()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Movement);
+    }
 }
