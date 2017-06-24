@@ -30,7 +30,7 @@ public class EnergyCoreController : MonoBehaviour {
                     break;
                 case PlayerStanceType.STANCE_RED:
                     player.EnableRedAbility();
-                    player.ChangeStance(stance);
+                    //player.ChangeStance(stance);
                     Debug.Log("Red special ability learned");
                     break;
             }

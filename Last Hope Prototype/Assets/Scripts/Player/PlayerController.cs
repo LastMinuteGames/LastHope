@@ -676,7 +676,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //TODO: General collider activition method (only depends from which is current attack) 
     protected void StartSwordAttack()
     {
         sword.enabled = true;
