@@ -29,8 +29,7 @@ public class BarricadeController : MonoBehaviour {
         {
             this.GetComponent<BoxCollider>().isTrigger = true;
             anim.SetTrigger("Break");
-            //broke = true;
-            //Destroy(this.gameObject);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ControllerEvents>().AddRumble(0.4f, new Vector2(0.5f, 0.3f), 0.2f);
         }
     }
 

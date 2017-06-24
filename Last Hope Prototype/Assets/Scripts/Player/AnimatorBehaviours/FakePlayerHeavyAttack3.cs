@@ -9,7 +9,6 @@ public class FakePlayerHeavyAttack3 : PlayerBaseAttackState
     {
         availableAttacks.Add("blueSpecialAttack");
         availableAttacks.Add("redSpecialAttack");
-
         attackName = "H3";
     }
     //PlayerController playerController;

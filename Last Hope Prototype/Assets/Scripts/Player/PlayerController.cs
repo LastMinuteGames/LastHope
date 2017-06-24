@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
     //public float speed = 10;
     public Transform camT;
     private CameraShake camShake;
+    private ControllerEvents controllerEvents;
     public Vector3 movement;
     public Vector3 targetDirection;
     public float dodgeThrust;
@@ -202,6 +203,7 @@ public class PlayerController : MonoBehaviour
 
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         camShake = camT.GetComponent<CameraShake>();
+        controllerEvents = camT.GetComponent<ControllerEvents>();
         rigidBody = GetComponent<Rigidbody>();
 
         DisableSwordEmitter();
@@ -233,6 +235,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(camShake.Shake(0.1f, 0.25f, 1, 1, this.transform));
         }
+        controllerEvents.AddRumble(0.4f, new Vector2(0.7f, 0.7f), 0.2f);
         //TODO: Add attack sound fx when we have one
     }
 
@@ -241,6 +244,7 @@ public class PlayerController : MonoBehaviour
         ParticleSystem ps = Instantiate(currentHeavyAttackParticles, swordAoeSpawn.position, Quaternion.identity);
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
         Destroy(ps.gameObject, totalDuration);
+        //controllerEvents.AddRumble(0.2f, new Vector2(0.7f, 0.7f), 0.1f);
     }
 
     public void ShieldHeavyAttackAoEParticles()
@@ -248,6 +252,7 @@ public class PlayerController : MonoBehaviour
         ParticleSystem ps = Instantiate(currentHeavyAttackParticles, shieldAoeSpawn.position, Quaternion.identity);
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
         Destroy(ps.gameObject, totalDuration);
+        //controllerEvents.AddRumble(0.2f, new Vector2(0.7f, 0.7f), 0.1f);
     }
 
     public void EnableSwordArea()
@@ -741,6 +746,7 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(camShake.Shake());
             }
+            controllerEvents.AddRumble(0.4f, new Vector2(1.0f, 0.0f), 0.2f);
         }
     }
     protected void StartRedSpecialAttack()
@@ -753,6 +759,7 @@ public class PlayerController : MonoBehaviour
                 canSpecialAttack = true;
                 redSpehre.gameObject.SetActive(true);
             }
+            controllerEvents.AddRumble(0.8f, new Vector2(0.1f, 0.2f), 0.2f);
         }
     }
     protected void UpdateRedSpecialAttack()
@@ -760,12 +767,6 @@ public class PlayerController : MonoBehaviour
         if (canSpecialAttack)
         {
             rigidBody.MovePosition(transform.position + transform.forward * redSpecialAttackThrust * Time.deltaTime);
-            /*movement = rigidBody.velocity;
-            Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
-            movement += impulse;
-            rigidBody.velocity = movement;
-            */
-
         }
     }
 
@@ -803,6 +804,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == false)
                 {
+                    SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");
                 }

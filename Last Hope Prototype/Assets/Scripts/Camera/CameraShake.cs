@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
@@ -59,16 +60,13 @@ public class CameraShake : MonoBehaviour
 
             camT.localPosition = offsetToPivot;
 
-
             done = true;
             shaking = false;
             if (camCollision)
             {
                 camCollision.enabled = true;
             }
-
         }
-
     }
 
     public bool CanShake(Transform positionCalled)
