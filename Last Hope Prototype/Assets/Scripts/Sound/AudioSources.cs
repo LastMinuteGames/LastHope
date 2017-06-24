@@ -107,7 +107,10 @@ public enum AudiosSoundFX
 
     Environment_PowerUps,
 
-    Environment_Core
+    Environment_Core,
+
+    Environment_Artillery_Movement,
+    Environment_Artillery_Shot
 
 }
 
