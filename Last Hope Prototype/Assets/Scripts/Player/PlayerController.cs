@@ -799,6 +799,7 @@ public class PlayerController : MonoBehaviour
             if (interactable != null && interactable.CanInteract())
             {
                 canInteract = true;
+                
             }
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
