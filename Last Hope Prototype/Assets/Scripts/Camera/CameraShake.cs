@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class CameraShake : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CameraShake : MonoBehaviour
     private Transform pivotT;
     private CameraCollision camCollision;
 
+    PlayerIndex playerIndex;
+
     void Awake()
     {
         camT = GetComponentInChildren<Camera>().transform;
@@ -24,12 +27,23 @@ public class CameraShake : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+        for (int i = 0; i < 4; ++i)
+        {
+            PlayerIndex testPlayerIndex = (PlayerIndex)i;
+            GamePadState testState = GamePad.GetState(testPlayerIndex);
+            if (testState.IsConnected)
+            {
+                playerIndex = testPlayerIndex;
+            }
+        }
     }
 
     public IEnumerator Shake(float duration = 0.2f, float magnitude = 0.5f, float xMultiplier = 1.0f, float yMultiplier = 1.0f, Transform positionCalled = null)
     {
         if (!shaking && CanShake(positionCalled))
         {
+            GamePad.SetVibration(playerIndex, 1f, 1f);
+
             if (camCollision)
             {
                 camCollision.enabled = false;
@@ -57,6 +71,7 @@ public class CameraShake : MonoBehaviour
                 yield return null;
             }
 
+
             camT.localPosition = offsetToPivot;
 
 
@@ -66,9 +81,9 @@ public class CameraShake : MonoBehaviour
             {
                 camCollision.enabled = true;
             }
+            GamePad.SetVibration(playerIndex, 0f, 0f);
 
         }
-
     }
 
     public bool CanShake(Transform positionCalled)
