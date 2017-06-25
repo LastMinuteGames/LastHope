@@ -64,6 +64,7 @@ public class DialogueSystem : MonoBehaviour {
     private float timeLeft;
     private List<Dialog> dialogs;
     private Dialog currentDialog;
+    public bool isOn = true;
 
 
     // Use this for initialization
@@ -104,6 +105,10 @@ public class DialogueSystem : MonoBehaviour {
 	
     public void AddDialogue(string line, string from, float timeDialog = 0)
     {
+        if (!isOn)
+        {
+            return;
+        }
         Dialog dialog = new Dialog(line, from, timeDialog);
         dialogs.Add(dialog);
 
