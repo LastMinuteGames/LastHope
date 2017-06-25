@@ -142,6 +142,9 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
         {
             Destroy(blockExit1);
             Destroy(blockExit2);
+            string text = "Nice job! But the Colossal wall is under attack!";
+            string from = "";
+            DialogueSystem.Instance.AddDialogue(text, from, 3.5f);
         }
     }
 

@@ -48,6 +48,7 @@ public class ElevatorController : Interactable
         {
             activated = true;
             ActivateElevator();
+            DialogueSystem.Instance.NextDialogue();
         }
     }
 
