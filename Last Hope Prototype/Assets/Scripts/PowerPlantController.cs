@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PowerPlantController : Interactable {
 
-    private bool running = false;
     public GameObject bridge;
     public GameObject bridgeFloor;
+    public Material baseColor;
+    public Texture emissiveOff;
+    public Texture emissiveOn;
 
-	// Use this for initialization
-	void Start () {
-	}
+    private bool running = false;
+
+    // Use this for initialization
+    void Start ()
+    {
+        baseColor.SetTexture("_EmissionMap", emissiveOff);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,6 +29,7 @@ public class PowerPlantController : Interactable {
         {
             running = true;
             ActivateBridge();
+            baseColor.SetTexture("_EmissionMap", emissiveOn);
             DialogueSystem.Instance.NextDialogue();
             string text = "Bridge activated";
             string from = "Power Plant";
@@ -56,7 +63,6 @@ public class PowerPlantController : Interactable {
     void ActivateBridge()
     {
         bridgeFloor.GetComponent<BoxCollider>().isTrigger = true;
-        Debug.Log("Puente bajado!");
         for (int i = 0; i < bridge.transform.childCount; ++i)
         {
             GameObject child = bridge.transform.GetChild(i).gameObject;
