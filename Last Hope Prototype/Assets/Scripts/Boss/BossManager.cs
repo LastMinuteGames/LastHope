@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class BossManager : MonoBehaviour
 {
     public BossPhase[] bossPhases;
     public BossPhase currentPhase;
+    public Slider hpSlider;
 
     private int currentPhaseId;
     private bool isDead = false;
@@ -60,6 +62,7 @@ public class BossManager : MonoBehaviour
             return;
         }
         TerminateCurrentPhase();
+        UpdateHpSlider();
         Debug.Log("so much aww");
 
     }
@@ -68,6 +71,12 @@ public class BossManager : MonoBehaviour
     {
         isDead = true;
         Debug.Log("boss is dead oh nooooo");
+    }
+
+    void UpdateHpSlider()
+    {
+
+        hpSlider.value = 100 * (bossPhases.Length - currentPhaseId) / (float)bossPhases.Length;
     }
 
 
