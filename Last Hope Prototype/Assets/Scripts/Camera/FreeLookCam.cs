@@ -31,7 +31,7 @@ public class FreeLookCam : MonoBehaviour
     {
         camT = GetComponentInChildren<Camera>().transform;
         pivotT = camT.parent;
-        pivotEulers = pivotT.rotation.eulerAngles;
+        pivotEulers = pivotT.localRotation.eulerAngles;
         pivotTargetRot = pivotT.transform.localRotation;
         transformTargetRot = transform.localRotation;
         ConfigureCameraAxis(invertHorizontalAxis, invertVerticalAxis);
@@ -39,7 +39,13 @@ public class FreeLookCam : MonoBehaviour
 
     private void Start()
     {
+        OnEnable();
+    }
+
+    private void OnEnable()
+    {
         targetT = GameObject.FindGameObjectWithTag("Player").transform;
+        pivotT.localRotation = Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z);
     }
 
     public void ConfigureCameraAxis(bool invertH, bool invertV)
@@ -73,9 +79,9 @@ public class FreeLookCam : MonoBehaviour
         //tiltAngle -= y * turnSpeed * Time.deltaTime * vAxis * 100f;
         //tiltAngle = Mathf.Clamp(tiltAngle, -tiltMin, tiltMax);
 
-        pivotTargetRot = Quaternion.Lerp(pivotTargetRot, Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z), vSmooth);
+        //pivotTargetRot = Quaternion.Lerp(pivotTargetRot, Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z), vSmooth);
 
-        pivotT.localRotation = pivotTargetRot;
+        //pivotT.localRotation = pivotTargetRot;
         transform.localRotation = Quaternion.Lerp(transform.localRotation, transformTargetRot, hSmooth);
 
     }
