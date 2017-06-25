@@ -60,16 +60,17 @@ public class ElevatorController : Interactable
     {
         if (activated == false && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //TODO: Show message in screen
-            Debug.Log("Press E to activate the elevator.");
+            string text = "Press B to activate";
+            string from = "Elevator";
+            DialogueSystem.Instance.AddDialogue(text, from);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !activated)
         {
-            //TODO: Hide message
+            DialogueSystem.Instance.NextDialogue();
         }
     }
 

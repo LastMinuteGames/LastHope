@@ -214,6 +214,39 @@ public class PlayerController : MonoBehaviour
         uiManager.UpdateEnergyCapacity(initialMaxEnergy);
         uiManager.UpdateEnergy(currentEnergy);
         uiManager.UpdatePlayerStance(stance);
+
+        // Dialogs
+        Invoke("DialogMove", 1);
+        Invoke("DialogRotate", 4.5f);
+        Invoke("DialogLAttack", 9.0f);
+    }
+
+    private void DialogMove()
+    {
+        string text = "Move: Left Joystick";
+        string from = "";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
+    }
+
+    private void DialogRotate()
+    {
+        string text = "Rotate Camera: Right Joystick";
+        string from = "";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
+    }
+
+    public void DialogBlueEnergyCore()
+    {
+        string text = "Guardian’s special attack: RB button";
+        string from = "";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
+    }
+
+    public void DialogSwitchStances()
+    {
+        string text = "Switch stances: RT / LT";
+        string from = "";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
     }
 
     public void CallFX()

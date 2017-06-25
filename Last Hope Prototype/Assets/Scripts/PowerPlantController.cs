@@ -21,11 +21,12 @@ public class PowerPlantController : Interactable {
     {
         if(CanInteract())
         {
-            //TODO: Hide message
-            Debug.Log("Power plant charging...");
-            Debug.Log("Wait for 5 seconds");
             running = true;
-            Invoke("ActivateBridge", 5);
+            ActivateBridge();
+            DialogueSystem.Instance.NextDialogue();
+            string text = "Bridge activated";
+            string from = "Power Plant";
+            DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
         }
     }
 
@@ -38,16 +39,17 @@ public class PowerPlantController : Interactable {
     {
         if (running == false && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //TODO: Show message in screen
-            Debug.Log("Press E to activate the bridge.");
+            string text = "Press B to activate the Energy Bridge";
+            string from = "Power Plant";
+            DialogueSystem.Instance.AddDialogue(text, from);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !running)
         {
-            //TODO: Hide message
+            DialogueSystem.Instance.NextDialogue();
         }
     }
 
@@ -64,5 +66,4 @@ public class PowerPlantController : Interactable {
             }
         }
     }
-
 }

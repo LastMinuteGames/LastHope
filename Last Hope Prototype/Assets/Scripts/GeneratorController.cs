@@ -38,8 +38,8 @@ public class GeneratorController : Interactable {
     {
         if (CanInteract() && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            string text = "Press Interact to charge the generator";
-            string from = "Generador";
+            string text = "Press B to charge the Generator";
+            string from = "Generator";
             DialogueSystem.Instance.AddDialogue(text, from);
         }
     }
@@ -51,7 +51,7 @@ public class GeneratorController : Interactable {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !running)
         {
             DialogueSystem.Instance.NextDialogue();
         }

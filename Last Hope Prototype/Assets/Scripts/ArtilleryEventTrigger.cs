@@ -9,7 +9,6 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     private ArtilleryController artillery;
     public GameObject blockExit1;
     public GameObject blockExit2;
-    public GameObject blockExit3;
     public EnemySpawnManager manager;
     public GameObject reusableSpawnPointsParent;
     public float delayBetweenSpawns = 2.0f;
@@ -50,12 +49,11 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             reusableSpawnPoints.Add(child.GetComponent<EnemySpawnPoint>());
         }
 
-        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
+        if (blockExit1 != null && blockExit2 != null)
         {
 
             blockExit1.SetActive(false);
             blockExit2.SetActive(false);
-            blockExit3.SetActive(false);
 
         }
     }
@@ -131,21 +129,19 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
 
     public void BlockExits()
     {
-        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
+        if (blockExit1 != null && blockExit2 != null)
         {
             blockExit1.SetActive(true);
             blockExit2.SetActive(true);
-            blockExit3.SetActive(true);
         }
     }
 
     public void UnblockExits()
     {
-        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
+        if (blockExit1 != null && blockExit2 != null)
         {
             Destroy(blockExit1);
             Destroy(blockExit2);
-            Destroy(blockExit3);
         }
     }
 
