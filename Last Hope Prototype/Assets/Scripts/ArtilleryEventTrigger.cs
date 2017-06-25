@@ -12,6 +12,7 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     public EnemySpawnManager manager;
     public GameObject reusableSpawnPointsParent;
     public float delayBetweenSpawns = 2.0f;
+    public GameObject hpSlider;
 
     private List<EnemySpawnPoint> reusableSpawnPoints = new List<EnemySpawnPoint>();
     private List<Wave> waves = new List<Wave>();
@@ -80,6 +81,8 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
                 {
                     currentWave = null;
                     isFinished = true;
+                    hpSlider.SetActive(false);
+
                     UnblockExits();
                 }
             }
@@ -120,6 +123,8 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             if (isStarted == false)
             {
                 isStarted = true;
+                hpSlider.SetActive(true);
+
                 artillery.alive = true;
                 Debug.Log("Artillery event started");
                 BlockExits();
