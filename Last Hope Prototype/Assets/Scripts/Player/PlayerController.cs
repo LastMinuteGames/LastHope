@@ -637,10 +637,13 @@ public class PlayerController : MonoBehaviour
             case "L2":
             case "L3":
             case "H1":
+                if (currentAttack.name == "H1") AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_HeavyAttack);
+                else AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_LightAttack);
                 StartSwordAttack();
                 break;
             case "H2":
             case "H3":
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ShieldAttack);
                 StartShieldAttack();
                 break;
             case "Red":
