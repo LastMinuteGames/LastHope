@@ -6300,6 +6300,67 @@ Transform:
   m_PrefabParentObject: {fileID: 4599295076276678, guid: 8de030687bde6274c883fc74502cf977,
     type: 2}
   m_PrefabInternal: {fileID: 191519436}
+--- !u!1 &193594785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 193594788}
+  - component: {fileID: 193594787}
+  - component: {fileID: 193594786}
+  m_Layer: 0
+  m_Name: DialogTrigger1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &193594786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 193594785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6968998e352c54c844c5dd6cb47e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - "Berserker\u2019s special attack: RB button while in Berserker's stance"
+  froms:
+  - 
+  timeDialogs:
+  - 2.5
+  delays:
+  - 0
+--- !u!65 &193594787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 193594785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 40}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &193594788
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 193594785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34, y: 5, z: 235}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &193884858
 Prefab:
   m_ObjectHideFlags: 0
@@ -42115,12 +42176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120a3e9756f6a1342a61fd6bf9fc8f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueLines: []
-  fromLines: []
   dialogueBox: {fileID: 510568755}
   dialogueText: {fileID: 337556871}
   dialogueFrom: {fileID: 994000313}
-  show: 0
 --- !u!1001 &1137451705
 Prefab:
   m_ObjectHideFlags: 0
@@ -46507,6 +46565,67 @@ Transform:
   m_PrefabParentObject: {fileID: 4767107714588244, guid: 2e9ae446db790f8488a54f36d8eec354,
     type: 2}
   m_PrefabInternal: {fileID: 1252578385}
+--- !u!1 &1254590782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1254590785}
+  - component: {fileID: 1254590784}
+  - component: {fileID: 1254590783}
+  m_Layer: 0
+  m_Name: DialogTrigger1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1254590783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254590782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6968998e352c54c844c5dd6cb47e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - Defend the artillery!
+  froms:
+  - 
+  timeDialogs:
+  - 5
+  delays:
+  - 0
+--- !u!65 &1254590784
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254590782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 40}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1254590785
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254590782}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 5, y: 14, z: 283}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &1257699728 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4599295076276678, guid: 8de030687bde6274c883fc74502cf977,
@@ -50010,6 +50129,14 @@ Prefab:
       value: 
       objectReference: {fileID: 1892059098147602, guid: 418f161f22170b748aa0077e6d608be0,
         type: 2}
+    - target: {fileID: 4111724146526782, guid: 5bb83dc507327e14b81d455e774f0b80, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.9767518
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920899737023666, guid: 5bb83dc507327e14b81d455e774f0b80, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.980442
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5bb83dc507327e14b81d455e774f0b80, type: 2}
   m_IsPrefabParent: 0
@@ -67432,6 +67559,50 @@ Transform:
   m_PrefabParentObject: {fileID: 4289319827244788, guid: 417036a0268fc5d4f87fa9ae032a9c50,
     type: 2}
   m_PrefabInternal: {fileID: 71980642}
+--- !u!1 &1769458386 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1419025965024912, guid: 2d6addadfe882f044bbbfb706c73db6b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1439528521}
+--- !u!114 &1769458387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769458386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6968998e352c54c844c5dd6cb47e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - 'Light Attack: X button'
+  - 'Heavy Attack: Y button'
+  - X-X-X
+  - X-Y
+  - X-X-Y
+  - 'Dodge: A button'
+  froms:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  timeDialogs:
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  delays:
+  - 0
+  - 3
+  - 6
+  - 9
+  - 12
+  - 15
 --- !u!1001 &1769835463
 Prefab:
   m_ObjectHideFlags: 0
