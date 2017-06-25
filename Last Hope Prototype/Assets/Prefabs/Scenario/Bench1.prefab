@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4279291978614986}
   - component: {fileID: 33360768702091284}
   - component: {fileID: 23233670955328666}
+  - component: {fileID: 114001743457292366}
+  - component: {fileID: 64873620592239914}
   m_Layer: 0
   m_Name: Col_Bench1
   m_TagString: Untagged
@@ -104,9 +106,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4373541465960268}
-  - component: {fileID: 64990017029425720}
   - component: {fileID: 95865198027358932}
-  - component: {fileID: 65601204512310400}
   m_Layer: 0
   m_Name: Bench1
   m_TagString: Untagged
@@ -163,8 +163,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1689431731651112}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -3.3408756, y: 1, z: 20.934402}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -10, y: 0.7, z: 95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4279291978614986}
@@ -304,32 +304,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1601676537382092}
   m_Mesh: {fileID: 4300002, guid: ad9119a34a0180245be103055f9d8321, type: 3}
---- !u!64 &64990017029425720
+--- !u!64 &64873620592239914
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1689431731651112}
+  m_GameObject: {fileID: 1020293123980784}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ad9119a34a0180245be103055f9d8321, type: 3}
---- !u!65 &65601204512310400
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1689431731651112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 2, z: 4.2}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &95865198027358932
 Animator:
   serializedVersion: 3
@@ -347,6 +335,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114001743457292366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020293123980784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02212727066558d438f13149eea6bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadExplosion: {fileID: 1047273684949740, guid: 897fbffa5dbda324e9c1da028640f267,
+    type: 2}
 --- !u!198 &198083122680909290
 ParticleSystem:
   m_ObjectHideFlags: 1
