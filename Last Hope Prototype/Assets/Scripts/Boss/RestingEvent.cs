@@ -16,7 +16,7 @@ public class RestingEvent : BossEvent
     public override bool UpdateEvent()
     {
         //Add behaviour
-        Debug.Log("update RestingEvent");
+        //Debug.Log("update RestingEvent");
         return base.UpdateEvent();
     }
 

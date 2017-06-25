@@ -1344,7 +1344,9 @@ GameObject:
   - component: {fileID: 81173988}
   - component: {fileID: 81173987}
   - component: {fileID: 81173986}
-  m_Layer: 0
+  - component: {fileID: 81173990}
+  - component: {fileID: 81173991}
+  m_Layer: 18
   m_Name: Turret1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,6 +1416,29 @@ Transform:
   m_Father: {fileID: 692389362}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &81173990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 81173985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad30a71741a784847a08edf8f3350940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &81173991
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 81173985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &90356292
 GameObject:
   m_ObjectHideFlags: 0
@@ -5134,7 +5159,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4235005824050830, guid: 33787175598fc3d4b8ee4a390b5490c1, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4235005824050830, guid: 33787175598fc3d4b8ee4a390b5490c1, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -6399,7 +6424,9 @@ GameObject:
   - component: {fileID: 714520480}
   - component: {fileID: 714520479}
   - component: {fileID: 714520478}
-  m_Layer: 0
+  - component: {fileID: 714520482}
+  - component: {fileID: 714520483}
+  m_Layer: 18
   m_Name: Turret1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6469,6 +6496,29 @@ Transform:
   m_Father: {fileID: 692389362}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &714520482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714520477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad30a71741a784847a08edf8f3350940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &714520483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714520477}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &759368378
 GameObject:
   m_ObjectHideFlags: 0
@@ -6978,7 +7028,9 @@ GameObject:
   - component: {fileID: 837087266}
   - component: {fileID: 837087265}
   - component: {fileID: 837087264}
-  m_Layer: 0
+  - component: {fileID: 837087268}
+  - component: {fileID: 837087269}
+  m_Layer: 18
   m_Name: Turret1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7048,6 +7100,29 @@ Transform:
   m_Father: {fileID: 692389362}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &837087268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 837087263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad30a71741a784847a08edf8f3350940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &837087269
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 837087263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &880632617
 GameObject:
   m_ObjectHideFlags: 0
@@ -7830,7 +7905,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4808517993003868, guid: 707430ca36cb294408e3f828cbefef96, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224430799750780026, guid: 707430ca36cb294408e3f828cbefef96,
         type: 2}
@@ -9053,7 +9128,7 @@ Transform:
   - {fileID: 692389362}
   - {fileID: 578879365}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1124574741
 GameObject:
@@ -9813,7 +9888,7 @@ GameObject:
   - component: {fileID: 1268401948}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9832,7 +9907,7 @@ Transform:
   - {fileID: 1736579593}
   - {fileID: 217935919}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1268401948
 MonoBehaviour:
@@ -9847,6 +9922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossPhases:
   - {fileID: 11400000, guid: 8dc90fd895df51440aec2d13452afad8, type: 2}
+  - {fileID: 11400000, guid: 0c2ef4372163424468128a01bdbf84e9, type: 2}
 --- !u!1 &1270701487
 GameObject:
   m_ObjectHideFlags: 0
@@ -10489,7 +10565,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 34.104, y: -445.376, z: -39.078003}
 --- !u!1 &1369008130
 GameObject:

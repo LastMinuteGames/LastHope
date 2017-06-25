@@ -9,12 +9,12 @@ public class RocketRainEvent : BossEvent
     public override void StartEvent()
     {
         base.StartEvent();
-        Debug.Log("starting RocketRainEvent");
+        //Debug.Log("starting RocketRainEvent");
     }
 
     public override bool UpdateEvent()
     {
-        Debug.Log("update RocketRainEvent");
+        //Debug.Log("update RocketRainEvent");
         return base.UpdateEvent();
     }
 

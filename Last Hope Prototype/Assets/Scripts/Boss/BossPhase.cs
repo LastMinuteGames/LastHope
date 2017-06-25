@@ -7,9 +7,9 @@ using UnityEngine;
 public class BossPhase : ScriptableObject
 {
     public BossEvent[] bossEvents;
-    private int currentEventId;
     public BossEvent currentEvent;
 
+    private int currentEventId;
 
     public virtual void StartPhase()
     {
@@ -26,7 +26,7 @@ public class BossPhase : ScriptableObject
     {
         //Debug.Log("phase update");
         bool ret = currentEvent.UpdateEvent();
-        Debug.Log(ret);
+        //Debug.Log(ret);
         if (!ret)
         {
             currentEventId = (currentEventId + 1) % bossEvents.Length;
@@ -38,9 +38,9 @@ public class BossPhase : ScriptableObject
 
     public virtual void TerminatePhase()
     {
-        Debug.Log("terminating phase");
 
         currentEvent.TerminateEvent();
         currentEventId = 0;
+        Debug.Log("terminating phase");
     }
 }

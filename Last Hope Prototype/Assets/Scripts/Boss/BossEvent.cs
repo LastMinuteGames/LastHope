@@ -10,7 +10,7 @@ public abstract class BossEvent : ScriptableObject
 
     public virtual void StartEvent()
     {
-        Debug.Log("start event");
+        //Debug.Log("start event");
         ellapsedTime = 0;
     }
 

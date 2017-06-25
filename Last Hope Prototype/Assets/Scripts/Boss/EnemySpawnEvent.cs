@@ -9,12 +9,12 @@ public class EnemySpawnEvent : BossEvent
     public override void StartEvent()
     {
         base.StartEvent();
-        Debug.Log("starting spawnEvent");
+        //Debug.Log("starting spawnEvent");
     }
 
     public override bool UpdateEvent()
     {
-        Debug.Log("update spawnEvent");
+        //Debug.Log("update spawnEvent");
         return base.UpdateEvent();
     }
 
