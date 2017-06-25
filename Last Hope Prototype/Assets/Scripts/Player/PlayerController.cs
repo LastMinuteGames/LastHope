@@ -450,6 +450,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((!IsDead()) && (!debugMode))
         {
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ReceiveAttack);
             return LoseHp(value);
         }
         return false;
@@ -812,6 +813,9 @@ public class PlayerController : MonoBehaviour
                 {
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");
+                }else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true)
+                {
+                    AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_BlockAttack);
                 }
             }
         }
