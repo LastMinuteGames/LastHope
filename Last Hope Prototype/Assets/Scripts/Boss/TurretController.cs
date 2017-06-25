@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretController : Interactable {
-
-
+public class TurretController : Interactable
+{
 
     private BossManager bossManager;
     private bool activated = false;
@@ -13,7 +12,7 @@ public class TurretController : Interactable {
 
     public void Start()
     {
-        bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossManager>();
+        bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponentInParent<BossManager>();
     }
 
     public override void Run()
@@ -21,7 +20,10 @@ public class TurretController : Interactable {
         if (CanInteract())
         {
             activated = true;
-            bossManager.TurretAttack();
+            if (bossManager)
+            {
+                bossManager.TurretAttack();
+            }
         }
     }
 
@@ -31,7 +33,7 @@ public class TurretController : Interactable {
         return !activated;
     }
 
-    
+
 
 
 }

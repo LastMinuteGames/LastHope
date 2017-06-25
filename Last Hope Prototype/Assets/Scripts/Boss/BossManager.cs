@@ -9,20 +9,26 @@ public class BossManager : MonoBehaviour
     public BossPhase[] bossPhases;
     public BossPhase currentPhase;
     public Slider hpSlider;
+    public GameObject canvasGO;
 
     private int currentPhaseId;
     private bool isDead = false;
+    private bool isAwaken = false;
+    private Animator animator;
 
 
 
     void Start()
     {
-        StartBossFight();
+        //StartBossFight();
+        animator = GetComponent<Animator>();
     }
 
     public void StartBossFight()
     {
         Debug.Log("start boss fight");
+        isAwaken = true;
+        canvasGO.SetActive(true);
         if (bossPhases.Length > 0)
         {
             currentPhaseId = 0;
@@ -34,7 +40,10 @@ public class BossManager : MonoBehaviour
     void Update()
     {
         //Debug.Log("boss update");
-        currentPhase.UpdatePhase();
+        if (isAwaken && !isDead)
+        {
+            currentPhase.UpdatePhase();
+        }
 
     }
 
@@ -62,6 +71,7 @@ public class BossManager : MonoBehaviour
             return;
         }
         TerminateCurrentPhase();
+        animator.SetTrigger("isDamaged");
         UpdateHpSlider();
         Debug.Log("so much aww");
 
@@ -70,6 +80,8 @@ public class BossManager : MonoBehaviour
     void BossDeath()
     {
         isDead = true;
+        isAwaken = false;
+        canvasGO.SetActive(false);
         Debug.Log("boss is dead oh nooooo");
     }
 
