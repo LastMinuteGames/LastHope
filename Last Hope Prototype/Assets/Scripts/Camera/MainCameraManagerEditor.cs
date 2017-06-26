@@ -1,13 +1,11 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 
 [CustomEditor(typeof(MainCameraManager))]
 public class MainCameraManagerEditor : Editor
 {
-    #if UNITY_EDITOR
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
@@ -18,5 +16,5 @@ public class MainCameraManagerEditor : Editor
             myScript.SwapCameraMode();
         }
     }
-    #endif
 }
+#endif
