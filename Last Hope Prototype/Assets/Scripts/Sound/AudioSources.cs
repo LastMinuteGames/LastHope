@@ -105,7 +105,15 @@ public enum AudiosSoundFX
     Environment_PickUps_HP,
     Environment_PickUps_Energy,
 
-    Environment_PowerUps
+    Environment_PowerUps,
+
+    Environment_Core,
+
+    Environment_Artillery_Movement,
+    Environment_Artillery_Shot,
+
+    Player_Combat_ShieldAttack,
+    Player_Combat_ShieldAttackHit
 
 }
 

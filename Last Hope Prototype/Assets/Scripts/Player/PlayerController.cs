@@ -488,6 +488,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((!IsDead()) && (!debugMode))
         {
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ReceiveAttack);
             return LoseHp(value);
         }
         return false;
@@ -674,10 +675,13 @@ public class PlayerController : MonoBehaviour
             case "L2":
             case "L3":
             case "H1":
+                if (currentAttack.name == "H1") AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_HeavyAttack);
+                else AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_LightAttack);
                 StartSwordAttack();
                 break;
             case "H2":
             case "H3":
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ShieldAttack);
                 StartShieldAttack();
                 break;
             case "Red":
@@ -803,6 +807,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    protected void PlayFXRedSpecialAttack()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_SpecialAttackRed);
+    }
+
     protected void EndBlueSpecialAttack()
     {
         if (canSpecialAttack)
@@ -827,6 +836,7 @@ public class PlayerController : MonoBehaviour
             if (interactable != null && interactable.CanInteract())
             {
                 canInteract = true;
+                
             }
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
@@ -838,8 +848,12 @@ public class PlayerController : MonoBehaviour
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == false)
                 {
                     SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+                    AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_AttackHit);
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");
+                }else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true)
+                {
+                    AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_BlockAttack);
                 }
             }
         }

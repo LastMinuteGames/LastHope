@@ -28,6 +28,10 @@ public class GeneratorController : Interactable {
         {
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PlayerToWorld_Interact);
             animator.SetTrigger("Charging");
+            //TODO: Hide message
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorNoise);
+            Debug.Log("Generator charging...");
+            Debug.Log("Wait for 5 seconds");
             running = true;
             Invoke("SpawnSpecialAbility", 5);
             DialogueSystem.Instance.NextDialogue();
@@ -64,5 +68,15 @@ public class GeneratorController : Interactable {
         GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
         EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();
         coreParameters.stance = PlayerStanceType.STANCE_RED;
+    }
+
+    void PlayGeneratorNoise()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorNoise);
+    }
+
+    void StopGeneratorNoise()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PlayerToWorld_Interact);
     }
 }

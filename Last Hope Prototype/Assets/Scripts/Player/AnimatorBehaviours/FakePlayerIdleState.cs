@@ -43,6 +43,7 @@ public class FakePlayerIdleState : StateMachineBehaviour {
                     if (playerController.newStance != playerController.stance)
                     {
                         animator.SetTrigger("changeStance");
+                        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_HUD_SelectStanceBlue);
                     }
                 }
             }
@@ -54,6 +55,7 @@ public class FakePlayerIdleState : StateMachineBehaviour {
                     if (playerController.newStance != playerController.stance)
                     {
                         animator.SetTrigger("changeStance");
+                        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_HUD_SelectStanceRed);
                     }
                 }
             }
@@ -73,6 +75,7 @@ public class FakePlayerIdleState : StateMachineBehaviour {
                 {
                     case PlayerStanceType.STANCE_BLUE:
                         animator.SetTrigger("blueSpecialAttack");
+                        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_SpecialAttackBlue);
                         break;
                     case PlayerStanceType.STANCE_RED:
                         animator.SetTrigger("redSpecialAttack");

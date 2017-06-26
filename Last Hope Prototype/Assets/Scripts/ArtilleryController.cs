@@ -97,6 +97,7 @@ public class ArtilleryController : MonoBehaviour
         {
             leftBarrelParticles.Play();
         }
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
     }
     void RightBarrelShoot()
     {
@@ -104,6 +105,12 @@ public class ArtilleryController : MonoBehaviour
         {
             rightBarrelParticles.Play();
         }
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
+    }
+
+    void MovementSound()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Movement);
     }
 
     void UpdateHpBar()

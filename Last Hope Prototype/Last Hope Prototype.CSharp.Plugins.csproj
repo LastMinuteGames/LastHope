@@ -79,8 +79,16 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNet\Plugins\XInputDotNetPure.dll</HintPath>
+=======
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+>>>>>>> feature/audio-implementation
     </Reference>
   </ItemGroup>
   <ItemGroup>
