@@ -23,6 +23,8 @@ public class CapsuleController : MonoBehaviour
     private float timer = 0f;
     private float timeToLive = 1f;
 
+    private AudioSource spawnSound;
+
     public EnemyObserver Observer
     {
         get
@@ -42,6 +44,7 @@ public class CapsuleController : MonoBehaviour
         destinationY = gameObject.transform.position.y;
         gameObject.transform.position += startOffset;
         capsuleHeight = GetComponentInParent<CapsuleCollider>().height;
+        spawnSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -57,6 +60,7 @@ public class CapsuleController : MonoBehaviour
         {
             if (!spawned)
             {
+                spawnSound.Play();
                 StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(0.3f, 1.75f,1,1,this.transform));
                 SpawnParticles();
                 SpawnDecal();
@@ -66,7 +70,7 @@ public class CapsuleController : MonoBehaviour
             }else
             {
                 timer += Time.deltaTime;
-                if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done || timer >= timeToLive)
+                if ((GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done || timer >= timeToLive) && !spawnSound.isPlaying)
                 {
                     Destroy(gameObject);
                 }
