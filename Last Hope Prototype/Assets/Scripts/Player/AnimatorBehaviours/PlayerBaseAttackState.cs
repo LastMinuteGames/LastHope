@@ -62,8 +62,8 @@ public class PlayerBaseAttackState : StateMachineBehaviour
     {
         //Debug.Log("Exit in " + attackName);
         //playerController.CloseInputWindow();
-        //if(hasNextAttack == false)
-        //    playerController.EndCurrentAttack();
+        if (hasNextAttack == false)
+            playerController.EndCurrentAttack();
         nextAttack = null;
         playerController.EndAttackMovement();
     }

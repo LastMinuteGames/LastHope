@@ -28,22 +28,6 @@ public class ArtilleryController : MonoBehaviour
         alive = true;
     }
 
-    //void Update()
-    //{
-    //    if (alive)
-    //    {
-    //        if (currentHp <= 0)
-    //        {
-    //            Die();
-    //        }
-    //        else
-    //        {
-    //            // TODO: Wait for all enemies to be killed to finish the event. Unlock main square doors to proceed
-    //            Debug.Log("You win");
-    //            //eventTrigger.UnblockExits();
-    //        }
-    //    }
-    //}
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack") && alive)

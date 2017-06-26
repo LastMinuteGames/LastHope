@@ -118,6 +118,9 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="XInputDotNetPure">
+      <HintPath>Assets\Plugins\XInputDotNet\Plugins\XInputDotNetPure.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Last Hope Prototype.Plugins.csproj">
@@ -146,6 +149,8 @@
     <None Include="Assets\Models\EnemyBoss1\EnemyBoss1_AnimationFrames.txt" />
     <None Include="Assets\Models\EnemyMelee1\EnemyMelee1_AnimationFrames.txt" />
     <None Include="Assets\Models\EnemyTrash1\EnemiTrash1_FrameAnimations.txt" />
+    <None Include="Assets\Plugins\XInputDotNet\Docs.txt" />
+    <None Include="Assets\Plugins\XInputDotNet\MITLicense.txt" />
     <None Include="Assets\Scripts\Particle Manager\how to particulas.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\Bloom\Resources\Bloom.cginc" />
