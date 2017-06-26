@@ -814,6 +814,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == false)
                 {
+                    AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_AttackHit);
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");
                 }else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true)

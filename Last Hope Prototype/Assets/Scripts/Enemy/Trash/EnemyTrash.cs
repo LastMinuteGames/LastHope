@@ -145,6 +145,7 @@ public class EnemyTrash : Enemy //MonoBehaviour
     public void StartAttack()
     {
         katana.enabled = true;
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_Attack);
     }
 
     public void EndAttack()
