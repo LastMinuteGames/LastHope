@@ -68,6 +68,18 @@ public class EnemyTrash : Enemy //MonoBehaviour
                 playerScript.HeavyAttackEffect();
             }
 
+            //Hit sound
+            if (currentState.IsName("L1") || currentState.IsName("L2") || currentState.IsName("L3"))
+            {
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_LightAttackHit);
+            }else if (currentState.IsName("H1"))
+            {
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_HeavyAttackHit);
+            }else if (currentState.IsName("H2") || currentState.IsName("H3"))
+            {
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ShieldAttackHit);
+            }
+
             Attack currentAttackReceived = playerScript.GetAttack();
             if (currentAttackReceived != null)
             {

@@ -112,7 +112,8 @@ public enum AudiosSoundFX
     Environment_Artillery_Movement,
     Environment_Artillery_Shot,
 
-    Player_Combat_ShieldAttack
+    Player_Combat_ShieldAttack,
+    Player_Combat_ShieldAttackHit
 
 }
 
