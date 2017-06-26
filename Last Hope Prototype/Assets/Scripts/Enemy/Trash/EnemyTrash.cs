@@ -62,11 +62,6 @@ public class EnemyTrash : Enemy //MonoBehaviour
         {
             //TODO: Use attacks instead of animator to know what attack has received...animator sometimes "lies"...
             PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
-            AnimatorStateInfo currentState = playerScript.anim.GetCurrentAnimatorStateInfo(0);
-            if (currentState.IsName("H1") || currentState.IsName("H2") || currentState.IsName("H3"))
-            {
-                playerScript.HeavyAttackEffect();
-            }
 
             Attack currentAttackReceived = playerScript.GetAttack();
             if (currentAttackReceived != null)
@@ -76,9 +71,13 @@ public class EnemyTrash : Enemy //MonoBehaviour
                     Debug.Log("LastAttackReceived: " + lastAttackReceived.name);
                 if (lastAttackReceived == null || currentAttackReceived.name != lastAttackReceived.name)
                 {
-                    if (!currentState.IsName("RedSpecialAttack"))
+                    if (currentAttackReceived.name != "RedSpecialAttack")
                     {
                         playerScript.SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+                    }
+                    if (currentAttackReceived.name == "H1" || currentAttackReceived.name == "H2" || currentAttackReceived.name == "H3")
+                    {
+                        playerScript.HeavyAttackEffect();
                     }
                     Debug.Log("DAMAGED!!! By " + currentAttackReceived.name);
                     TakeDamage(currentAttackReceived.damage);

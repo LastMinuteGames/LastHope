@@ -9,24 +9,17 @@ public class GeneratorController : Interactable {
     public Vector3 spawnPointPos;
     public Quaternion spawnPointQuat;
 
+    private Animator animator;
+
     bool running = false;
 
     void Start () {
         //AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorNoise);
+        animator = GetComponentInChildren<Animator>();
     }
 	
 	void Update () {
-        /*if (canSpawn)
-        {
-            if (InputManager.Interact())
-            {
-                spawned = true;
-                Debug.Log("Generator charging...");
-                Debug.Log("Wait for 5 seconds");
-                canSpawn = false;
-                Invoke("SpawnSpecialAbility", 5);
-            }
-        }*/
+
     }
 
     public override void Run()
@@ -34,18 +27,10 @@ public class GeneratorController : Interactable {
         if(CanInteract())
         {
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PlayerToWorld_Interact);
-            //TODO: Hide message
-            Debug.Log("Generator charging...");
-            Debug.Log("Wait for 5 seconds");
+            animator.SetTrigger("Charging");
             running = true;
             Invoke("SpawnSpecialAbility", 5);
-            //Dialogue
-            string[] a = new string[1];
-            a[0] = "El generador se activará en 5 segundos";
-            string[] b = new string[1];
-            b[0] = "Generador";
-            DialogueSystem.Instance.AddNewDialogue(a, b);
-            DialogueSystem.Instance.ShowDialogue();
+            DialogueSystem.Instance.NextDialogue();
         }
     }
 
@@ -53,18 +38,9 @@ public class GeneratorController : Interactable {
     {
         if (CanInteract() && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //TODO: Show message
-            Debug.Log("Press Interact to charge the generator");
-            if (!DialogueSystem.Instance.show)
-            {
-                string[] a = new string[1];
-                a[0] = "Press Interact to charge the generator";
-                string[] b = new string[1];
-                b[0] = "Generator";
-                DialogueSystem.Instance.AddNewDialogue(a, b);
-                DialogueSystem.Instance.ShowDialogue();
-            }
-            
+            string text = "Press B to charge the Generator";
+            string from = "Generator";
+            DialogueSystem.Instance.AddDialogue(text, from);
         }
     }
 
@@ -75,14 +51,15 @@ public class GeneratorController : Interactable {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !running)
         {
-            //TODO: Hide messages
+            DialogueSystem.Instance.NextDialogue();
         }
     }
 
     void SpawnSpecialAbility()
     {
+        animator.SetTrigger("Charged");
         AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorSpawn);
         GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
         EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();

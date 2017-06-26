@@ -9,10 +9,10 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     private ArtilleryController artillery;
     public GameObject blockExit1;
     public GameObject blockExit2;
-    public GameObject blockExit3;
     public EnemySpawnManager manager;
     public GameObject reusableSpawnPointsParent;
     public float delayBetweenSpawns = 2.0f;
+    public GameObject hpSlider;
 
     private List<EnemySpawnPoint> reusableSpawnPoints = new List<EnemySpawnPoint>();
     private List<Wave> waves = new List<Wave>();
@@ -50,12 +50,11 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             reusableSpawnPoints.Add(child.GetComponent<EnemySpawnPoint>());
         }
 
-        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
+        if (blockExit1 != null && blockExit2 != null)
         {
 
             blockExit1.SetActive(false);
             blockExit2.SetActive(false);
-            blockExit3.SetActive(false);
 
         }
     }
@@ -82,6 +81,8 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
                 {
                     currentWave = null;
                     isFinished = true;
+                    hpSlider.SetActive(false);
+
                     UnblockExits();
                 }
             }
@@ -122,6 +123,8 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             if (isStarted == false)
             {
                 isStarted = true;
+                hpSlider.SetActive(true);
+
                 artillery.alive = true;
                 Debug.Log("Artillery event started");
                 BlockExits();
@@ -131,21 +134,22 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
 
     public void BlockExits()
     {
-        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
+        if (blockExit1 != null && blockExit2 != null)
         {
             blockExit1.SetActive(true);
             blockExit2.SetActive(true);
-            blockExit3.SetActive(true);
         }
     }
 
     public void UnblockExits()
     {
-        if (blockExit1 != null && blockExit2 != null && blockExit3 != null)
+        if (blockExit1 != null && blockExit2 != null)
         {
             Destroy(blockExit1);
             Destroy(blockExit2);
-            Destroy(blockExit3);
+            string text = "Nice job! But the Colossal wall is under attack!";
+            string from = "";
+            DialogueSystem.Instance.AddDialogue(text, from, 3.5f);
         }
     }
 

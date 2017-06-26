@@ -439,7 +439,7 @@ public class MainMenu : MonoBehaviour {
         if (isHelp || isCredits || isSettings)
         {
             //Go back to main menu
-            if (InputManager.Pause())
+            if (InputManager.Interact() || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
             {
                 if (isHelp) { closeHelp(); AudioSources.instance.PlaySound(applySelectionFxId); }
                 if (isCredits) { closeCredits(); AudioSources.instance.PlaySound(applySelectionFxId); }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ArtilleryController : MonoBehaviour
 {
@@ -14,12 +15,15 @@ public class ArtilleryController : MonoBehaviour
     public ParticleSystem rightBarrelParticles;
     public GameObject deadExplosion;
     public GameObject deadDecal;
+    public Slider hpSlider;
 
     private ArtilleryEventTrigger eventTrigger;
 
     void Start()
     {
         currentHp = maxHp;
+        hpSlider.maxValue = maxHp;
+        UpdateHpBar();
         eventTrigger = GetComponentInChildren<ArtilleryEventTrigger>();
         alive = true;
     }
@@ -55,7 +59,8 @@ public class ArtilleryController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHp -= damage;
-        if(currentHp <= 0)
+        UpdateHpBar();
+        if (currentHp <= 0)
         {
             SpawnExplosion();
             SpawnDecal();
@@ -100,4 +105,12 @@ public class ArtilleryController : MonoBehaviour
             rightBarrelParticles.Play();
         }
     }
+
+    void UpdateHpBar()
+    {
+        hpSlider.value = currentHp;
+    }
+
+
+
 }

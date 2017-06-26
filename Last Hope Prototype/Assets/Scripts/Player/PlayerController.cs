@@ -112,11 +112,13 @@ public class PlayerController : MonoBehaviour
     //public float speed = 10;
     public Transform camT;
     private CameraShake camShake;
+    private ControllerEvents controllerEvents;
     public Vector3 movement;
     public Vector3 targetDirection;
     public float dodgeThrust;
     public bool pendingMove = false;
     public bool canDodge;
+    private bool attackMoving = false;
     [SerializeField]
     private float dodgeMaxCooldown;
     [SerializeField]
@@ -201,6 +203,7 @@ public class PlayerController : MonoBehaviour
 
         camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
         camShake = camT.GetComponent<CameraShake>();
+        controllerEvents = camT.GetComponent<ControllerEvents>();
         rigidBody = GetComponent<Rigidbody>();
 
         DisableSwordEmitter();
@@ -211,6 +214,39 @@ public class PlayerController : MonoBehaviour
         uiManager.UpdateEnergyCapacity(initialMaxEnergy);
         uiManager.UpdateEnergy(currentEnergy);
         uiManager.UpdatePlayerStance(stance);
+
+        // Dialogs
+        Invoke("DialogMove", 1);
+        Invoke("DialogRotate", 4.5f);
+        Invoke("DialogLAttack", 9.0f);
+    }
+
+    private void DialogMove()
+    {
+        string text = "Move: Left Joystick";
+        string from = "";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
+    }
+
+    private void DialogRotate()
+    {
+        string text = "Rotate Camera: Right Joystick";
+        string from = "";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
+    }
+
+    public void DialogBlueEnergyCore()
+    {
+        string text = "Guardian’s special attack: RB button";
+        string from = "";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
+    }
+
+    public void DialogSwitchStances()
+    {
+        string text = "Switch stances: RT / LT";
+        string from = "";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
     }
 
     public void CallFX()
@@ -232,6 +268,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(camShake.Shake(0.1f, 0.25f, 1, 1, this.transform));
         }
+        controllerEvents.AddRumble(0.4f, new Vector2(0.7f, 0.7f), 0.2f);
         //TODO: Add attack sound fx when we have one
     }
 
@@ -240,6 +277,7 @@ public class PlayerController : MonoBehaviour
         ParticleSystem ps = Instantiate(currentHeavyAttackParticles, swordAoeSpawn.position, Quaternion.identity);
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
         Destroy(ps.gameObject, totalDuration);
+        //controllerEvents.AddRumble(0.2f, new Vector2(0.7f, 0.7f), 0.1f);
     }
 
     public void ShieldHeavyAttackAoEParticles()
@@ -247,6 +285,7 @@ public class PlayerController : MonoBehaviour
         ParticleSystem ps = Instantiate(currentHeavyAttackParticles, shieldAoeSpawn.position, Quaternion.identity);
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
         Destroy(ps.gameObject, totalDuration);
+        //controllerEvents.AddRumble(0.2f, new Vector2(0.7f, 0.7f), 0.1f);
     }
 
     public void EnableSwordArea()
@@ -271,19 +310,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKey(KeyCode.Keypad1))
-        {
-            string[] a = new string[2];
-            a[0] = "El generador se activará en 5 segundos";
-            a[1] = "Gracias por esperar";
-            string[] b = new string[2];
-            b[0] = "Generador";
-            b[1] = "Generador";
-            DialogueSystem.Instance.AddNewDialogue(a, b);
-            DialogueSystem.Instance.ShowDialogue();
-        }
-
         if (InputManager.DebugMode())
         {
             debugMode = !debugMode;
@@ -339,6 +365,11 @@ public class PlayerController : MonoBehaviour
             Rotate();
             Move();
             pendingMove = false;
+        }
+        else if (attackMoving)
+        {
+            Rotate();
+            Move();
         }
     }
 
@@ -610,17 +641,27 @@ public class PlayerController : MonoBehaviour
 
         movement = Vector3.zero;
         //movement.z = 0;
-        movementHorizontal = Mathf.Abs(movementHorizontal);
-        movementVertical = Mathf.Abs(movementVertical);
-        float totalImpulse = movementHorizontal + movementVertical;
+        float movementHorizontalTemp = Mathf.Abs(movementHorizontal);
+        float movementVerticalTemp = Mathf.Abs(movementVertical);
+        float totalImpulse = movementHorizontalTemp + movementVerticalTemp;
         totalImpulse = (totalImpulse > 1) ? 1 : totalImpulse;
         movement.x = totalImpulse * targetDirection.x;
         movement.z = totalImpulse * targetDirection.z;
+        movement.Normalize();
 
         rigidBody.MovePosition(rigidBody.position + movement * currentStats.movementSpeed * Time.deltaTime);
 
     }
 
+    public void StartAttackMovement()
+    {
+        attackMoving = true;
+    }
+
+    public void EndAttackMovement()
+    {
+        attackMoving = false;
+    }
 
     // Testing to use generic start and end current attack so we can change easily 
     // what colliders we want to use for each attack
@@ -673,7 +714,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //TODO: General collider activition method (only depends from which is current attack) 
     protected void StartSwordAttack()
     {
         sword.enabled = true;
@@ -699,10 +739,6 @@ public class PlayerController : MonoBehaviour
     public void Dodge()
     {
         rigidBody.MovePosition(transform.position + transform.forward * dodgeThrust * Time.deltaTime);
-        //movement = rigidBody.velocity;
-        //Vector3 impulse = targetDirection.normalized * dodgeThrust;
-        //movement += impulse;
-        //rigidBody.velocity = movement;
     }
 
     public void StartDodgeTimer()
@@ -743,6 +779,7 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(camShake.Shake());
             }
+            controllerEvents.AddRumble(0.4f, new Vector2(1.0f, 0.0f), 0.2f);
         }
     }
     protected void StartRedSpecialAttack()
@@ -755,6 +792,7 @@ public class PlayerController : MonoBehaviour
                 canSpecialAttack = true;
                 redSpehre.gameObject.SetActive(true);
             }
+            controllerEvents.AddRumble(0.8f, new Vector2(0.1f, 0.2f), 0.2f);
         }
     }
     protected void UpdateRedSpecialAttack()
@@ -762,12 +800,6 @@ public class PlayerController : MonoBehaviour
         if (canSpecialAttack)
         {
             rigidBody.MovePosition(transform.position + transform.forward * redSpecialAttackThrust * Time.deltaTime);
-            /*movement = rigidBody.velocity;
-            Vector3 impulse = targetDirection.normalized * redSpecialAttackThrust;
-            movement += impulse;
-            rigidBody.velocity = movement;
-            */
-
         }
     }
 
@@ -805,6 +837,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == false)
                 {
+                    SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");
                 }

@@ -26,11 +26,13 @@ public class EnergyCoreController : MonoBehaviour {
                 case PlayerStanceType.STANCE_BLUE:
                     player.EnableBlueAbility();
                     player.ChangeStance(stance);
+                    player.DialogBlueEnergyCore();
                     Debug.Log("Blue special ability learned");
                     break;
                 case PlayerStanceType.STANCE_RED:
                     player.EnableRedAbility();
-                    player.ChangeStance(stance);
+                    //player.ChangeStance(stance);
+                    player.DialogSwitchStances();
                     Debug.Log("Red special ability learned");
                     break;
             }

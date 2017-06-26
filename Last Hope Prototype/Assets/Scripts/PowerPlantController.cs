@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PowerPlantController : Interactable {
 
-    private bool running = false;
     public GameObject bridge;
     public GameObject bridgeFloor;
+    public Material baseColor;
+    public Texture emissiveOff;
+    public Texture emissiveOn;
 
-	// Use this for initialization
-	void Start () {
-	}
+    private bool running = false;
+
+    // Use this for initialization
+    void Start ()
+    {
+        baseColor.SetTexture("_EmissionMap", emissiveOff);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,11 +27,13 @@ public class PowerPlantController : Interactable {
     {
         if(CanInteract())
         {
-            //TODO: Hide message
-            Debug.Log("Power plant charging...");
-            Debug.Log("Wait for 5 seconds");
             running = true;
-            Invoke("ActivateBridge", 5);
+            ActivateBridge();
+            baseColor.SetTexture("_EmissionMap", emissiveOn);
+            DialogueSystem.Instance.NextDialogue();
+            string text = "Bridge activated";
+            string from = "Power Plant";
+            DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
         }
     }
 
@@ -38,23 +46,23 @@ public class PowerPlantController : Interactable {
     {
         if (running == false && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //TODO: Show message in screen
-            Debug.Log("Press E to activate the bridge.");
+            string text = "Press B to activate the Energy Bridge";
+            string from = "Power Plant";
+            DialogueSystem.Instance.AddDialogue(text, from);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !running)
         {
-            //TODO: Hide message
+            DialogueSystem.Instance.NextDialogue();
         }
     }
 
     void ActivateBridge()
     {
         bridgeFloor.GetComponent<BoxCollider>().isTrigger = true;
-        Debug.Log("Puente bajado!");
         for (int i = 0; i < bridge.transform.childCount; ++i)
         {
             GameObject child = bridge.transform.GetChild(i).gameObject;
@@ -64,5 +72,4 @@ public class PowerPlantController : Interactable {
             }
         }
     }
-
 }

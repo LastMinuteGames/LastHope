@@ -3,18 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class Dialog
+{
+    private float time;
+    private string text;
+    private string from;
+
+    public float Time
+    {
+        get
+        {
+            return time;
+        }
+
+        set
+        {
+            time = value;
+        }
+    }
+
+    public string Text
+    {
+        get
+        {
+            return text;
+        }
+
+        set
+        {
+            text = value;
+        }
+    }
+
+    public string From
+    {
+        get
+        {
+            return from;
+        }
+
+        set
+        {
+            from = value;
+        }
+    }
+
+    public Dialog(string text, string from, float time)
+    {
+        this.text = text;
+        this.from = from;
+        this.time = time;
+    }
+}
+
 public class DialogueSystem : MonoBehaviour {
     public static DialogueSystem Instance { get; set; }
-    public List<string> dialogueLines = new List<string>();
-    public List<string> fromLines = new List<string>();
     public GameObject dialogueBox;
     public Text dialogueText;
     public Text dialogueFrom;
-    public bool show;
-    private bool next;
-    private float timeDialogue = 3f;
     private float timeLeft;
-    
+    private List<Dialog> dialogs;
+    private Dialog currentDialog;
+    public bool isOn = true;
+
 
     // Use this for initialization
     void Awake () {
@@ -27,87 +78,84 @@ public class DialogueSystem : MonoBehaviour {
             Instance = this;
         }
         dialogueBox.SetActive(false);
-        timeLeft = timeDialogue;
+        timeLeft = 0;
+        dialogs = new List<Dialog>();
     }
 
     void Update()
     {
-        /*if (show && next)
+        if(currentDialog != null)
         {
-            next = false;
-            if (dialogueLines.Count > 0)
-            {
-                dialogueBox.SetActive(true);
-                dialogueText.text = dialogueLines[0];
-                dialogueFrom.text = fromLines[0];
-            }
-            else
-            {
-                dialogueBox.SetActive(false);
-                show = false;
-                next = false;
-            }
-
-        }
-
-        if (InputManager.LightAttack() || Input.GetKeyDown(KeyCode.Return) && show)
-        {
-            Debug.Log("ENTER!");
-            NextDialogue();
-        }*/
-
-        if (show)
-        {
-            timeLeft -= Time.deltaTime;
-            //Debug.Log(timeLeft);
-            if (timeLeft < 0)
+            
+            timeLeft += Time.deltaTime;
+            if (currentDialog.Time > 0 && timeLeft > currentDialog.Time)
             {
                 NextDialogue();
+                if(currentDialog != null)
+                {
+                    ShowDialogue();
+                }
+                else
+                {
+                    dialogueBox.SetActive(false);
+                }
             }
         }
-
-        if (show && next)
-        {
-            next = false;
-            
-
-            if (dialogueLines.Count > 0)
-            {
-                dialogueBox.SetActive(true);
-                dialogueText.text = dialogueLines[0];
-                dialogueFrom.text = fromLines[0];
-            }
-            else
-            {
-                dialogueBox.SetActive(false);
-                show = false;
-                next = false;
-            }
-
-        }
-
     }
 	
-	public void AddNewDialogue(string[] lines, string[] from)
+    public void AddDialogue(string line, string from, float timeDialog = 0)
     {
-        dialogueLines = new List<string>(lines.Length);
-        fromLines = new List<string>(from.Length);
-        dialogueLines.AddRange(lines);
-        fromLines.AddRange(from);
-    }
+        if (!isOn)
+        {
+            return;
+        }
+        Dialog dialog = new Dialog(line, from, timeDialog);
+        dialogs.Add(dialog);
 
-    public void ShowDialogue()
-    {
-        show = true;
-        next = true;
-        timeLeft = timeDialogue;
+        if(currentDialog == null)
+        {
+            currentDialog = dialog;
+            ShowDialogue();
+        }
     }
+    
 
+
+    //Use this when you can use next dialog or hide current dialog
     public void NextDialogue()
     {
-        next = true;
-        dialogueLines.RemoveAt(0);
-        fromLines.RemoveAt(0);
-        timeLeft = timeDialogue;
+        if(dialogs.Count > 1)
+        {
+            dialogs.RemoveAt(0);
+            currentDialog = dialogs[0];
+            ShowDialogue();
+        }
+        else if(dialogs.Count > 0)
+        {
+            dialogs.RemoveAt(0);
+            currentDialog = null;
+            HideDialogue();
+        }
+        timeLeft = 0;
+    }
+
+    private void HideDialogue()
+    {
+        dialogueBox.SetActive(false);
+        if(currentDialog != null)
+        {
+            dialogs.Remove(currentDialog);
+            currentDialog = null;
+        }
+    }
+
+    private void ShowDialogue()
+    {
+        dialogueBox.SetActive(true);
+        if (currentDialog != null)
+        {
+            dialogueText.text = currentDialog.Text;
+            dialogueFrom.text = currentDialog.From;
+        }
     }
 }
