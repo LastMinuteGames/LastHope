@@ -62,7 +62,7 @@ public class EnemyTrash : Enemy //MonoBehaviour
         {
             //TODO: Use attacks instead of animator to know what attack has received...animator sometimes "lies"...
             PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
-
+            AnimatorStateInfo currentState = playerScript.anim.GetCurrentAnimatorStateInfo(0);
             //Hit sound
             if (currentState.IsName("L1") || currentState.IsName("L2") || currentState.IsName("L3"))
             {
