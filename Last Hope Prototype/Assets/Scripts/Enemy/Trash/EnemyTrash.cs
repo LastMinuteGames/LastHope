@@ -79,6 +79,7 @@ public class EnemyTrash : Enemy //MonoBehaviour
             {
                 AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ShieldAttackHit);
             }
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_ReceiveAttack);
 
             Attack currentAttackReceived = playerScript.GetAttack();
             if (currentAttackReceived != null)
@@ -174,6 +175,7 @@ public class EnemyTrash : Enemy //MonoBehaviour
     
     public void SpawnDeadParticles()
     {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_Die);
         GameObject particle = Instantiate(deadParticles, transform.position + new Vector3(0,1,0), transform.rotation);
         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
