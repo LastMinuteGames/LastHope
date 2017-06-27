@@ -218,7 +218,6 @@ public class PlayerController : MonoBehaviour
         // Dialogs
         Invoke("DialogMove", 1);
         Invoke("DialogRotate", 4.5f);
-        Invoke("DialogLAttack", 9.0f);
     }
 
     private void DialogMove()
