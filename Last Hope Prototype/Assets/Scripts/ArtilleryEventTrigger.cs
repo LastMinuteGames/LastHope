@@ -13,7 +13,6 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     public EnemySpawnManager manager;
     public GameObject reusableSpawnPointsParent;
     public float delayBetweenSpawns = 2.0f;
-    public GameObject hpSlider;
 
     private List<EnemySpawnPoint> reusableSpawnPoints = new List<EnemySpawnPoint>();
     private List<GameObject> eventWalls = new List<GameObject>();
@@ -25,8 +24,25 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     private bool isStarted = false;
     private bool isFinished = false;
 
-    void Start () {
-        artillery = transform.GetComponentInParent<ArtilleryController>();
+    private PlayerController player;
+
+    protected void InitData()
+    {
+        isStarted = false;
+        isFinished = false;
+        lastSpawnTime = 0;
+        enemiesPendingToSpawn.Clear();
+
+        if (artillery != null)
+            artillery.InitData();
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Destroy(enemies[i].gameObject);
+        }
+        enemies.Clear();
+
+        waves.Clear();
 
         Wave wave = new Wave("1");
         wave.AddEnemy(EnemyType.ET_TRASH, 3, 5);
@@ -45,8 +61,14 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
 
         //WARNING!
         currentWave = waves[0];
-        AddSpawnsToPendingEnemies(currentWave.StartWave());
 
+        AddSpawnsToPendingEnemies(currentWave.StartWave());
+        UnblockExits();
+    }
+
+    void Start () {
+        artillery = transform.GetComponentInParent<ArtilleryController>();
+       
         foreach (Transform child in reusableSpawnPointsParent.transform)
         {
             reusableSpawnPoints.Add(child.GetComponent<EnemySpawnPoint>());
@@ -59,13 +81,7 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             eventWalls.Add(eventWall);
         }
 
-        //if (blockExit1 != null && blockExit2 != null)
-        //{
-
-        //    blockExit1.SetActive(false);
-        //    blockExit2.SetActive(false);
-
-        //}
+        InitData();
     }
 
     void Update()
@@ -73,11 +89,16 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
         if (isFinished == true || isStarted == false || currentWave == null)
             return;
 
-        if (artillery != null && artillery.alive)
+        if(player != null && player.IsDead())
+        {
+            InitData();
+        }
+
+        if (artillery == null || (artillery != null && artillery.alive))
         {
             if (currentWave.IsFinished()) //Next wave!
             {
-                currentWave.FinishDebug();
+                //currentWave.FinishDebug();
                 waves.RemoveAt(0);
                 if(waves.Count > 0)
                 {
@@ -90,7 +111,7 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
                 {
                     currentWave = null;
                     isFinished = true;
-                    hpSlider.SetActive(false);
+                    artillery.hpSlider.gameObject.SetActive(false);
 
                     UnblockExits();
 
@@ -117,15 +138,17 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
                 }
             }
         }
-        else
+        else if(artillery.alive == false && artillery.gameObject.activeSelf == true)
         {
-            if(artillery != null)
-            {
-                Destroy(artillery.gameObject);
-                artillery = null;
-                //Debug.Log("Artillery destroyed. You lose");
-                //TODO: Go to screen title? restart from last point?
-            }
+            //Destroy(artillery.gameObject);
+            //artillery = null;
+            //artillery.gameObject.SetActive(false);
+            if (player != null)
+                player.Respawn();
+            InitData();
+
+            //Debug.Log("Artillery destroyed. You lose");
+            //TODO: Go to screen title? restart from last point?
         }
     }
 	
@@ -136,13 +159,23 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             if (isStarted == false)
             {
                 isStarted = true;
-                hpSlider.SetActive(true);
+                artillery.hpSlider.gameObject.SetActive(true);
 
                 artillery.alive = true;
                 Debug.Log("Artillery event started");
                 BlockExits();
+                player = other.gameObject.GetComponent<PlayerController>();
             }
         }
+    }
+
+    private bool EventIsFinished()
+    {
+        if (artillery != null && artillery.alive)
+            return false;       
+        else if (waves.Count > 0)
+            return false;
+        return true;
     }
 
     public void BlockExits()
@@ -151,11 +184,6 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
         {
             eventWall.SetActive(true);
         }
-        //if (blockExit1 != null && blockExit2 != null)
-        //{
-        //    blockExit1.SetActive(true);
-        //    blockExit2.SetActive(true);
-        //}
     }
 
     public void UnblockExits()
@@ -164,11 +192,6 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
         {
             eventWall.SetActive(false);
         }
-        //if (blockExit1 != null && blockExit2 != null)
-        //{
-        //    Destroy(blockExit1);
-        //    Destroy(blockExit2);
-        //}
     }
 
     Dictionary<EnemyType, uint> CleanUpEnemies()
@@ -213,10 +236,8 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
 
     private void SpawnEnemyType(EnemyType type)
     {
-        //TODO: Maybe the nearest to the player?
         int index = (int)UnityEngine.Random.Range(0, reusableSpawnPoints.Count - 1);
-        manager.SpawnEnemy(reusableSpawnPoints[index], type, this);
-        
+        manager.SpawnEnemy(reusableSpawnPoints[index], type, this);        
     }
 
     public void AddEnemy(Enemy enemy)

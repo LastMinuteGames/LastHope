@@ -17,15 +17,17 @@ public class ArtilleryController : MonoBehaviour
     public GameObject deadDecal;
     public Slider hpSlider;
 
-    private ArtilleryEventTrigger eventTrigger;
-
-    void Start()
+    public void InitData()
     {
         currentHp = maxHp;
         hpSlider.maxValue = maxHp;
         UpdateHpBar();
-        eventTrigger = GetComponentInChildren<ArtilleryEventTrigger>();
         alive = true;
+    }
+
+    void Start()
+    {
+        InitData();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -49,17 +51,17 @@ public class ArtilleryController : MonoBehaviour
             SpawnExplosion();
             SpawnDecal();
             alive = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-    void Die()
-    {
-        Debug.Log("You lose");
-        SpawnExplosion();
-        SpawnDecal();
-        alive = false;
-        Destroy(gameObject);
-    }
+    //void Die()
+    //{
+    //    Debug.Log("You lose");
+    //    SpawnExplosion();
+    //    SpawnDecal();
+    //    alive = false;
+    //    Destroy(gameObject);
+    //}
 
     void SpawnExplosion()
     {

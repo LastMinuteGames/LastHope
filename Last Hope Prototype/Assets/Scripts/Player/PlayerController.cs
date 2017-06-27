@@ -541,7 +541,7 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
-        anim.SetTrigger("respawn");
+        //anim.SetTrigger("respawn");
         if (respawnManager != null)
         {
             transform.position = respawnManager.GetRespawnPoint();

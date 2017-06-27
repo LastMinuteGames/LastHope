@@ -24,7 +24,8 @@ public class FakePlayerDie : StateMachineBehaviour
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         currentTime += Time.deltaTime;
         if (currentTime >= respawnTime)
-            playerController.Respawn();
+            animator.SetTrigger("respawn");
+            
 	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
