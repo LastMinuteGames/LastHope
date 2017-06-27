@@ -52,7 +52,9 @@ public class MainMenu : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        Time.timeScale = 1.0F;
 
         //Hide cursor
         Cursor.visible = false;
