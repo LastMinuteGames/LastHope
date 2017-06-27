@@ -5,6 +5,8 @@ using UnityEngine;
 public class FakePlayerDie : StateMachineBehaviour
 {
     PlayerController playerController;
+    float respawnTime = 3;
+    float currentTime = 0;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -14,11 +16,15 @@ public class FakePlayerDie : StateMachineBehaviour
             playerController = animator.transform.gameObject.GetComponent<PlayerController>();
         }
 
+        
+
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	
+        currentTime += Time.deltaTime;
+        if (currentTime >= respawnTime)
+            playerController.Respawn();
 	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
