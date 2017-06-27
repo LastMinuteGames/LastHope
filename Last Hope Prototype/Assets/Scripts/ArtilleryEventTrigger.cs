@@ -9,12 +9,14 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     private ArtilleryController artillery;
     public GameObject blockExit1;
     public GameObject blockExit2;
+    public GameObject parentWallsEvent;
     public EnemySpawnManager manager;
     public GameObject reusableSpawnPointsParent;
     public float delayBetweenSpawns = 2.0f;
     public GameObject hpSlider;
 
     private List<EnemySpawnPoint> reusableSpawnPoints = new List<EnemySpawnPoint>();
+    private List<GameObject> eventWalls = new List<GameObject>();
     private List<Wave> waves = new List<Wave>();
     private Wave currentWave;
     private Dictionary<EnemyType, uint> enemiesPendingToSpawn = new Dictionary<EnemyType, uint>();
@@ -50,13 +52,20 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
             reusableSpawnPoints.Add(child.GetComponent<EnemySpawnPoint>());
         }
 
-        if (blockExit1 != null && blockExit2 != null)
+        foreach(Transform child in parentWallsEvent.transform)
         {
-
-            blockExit1.SetActive(false);
-            blockExit2.SetActive(false);
-
+            GameObject eventWall = child.gameObject;
+            eventWall.SetActive(false);
+            eventWalls.Add(eventWall);
         }
+
+        //if (blockExit1 != null && blockExit2 != null)
+        //{
+
+        //    blockExit1.SetActive(false);
+        //    blockExit2.SetActive(false);
+
+        //}
     }
 
     void Update()
@@ -84,6 +93,10 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
                     hpSlider.SetActive(false);
 
                     UnblockExits();
+
+                    string text = "Nice job! But the Colossal wall is under attack!";
+                    string from = "";
+                    DialogueSystem.Instance.AddDialogue(text, from, 3.5f);
                 }
             }
             else //Update Waves!!!
@@ -134,23 +147,28 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
 
     public void BlockExits()
     {
-        if (blockExit1 != null && blockExit2 != null)
+        foreach(GameObject eventWall in eventWalls)
         {
-            blockExit1.SetActive(true);
-            blockExit2.SetActive(true);
+            eventWall.SetActive(true);
         }
+        //if (blockExit1 != null && blockExit2 != null)
+        //{
+        //    blockExit1.SetActive(true);
+        //    blockExit2.SetActive(true);
+        //}
     }
 
     public void UnblockExits()
     {
-        if (blockExit1 != null && blockExit2 != null)
+        foreach (GameObject eventWall in eventWalls)
         {
-            Destroy(blockExit1);
-            Destroy(blockExit2);
-            string text = "Nice job! But the Colossal wall is under attack!";
-            string from = "";
-            DialogueSystem.Instance.AddDialogue(text, from, 3.5f);
+            eventWall.SetActive(false);
         }
+        //if (blockExit1 != null && blockExit2 != null)
+        //{
+        //    Destroy(blockExit1);
+        //    Destroy(blockExit2);
+        //}
     }
 
     Dictionary<EnemyType, uint> CleanUpEnemies()
