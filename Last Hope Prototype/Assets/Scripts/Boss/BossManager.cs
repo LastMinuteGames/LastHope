@@ -15,6 +15,7 @@ public class BossManager : MonoBehaviour
     private bool isDead = false;
     private bool isAwaken = false;
     private Animator animator;
+    private MainCameraManager mainCameraManager;
 
 
 
@@ -22,6 +23,7 @@ public class BossManager : MonoBehaviour
     {
         //StartBossFight();
         animator = GetComponent<Animator>();
+        mainCameraManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraManager>();
     }
 
     public void StartBossFight()
@@ -29,6 +31,10 @@ public class BossManager : MonoBehaviour
         Debug.Log("start boss fight");
         isAwaken = true;
         canvasGO.SetActive(true);
+        if (mainCameraManager)
+        {
+            mainCameraManager.SwapCameraMode();
+        }
         if (bossPhases.Length > 0)
         {
             currentPhaseId = 0;
