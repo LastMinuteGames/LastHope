@@ -7,7 +7,9 @@ public class GeneratorController : Interactable {
 
     public GameObject energyCore;
     public Vector3 spawnPointPos;
+    [HideInInspector]
     public Quaternion spawnPointQuat;
+    public ParticleSystem particles;
 
     private Animator animator;
 
@@ -28,6 +30,7 @@ public class GeneratorController : Interactable {
         {
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PlayerToWorld_Interact);
             animator.SetTrigger("Charging");
+            particles.Play(); 
             //TODO: Hide message
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorNoise);
             Debug.Log("Generator charging...");
@@ -64,6 +67,7 @@ public class GeneratorController : Interactable {
     void SpawnSpecialAbility()
     {
         animator.SetTrigger("Charged");
+        particles.Stop();
         AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorSpawn);
         GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
         EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();
