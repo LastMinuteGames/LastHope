@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -85,6 +86,7 @@ public class BossManager : MonoBehaviour
 
     void BossDeath()
     {
+        animator.SetTrigger("isDead");
         isDead = true;
         isAwaken = false;
         canvasGO.SetActive(false);
@@ -95,6 +97,13 @@ public class BossManager : MonoBehaviour
     {
 
         hpSlider.value = 100 * (bossPhases.Length - currentPhaseId) / (float)bossPhases.Length;
+    }
+
+
+    public void Dead()
+    {
+        Debug.Log("Dead animation event!");
+        SceneManager.LoadScene("WinScreen");
     }
 
 
