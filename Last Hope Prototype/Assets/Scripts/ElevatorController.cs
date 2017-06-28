@@ -34,7 +34,7 @@ public class ElevatorController : Interactable
             speed += 0.0005f;
             velocity = Vector3.Lerp(start.position, end.position, speed * Time.deltaTime);
             elevatorRig.MovePosition(velocity);
-            Debug.Log(velocity);
+            //Debug.Log(velocity);
             if (elevator.transform.position.y >= end.position.y)
             {
                 moving = false;
