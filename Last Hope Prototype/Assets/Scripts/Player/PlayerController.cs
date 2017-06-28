@@ -307,6 +307,8 @@ public class PlayerController : MonoBehaviour
         shieldHeavy.enabled = false;
     }
 
+
+
     void Update()
     {
         if (InputManager.DebugMode())
@@ -715,6 +717,17 @@ public class PlayerController : MonoBehaviour
                 EndBlueSpecialAttack();
                 break;
         }
+    }
+
+    //This method is a guard against attacks collider bugs
+    public void EndAllAttacks()
+    {
+        EndSwordAttack();
+        DisableSwordArea();
+        EndShieldAttack();
+        DisableShieldArea();
+        EndRedSpecialAttack();
+        EndBlueSpecialAttack();
     }
 
     protected void StartSwordAttack()

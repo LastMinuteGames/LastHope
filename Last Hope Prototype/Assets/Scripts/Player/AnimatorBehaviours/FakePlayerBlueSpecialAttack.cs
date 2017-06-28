@@ -7,14 +7,15 @@ public class FakePlayerBlueSpecialAttack : PlayerBaseAttackState
     protected override void LoadStateSettings()
     {
         attackName = "Blue";
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_SpecialAttackBlue);
     }
     //PlayerController playerController;
 
     //// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_SpecialAttackBlue);
-    }
+    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_SpecialAttackBlue);
+    //}
         //    if (playerController == null)
         //    {
         //        playerController = animator.transform.gameObject.GetComponent<PlayerController>();
