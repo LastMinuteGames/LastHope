@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/Events/SpawnEvent")]
 public class EnemySpawnEvent : BossEvent
 {
-    public EnemySpawnPoint[] spawnPoints;
+    //EnmyspawnPoints[] seria mejor pero necesitariamos prefabs de enemyspawnpoints. de todas formas tenemos 1 solo enemigo de momento
+    public Transform[] spawnPoints;
 
     public override void StartEvent()
     {
