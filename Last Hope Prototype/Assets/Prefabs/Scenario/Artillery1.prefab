@@ -974,10 +974,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockExit1: {fileID: 0}
   blockExit2: {fileID: 0}
+  parentWallsEvent: {fileID: 0}
   manager: {fileID: 0}
   reusableSpawnPointsParent: {fileID: 0}
   delayBetweenSpawns: 2
-  hpSlider: {fileID: 1936482749595550}
 --- !u!114 &114778988583491264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22214,11 +22214,11 @@ RectTransform:
   m_Father: {fileID: 224339856972098654}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -34.5, y: -18.6}
-  m_SizeDelta: {x: 202.5, y: 13.8}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 40}
+  m_SizeDelta: {x: 500, y: 14}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &224479421891461974
 RectTransform:
   m_ObjectHideFlags: 1
