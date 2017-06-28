@@ -110,7 +110,6 @@ public class Enemy : MonoBehaviour
         {
             autokill = true;
         }
-
     }
 
     public bool IsDead()

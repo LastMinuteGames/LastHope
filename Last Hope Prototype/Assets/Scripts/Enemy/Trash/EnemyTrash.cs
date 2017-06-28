@@ -62,6 +62,19 @@ public class EnemyTrash : Enemy //MonoBehaviour
         {
             //TODO: Use attacks instead of animator to know what attack has received...animator sometimes "lies"...
             PlayerController playerScript = other.gameObject.GetComponentInParent<PlayerController>();
+            AnimatorStateInfo currentState = playerScript.anim.GetCurrentAnimatorStateInfo(0);
+            //Hit sound
+            if (currentState.IsName("L1") || currentState.IsName("L2") || currentState.IsName("L3"))
+            {
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_LightAttackHit);
+            }else if (currentState.IsName("H1"))
+            {
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_HeavyAttackHit);
+            }else if (currentState.IsName("H2") || currentState.IsName("H3"))
+            {
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ShieldAttackHit);
+            }
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_ReceiveAttack);
 
             Attack currentAttackReceived = playerScript.GetAttack();
             if (currentAttackReceived != null)
@@ -132,6 +145,7 @@ public class EnemyTrash : Enemy //MonoBehaviour
     public void StartAttack()
     {
         katana.enabled = true;
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_Attack);
     }
 
     public void EndAttack()
@@ -160,6 +174,7 @@ public class EnemyTrash : Enemy //MonoBehaviour
     
     public void SpawnDeadParticles()
     {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_Die);
         GameObject particle = Instantiate(deadParticles, transform.position + new Vector3(0,1,0), transform.rotation);
         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;

@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public GameObject hitParticles;
     public ParticleSystem redAbilityParticles;
     public ParticleSystem dodgeParticles;
+    public ParticleSystem deathParticles;
+    public GameObject deathExplosionParticles;
     [SerializeField]
     public ParticleSystem greyHeavyAttackParticles;
     [SerializeField]
@@ -218,7 +220,6 @@ public class PlayerController : MonoBehaviour
         // Dialogs
         Invoke("DialogMove", 1);
         Invoke("DialogRotate", 4.5f);
-        Invoke("DialogLAttack", 9.0f);
     }
 
     private void DialogMove()
@@ -307,6 +308,8 @@ public class PlayerController : MonoBehaviour
     {
         shieldHeavy.enabled = false;
     }
+
+
 
     void Update()
     {
@@ -488,6 +491,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((!IsDead()) && (!debugMode))
         {
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ReceiveAttack);
             return LoseHp(value);
         }
         return false;
@@ -541,7 +545,7 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
-        anim.SetTrigger("respawn");
+        //anim.SetTrigger("respawn");
         if (respawnManager != null)
         {
             transform.position = respawnManager.GetRespawnPoint();
@@ -674,10 +678,13 @@ public class PlayerController : MonoBehaviour
             case "L2":
             case "L3":
             case "H1":
+                if (currentAttack.name == "H1") AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_HeavyAttack);
+                else AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_LightAttack);
                 StartSwordAttack();
                 break;
             case "H2":
             case "H3":
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ShieldAttack);
                 StartShieldAttack();
                 break;
             case "Red":
@@ -712,6 +719,17 @@ public class PlayerController : MonoBehaviour
                 EndBlueSpecialAttack();
                 break;
         }
+    }
+
+    //This method is a guard against attacks collider bugs
+    public void EndAllAttacks()
+    {
+        EndSwordAttack();
+        DisableSwordArea();
+        EndShieldAttack();
+        DisableShieldArea();
+        EndRedSpecialAttack();
+        EndBlueSpecialAttack();
     }
 
     protected void StartSwordAttack()
@@ -803,6 +821,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    protected void PlayFXRedSpecialAttack()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_SpecialAttackRed);
+    }
+
     protected void EndBlueSpecialAttack()
     {
         if (canSpecialAttack)
@@ -827,6 +850,7 @@ public class PlayerController : MonoBehaviour
             if (interactable != null && interactable.CanInteract())
             {
                 canInteract = true;
+                
             }
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
@@ -838,8 +862,12 @@ public class PlayerController : MonoBehaviour
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == false && anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == false)
                 {
                     SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+                    AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_AttackHit);
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");
+                }else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true)
+                {
+                    AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_BlockAttack);
                 }
             }
         }
@@ -961,5 +989,20 @@ public class PlayerController : MonoBehaviour
     public void StopDodgeParticles()
     {
         dodgeParticles.Stop();
+    }
+
+    public void PlayDeathParticles()
+    {
+        deathParticles.Play();
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_Die);
+        GameObject particle = Instantiate(deathExplosionParticles, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(particle, totalDuration);
+    }
+
+    public void StopDeathParticles()
+    {
+        deathParticles.Stop();
     }
 }

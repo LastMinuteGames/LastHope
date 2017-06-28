@@ -14,6 +14,7 @@ public class FakePlayerDodgeState : StateMachineBehaviour
         }
         playerController.canDodge = false;
         playerController.StartDodgeTimer();
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Movement_Dash);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -62,8 +62,9 @@ public class PlayerBaseAttackState : StateMachineBehaviour
     {
         //Debug.Log("Exit in " + attackName);
         //playerController.CloseInputWindow();
-        //if(hasNextAttack == false)
-        //    playerController.EndCurrentAttack();
+        //if (hasNextAttack == false)
+        if(animator.GetNextAnimatorStateInfo(0).IsName("damaged"))
+            playerController.EndCurrentAttack();
         nextAttack = null;
         playerController.EndAttackMovement();
     }

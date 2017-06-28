@@ -17,33 +17,19 @@ public class ArtilleryController : MonoBehaviour
     public GameObject deadDecal;
     public Slider hpSlider;
 
-    private ArtilleryEventTrigger eventTrigger;
-
-    void Start()
+    public void InitData()
     {
         currentHp = maxHp;
         hpSlider.maxValue = maxHp;
         UpdateHpBar();
-        eventTrigger = GetComponentInChildren<ArtilleryEventTrigger>();
         alive = true;
     }
 
-    //void Update()
-    //{
-    //    if (alive)
-    //    {
-    //        if (currentHp <= 0)
-    //        {
-    //            Die();
-    //        }
-    //        else
-    //        {
-    //            // TODO: Wait for all enemies to be killed to finish the event. Unlock main square doors to proceed
-    //            Debug.Log("You win");
-    //            //eventTrigger.UnblockExits();
-    //        }
-    //    }
-    //}
+    void Start()
+    {
+        InitData();
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack") && alive)
@@ -65,17 +51,17 @@ public class ArtilleryController : MonoBehaviour
             SpawnExplosion();
             SpawnDecal();
             alive = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-    void Die()
-    {
-        Debug.Log("You lose");
-        SpawnExplosion();
-        SpawnDecal();
-        alive = false;
-        Destroy(gameObject);
-    }
+    //void Die()
+    //{
+    //    Debug.Log("You lose");
+    //    SpawnExplosion();
+    //    SpawnDecal();
+    //    alive = false;
+    //    Destroy(gameObject);
+    //}
 
     void SpawnExplosion()
     {
@@ -97,6 +83,7 @@ public class ArtilleryController : MonoBehaviour
         {
             leftBarrelParticles.Play();
         }
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
     }
     void RightBarrelShoot()
     {
@@ -104,6 +91,12 @@ public class ArtilleryController : MonoBehaviour
         {
             rightBarrelParticles.Play();
         }
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
+    }
+
+    void MovementSound()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Movement);
     }
 
     void UpdateHpBar()

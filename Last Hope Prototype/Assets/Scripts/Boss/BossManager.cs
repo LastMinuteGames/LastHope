@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -15,6 +16,7 @@ public class BossManager : MonoBehaviour
     private bool isDead = false;
     private bool isAwaken = false;
     private Animator animator;
+    private MainCameraManager mainCameraManager;
 
 
 
@@ -22,6 +24,7 @@ public class BossManager : MonoBehaviour
     {
         //StartBossFight();
         animator = GetComponent<Animator>();
+        mainCameraManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraManager>();
     }
 
     public void StartBossFight()
@@ -29,6 +32,10 @@ public class BossManager : MonoBehaviour
         Debug.Log("start boss fight");
         isAwaken = true;
         canvasGO.SetActive(true);
+        if (mainCameraManager)
+        {
+            mainCameraManager.SwapCameraMode();
+        }
         if (bossPhases.Length > 0)
         {
             currentPhaseId = 0;
@@ -79,6 +86,7 @@ public class BossManager : MonoBehaviour
 
     void BossDeath()
     {
+        animator.SetTrigger("isDead");
         isDead = true;
         isAwaken = false;
         canvasGO.SetActive(false);
@@ -89,6 +97,13 @@ public class BossManager : MonoBehaviour
     {
 
         hpSlider.value = 100 * (bossPhases.Length - currentPhaseId) / (float)bossPhases.Length;
+    }
+
+
+    public void Dead()
+    {
+        Debug.Log("Dead animation event!");
+        SceneManager.LoadScene("WinScreen");
     }
 
 

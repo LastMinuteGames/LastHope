@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 114316373904035052}
   - component: {fileID: 114110336036714442}
   - component: {fileID: 82480597246900324}
+  - component: {fileID: 114796457911406016}
+  - component: {fileID: 114342859452480658}
   m_Layer: 0
   m_Name: MainCameraRig
   m_TagString: MainCamera
@@ -261,6 +263,31 @@ MonoBehaviour:
   sphereCastRadius: 0.1
   closestDistance: 0.5
   dontClipTag: Player
+--- !u!114 &114342859452480658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620519260192016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62716bd157762cd4ebdfc5a0a4b54f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114796457911406016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620519260192016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030dfc28dbb33c942839d43e74891ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetT: {fileID: 0}
+  moveSpeed: 20
+  tiltAngle: 0
 --- !u!114 &114840340349363962
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -70,14 +67,14 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="XInputDotNetPure">
+      <HintPath>Assets\Plugins\XInputDotNet\Plugins\XInputDotNetPure.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ArtilleryCamera\ArtilleryCameraMove.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
@@ -95,19 +93,35 @@
     <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\SwooshTest.cs" />
     <Compile Include="Assets\MeleeWeaponTrail\Scripts\Interpolate.cs" />
     <Compile Include="Assets\MeleeWeaponTrail\Scripts\MeleeWeaponTrail.cs" />
+    <Compile Include="Assets\MenuBackground\MenuArtilleryController.cs" />
     <Compile Include="Assets\ParticleSystems\Scripts\CapsuleController.cs" />
+    <Compile Include="Assets\ParticleSystems\Scripts\ScrollingMaterial.cs" />
     <Compile Include="Assets\Scripts\ArtilleryController.cs" />
     <Compile Include="Assets\Scripts\ArtilleryEventTrigger.cs" />
     <Compile Include="Assets\Scripts\BarricadeController.cs" />
+    <Compile Include="Assets\Scripts\Boss\BossEvent.cs" />
+    <Compile Include="Assets\Scripts\Boss\BossFightTrigger.cs" />
+    <Compile Include="Assets\Scripts\Boss\BossManager.cs" />
+    <Compile Include="Assets\Scripts\Boss\BossPhase.cs" />
+    <Compile Include="Assets\Scripts\Boss\EnemySpawnEvent.cs" />
+    <Compile Include="Assets\Scripts\Boss\FireAttackEvent.cs" />
+    <Compile Include="Assets\Scripts\Boss\LimitSpaceEvent.cs" />
+    <Compile Include="Assets\Scripts\Boss\RestingEvent.cs" />
+    <Compile Include="Assets\Scripts\Boss\RocketRainEvent.cs" />
+    <Compile Include="Assets\Scripts\Boss\TurretController.cs" />
+    <Compile Include="Assets\Scripts\Camera\BossCam.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraCollision.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraGod.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraShake.cs" />
     <Compile Include="Assets\Scripts\Camera\FreeLookCam.cs" />
+    <Compile Include="Assets\Scripts\Camera\MainCameraManager.cs" />
+    <Compile Include="Assets\Scripts\Camera\MainCameraManagerEditor.cs" />
     <Compile Include="Assets\Scripts\ColliderManager.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\Attack.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\AttackManager.cs" />
+    <Compile Include="Assets\Scripts\DestructibleEnviroment.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem.cs" />
     <Compile Include="Assets\Scripts\ElevatorController.cs" />
     <Compile Include="Assets\Scripts\Enemy\AttackInRange.cs" />
@@ -143,8 +157,8 @@
     <Compile Include="Assets\Scripts\Generic\Attack.cs" />
     <Compile Include="Assets\Scripts\Generic\Interactable.cs" />
     <Compile Include="Assets\Scripts\InGameMenu.cs" />
+    <Compile Include="Assets\Scripts\InputManager\ControllerEvents.cs" />
     <Compile Include="Assets\Scripts\InputManager\InputManager.cs" />
-    <Compile Include="Assets\Scripts\InputManager\TestInputManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Particle Manager\AutoDisableFx.cs" />
     <Compile Include="Assets\Scripts\Particle Manager\FxCaller_OnKey_Pools.cs" />
@@ -167,6 +181,7 @@
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerLightAttack3.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerMoveState.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerRedSpecialAttack.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerRespawn.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\PlayerBaseAttackState.cs" />
     <Compile Include="Assets\Scripts\Player\DashTest.cs" />
     <Compile Include="Assets\Scripts\Player\FSM\IPlayerFSM.cs" />
@@ -195,6 +210,8 @@
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\TrafficLightController.cs" />
+    <Compile Include="Assets\Scripts\TriggerDialog.cs" />
+    <Compile Include="Assets\Scripts\UI\EndScreenController.cs" />
     <Compile Include="Assets\Scripts\UI\UIEnergy.cs" />
     <Compile Include="Assets\Scripts\UI\UIHealth.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
@@ -208,6 +225,8 @@
     <None Include="Assets\Models\EnemyBoss1\EnemyBoss1_AnimationFrames.txt" />
     <None Include="Assets\Models\EnemyMelee1\EnemyMelee1_AnimationFrames.txt" />
     <None Include="Assets\Models\EnemyTrash1\EnemiTrash1_FrameAnimations.txt" />
+    <None Include="Assets\Plugins\XInputDotNet\Docs.txt" />
+    <None Include="Assets\Plugins\XInputDotNet\MITLicense.txt" />
     <None Include="Assets\Scripts\Particle Manager\how to particulas.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\Bloom\Resources\Bloom.cginc" />

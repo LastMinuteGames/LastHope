@@ -14,7 +14,7 @@ public class AudioSources : MonoBehaviour
 
     public void PlaySound(int index)
     {
-        SoundAudioSources[index].PlaySound(SoundAudioSources[index].clip);
+        if(SoundAudioSources[index].clip != null) SoundAudioSources[index].PlaySound(SoundAudioSources[index].clip);
     }
     public void PlayMusic(int index)
     {
@@ -105,7 +105,19 @@ public enum AudiosSoundFX
     Environment_PickUps_HP,
     Environment_PickUps_Energy,
 
-    Environment_PowerUps
+    Environment_PowerUps,
+
+    Environment_Core,
+
+    Environment_Artillery_Movement,
+    Environment_Artillery_Shot,
+
+    Player_Combat_ShieldAttack,
+    Player_Combat_ShieldAttackHit,
+
+    Environment_BreakEnvironment_BreakBarricade,
+    Environment_BreakEnvironment_BreakBench,
+    Environment_BreakEnvironment_BreakTrafficLight
 
 }
 
