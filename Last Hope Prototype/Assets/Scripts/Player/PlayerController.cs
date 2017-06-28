@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public GameObject hitParticles;
     public ParticleSystem redAbilityParticles;
     public ParticleSystem dodgeParticles;
+    public ParticleSystem deathParticles;
+    public GameObject deathExplosionParticles;
     [SerializeField]
     public ParticleSystem greyHeavyAttackParticles;
     [SerializeField]
@@ -306,6 +308,8 @@ public class PlayerController : MonoBehaviour
     {
         shieldHeavy.enabled = false;
     }
+
+
 
     void Update()
     {
@@ -717,6 +721,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //This method is a guard against attacks collider bugs
+    public void EndAllAttacks()
+    {
+        EndSwordAttack();
+        DisableSwordArea();
+        EndShieldAttack();
+        DisableShieldArea();
+        EndRedSpecialAttack();
+        EndBlueSpecialAttack();
+    }
+
     protected void StartSwordAttack()
     {
         sword.enabled = true;
@@ -974,5 +989,20 @@ public class PlayerController : MonoBehaviour
     public void StopDodgeParticles()
     {
         dodgeParticles.Stop();
+    }
+
+    public void PlayDeathParticles()
+    {
+        deathParticles.Play();
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_Die);
+        GameObject particle = Instantiate(deathExplosionParticles, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+        float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+        Destroy(particle, totalDuration);
+    }
+
+    public void StopDeathParticles()
+    {
+        deathParticles.Stop();
     }
 }

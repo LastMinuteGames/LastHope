@@ -18,6 +18,7 @@ public class FakePlayerIdleState : StateMachineBehaviour {
         }
         playerController.DisableSwordEmitter();
         playerController.DisableShieldEmitter();
+        playerController.EndAllAttacks();
         animator.SetBool("idle", true);
     }
 
