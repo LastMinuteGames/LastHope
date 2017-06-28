@@ -12,6 +12,9 @@ public class ElevatorController : Interactable
 
     [SerializeField]
     private float speed = 5.0f;
+    [SerializeField]
+    private GameObject elevatorWalls;
+
     private Vector3 velocity;
     private Rigidbody elevatorRig;
 
@@ -35,9 +38,10 @@ public class ElevatorController : Interactable
             velocity = Vector3.Lerp(start.position, end.position, speed * Time.deltaTime);
             elevatorRig.MovePosition(velocity);
             //Debug.Log(velocity);
-            if (elevator.transform.position.y >= end.position.y)
+            if (elevator.transform.position.y >= end.position.y-0.1f)
             {
                 moving = false;
+                elevatorWalls.SetActive(false);
             }
         }
     }
@@ -78,5 +82,6 @@ public class ElevatorController : Interactable
     void ActivateElevator()
     {
         moving = true;
+        elevatorWalls.SetActive(true);
     }
 }
