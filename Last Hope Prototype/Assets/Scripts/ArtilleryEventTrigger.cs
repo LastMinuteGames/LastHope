@@ -14,6 +14,8 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
     public GameObject reusableSpawnPointsParent;
     public float delayBetweenSpawns = 2.0f;
 
+    [SerializeField]
+    private GameObject artilleryCamera;
     private List<EnemySpawnPoint> reusableSpawnPoints = new List<EnemySpawnPoint>();
     private List<GameObject> eventWalls = new List<GameObject>();
     private List<Wave> waves = new List<Wave>();
@@ -165,6 +167,9 @@ public class ArtilleryEventTrigger : MonoBehaviour, EnemyObserver
                 Debug.Log("Artillery event started");
                 BlockExits();
                 player = other.gameObject.GetComponent<PlayerController>();
+
+                artilleryCamera.GetComponent<Camera>().enabled = true;
+                artilleryCamera.GetComponent<Animator>().SetTrigger("Move");
             }
         }
     }
