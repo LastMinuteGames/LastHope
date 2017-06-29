@@ -1,5 +1,6 @@
 Last Hope
-By: Roberto Azorín, Arnau Escribà, Sergi Ledesma, Pau Mamano, David Masana, Manuel Méndez
+By Last Minute Games:
+Roberto Azorín, Sergi Ledesma, Pau Mamano, David Masana, Manuel Méndez, Diego Vela
 
 CONTROLS
 Controller:
@@ -11,7 +12,7 @@ Controller:
 	RB: Special Attack
 	LB: Block
 	RT: Switch to Red Stance
-	LT: Switch to Grey Stance
+	LT: Switch to Blue Stance
 	START: Pause
 	
 Keyboard & Mouse:
@@ -23,5 +24,5 @@ Keyboard & Mouse:
 	Q: Special Attack
 	SPACE: Block
 	2: Switch to Red Stance
-	1: Switch to Grey Stance
+	1: Switch to Blue Stance
 	ESC: Pause
