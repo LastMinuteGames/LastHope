@@ -5,4 +5,5 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour {
     public EnemyType type;
     public float delay;
+    public bool done = false;
 }
