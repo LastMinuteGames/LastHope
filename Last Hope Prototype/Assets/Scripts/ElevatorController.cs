@@ -83,5 +83,6 @@ public class ElevatorController : Interactable
     {
         moving = true;
         elevatorWalls.SetActive(true);
+        DialogueSystem.Instance.NextDialogue();
     }
 }
