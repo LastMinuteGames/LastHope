@@ -4,49 +4,79 @@ using UnityEngine;
 
 public class FreeLookCam : MonoBehaviour
 {
-    [SerializeField] private Transform targetT;
-    [SerializeField] private float moveSpeed = 20f;
-    [Range(0f, 10f)] [SerializeField] private float turnSpeed = 5f;
-    [SerializeField] private float tiltMax = 75f;
-    [SerializeField] private float tiltMin = 10f;
     [SerializeField] private bool invertHorizontalAxis = false;
     [SerializeField] private bool invertVerticalAxis = true;
-    [SerializeField] private float vSmooth = 0.5f;
-    [SerializeField] private float hSmooth = 0.5f;
 
+    [SerializeField] private float moveSpeed = 20f;
 
-    private Transform camT;
+    [Range(0f, 10f)] [SerializeField] private float turnSpeedH = 2f;
+    [Range(0f, 10f)] [SerializeField] private float turnSpeedV = 1f;
+    [Range(0f, 1f)][SerializeField] private float hSmooth = 0.5f;
+    [Range(0f, 1f)][SerializeField] private float vSmooth = 0.5f;
+
+    [SerializeField] private bool fixedTilt = true;
+    [SerializeField] private float tiltAngle = 25;
+    [SerializeField] private float tiltMax = 75f;
+    [SerializeField] private float tiltMin = 10f;
+
+    [SerializeField] private float lockedCamDistance = 15;
+
+    private Transform rigTargetT;
     private Transform pivotT;
+    private Transform camT;
+
     private float lookAngle;
-    [SerializeField]
-    private float tiltAngle;
+
     private Vector3 pivotEulers;
     private Quaternion pivotTargetRot;
-    private Quaternion transformTargetRot;
+    private Quaternion rigTargetRot;
+
     private int hAxis, vAxis;
-    public float y = 0;
 
+    private bool lockMode = false;
 
-    private void Awake ()
-    {
-        camT = GetComponentInChildren<Camera>().transform;
-        pivotT = camT.parent;
-        pivotEulers = pivotT.localRotation.eulerAngles;
-        pivotTargetRot = pivotT.transform.localRotation;
-        transformTargetRot = transform.localRotation;
-        ConfigureCameraAxis(invertHorizontalAxis, invertVerticalAxis);
-    }
+    private CameraCollision camCollision;
+    
+    //private variables only-for lockmode
+    private Transform lockTargetT;
+    Vector3 dirToBoss;
+    Vector3 pivotDir;
+    Vector3 rigDir;
+
 
     private void Start()
     {
-        OnEnable();
+        rigTargetT = GameObject.FindGameObjectWithTag("Player").transform;
+        camT = GetComponentInChildren<Camera>().transform;
+        pivotT = camT.parent;
+
+        pivotTargetRot = pivotT.transform.localRotation;
+        pivotEulers = pivotT.localRotation.eulerAngles;
+        rigTargetRot = transform.localRotation;
+
+        ConfigureCameraAxis(invertHorizontalAxis, invertVerticalAxis);
+
+        camCollision = GetComponent<CameraCollision>();
     }
 
-    private void OnEnable()
+    private void Update ()
     {
-        targetT = GameObject.FindGameObjectWithTag("Player").transform;
-        pivotT.localRotation = Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z);
+        Debug.Log("pinoccio");
+        if (!lockMode)
+        {
+            HandleFreeRotationMovement();
+        }
+        else
+        {
+            HandleLockRotationMovement();
+        }
     }
+
+    private void LateUpdate ()
+    {
+        transform.position = Vector3.Lerp(transform.position, rigTargetT.position, Time.deltaTime * moveSpeed);
+    }
+
 
     public void ConfigureCameraAxis(bool invertH, bool invertV)
     {
@@ -56,39 +86,69 @@ public class FreeLookCam : MonoBehaviour
         vAxis = invertVerticalAxis ? -1 : 1;
     }
 
-
-    private void Update ()
+    private void HandleFreeRotationMovement ()
     {
-        HandleRotationMovement();
+        float x = InputManager.RightJoystick().x;
+        float y = InputManager.RightJoystick().z;
+
+        if (!fixedTilt)
+        {
+            tiltAngle -= y * turnSpeedV * Time.deltaTime * vAxis * 100f;
+            tiltAngle = Mathf.Clamp(tiltAngle, -tiltMin, tiltMax);
+
+        }
+            pivotTargetRot = Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z);
+            pivotT.localRotation = Quaternion.Lerp(pivotT.localRotation, pivotTargetRot , vSmooth);
+
+        lookAngle += x * turnSpeedH * Time.deltaTime* hAxis * 100f;
+        rigTargetRot = Quaternion.Euler(0f, lookAngle, 0f);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, rigTargetRot, hSmooth);
     }
 
-    private void LateUpdate ()
+    private void HandleLockRotationMovement()
     {
-        FollowTarget();
+        dirToBoss = lockTargetT.position - pivotT.position;
+        Debug.DrawRay(camT.position, dirToBoss, Color.red);
+
+        pivotDir = dirToBoss;
+        pivotDir.x = 0;
+        rigDir = dirToBoss;
+        rigDir.y = 0;
+
+        pivotTargetRot = Quaternion.LookRotation(pivotDir);
+        pivotT.localRotation = Quaternion.Lerp(pivotT.localRotation, pivotTargetRot, vSmooth);
+
+        rigTargetRot = Quaternion.LookRotation(rigDir);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, rigTargetRot, hSmooth);
     }
 
-    private void HandleRotationMovement ()
+
+    public void LockOnTarget(Transform targetT)
     {
-        var x = InputManager.RightJoystick().x;
-        var y = InputManager.RightJoystick().z;
-
-        lookAngle += x * turnSpeed * Time.deltaTime* hAxis * 100f;
-
-        transformTargetRot = Quaternion.Euler(0f, lookAngle, 0f);
-
-        //tiltAngle -= y * turnSpeed * Time.deltaTime * vAxis * 100f;
-        //tiltAngle = Mathf.Clamp(tiltAngle, -tiltMin, tiltMax);
-
-        //pivotTargetRot = Quaternion.Lerp(pivotTargetRot, Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z), vSmooth);
-
-        //pivotT.localRotation = pivotTargetRot;
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, transformTargetRot, hSmooth);
-
+        if (targetT)
+        {
+            lockMode = true;
+            lockTargetT = targetT;
+            camCollision.ChangeMaxDistance(30);
+        }
+        else
+        {
+            lockMode = false;
+            lockTargetT = null;
+            camCollision.ChangeMaxDistance(15);
+        }
+        StartCoroutine(ModeTransition(1.5f));
     }
 
-    private void FollowTarget ()
+    private IEnumerator ModeTransition (float transitionTime)
     {
-        transform.position = Vector3.Lerp(transform.position, targetT.position, Time.deltaTime * moveSpeed);
+        hSmooth /= 8;
+        vSmooth /= 8;
+
+        yield return new WaitForSeconds(transitionTime);
+
+        hSmooth *= 8;
+        vSmooth *= 8;
     }
 
 
