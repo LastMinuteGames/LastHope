@@ -111,7 +111,6 @@ public class PlayerController : MonoBehaviour
 
     // Movement
     public float turnSpeed = 50;
-    //public float speed = 10;
     public Transform camT;
     private CameraShake camShake;
     private ControllerEvents controllerEvents;

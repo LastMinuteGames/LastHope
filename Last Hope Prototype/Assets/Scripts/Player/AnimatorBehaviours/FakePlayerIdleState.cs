@@ -28,7 +28,29 @@ public class FakePlayerIdleState : StateMachineBehaviour {
         if (!attacking)
         {
             bool change = true;
-            if (InputManager.LeftJoystick().Equals(Vector3.zero) == false)
+            if (InputManager.LightAttack())
+            {
+                animator.SetTrigger("lightAttack");
+                attacking = true;
+            }
+            else if (InputManager.HeavyAttack())
+            {
+                animator.SetTrigger("heavyAttack");
+                attacking = true;
+            }
+            else if (InputManager.SpecialAttack())
+            {
+                switch (playerController.SpecialAttackToPerform())
+                {
+                    case PlayerStanceType.STANCE_BLUE:
+                        animator.SetTrigger("blueSpecialAttack");
+                        break;
+                    case PlayerStanceType.STANCE_RED:
+                        animator.SetTrigger("redSpecialAttack");
+                        break;
+                }
+            }
+            else if(InputManager.LeftJoystick().Equals(Vector3.zero) == false)
             {
                 animator.SetBool("move", true);
             }
@@ -58,28 +80,6 @@ public class FakePlayerIdleState : StateMachineBehaviour {
                         animator.SetTrigger("changeStance");
                         AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_HUD_SelectStanceRed);
                     }
-                }
-            }
-            else if (InputManager.LightAttack())
-            {
-                animator.SetTrigger("lightAttack");
-                attacking = true;
-            }
-            else if (InputManager.HeavyAttack())
-            {
-                animator.SetTrigger("heavyAttack");
-                attacking = true;
-            }
-            else if (InputManager.SpecialAttack())
-            {
-                switch (playerController.SpecialAttackToPerform())
-                {
-                    case PlayerStanceType.STANCE_BLUE:
-                        animator.SetTrigger("blueSpecialAttack");
-                        break;
-                    case PlayerStanceType.STANCE_RED:
-                        animator.SetTrigger("redSpecialAttack");
-                        break;
                 }
             }
             else if (InputManager.Block())
