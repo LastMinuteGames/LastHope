@@ -38,13 +38,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4235005824050830}
+  - component: {fileID: 114796151865809564}
   - component: {fileID: 114927127023673054}
-  - component: {fileID: 114840340349363962}
+  - component: {fileID: 114261065547317026}
   - component: {fileID: 114316373904035052}
+  - component: {fileID: 114840340349363962}
   - component: {fileID: 114110336036714442}
   - component: {fileID: 82480597246900324}
-  - component: {fileID: 114796457911406016}
-  - component: {fileID: 114342859452480658}
   m_Layer: 0
   m_Name: MainCameraRig
   m_TagString: MainCamera
@@ -216,7 +216,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -247,6 +247,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2652691f4d8444189788a8495b63b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114261065547317026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620519260192016}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352e68db5e5b24b49aa0132a29cce51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossCamTravelT: {fileID: 0}
 --- !u!114 &114316373904035052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +275,8 @@ MonoBehaviour:
   sphereCastRadius: 0.1
   closestDistance: 0.5
   dontClipTag: Player
---- !u!114 &114342859452480658
+  maxDistanceSmooth: 0.1
+--- !u!114 &114796151865809564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -271,23 +284,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1620519260192016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62716bd157762cd4ebdfc5a0a4b54f11, type: 3}
+  m_Script: {fileID: 11500000, guid: c80abd360873a4a4f978f04fb562f092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114796457911406016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620519260192016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030dfc28dbb33c942839d43e74891ba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetT: {fileID: 0}
-  moveSpeed: 20
-  tiltAngle: 0
 --- !u!114 &114840340349363962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,17 +311,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25319a43d63edd1498a9e6765af159ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetT: {fileID: 0}
-  moveSpeed: 10
-  turnSpeed: 3
-  tiltMax: 75
-  tiltMin: 15
   invertHorizontalAxis: 0
   invertVerticalAxis: 1
-  vSmooth: 0.5
+  moveSpeed: 10
+  turnSpeedH: 2
+  turnSpeedV: 1
   hSmooth: 0.5
+  vSmooth: 0.5
+  fixedTilt: 1
   tiltAngle: 25
-  y: 0
+  tiltMax: 75
+  tiltMin: 15
+  lockedCamDistance: 15
 --- !u!124 &124388541635092762
 Behaviour:
   m_ObjectHideFlags: 1

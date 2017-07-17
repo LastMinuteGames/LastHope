@@ -61,6 +61,11 @@ public class CameraManager : MonoBehaviour
 
     void ActivateCamera(int index)
     {
+        if (index > cameras.Length)
+        {
+            return;
+        }
+
         for (int i = 0; i < cameras.Length; i++)
         {
             if (i == index)

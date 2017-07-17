@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraCollision : MonoBehaviour
 {
     [SerializeField]
-    private float clipMoveTime = 0.05f;
+    public float clipMoveTime = 0.05f;
     [SerializeField]
     private float returnTime = 0.4f;
     [SerializeField]
@@ -14,10 +14,13 @@ public class CameraCollision : MonoBehaviour
     private float closestDistance = 0.5f;
     [SerializeField]
     private string dontClipTag = "Player";
+    [SerializeField]
+    private float maxDistanceSmooth = 0.1f;
 
     private Transform camT;
     private Transform pivotT;
-    private float originalDist;
+    private float maxDist;
+    private float targetMaxDist;
     private float moveVelocity;
     private float currentDist;
     private Ray m_Ray = new Ray();
@@ -29,15 +32,18 @@ public class CameraCollision : MonoBehaviour
     {
         camT = GetComponentInChildren<Camera>().transform;
         pivotT = camT.parent;
-        originalDist = camT.localPosition.magnitude;
-        currentDist = originalDist;
+        maxDist = camT.localPosition.magnitude;
+        currentDist = maxDist;
+        targetMaxDist = maxDist;
         rayHitComparer = new RayHitComparer();
     }
 
 
     private void LateUpdate()
     {
-        float targetDist = originalDist;
+        maxDist = Mathf.Lerp(maxDist, targetMaxDist, maxDistanceSmooth);
+
+        float targetDist = maxDist;
 
         m_Ray.origin = pivotT.position + pivotT.forward * sphereCastRadius;
         m_Ray.direction = -pivotT.forward;
@@ -60,12 +66,13 @@ public class CameraCollision : MonoBehaviour
         if (initialIntersect)
         {
             m_Ray.origin += pivotT.forward * sphereCastRadius;
-            hits = Physics.RaycastAll(m_Ray, originalDist - sphereCastRadius);
+            hits = Physics.RaycastAll(m_Ray, maxDist - sphereCastRadius);
         }
         else
         {
-            hits = Physics.SphereCastAll(m_Ray, sphereCastRadius, originalDist + sphereCastRadius);
+            hits = Physics.SphereCastAll(m_Ray, sphereCastRadius, maxDist + sphereCastRadius);
         }
+        Debug.DrawRay(m_Ray.origin, m_Ray.direction * maxDist, Color.blue);
 
         Array.Sort(hits, rayHitComparer);
 
@@ -90,7 +97,7 @@ public class CameraCollision : MonoBehaviour
 
         currentDist = Mathf.SmoothDamp(currentDist, targetDist, ref moveVelocity,
                                        currentDist > targetDist ? clipMoveTime : returnTime);
-        currentDist = Mathf.Clamp(currentDist, closestDistance, originalDist);
+        currentDist = Mathf.Clamp(currentDist, closestDistance, maxDist);
         camT.localPosition = -Vector3.forward * currentDist;
     }
 
@@ -100,5 +107,10 @@ public class CameraCollision : MonoBehaviour
         {
             return ((RaycastHit)x).distance.CompareTo(((RaycastHit)y).distance);
         }
+    }
+
+    public void ChangeMaxDistance (float distance)
+    {
+        targetMaxDist = distance;
     }
 }
