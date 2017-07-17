@@ -16,6 +16,8 @@ public class CameraCollision : MonoBehaviour
     private string dontClipTag = "Player";
     [SerializeField]
     private float maxDistanceSmooth = 0.1f;
+    [SerializeField]
+    private LayerMask collideMask;
 
     private Transform camT;
     private Transform pivotT;
@@ -48,7 +50,7 @@ public class CameraCollision : MonoBehaviour
         m_Ray.origin = pivotT.position + pivotT.forward * sphereCastRadius;
         m_Ray.direction = -pivotT.forward;
 
-        Collider[] colliders = Physics.OverlapSphere(m_Ray.origin, sphereCastRadius);
+        Collider[] colliders = Physics.OverlapSphere(m_Ray.origin, sphereCastRadius, collideMask.value);
 
         bool initialIntersect = false;
         bool hitSomething = false;
@@ -66,11 +68,11 @@ public class CameraCollision : MonoBehaviour
         if (initialIntersect)
         {
             m_Ray.origin += pivotT.forward * sphereCastRadius;
-            hits = Physics.RaycastAll(m_Ray, maxDist - sphereCastRadius);
+            hits = Physics.RaycastAll(m_Ray, maxDist - sphereCastRadius, collideMask.value);
         }
         else
         {
-            hits = Physics.SphereCastAll(m_Ray, sphereCastRadius, maxDist + sphereCastRadius);
+            hits = Physics.SphereCastAll(m_Ray, sphereCastRadius, maxDist + sphereCastRadius, collideMask.value);
         }
         Debug.DrawRay(m_Ray.origin, m_Ray.direction * maxDist, Color.blue);
 

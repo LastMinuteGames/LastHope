@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement
     public float turnSpeed = 50;
+    public Transform camRigT;
     public Transform camT;
     private CameraShake camShake;
     private ControllerEvents controllerEvents;
@@ -202,9 +203,10 @@ public class PlayerController : MonoBehaviour
 
         canDodge = true;
 
-        camT = GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<Camera>().transform;
-        camShake = camT.GetComponent<CameraShake>();
-        controllerEvents = camT.GetComponent<ControllerEvents>();
+        camRigT = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        camT = camRigT.GetComponentInChildren<Camera>().transform;
+        camShake = camRigT.GetComponent<CameraShake>();
+        controllerEvents = camRigT.GetComponent<ControllerEvents>();
         rigidBody = GetComponent<Rigidbody>();
 
         DisableSwordEmitter();

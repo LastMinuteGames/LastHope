@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossCamTravelT: {fileID: 0}
+  movementSmooth: 0.2
 --- !u!114 &114316373904035052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,6 +277,9 @@ MonoBehaviour:
   closestDistance: 0.5
   dontClipTag: Player
   maxDistanceSmooth: 0.1
+  collideMask:
+    serializedVersion: 2
+    m_Bits: 1048576
 --- !u!114 &114796151865809564
 MonoBehaviour:
   m_ObjectHideFlags: 1
