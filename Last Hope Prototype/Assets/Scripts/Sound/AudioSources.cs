@@ -117,7 +117,10 @@ public enum AudiosSoundFX
 
     Environment_BreakEnvironment_BreakBarricade,
     Environment_BreakEnvironment_BreakBench,
-    Environment_BreakEnvironment_BreakTrafficLight
+    Environment_BreakEnvironment_BreakTrafficLight,
+
+    Player_Combat_ChargeBlueAttack,
+    Player_Combat_ReleaseBlueAttack
 
 }
 
