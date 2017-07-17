@@ -18,10 +18,13 @@ public class ElevatorController : Interactable
     private Vector3 velocity;
     private Rigidbody elevatorRig;
 
+    private MainCameraManager mainCameraManager;
+
     // Use this for initialization
     void Start()
     {
         elevatorRig = elevator.GetComponent<Rigidbody>();
+        mainCameraManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraManager>();
     }
 
     // Update is called once per frame
@@ -81,6 +84,7 @@ public class ElevatorController : Interactable
 
     void ActivateElevator()
     {
+        mainCameraManager.SetBossCam();
         moving = true;
         elevatorWalls.SetActive(true);
         DialogueSystem.Instance.NextDialogue();

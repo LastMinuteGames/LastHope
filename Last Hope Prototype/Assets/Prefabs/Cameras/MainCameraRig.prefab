@@ -38,7 +38,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4235005824050830}
+  - component: {fileID: 114796151865809564}
   - component: {fileID: 114927127023673054}
+  - component: {fileID: 114261065547317026}
   - component: {fileID: 114316373904035052}
   - component: {fileID: 114840340349363962}
   - component: {fileID: 114110336036714442}
@@ -72,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620519260192016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.4, y: 7, z: -2.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4779279262329720}
@@ -245,6 +247,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2652691f4d8444189788a8495b63b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114261065547317026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620519260192016}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352e68db5e5b24b49aa0132a29cce51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossCamTravelT: {fileID: 0}
 --- !u!114 &114316373904035052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,6 +276,17 @@ MonoBehaviour:
   closestDistance: 0.5
   dontClipTag: Player
   maxDistanceSmooth: 0.1
+--- !u!114 &114796151865809564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620519260192016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80abd360873a4a4f978f04fb562f092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114840340349363962
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,6 +18,7 @@ public class BossManager : MonoBehaviour
     private bool isAwaken = false;
     private Animator animator;
     private FreeLookCam freeLookCam;
+    private BossCam bossCam;
 
 
     void Start()
@@ -25,6 +26,8 @@ public class BossManager : MonoBehaviour
         //StartBossFight();
         animator = GetComponent<Animator>();
         freeLookCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FreeLookCam>();
+        bossCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BossCam>();
+
     }
 
     public void StartBossFight()
@@ -32,9 +35,9 @@ public class BossManager : MonoBehaviour
         Debug.Log("start boss fight");
         isAwaken = true;
         canvasGO.SetActive(true);
-        if (freeLookCam)
+        if (bossCam)
         {
-            freeLookCam.LockOnTarget(camTargetT);
+            bossCam.StartFollowing();
         }
         if (bossPhases.Length > 0)
         {
@@ -82,10 +85,6 @@ public class BossManager : MonoBehaviour
 
     void BossDeath()
     {
-        if (freeLookCam)
-        {
-            freeLookCam.LockOnTarget(null);
-        }
         animator.SetTrigger("isDead");
         isDead = true;
         isAwaken = false;

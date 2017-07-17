@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
 
         canDodge = true;
 
-        camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        camT = GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<Camera>().transform;
         camShake = camT.GetComponent<CameraShake>();
         controllerEvents = camT.GetComponent<ControllerEvents>();
         rigidBody = GetComponent<Rigidbody>();
