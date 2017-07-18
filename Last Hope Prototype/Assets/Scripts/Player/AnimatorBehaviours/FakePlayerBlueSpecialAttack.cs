@@ -7,6 +7,6 @@ public class FakePlayerBlueSpecialAttack : PlayerBaseAttackState
     protected override void LoadStateSettings()
     {
         attackName = "Blue";
-        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_SpecialAttackBlue);
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ChargeBlueAttack);
     }
 }

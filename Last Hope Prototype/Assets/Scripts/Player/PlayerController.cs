@@ -788,6 +788,7 @@ public class PlayerController : MonoBehaviour
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_BLUE && LoseEnergy(1))
         {
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ReleaseBlueAttack);
             canSpecialAttack = true;
             neutralSphere.gameObject.SetActive(true);
             spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position + new Vector3(0, 1, 0), neutralSphere.transform.rotation);
