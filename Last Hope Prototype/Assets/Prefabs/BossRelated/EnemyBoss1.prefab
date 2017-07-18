@@ -851,7 +851,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448053177344032}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.000001683831}
-  m_LocalPosition: {x: 0, y: -800, z: 25}
+  m_LocalPosition: {x: 0, y: -800, z: 800}
   m_LocalScale: {x: 400.00024, y: 400, z: 400.00024}
   m_Children:
   - {fileID: 4907915552028948}
@@ -1200,6 +1200,8 @@ MonoBehaviour:
   hpSlider: {fileID: 114271109558081660}
   canvasGO: {fileID: 1619107577188200}
   camTargetT: {fileID: 4907915552028948}
+  rocketSpawnManager: {fileID: 1166873882290976, guid: c3a08cfcff9653842a54675a8c85c884,
+    type: 2}
 --- !u!137 &137047965606255948
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

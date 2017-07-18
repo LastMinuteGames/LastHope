@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RocketSpawnPoint : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public float initialDelay;
+    public float delay;
+    public bool done = false;
 }
