@@ -20,7 +20,6 @@ public class BossManager : MonoBehaviour
     private FreeLookCam freeLookCam;
     private BossCam bossCam;
 
-
     void Start()
     {
         //StartBossFight();

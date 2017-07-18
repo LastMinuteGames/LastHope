@@ -61,7 +61,7 @@ public class FreeLookCam : MonoBehaviour
 
     private void Update ()
     {
-        Debug.Log("pinoccio");
+        //Debug.Log("pinoccio");
         if (!lockMode)
         {
             HandleFreeRotationMovement();
