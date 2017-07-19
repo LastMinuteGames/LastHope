@@ -7,7 +7,7 @@ public class FreeLookCam : MonoBehaviour
     [SerializeField] private bool invertHorizontalAxis = false;
     [SerializeField] private bool invertVerticalAxis = true;
 
-    [SerializeField] private float moveSpeed = 20f;
+    [Range(0f, 1f)] [SerializeField] private float moveSmooth = 0.2f;
 
     [Range(0f, 10f)] [SerializeField] private float turnSpeedH = 2f;
     [Range(0f, 10f)] [SerializeField] private float turnSpeedV = 1f;
@@ -74,7 +74,7 @@ public class FreeLookCam : MonoBehaviour
 
     private void LateUpdate ()
     {
-        transform.position = Vector3.Lerp(transform.position, rigTargetT.position, Time.deltaTime * moveSpeed);
+        transform.position = Vector3.Lerp(transform.position, rigTargetT.position, moveSmooth);
     }
 
 
