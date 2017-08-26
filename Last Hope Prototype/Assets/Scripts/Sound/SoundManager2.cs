@@ -12,9 +12,17 @@ namespace LastHope.SoundManager2
     {
         public static void PlaySound(this AudioSource audioSource, float volume = 1)
         {
+            Vector3 position = Vector3.zero;
             if (CheckAudioSourceAndClip(audioSource))
             {
-                SoundManager2.PlaySound(audioSource, audioSource.clip, volume);
+                SoundManager2.PlaySound(audioSource, audioSource.clip, volume, position, false);
+            }
+        }
+        public static void PlaySound(this AudioSource audioSource, Vector3 position, float volume = 1)
+        {
+            if (CheckAudioSourceAndClip(audioSource))
+            {
+                SoundManager2.PlaySound(audioSource, audioSource.clip, volume, position, true);
             }
         }
         public static void PlayLoopingSound(this AudioSource audioSource, float volume = 1)
@@ -159,7 +167,7 @@ namespace LastHope.SoundManager2
 
         #region Play Functions
 
-        public static void PlaySound(AudioSource audioSource, AudioClip audioClip, float volume)
+        public static void PlaySound(AudioSource audioSource, AudioClip audioClip, float volume, Vector3 position, bool is3D)
         {
             if (!instantiated)
             {
@@ -194,7 +202,16 @@ namespace LastHope.SoundManager2
             }
 
             volumes.Add(targetVolume);
-            audioSource.PlayOneShot(audioClip, targetVolume);
+
+            if (is3D)
+            {
+                AudioSource.PlayClipAtPoint(audioClip, position, targetVolume);
+            }
+            else
+            {
+                audioSource.PlayOneShot(audioClip, targetVolume);
+            }
+
             instance.StartCoroutine(CleanUpVolumeOfClip(audioClip, targetVolume));
         }
 
@@ -212,7 +229,7 @@ namespace LastHope.SoundManager2
 
         }
 
-        public static void StopLoopingSound (AudioSource audioSource)
+        public static void StopLoopingSound(AudioSource audioSource)
         {
             for (int i = 0; i < ambientSounds.Count; i++)
             {

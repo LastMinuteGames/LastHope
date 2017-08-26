@@ -712,7 +712,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 404452638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1913,6 +1913,11 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 82620217152916866, guid: b642e7961711dc742b6c88327e0ce59c,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82986837927786776, guid: b642e7961711dc742b6c88327e0ce59c,
         type: 2}
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0

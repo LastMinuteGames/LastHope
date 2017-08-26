@@ -19,6 +19,10 @@ public class SoundManagerDemo : MonoBehaviour
         {
             PlaySound(0);
         }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PlaySound(0, new Vector3(10,0,0));
+        }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             PlaySound(1);
@@ -49,11 +53,11 @@ public class SoundManagerDemo : MonoBehaviour
         {
             StopLoopingSound(0);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             PlayLoopingSound(1);
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             StopLoopingSound(1);
         }
@@ -64,6 +68,11 @@ public class SoundManagerDemo : MonoBehaviour
     private void PlaySound(int index)
     {
         SoundAudioSources[index].PlaySound();
+    }
+
+    private void PlaySound(int index, Vector3 position)
+    {
+        SoundAudioSources[index].PlaySound(position);
     }
 
     private void PlayLoopingSound(int index)
