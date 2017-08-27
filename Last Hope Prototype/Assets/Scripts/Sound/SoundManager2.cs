@@ -143,6 +143,7 @@ namespace LastHope.SoundManager2
         private static List<LoopingAudioSource> ambientSounds = new List<LoopingAudioSource>();
         private static Dictionary<AudioClip, List<float>> soundsDictionary = new Dictionary<AudioClip, List<float>>();
         private static int maxDuplicateAudioClips = 5;
+        private static int persistTag = 0;
 
 
         #region Instantiation
@@ -293,7 +294,12 @@ namespace LastHope.SoundManager2
 
             LoopingAudioSource loopingAudioSource = new LoopingAudioSource(audioSource);
             float targetVolume = volume * realMusicVolume;
+            loopingAudioSource.persistTag = persistTag;
             loopingAudioSource.Play(targetVolume);
+
+            audioSource.gameObject.transform.parent = null;
+            GameObject.DontDestroyOnLoad(audioSource.gameObject);
+
             musics.Add(loopingAudioSource);
         }
 
@@ -322,9 +328,24 @@ namespace LastHope.SoundManager2
 
         private void OnSceneLoad(Scene s, LoadSceneMode m)
         {
-            musics.Clear();
+            persistTag++;
+
+            //musics.Clear();
+            ClearMusicsOnSceneLoad();
             ambientSounds.Clear();
             soundsDictionary.Clear();
+        }
+
+        private void ClearMusicsOnSceneLoad()
+        {
+            for (int i = musics.Count-1; i >= 0; i--)
+            {
+                if (!musics[i].audioSource.isPlaying)
+                {
+                    GameObject.Destroy(musics[i].audioSource.gameObject);
+                    musics.RemoveAt(i);
+                }
+            }
         }
 
         private void Update()
@@ -333,14 +354,29 @@ namespace LastHope.SoundManager2
             //Debug.Log("Ambient sounds count: " + ambientSounds.Count);
             //Debug.Log("Solo sounds count: " + soundsDictionary.Count);
 
-            for (int i = 0; i < musics.Count; i++)
+            foreach (LoopingAudioSource l in musics)
             {
-                musics[i].Update();
+                l.Update();
             }
-            for (int i = 0; i < ambientSounds.Count; i++)
+            foreach (LoopingAudioSource a in ambientSounds)
             {
-                ambientSounds[i].Update();
+                a.Update();
             }
+
+            for (int i = musics.Count-1; i >= 0; i--)
+            {
+                if (musics[i].persistTag != persistTag)
+                {
+                    //Debug.Log(musics[i].persistTag);
+                    //Debug.Log(persistTag);
+                    if (!musics[i].audioSource.isPlaying)
+                    {
+                        GameObject.Destroy(musics[i].audioSource.gameObject);
+                        musics.RemoveAt(i);
+                    }
+                }
+            }
+
         }
 
         public void OnApplicationFocus(bool hasFocus)
@@ -389,6 +425,8 @@ namespace LastHope.SoundManager2
     public class LoopingAudioSource
     {
         public AudioSource audioSource;
+        public int persistTag;
+
         private float startVolume;
         private float currentVolume;
         private float initialTargetVolume;
