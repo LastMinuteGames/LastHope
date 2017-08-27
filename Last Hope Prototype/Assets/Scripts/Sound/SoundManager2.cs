@@ -27,9 +27,17 @@ namespace LastHope.SoundManager2
         }
         public static void PlayLoopingSound(this AudioSource audioSource, float volume = 1)
         {
+            Vector3 position = Vector3.zero;
             if (CheckAudioSourceAndClip(audioSource))
             {
-                SoundManager2.PlayLoopingSound(audioSource, audioSource.clip, volume);
+                SoundManager2.PlayLoopingSound(audioSource, audioSource.clip, volume, position, false);
+            }
+        }
+        public static void PlayLoopingSound(this AudioSource audioSource, Vector3 position, float volume = 1)
+        {
+            if (CheckAudioSourceAndClip(audioSource))
+            {
+                SoundManager2.PlayLoopingSound(audioSource, audioSource.clip, volume, position, true);
             }
         }
         public static void PlayLoopingMusic(this AudioSource audioSource, float volume = 1)
@@ -115,20 +123,17 @@ namespace LastHope.SoundManager2
 
         private static void UpdateMusicsVolume()
         {
-            foreach (LoopingAudioSource loopingAudioSource in musics)
+            foreach (LoopingAudioSource m in musics)
             {
-                if (!loopingAudioSource.isStopping)
-                {
-                    loopingAudioSource.targetVolume = loopingAudioSource.initialTargetVolume * realMusicVolume;
-                }
+                m.UpdateVolume(realMusicVolume);
             }
         }
 
         private static void UpdateAmbientVolume()
         {
-            foreach (LoopingAudioSource loopingAudioSource in ambientSounds)
+            foreach (LoopingAudioSource a in ambientSounds)
             {
-                loopingAudioSource.targetVolume = loopingAudioSource.initialTargetVolume * realSoundVolume;
+                a.UpdateVolume(realSoundVolume);
             }
         }
         #endregion
@@ -215,15 +220,37 @@ namespace LastHope.SoundManager2
             instance.StartCoroutine(CleanUpVolumeOfClip(audioClip, targetVolume));
         }
 
-        public static void PlayLoopingSound(AudioSource audioSource, AudioClip audioClip, float volume)
+        public static void PlayLoopingSound(AudioSource audioSource, AudioClip audioClip, float volume, Vector3 position, bool is3D)
         {
             if (!instantiated)
             {
                 Instantiate();
             }
 
-            LoopingAudioSource loopingAudioSource = new LoopingAudioSource(audioSource, false);
+            //Debug.Log("Ambient sounds:" + ambientSounds.Count);
+
+            for (int i = ambientSounds.Count - 1; i >= 0; i--)
+            {
+                LoopingAudioSource loopingAS = ambientSounds[i];
+                if (loopingAS.audioSource == audioSource)
+                {
+                    ambientSounds.RemoveAt(i);
+                }
+                loopingAS.Stop();
+            }
+
+
+            LoopingAudioSource loopingAudioSource = new LoopingAudioSource(audioSource, false, 1.0f, is3D);
             float targetVolume = volume * realSoundVolume;
+
+            if (is3D)
+            {
+                loopingAudioSource.audioSource.gameObject.transform.position = position;
+                //enable 3D settings
+                //Debug.Log("enable 3D settings!");
+                loopingAudioSource.audioSource.spatialBlend = 1;
+            }
+            
             loopingAudioSource.Play(targetVolume);
             ambientSounds.Add(loopingAudioSource);
 
@@ -249,6 +276,8 @@ namespace LastHope.SoundManager2
             {
                 Instantiate();
             }
+
+            //Debug.Log("Music count:" + musics.Count);
 
             //Check if we have this audiosource already added
 
@@ -362,16 +391,17 @@ namespace LastHope.SoundManager2
         public AudioSource audioSource;
         private float startVolume;
         private float currentVolume;
-        public float initialTargetVolume;
-        public float targetVolume;
+        private float initialTargetVolume;
+        private float targetVolume;
         private float fadeTime;
         private float timestamp;
-        public bool isStopping;
+        private bool isStopping;
         private bool isMusic;
         private bool persist;
+        private bool is3D;
 
 
-        public LoopingAudioSource(AudioSource audioSource, bool isMusic = true, float fadeTime = 1)
+        public LoopingAudioSource(AudioSource audioSource, bool isMusic = true, float fadeTime = 1, bool is3D = false)
         {
             if (audioSource == null)
             {
@@ -389,6 +419,7 @@ namespace LastHope.SoundManager2
             isStopping = false;
             this.isMusic = isMusic;
             persist = isMusic;
+            this.is3D = is3D;
 
             audioSource.loop = true;
             audioSource.volume = currentVolume;
@@ -415,9 +446,16 @@ namespace LastHope.SoundManager2
 
         public void Stop()
         {
+            //only ambient sounds can be 3D. Music is only bso
             if (!isMusic)
             {
                 audioSource.Stop();
+                if (is3D)
+                {
+                    audioSource.gameObject.transform.position = Vector3.zero;
+                    //Debug.Log("Disable 3D settings");
+                    audioSource.spatialBlend = 0;
+                }
             }
 
             startVolume = currentVolume = audioSource.volume;
@@ -457,6 +495,21 @@ namespace LastHope.SoundManager2
             {
                 audioSource.Stop();
                 isStopping = false;
+            }
+        }
+
+        public void UpdateVolume(float realVolume)
+        {
+            if (isMusic)
+            {
+                if (!isStopping)
+                {
+                    targetVolume = initialTargetVolume * realVolume;
+                }
+            }
+            else
+            {
+                targetVolume = initialTargetVolume * realVolume;
             }
         }
     }
