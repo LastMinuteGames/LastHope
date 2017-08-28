@@ -23,16 +23,21 @@ public class MainCameraManager : MonoBehaviour
         bossCam = GetComponent<BossCam>();
     }
 
+    void Start()
+    {
+        AudioSources.instance.PlayMusic((int)AudiosMusic.MainTheme);
+    }
+
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SetBossCam();
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SetFreeCam();
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    SetBossCam();
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    SetFreeCam();
+        //}
     }
 
     public void SetBossCam()

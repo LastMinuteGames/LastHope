@@ -305,7 +305,13 @@ namespace LastHope.SoundManager2
 
         private static IEnumerator CleanUpVolumeOfClip(AudioClip clip, float volume)
         {
-            yield return new WaitForSeconds(clip.length);
+            //yield return new WaitForSeconds(clip.length);
+
+            float pauseEndTime = Time.realtimeSinceStartup + clip.length;
+            while (Time.realtimeSinceStartup < pauseEndTime)
+            {
+                yield return 0;
+            }
 
             List<float> volumes;
             if (soundsDictionary.TryGetValue(clip, out volumes))
@@ -435,7 +441,7 @@ namespace LastHope.SoundManager2
         private float timestamp;
         private bool isStopping;
         private bool isMusic;
-        private bool persist;
+        //private bool persist;
         private bool is3D;
 
 
@@ -456,7 +462,7 @@ namespace LastHope.SoundManager2
             timestamp = 0;
             isStopping = false;
             this.isMusic = isMusic;
-            persist = isMusic;
+            //persist = isMusic;
             this.is3D = is3D;
 
             audioSource.loop = true;

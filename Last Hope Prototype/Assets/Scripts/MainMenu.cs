@@ -49,6 +49,7 @@ public class MainMenu : MonoBehaviour {
     //Audio
     private int swapSelectionFxId;
     private int applySelectionFxId;
+    private int mainThemeMusicId;
 
 
     // Use this for initialization
@@ -149,7 +150,9 @@ public class MainMenu : MonoBehaviour {
 
         swapSelectionFxId = (int)AudiosSoundFX.Menu_SwapSelection;
         applySelectionFxId = (int)AudiosSoundFX.Menu_ApplySelection;
+        mainThemeMusicId = (int)AudiosMusic.MainTheme;
 
+        AudioSources.instance.PlayMusic(mainThemeMusicId);
     }
 
     //Move focus up

@@ -10,16 +10,19 @@ public class PowerPlantController : Interactable {
     public Texture emissiveOff;
     public Texture emissiveOn;
 
+    [SerializeField] private Transform bridgeEnergy;
+
     private bool running = false;
 
     // Use this for initialization
     void Start ()
     {
         baseColor.SetTexture("_EmissionMap", emissiveOff);
+        AudioSources.instance.Play3DAmbientSound((int)AudiosSoundFX.Environment_Bridge_Bridge, bridgeEnergy.position, 0.6f);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
 	}
 
