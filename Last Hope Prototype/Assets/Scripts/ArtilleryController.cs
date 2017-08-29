@@ -83,7 +83,9 @@ public class ArtilleryController : MonoBehaviour
         {
             leftBarrelParticles.Play();
         }
-        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
+        //AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
+        AudioSources.instance.Play3DSound((int)AudiosSoundFX.Environment_Artillery_Shot, transform.position, 0.9f, AudioRolloffMode.Linear, 0.35f);
+
     }
     void RightBarrelShoot()
     {
@@ -91,12 +93,15 @@ public class ArtilleryController : MonoBehaviour
         {
             rightBarrelParticles.Play();
         }
-        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
+        //AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
+        AudioSources.instance.Play3DSound((int)AudiosSoundFX.Environment_Artillery_Shot, transform.position, 0.9f, AudioRolloffMode.Linear, 0.35f);
+
     }
 
     void MovementSound()
     {
-        AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Movement);
+        //AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Movement);
+        AudioSources.instance.Play3DSound((int)AudiosSoundFX.Environment_Artillery_Movement, transform.position, 1f, AudioRolloffMode.Linear, 0.3f);
     }
 
     void UpdateHpBar()

@@ -76,7 +76,7 @@ public class SoundManagerDemo : MonoBehaviour
 
     private void PlaySound(int index, Vector3 position)
     {
-        SoundAudioSources[index].PlaySound(position);
+        SoundAudioSources[index].PlaySound(position, AudioRolloffMode.Logarithmic, 1);
     }
 
     private void PlayLoopingSound(int index)

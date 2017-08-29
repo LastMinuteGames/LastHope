@@ -15,9 +15,9 @@ public class AudioSources : MonoBehaviour
     {
         SoundAudioSources[index].PlaySound(volume);
     }
-    public void Play3DSound(int index, Vector3 position, float volume = 1)
+    public void Play3DSound(int index, Vector3 position, float spatialBlend = 1, AudioRolloffMode audioRollofMode = AudioRolloffMode.Logarithmic, float volume = 1)
     {
-        SoundAudioSources[index].PlaySound(position, volume);
+        SoundAudioSources[index].PlaySound(position, audioRollofMode, spatialBlend, volume);
     }
 
     public void PlayAmbientSound(int index, float volume = 1)

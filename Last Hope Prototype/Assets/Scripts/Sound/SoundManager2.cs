@@ -15,14 +15,14 @@ namespace LastHope.SoundManager2
             Vector3 position = Vector3.zero;
             if (CheckAudioSourceAndClip(audioSource))
             {
-                SoundManager2.PlaySound(audioSource, audioSource.clip, volume, position, false);
+                SoundManager2.PlaySound(audioSource, audioSource.clip, volume, position, false, 0, AudioRolloffMode.Logarithmic);
             }
         }
-        public static void PlaySound(this AudioSource audioSource, Vector3 position, float volume = 1)
+        public static void PlaySound(this AudioSource audioSource, Vector3 position, AudioRolloffMode audioRollofMode, float spatialBlend = 1, float volume = 1)
         {
             if (CheckAudioSourceAndClip(audioSource))
             {
-                SoundManager2.PlaySound(audioSource, audioSource.clip, volume, position, true);
+                SoundManager2.PlaySound(audioSource, audioSource.clip, volume, position, true, spatialBlend, audioRollofMode);
             }
         }
         public static void PlayLoopingSound(this AudioSource audioSource, float volume = 1)
@@ -173,7 +173,7 @@ namespace LastHope.SoundManager2
 
         #region Play Functions
 
-        public static void PlaySound(AudioSource audioSource, AudioClip audioClip, float volume, Vector3 position, bool is3D)
+        public static void PlaySound(AudioSource audioSource, AudioClip audioClip, float volume, Vector3 position, bool is3D, float spatialBlend, AudioRolloffMode audioRollofMode)
         {
             if (!instantiated)
             {
@@ -211,12 +211,14 @@ namespace LastHope.SoundManager2
 
             if (is3D)
             {
-                AudioSource.PlayClipAtPoint(audioClip, position, targetVolume);
+                if (audioSource.spatialBlend == 0)
+                {
+                    audioSource.gameObject.transform.position = position;
+                    audioSource.spatialBlend = spatialBlend;
+                    audioSource.rolloffMode = audioRollofMode;
+                }
             }
-            else
-            {
-                audioSource.PlayOneShot(audioClip, targetVolume);
-            }
+            audioSource.PlayOneShot(audioClip, targetVolume);
 
             instance.StartCoroutine(CleanUpVolumeOfClip(audioClip, targetVolume));
         }
@@ -251,7 +253,7 @@ namespace LastHope.SoundManager2
                 //Debug.Log("enable 3D settings!");
                 loopingAudioSource.audioSource.spatialBlend = 1;
             }
-            
+
             loopingAudioSource.Play(targetVolume);
             ambientSounds.Add(loopingAudioSource);
 
@@ -344,7 +346,7 @@ namespace LastHope.SoundManager2
 
         private void ClearMusicsOnSceneLoad()
         {
-            for (int i = musics.Count-1; i >= 0; i--)
+            for (int i = musics.Count - 1; i >= 0; i--)
             {
                 if (!musics[i].audioSource.isPlaying)
                 {
@@ -369,7 +371,7 @@ namespace LastHope.SoundManager2
                 a.Update();
             }
 
-            for (int i = musics.Count-1; i >= 0; i--)
+            for (int i = musics.Count - 1; i >= 0; i--)
             {
                 if (musics[i].persistTag != persistTag)
                 {
