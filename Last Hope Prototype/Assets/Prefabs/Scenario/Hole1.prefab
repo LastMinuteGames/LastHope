@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 33939491604945544}
   - component: {fileID: 23387644269887752}
   - component: {fileID: 64875939512227016}
-  - component: {fileID: 65617872986162050}
   m_Layer: 0
   m_Name: Col_Hole1
   m_TagString: Untagged
@@ -116,8 +115,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 87c49955c34ae7b4ea0728abce9f75d8, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -188,24 +186,12 @@ MeshCollider:
   m_GameObject: {fileID: 1855164498907862}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: f349047363de4a140a92aaf7fbfb1123, type: 3}
---- !u!65 &65617872986162050
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1855164498907862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30, y: 70, z: 30}
-  m_Center: {x: 0, y: 0.00000047683716, z: 0}
 --- !u!95 &95075100472582596
 Animator:
   serializedVersion: 3

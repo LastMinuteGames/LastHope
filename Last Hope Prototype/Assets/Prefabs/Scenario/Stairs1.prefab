@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4408578176269396}
   - component: {fileID: 33892776110111410}
   - component: {fileID: 23257728855409626}
+  - component: {fileID: 64610794366462394}
   m_Layer: 0
   m_Name: Col_Stairs1
   m_TagString: Untagged
@@ -114,8 +115,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 5e3903ee0e320504e8dc4662ed9f5b26, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,7 +146,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 23683610ef5b5904c8988e8e79d8d820, type: 2}
+  - {fileID: 2100000, guid: 33a06164262f7ae4296f3da773db958a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,14 +170,28 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508866330719140}
-  m_Mesh: {fileID: 4300002, guid: af64f32ee620f18409c5a5d5a027be91, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 8ff3b041c1a10334f9c27433f3bc6b7e, type: 3}
 --- !u!33 &33892776110111410
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1107025414416334}
-  m_Mesh: {fileID: 4300000, guid: af64f32ee620f18409c5a5d5a027be91, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 8ff3b041c1a10334f9c27433f3bc6b7e, type: 3}
+--- !u!64 &64610794366462394
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107025414416334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 8ff3b041c1a10334f9c27433f3bc6b7e, type: 3}
 --- !u!64 &64818818650502106
 MeshCollider:
   m_ObjectHideFlags: 1
