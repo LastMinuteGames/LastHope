@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: EnemyTrash1_EnemyKatana1_Katana1
+  m_Name: EnemyMelee1_base
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 2aa22d981676e554b96e5a2f4bd1ae01, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97ddd7ae90eaf1e40bb62c44d82bed1c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -42,25 +42,25 @@ Material:
     - first:
         name: _EmissionMap
       second:
-        m_Texture: {fileID: 2800000, guid: eec76bbe8a14c8345916c1081c0a0d46, type: 3}
+        m_Texture: {fileID: 2800000, guid: 91d5c37b355754249941a730afcbed3b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: e7a0971608a8fa441a986f0cc14db642, type: 3}
+        m_Texture: {fileID: 2800000, guid: 244de427b7a3c3148a180f6e21d890ad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 2800000, guid: 092d15dc26e1c2744b050ea9a8b050f6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 68faa2fa4c5f82f40bedfcb6028e0be2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 2800000, guid: f2e1287db97cb85468ecaeba37b3d8cf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 98847fbcde9176c4f944ab0e53ac00bf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -84,7 +84,7 @@ Material:
       second: 0
     - first:
         name: _GlossMapScale
-      second: 0
+      second: 1
     - first:
         name: _Glossiness
       second: 0.5
@@ -121,7 +121,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.588, g: 0.588, b: 0.588, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 2, g: 2, b: 2, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 1}
