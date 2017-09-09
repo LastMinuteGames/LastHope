@@ -5,10 +5,13 @@ using UnityEngine;
 public class PowerPlantController : Interactable {
 
     public GameObject bridge;
-    public GameObject bridgeFloor;
+    public GameObject bridgeBlock;
     public Material baseColor;
     public Texture emissiveOff;
     public Texture emissiveOn;
+    public Material bridgeBaseColor;
+    public Texture bridgeEmissiveOff;
+    public Texture bridgeEmissiveOn;
 
     [SerializeField] private Transform bridgeEnergy;
 
@@ -18,6 +21,7 @@ public class PowerPlantController : Interactable {
     void Start ()
     {
         baseColor.SetTexture("_EmissionMap", emissiveOff);
+        bridgeBaseColor.SetTexture("_EmissionMap", bridgeEmissiveOff);
         AudioSources.instance.Play3DAmbientSound((int)AudiosSoundFX.Environment_Bridge_Bridge, bridgeEnergy.position, 0.6f);
     }
 
@@ -33,6 +37,7 @@ public class PowerPlantController : Interactable {
             running = true;
             ActivateBridge();
             baseColor.SetTexture("_EmissionMap", emissiveOn);
+            bridgeBaseColor.SetTexture("_EmissionMap", bridgeEmissiveOn);
             DialogueSystem.Instance.NextDialogue();
             string text = "Bridge activated";
             string from = "Power Plant";
@@ -65,14 +70,11 @@ public class PowerPlantController : Interactable {
 
     void ActivateBridge()
     {
-        bridgeFloor.GetComponent<BoxCollider>().isTrigger = true;
+        bridgeBlock.SetActive(false);
         for (int i = 0; i < bridge.transform.childCount; ++i)
         {
             GameObject child = bridge.transform.GetChild(i).gameObject;
-            if (child.name.Contains("Energy") && !child.activeInHierarchy)
-            {
-                child.SetActive(true);
-            }
-        }
+            child.SetActive(true);
+        }        
     }
 }
