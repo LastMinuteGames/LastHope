@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 33132198167049372}
   - component: {fileID: 23172280039451198}
   - component: {fileID: 64892186966009500}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Col_PowerPlant1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ MeshCollider:
   m_GameObject: {fileID: 1586647813876142}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 1
   m_InflateMesh: 0
@@ -269,3 +269,4 @@ MonoBehaviour:
   baseColor: {fileID: 2100000, guid: 7acb9ac145f14ed43a2783832f64c7c6, type: 2}
   emissiveOff: {fileID: 2800000, guid: a9e208eb20d75fe4787f8d9a456ed12f, type: 3}
   emissiveOn: {fileID: 2800000, guid: 3ba16df5f1e4f824d8dc713b16803ff7, type: 3}
+  bridgeEnergy: {fileID: 0}

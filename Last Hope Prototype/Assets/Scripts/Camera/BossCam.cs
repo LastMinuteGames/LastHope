@@ -2,70 +2,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossCam : MonoBehaviour
-{
+public class BossCam : MonoBehaviour {
 
-    [SerializeField]
-    private Transform targetT;
-    [SerializeField]
-    private float moveSpeed = 20f;
-    [SerializeField]
-    private float tiltAngle;
+    [SerializeField] private Transform bossCamTravelT;
+    [SerializeField] private float movementSmooth = 0.2f;
 
-    private Transform camT;
+    private Animator animator;
     private Transform pivotT;
-    private Transform bossT;
-    private Vector3 pivotEulers;
-    private Vector3 dirToBoss;
+    private Transform camT;
+    private Transform playerT;
+    private Vector3 targetPos;
+
+    private bool following = false;
 
 
     private void Awake()
     {
+        playerT = GameObject.FindGameObjectWithTag("Player").transform;
+
+        animator = bossCamTravelT.gameObject.GetComponent<Animator>();
         camT = GetComponentInChildren<Camera>().transform;
         pivotT = camT.parent;
-        pivotEulers = pivotT.rotation.eulerAngles;
     }
 
-    private void Start()
+    private void Start ()
     {
-        OnEnable();
+        camT.parent = bossCamTravelT;
+        camT.localPosition = Vector3.zero;
+        camT.localRotation = Quaternion.identity;
+        Animate();
     }
 
-    private void OnEnable()
+    public void Animate()
     {
-        bossT = GameObject.FindGameObjectWithTag("Boss").transform;
-
-        transform.localRotation = Quaternion.Euler(0, -90, 0);
-
-        targetT = GameObject.FindGameObjectWithTag("Player").transform;
-        pivotT.localRotation = Quaternion.Euler(tiltAngle, pivotEulers.y, pivotEulers.z);
+        animator.SetTrigger("Activated");
     }
 
-    void Update()
+    public void StartFollowing()
     {
-        HandleRotationMovement();
+        following = true;
     }
 
-
-    void FixedUpdate()
+    private void Update()
     {
-        dirToBoss = bossT.position - transform.position;
+        if (following)
+        {
+            targetPos = new Vector3(playerT.position.x, camT.position.y, camT.position.z);
+            camT.position = Vector3.Lerp(camT.position, targetPos, movementSmooth);
+        }
     }
+    private void FixedUpdate()
+    {
 
+    }
     private void LateUpdate()
     {
-        FollowTarget();
-    }
 
-    private void HandleRotationMovement()
-    {
-        transform.localRotation = Quaternion.LookRotation(dirToBoss, Vector3.up);
     }
 
 
-    private void FollowTarget()
-    {
-        transform.position = Vector3.Lerp(transform.position, targetT.position, Time.deltaTime * moveSpeed);
-    }
+
 
 }

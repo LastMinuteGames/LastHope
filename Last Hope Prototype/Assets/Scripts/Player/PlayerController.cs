@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement
     public float turnSpeed = 50;
-    //public float speed = 10;
+    public Transform camRigT;
     public Transform camT;
     private CameraShake camShake;
     private ControllerEvents controllerEvents;
@@ -203,9 +203,10 @@ public class PlayerController : MonoBehaviour
 
         canDodge = true;
 
-        camT = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        camShake = camT.GetComponent<CameraShake>();
-        controllerEvents = camT.GetComponent<ControllerEvents>();
+        camRigT = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        camT = camRigT.GetComponentInChildren<Camera>().transform;
+        camShake = camRigT.GetComponent<CameraShake>();
+        controllerEvents = camRigT.GetComponent<ControllerEvents>();
         rigidBody = GetComponent<Rigidbody>();
 
         DisableSwordEmitter();
@@ -787,6 +788,7 @@ public class PlayerController : MonoBehaviour
         canSpecialAttack = false;
         if (stance.type == PlayerStanceType.STANCE_BLUE && LoseEnergy(1))
         {
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_ReleaseBlueAttack);
             canSpecialAttack = true;
             neutralSphere.gameObject.SetActive(true);
             spawnedParticle = Instantiate(neutralAttackParticles, neutralSphere.transform.position + new Vector3(0, 1, 0), neutralSphere.transform.rotation);

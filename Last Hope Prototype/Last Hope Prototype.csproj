@@ -18,7 +18,7 @@
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
-    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
+    <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -66,6 +69,9 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -107,7 +113,10 @@
     <Compile Include="Assets\Scripts\Boss\FireAttackEvent.cs" />
     <Compile Include="Assets\Scripts\Boss\LimitSpaceEvent.cs" />
     <Compile Include="Assets\Scripts\Boss\RestingEvent.cs" />
+    <Compile Include="Assets\Scripts\Boss\RocketController.cs" />
     <Compile Include="Assets\Scripts\Boss\RocketRainEvent.cs" />
+    <Compile Include="Assets\Scripts\Boss\RocketSpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Boss\RocketSpawnPoint.cs" />
     <Compile Include="Assets\Scripts\Boss\TurretController.cs" />
     <Compile Include="Assets\Scripts\Camera\BossCam.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraCollision.cs" />
@@ -117,7 +126,6 @@
     <Compile Include="Assets\Scripts\Camera\CameraShake.cs" />
     <Compile Include="Assets\Scripts\Camera\FreeLookCam.cs" />
     <Compile Include="Assets\Scripts\Camera\MainCameraManager.cs" />
-    <Compile Include="Assets\Scripts\Camera\MainCameraManagerEditor.cs" />
     <Compile Include="Assets\Scripts\ColliderManager.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\Attack.cs" />
     <Compile Include="Assets\Scripts\ComboSystem\AttackManager.cs" />
@@ -183,21 +191,6 @@
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerRedSpecialAttack.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\FakePlayerRespawn.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatorBehaviours\PlayerBaseAttackState.cs" />
-    <Compile Include="Assets\Scripts\Player\DashTest.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\IPlayerFSM.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\PlayerFSM.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerAttackState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerBlockState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerChangeStanceState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerDamageState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerDeadState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerDodgeState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerInteractState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerMoveBlockState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerMoveState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerRespawnState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerSpecialAttackState.cs" />
-    <Compile Include="Assets\Scripts\Player\FSM\States\PlayerStateIdle.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStance.cs" />
@@ -206,7 +199,8 @@
     <Compile Include="Assets\Scripts\SettingsMenu.cs" />
     <Compile Include="Assets\Scripts\Sound\AudioSources.cs" />
     <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\Sound\soundmanagementTest.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundManager2.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundManagerDemo.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\TrafficLightController.cs" />

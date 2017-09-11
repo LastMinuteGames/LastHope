@@ -41,7 +41,6 @@ public class ControllerEvents : MonoBehaviour
         if (state.IsConnected)
         {
             HandleRumble();
-
         }
     }
 
@@ -68,6 +67,9 @@ public class ControllerEvents : MonoBehaviour
                     rumbleEvents.Remove(rumbleEvents[i]);
                 }
             }
+        } else
+        {
+            GamePad.SetVibration(playerIndex, 0, 0);
         }
     }
 

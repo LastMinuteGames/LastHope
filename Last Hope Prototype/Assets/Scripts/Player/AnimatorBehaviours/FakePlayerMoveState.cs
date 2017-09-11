@@ -29,7 +29,29 @@ public class FakePlayerMoveState : StateMachineBehaviour {
 
         if (!attacking)
         {
-            if (InputManager.Interact() && playerController.canInteract)
+            if (InputManager.LightAttack())
+            {
+                animator.SetTrigger("lightAttack");
+                attacking = true;
+            }
+            else if (InputManager.HeavyAttack())
+            {
+                animator.SetTrigger("heavyAttack");
+                attacking = true;
+            }
+            else if (InputManager.SpecialAttack())
+            {
+                switch (playerController.SpecialAttackToPerform())
+                {
+                    case PlayerStanceType.STANCE_BLUE:
+                        animator.SetTrigger("blueSpecialAttack");
+                        break;
+                    case PlayerStanceType.STANCE_RED:
+                        animator.SetTrigger("redSpecialAttack");
+                        break;
+                }
+            }
+            else if(InputManager.Interact() && playerController.canInteract)
             {
                 animator.SetTrigger("interact");
             }
@@ -53,28 +75,6 @@ public class FakePlayerMoveState : StateMachineBehaviour {
             else if (InputManager.Dodge() && playerController.canDodge)
             {
                 playerController.anim.SetTrigger("dodge");
-            }
-            else if (InputManager.LightAttack())
-            {
-                animator.SetTrigger("lightAttack");
-                attacking = true;
-            }
-            else if (InputManager.HeavyAttack())
-            {
-                animator.SetTrigger("heavyAttack");
-                attacking = true;
-            }
-            else if (InputManager.SpecialAttack())
-            {
-                switch (playerController.SpecialAttackToPerform())
-                {
-                    case PlayerStanceType.STANCE_BLUE:
-                        animator.SetTrigger("blueSpecialAttack");
-                        break;
-                    case PlayerStanceType.STANCE_RED:
-                        animator.SetTrigger("redSpecialAttack");
-                        break;
-                }
             }
             else
             {

@@ -52,11 +52,11 @@ public class PickUpController : MonoBehaviour
                 {
                     case (PickUpType.HP):
                         other.gameObject.GetComponent<PlayerController>().IncreaseMaxHealthAndHeal(value);
-                        audioToPlay = (int)AudiosSoundFX.Environment_PowerUps;
+                        audioToPlay = (int)AudiosSoundFX.Environment_Unclassified_PowerUp;
                         break;
                     case (PickUpType.ENERGY):
                         other.gameObject.GetComponent<PlayerController>().IncreaseMaxEnergy(value);
-                        audioToPlay = (int)AudiosSoundFX.Environment_PowerUps;
+                        audioToPlay = (int)AudiosSoundFX.Environment_Unclassified_PowerUp;
                         break;
                 }
             }

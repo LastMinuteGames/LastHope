@@ -11,30 +11,40 @@ public class BossManager : MonoBehaviour
     public BossPhase currentPhase;
     public Slider hpSlider;
     public GameObject canvasGO;
+    public Transform camTargetT;
+    public GameObject rocketSpawnManager;
+    
 
     private int currentPhaseId;
     private bool isDead = false;
     private bool isAwaken = false;
     private Animator animator;
-    private MainCameraManager mainCameraManager;
-
-
+    private FreeLookCam freeLookCam;
+    private BossCam bossCam;
 
     void Start()
     {
         //StartBossFight();
         animator = GetComponent<Animator>();
-        mainCameraManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraManager>();
+        freeLookCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FreeLookCam>();
+        bossCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BossCam>();
+        
     }
 
     public void StartBossFight()
     {
         Debug.Log("start boss fight");
         isAwaken = true;
-        canvasGO.SetActive(true);
-        if (mainCameraManager)
+        if (rocketSpawnManager != null)
         {
-            mainCameraManager.SwapCameraMode();
+            GameObject prefab;
+            prefab = (GameObject)Instantiate(rocketSpawnManager);
+            prefab.name = "RocketSpawnManager";
+        }
+        canvasGO.SetActive(true);
+        if (bossCam)
+        {
+            bossCam.StartFollowing();
         }
         if (bossPhases.Length > 0)
         {
@@ -51,9 +61,7 @@ public class BossManager : MonoBehaviour
         {
             currentPhase.UpdatePhase();
         }
-
     }
-
 
     void TerminateCurrentPhase()
     {
@@ -70,7 +78,6 @@ public class BossManager : MonoBehaviour
         }
     }
 
-
     public void TurretAttack()
     {
         if (isDead)
@@ -81,7 +88,6 @@ public class BossManager : MonoBehaviour
         animator.SetTrigger("isDamaged");
         UpdateHpSlider();
         Debug.Log("so much aww");
-
     }
 
     void BossDeath()
@@ -95,17 +101,13 @@ public class BossManager : MonoBehaviour
 
     void UpdateHpSlider()
     {
-
         hpSlider.value = 100 * (bossPhases.Length - currentPhaseId) / (float)bossPhases.Length;
     }
-
 
     public void Dead()
     {
         Debug.Log("Dead animation event!");
         SceneManager.LoadScene("WinScreen");
     }
-
-
 
 }

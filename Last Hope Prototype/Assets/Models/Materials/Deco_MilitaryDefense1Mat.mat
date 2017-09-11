@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Deco_MilitaryDefense1Mat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _NORMALMAP
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 75c04e195ee6ab446aafbc2a0ebb3c23, type: 3}
+        m_Texture: {fileID: 2800000, guid: cca0b6df322264a4ab40ac92420a25cc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -42,25 +42,25 @@ Material:
     - first:
         name: _EmissionMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f1cf2f42c6268e941b706127a03e365b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: bc4290cdc85ad94479060c3acfd88a56, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1f038f58bc13714f9fff43f818c3220, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0db766009e3e1b244b1af1239ef09e83, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 89d16481f640dfc489fc0e2416ec68ef, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -84,7 +84,7 @@ Material:
       second: 0
     - first:
         name: _GlossMapScale
-      second: 1
+      second: 0.2
     - first:
         name: _Glossiness
       second: 0.2
@@ -124,4 +124,4 @@ Material:
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}

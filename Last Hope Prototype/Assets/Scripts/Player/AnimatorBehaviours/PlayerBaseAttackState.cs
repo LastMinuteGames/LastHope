@@ -124,6 +124,10 @@ public class PlayerBaseAttackState : StateMachineBehaviour
                     break;
             }
         }
+        else if (InputManager.Dodge() && playerController.canDodge)
+        {
+            playerController.anim.SetTrigger("dodge");
+        }
 
         //If we have some input but is not available for current state; result must be null
         if ((availableAttacks == null || result != null) && availableAttacks.Contains(result) == false)

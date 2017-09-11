@@ -15,10 +15,13 @@ public class EnemySpawnEvent : BossEvent
         base.StartEvent();
         Debug.Log("starting spawnEvent");
         manager = GameObject.Find("EnemySpawnManager").GetComponent<EnemySpawnManager>();
+ 
         for (int i = 0; i < spawnPoints.Count; ++i)
         {
             spawnPoints[i].done = false;
+            spawnPoints[i].delay = spawnPoints[i].initialDelay;
         }
+
 
     }
 
@@ -32,6 +35,7 @@ public class EnemySpawnEvent : BossEvent
             {
                 manager.SpawnEnemy(spawnPoints[i]);
                 spawnPoints[i].done = true;
+                spawnPoints[i].delay = spawnPoints[i].initialDelay;
                 //Destroy(spawnPoints[i]);
                 //spawnPoints.RemoveAt(i);
             }

@@ -2,28 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainCameraManager : MonoBehaviour {
 
-    private FreeLookCam freeLookCam;
-    private BossCam bossCam;
+[RequireComponent (typeof (FreeLookCam))]
+[RequireComponent (typeof (BossCam))]
+public class MainCameraManager : MonoBehaviour
+{
 
+    FreeLookCam freeLookCam;
+    CameraCollision cameraCollision;
+    CameraShake cameraShake;
 
-    void Awake ()
+    BossCam bossCam;
+
+    void Awake()
     {
         freeLookCam = GetComponent<FreeLookCam>();
+        cameraCollision = GetComponent<CameraCollision>();
+        cameraShake = GetComponent<CameraShake>();
+
         bossCam = GetComponent<BossCam>();
     }
 
-    void Start ()
+    void Start()
     {
-        bossCam.enabled = false;
-        freeLookCam.enabled = true;
+        AudioSources.instance.PlayMusic((int)AudiosMusic.MainTheme);
     }
 
-    public void SwapCameraMode ()
+    void Update ()
     {
-        freeLookCam.enabled = !freeLookCam.enabled;
-        bossCam.enabled = !bossCam.enabled;
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    SetBossCam();
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    SetFreeCam();
+        //}
     }
+
+    public void SetBossCam()
+    {
+        freeLookCam.enabled = false;
+        cameraCollision.enabled = false;
+        cameraShake.enabled = false;
+
+        bossCam.enabled = true;
+    }
+
+    public void SetFreeCam()
+    {
+        freeLookCam.enabled = true;
+        cameraCollision.enabled = true;
+        cameraShake.enabled = true;
+
+        bossCam.enabled = false;
+    }
+
 
 }
