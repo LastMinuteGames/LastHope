@@ -128,9 +128,11 @@ public class GenericCombatEvent : MonoBehaviour, EnemyObserver
     virtual protected void EventStart()
     {
         status = EVENT_STATUS.STARTED;
-        target.hpSlider.gameObject.SetActive(true);
         if (target != null)
+        {
+            target.hpSlider.gameObject.SetActive(true);
             target.alive = true;
+        }
         //Debug.Log("Artillery event started");
         BlockExits();
     }
