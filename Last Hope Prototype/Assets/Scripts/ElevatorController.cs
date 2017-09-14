@@ -20,6 +20,8 @@ public class ElevatorController : Interactable
 
     private MainCameraManager mainCameraManager;
 
+    public Animator anim;
+
     // Use this for initialization
     void Start()
     {
@@ -45,6 +47,7 @@ public class ElevatorController : Interactable
             {
                 moving = false;
                 elevatorWalls.SetActive(false);
+                anim.SetBool("running", false);
             }
         }
     }
@@ -53,6 +56,7 @@ public class ElevatorController : Interactable
     {
         if (CanInteract())
         {
+            anim.SetBool("running", true);
             activated = true;
             ActivateElevator();
             DialogueSystem.Instance.NextDialogue();

@@ -5,7 +5,7 @@ using UnityEngine;
 public class OutOfElevator : MonoBehaviour {
 
     public MeshCollider fence;
-    public Animator elevator;
+    public Animator wall;
     private bool closed = false;
 
 	// Use this for initialization
@@ -25,7 +25,7 @@ public class OutOfElevator : MonoBehaviour {
             closed = true;
             Debug.Log("Cierra!");
             fence.enabled = true;
-            elevator.SetBool("close", true);
+            wall.SetBool("close", true);
         }
     }
 }
