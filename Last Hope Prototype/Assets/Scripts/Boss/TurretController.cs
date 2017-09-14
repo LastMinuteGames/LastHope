@@ -20,10 +20,8 @@ public class TurretController : Interactable
         if (CanInteract())
         {
             activated = true;
-            if (bossManager)
-            {
-                bossManager.TurretAttack();
-            }
+            StartCoroutine(Attack());
+            
         }
     }
 
@@ -33,7 +31,15 @@ public class TurretController : Interactable
         return !activated;
     }
 
-
+    IEnumerator Attack()
+    {
+        //print(Time.time);
+        yield return new WaitForSeconds(0.5f);
+        if (bossManager)
+        {
+            bossManager.TurretAttack();
+        }
+    }
 
 
 }
