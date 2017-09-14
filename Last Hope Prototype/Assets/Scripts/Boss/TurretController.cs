@@ -14,9 +14,16 @@ public class TurretController : Interactable
     private BossManager bossManager;
     private bool activated = false;
 
+    [SerializeField]
+    private Material baseColor;
+    [SerializeField]
+    private Texture emissiveOff;
+    [SerializeField]
+    private Texture emissiveOn;
 
     public void Start()
     {
+        baseColor.SetTexture("_EmissionMap", emissiveOn);
         bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponentInParent<BossManager>();
         //canon = canon.GetComponent<Animator>();
     }
@@ -53,6 +60,7 @@ public class TurretController : Interactable
         {
             bossManager.TurretAttack();
         }
+        baseColor.SetTexture("_EmissionMap", emissiveOff);
     }
 
 
