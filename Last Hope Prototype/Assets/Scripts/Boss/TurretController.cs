@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class TurretController : Interactable
 {
-
+    [SerializeField]
+    private GameObject glow;
+    [SerializeField]
+    private GameObject laser;
+    [SerializeField]
+    private Animator canon;
     private BossManager bossManager;
     private bool activated = false;
 
@@ -13,6 +18,7 @@ public class TurretController : Interactable
     public void Start()
     {
         bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponentInParent<BossManager>();
+        //canon = canon.GetComponent<Animator>();
     }
 
     public override void Run()
@@ -21,7 +27,8 @@ public class TurretController : Interactable
         {
             activated = true;
             StartCoroutine(Attack());
-            
+            glow.GetComponent<ParticleSystem>().Play();
+            StartCoroutine(LaserParticles());
         }
     }
 
@@ -31,10 +38,17 @@ public class TurretController : Interactable
         return !activated;
     }
 
+    IEnumerator LaserParticles()
+    {
+        yield return new WaitForSeconds(2.0f);
+        laser.GetComponent<ParticleSystem>().Play();
+        canon.SetTrigger("Shoot");
+    }
+
     IEnumerator Attack()
     {
         //print(Time.time);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(3.0f);
         if (bossManager)
         {
             bossManager.TurretAttack();
