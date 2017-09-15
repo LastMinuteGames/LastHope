@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElevatorController : Interactable
+public class ElevatorController : MonoBehaviour
 {
     private bool activated = false;
     private bool moving = false;
@@ -42,7 +42,6 @@ public class ElevatorController : Interactable
             speed += 0.0005f;
             velocity = Vector3.Lerp(start.position, end.position, speed * Time.deltaTime);
             elevatorRig.MovePosition(velocity);
-            //Debug.Log(velocity);
             if (elevator.transform.position.y >= end.position.y-0.1f)
             {
                 moving = false;
@@ -52,45 +51,21 @@ public class ElevatorController : Interactable
         }
     }
 
-    public override void Run()
-    {
-        if (CanInteract())
-        {
-            anim.SetBool("running", true);
-            activated = true;
-            ActivateElevator();
-            DialogueSystem.Instance.NextDialogue();
-        }
-    }
-
-    public override bool CanInteract()
-    {
-        return !activated;
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (activated == false && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            string text = "Press B to activate";
-            string from = "Elevator";
-            DialogueSystem.Instance.AddDialogue(text, from);
+            anim.SetBool("running", true);
+            activated = true;
+            ActivateElevator();
         }
     }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !activated)
-        {
-            DialogueSystem.Instance.NextDialogue();
-        }
-    }
+    
 
     void ActivateElevator()
     {
         mainCameraManager.SetBossCam();
         moving = true;
         elevatorWalls.SetActive(true);
-        DialogueSystem.Instance.NextDialogue();
     }
 }

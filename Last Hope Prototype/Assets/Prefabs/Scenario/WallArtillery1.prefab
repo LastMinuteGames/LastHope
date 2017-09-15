@@ -210,8 +210,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1884983931293418}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 35, y: -2.8737335, z: 40}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -95, y: -2.8737335, z: 40}
+  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
   m_Children:
   - {fileID: 4220861466998204}
   m_Father: {fileID: 0}
@@ -421,6 +421,9 @@ MonoBehaviour:
   baseColor: {fileID: 2100000, guid: 4fbc00ed764745e4d884035110699d9a, type: 2}
   emissiveOff: {fileID: 2800000, guid: 171a16e376cc3c548a02804b1144e604, type: 3}
   emissiveOn: {fileID: 2800000, guid: eacade4f577ef434c9da8a04bedc112d, type: 3}
+  turretRotation: 10
+  rot: {fileID: 4220861466998204}
+  speed: 0.5
 --- !u!198 &198107037730577592
 ParticleSystem:
   m_ObjectHideFlags: 1

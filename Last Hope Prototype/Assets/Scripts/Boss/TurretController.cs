@@ -21,11 +21,31 @@ public class TurretController : Interactable
     [SerializeField]
     private Texture emissiveOn;
 
+    [SerializeField]
+    private float turretRotation;
+    [SerializeField]
+    private Transform rot;
+    private float initialRot = 0;
+    private bool rotating = false;
+    [SerializeField]
+    private float speed = 0.5f;
+    private Vector3 velocity;
+
+    private bool doOnce = false;
+
     public void Start()
     {
         baseColor.SetTexture("_EmissionMap", emissiveOn);
         bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponentInParent<BossManager>();
-        //canon = canon.GetComponent<Animator>();
+        initialRot = rot.transform.localEulerAngles.z;
+    }
+
+    void FixedUpdate()
+    {
+        if (rotating)
+        {
+            RotateTurret();
+        }
     }
 
     public override void Run()
@@ -36,6 +56,7 @@ public class TurretController : Interactable
             StartCoroutine(Attack());
             glow.GetComponent<ParticleSystem>().Play();
             StartCoroutine(LaserParticles());
+            rotating = true;
         }
     }
 
@@ -43,6 +64,32 @@ public class TurretController : Interactable
     public override bool CanInteract()
     {
         return !activated;
+    }
+
+    private void RotateTurret()
+    {
+        if (turretRotation >= 0)
+        {
+            if (rot.transform.localEulerAngles.z >= initialRot + turretRotation)
+            {
+                rotating = false;
+            }
+        }
+        else
+        {
+            if (!doOnce)
+            {
+                rot.Rotate(new Vector3(0, 0, 1), -1);
+                doOnce = true;
+            }
+            if (rot.transform.localEulerAngles.z < initialRot + 360 - Math.Abs(turretRotation))
+            {
+                rotating = false;
+            }
+        }
+        velocity = Vector3.Lerp(new Vector3(0, 0, initialRot), new Vector3(0, 0, turretRotation), speed * Time.deltaTime);
+        rot.Rotate(new Vector3(0, 0, 1), velocity.z);
+
     }
 
     IEnumerator LaserParticles()
