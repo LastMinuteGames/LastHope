@@ -631,15 +631,6 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.RotateTowards(transform.rotation, idealRotation, angle);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSmooth);
         }
-        else
-        {
-            Debug.Log("loco!");
-        }
-
-        //Debug.DrawRay(transform.position, camForward, Color.black);
-        //Debug.DrawRay(transform.position, camRight, Color.red);
-        //Debug.DrawRay(transform.position, transform.forward, Color.cyan);
-        //Debug.DrawRay(transform.position, targetDirection, Color.blue);
     }
 
     public void PendingMovement(float h, float v)

@@ -81,7 +81,6 @@ public class FreeLookCam : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log("pinoccio");
         if (!lockMode)
         {
             HandleFreeRotationMovement();
@@ -133,7 +132,7 @@ public class FreeLookCam : MonoBehaviour
     private void HandleLockRotationMovement()
     {
         dirToBoss = lockTargetT.position - pivotT.position;
-        Debug.DrawRay(camT.position, dirToBoss, Color.red);
+        //Debug.DrawRay(camT.position, dirToBoss, Color.red);
 
         pivotDir = dirToBoss;
         pivotDir.x = 0;
