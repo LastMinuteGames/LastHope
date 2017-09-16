@@ -110,7 +110,8 @@ public class PlayerController : MonoBehaviour
     private int initialMaxEnergy;
 
     // Movement
-    public float turnSpeed = 50;
+    public float turnSpeed = 300;
+    public float turnSmooth = 0.85f;
     public Transform camRigT;
     public Transform camT;
     private CameraShake camShake;
@@ -128,8 +129,6 @@ public class PlayerController : MonoBehaviour
     private float dodgeTimer;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
-    private Vector3 camForward;
-    private Vector3 camRight;
     private Dictionary<string, Attack> playerAttacks;
 
     //UI
@@ -614,24 +613,33 @@ public class PlayerController : MonoBehaviour
 
     public void Rotate()
     {
-        camForward = camT.TransformDirection(Vector3.forward);
+        Vector3 camForward = camT.forward;
         camForward.y = 0;
         camForward.Normalize();
-
-        Debug.DrawRay(transform.position, camForward, Color.black);
-        Debug.DrawRay(transform.position, transform.forward, Color.cyan);
-
-        camRight = new Vector3(camForward.z, 0, -camForward.x);
-        Debug.DrawRay(transform.position, camRight, Color.red);
+        Vector3 camRight = new Vector3(camForward.z, 0, -camForward.x);
 
         targetDirection = camForward * movementVertical + camRight * movementHorizontal;
-        Debug.DrawRay(transform.position, targetDirection, Color.blue);
 
         if (targetDirection != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+            targetDirection.Normalize();
+
+            float angle = Vector3.Angle(transform.forward, targetDirection);
+            float maxDeltaAngle = turnSpeed * Time.fixedDeltaTime * 10;
+            angle = Mathf.Clamp(angle, -maxDeltaAngle, maxDeltaAngle);
+            Quaternion idealRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+            Quaternion targetRotation = Quaternion.RotateTowards(transform.rotation, idealRotation, angle);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSmooth);
         }
+        else
+        {
+            Debug.Log("loco!");
+        }
+
+        //Debug.DrawRay(transform.position, camForward, Color.black);
+        //Debug.DrawRay(transform.position, camRight, Color.red);
+        //Debug.DrawRay(transform.position, transform.forward, Color.cyan);
+        //Debug.DrawRay(transform.position, targetDirection, Color.blue);
     }
 
     public void PendingMovement(float h, float v)
@@ -852,7 +860,7 @@ public class PlayerController : MonoBehaviour
             if (interactable != null && interactable.CanInteract())
             {
                 canInteract = true;
-                
+
             }
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
@@ -867,7 +875,8 @@ public class PlayerController : MonoBehaviour
                     AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_AttackHit);
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");
-                }else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true)
+                }
+                else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true)
                 {
                     AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_BlockAttack);
                 }

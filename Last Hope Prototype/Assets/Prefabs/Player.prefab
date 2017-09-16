@@ -3562,7 +3562,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525409397675270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 13}
+  m_LocalPosition: {x: 5, y: 1, z: 12}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4990196035050564}
@@ -4097,7 +4097,9 @@ MonoBehaviour:
   respawnManager: {fileID: 0}
   maxEnergy: 5
   currentEnergy: 1
-  turnSpeed: 50
+  turnSpeed: 300
+  turnSmooth: 0.85
+  camRigT: {fileID: 0}
   camT: {fileID: 0}
   movement: {x: -0.3920014, y: 0, z: 0.10013157}
   targetDirection: {x: -0.6162844, y: 0, z: 0.1574217}
