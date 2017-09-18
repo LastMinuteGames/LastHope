@@ -381,7 +381,6 @@ public class PlayerController : MonoBehaviour
         switch (typeStance)
         {
             case PlayerStanceType.STANCE_NONE:
-                Debug.Log("NO STANCE");
                 this.stance = stances[typeStance];
                 currentStats = baseStats;
                 ChangeSwordParticles(typeStance);
@@ -390,7 +389,6 @@ public class PlayerController : MonoBehaviour
             case PlayerStanceType.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
-                    Debug.Log("BLUE STANCE");
                     this.stance = stances[typeStance];
                     currentStats = baseStats * blueStats;
                     ChangeSwordParticles(typeStance);
@@ -400,7 +398,6 @@ public class PlayerController : MonoBehaviour
             case PlayerStanceType.STANCE_RED:
                 if (redAbilityEnabled)
                 {
-                    Debug.Log("RED STANCE");
                     this.stance = stances[typeStance];
                     currentStats = baseStats * redStats;
                     ChangeSwordParticles(typeStance);

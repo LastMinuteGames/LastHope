@@ -21,6 +21,8 @@ public class GenericCombatEvent : MonoBehaviour, EnemyObserver
     protected EVENT_STATUS status = EVENT_STATUS.DISABLED;
     protected TargetController target;
 
+    [SerializeField]
+    protected EnemyBehaviour behaviour = EnemyBehaviour.EB_DEFAULT;
 
     [SerializeField]
     protected List<EnemySpawnPoint> reusableSpawnPoints = new List<EnemySpawnPoint>();
@@ -38,7 +40,7 @@ public class GenericCombatEvent : MonoBehaviour, EnemyObserver
         if (enemy != null)
         {
             enemy.Autokill = false;
-            enemy.behaviour = EnemyBehaviour.EB_ARTILLERY;
+            enemy.behaviour = behaviour;
             enemies.Add(enemy);
         }
     }
@@ -86,7 +88,43 @@ public class GenericCombatEvent : MonoBehaviour, EnemyObserver
 
     protected virtual void UpdateEvent()
     {
+        if (currentWave.IsFinished()) //Next wave!
+        {
+            //currentWave.FinishDebug();
+            waves.RemoveAt(0);
+            if (waves.Count > 0)
+            {
+                currentWave = waves[0];
+                List<Spawn> spawns = currentWave.StartWave();
+                //Debug.Log("Spawns Start Wave: " + spawns.Count);
+                AddSpawnsToPendingEnemies(spawns);
+            }
+            else
+            {
+                FinishedEvent();
 
+                //string text = "Nice job! But the Colossal wall is under attack!";
+                //string from = "";
+                //DialogueSystem.Instance.AddDialogue(text, from, 3.5f);
+            }
+        }
+        else //Update Waves!!!
+        {
+            Dictionary<EnemyType, uint> deadEnemies = CleanUpEnemies();
+            AddSpawnsToPendingEnemies(currentWave.RemoveEnemies(deadEnemies));
+            float seconds = Time.realtimeSinceStartup;
+            List<EnemyType> keys = new List<EnemyType>(enemiesPendingToSpawn.Keys);
+            for (int i = 0; i < keys.Count; ++i)
+            {
+                EnemyType type = keys[i];
+                if (enemiesPendingToSpawn[type] > 0 && (lastSpawnTime == 0 || seconds - lastSpawnTime > delayBetweenSpawns))
+                {
+                    enemiesPendingToSpawn[type]--;
+                    SpawnEnemyType(type);
+                    lastSpawnTime = seconds;
+                }
+            }
+        }
     }
 
     void Update()
@@ -117,7 +155,7 @@ public class GenericCombatEvent : MonoBehaviour, EnemyObserver
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (status != EVENT_STATUS.STARTED)
+            if (status != EVENT_STATUS.STARTED && status != EVENT_STATUS.FINISHED)
             {
                 player = other.gameObject.GetComponent<PlayerController>();
                 EventStart();
@@ -137,6 +175,12 @@ public class GenericCombatEvent : MonoBehaviour, EnemyObserver
         BlockExits();
     }
 
+    virtual public void EventStart(PlayerController player)
+    {
+        this.player = player;
+        EventStart();
+    }
+
     protected void BlockExits()
     {
         foreach (GameObject eventWall in eventWalls)
@@ -151,6 +195,15 @@ public class GenericCombatEvent : MonoBehaviour, EnemyObserver
         {
             eventWall.SetActive(false);
         }
+    }
+
+    virtual protected void FinishedEvent()
+    {
+        currentWave = null;
+        status = EVENT_STATUS.FINISHED;
+
+        UnblockExits();
+        Debug.Log("GENERIC-PENE");
     }
 
     /*****************     Enemy Management ********************/

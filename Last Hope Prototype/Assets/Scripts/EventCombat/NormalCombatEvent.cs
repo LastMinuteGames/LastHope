@@ -5,13 +5,15 @@ using Assets.Scripts.EnemySpawnSystem;
 
 public class NormalCombatEvent : GenericCombatEvent
 {
+    [SerializeField]
+    public WaveBlueprint waveBP;
 
     override protected void InitData()
     {
         base.InitData();
 
         Wave wave = new Wave("1");
-        wave.AddEnemy(EnemyType.ET_TRASH, 3, 5);
+        wave.AddEnemy(EnemyType.ET_TRASH, waveBP.maxSpawnedEnemies, waveBP.totalEnemies);
 
         waves.Add(wave);
 
@@ -36,49 +38,10 @@ public class NormalCombatEvent : GenericCombatEvent
     //{
     //    base.EventStart();
     //}
+    
 
-    override protected void UpdateEvent()
+    protected override void FinishedEvent()
     {
-        if (currentWave.IsFinished()) //Next wave!
-        {
-            //currentWave.FinishDebug();
-            waves.RemoveAt(0);
-            if (waves.Count > 0)
-            {
-                currentWave = waves[0];
-                List<Spawn> spawns = currentWave.StartWave();
-                //Debug.Log("Spawns Start Wave: " + spawns.Count);
-                AddSpawnsToPendingEnemies(spawns);
-            }
-            else
-            {
-                currentWave = null;
-                status = EVENT_STATUS.FINISHED;
-                target.hpSlider.gameObject.SetActive(false);
-
-                UnblockExits();
-
-                //string text = "Nice job! But the Colossal wall is under attack!";
-                //string from = "";
-                //DialogueSystem.Instance.AddDialogue(text, from, 3.5f);
-            }
-        }
-        else //Update Waves!!!
-        {
-            Dictionary<EnemyType, uint> deadEnemies = CleanUpEnemies();
-            AddSpawnsToPendingEnemies(currentWave.RemoveEnemies(deadEnemies));
-            float seconds = Time.realtimeSinceStartup;
-            List<EnemyType> keys = new List<EnemyType>(enemiesPendingToSpawn.Keys);
-            for (int i = 0; i < keys.Count; ++i)
-            {
-                EnemyType type = keys[i];
-                if (enemiesPendingToSpawn[type] > 0 && (lastSpawnTime == 0 || seconds - lastSpawnTime > delayBetweenSpawns))
-                {
-                    enemiesPendingToSpawn[type]--;
-                    SpawnEnemyType(type);
-                    lastSpawnTime = seconds;
-                }
-            }
-        }
+        base.FinishedEvent();
     }
 }
