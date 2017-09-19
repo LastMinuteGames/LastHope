@@ -218,8 +218,8 @@ public class PlayerController : MonoBehaviour
         uiManager.UpdatePlayerStance(stance);
 
         // Dialogs
-        Invoke("DialogMove", 1);
-        Invoke("DialogRotate", 4.5f);
+        //Invoke("DialogMove", 1);
+        //Invoke("DialogRotate", 4.5f);
     }
 
     private void DialogMove()
