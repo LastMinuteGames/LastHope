@@ -83,7 +83,87 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Boss1_MortarAttack1
+      takeName: Boss1_MortarAttack1
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arms
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/L_Clavicle
+        weight: 1
+      - path: Root/L_Clavicle/L_Biceps
+        weight: 1
+      - path: Root/L_Clavicle/L_Biceps/L_Forearm
+        weight: 1
+      - path: Root/L_Clavicle/L_Biceps/L_Forearm/L_Hand
+        weight: 1
+      - path: Root/L_Mortars
+        weight: 1
+      - path: Root/L_Mortars/L_Mortar1
+        weight: 1
+      - path: Root/L_Mortars/L_Mortar2
+        weight: 1
+      - path: Root/L_Mortars/L_Mortar3
+        weight: 1
+      - path: Root/L_Mortars/L_Mortar4
+        weight: 1
+      - path: Root/L_Mortars/L_Mortar5
+        weight: 1
+      - path: Root/Neck
+        weight: 1
+      - path: Root/Neck/Head
+        weight: 1
+      - path: Root/R_Clavicle
+        weight: 1
+      - path: Root/R_Clavicle/R_Biceps
+        weight: 1
+      - path: Root/R_Clavicle/R_Biceps/R_Forearm
+        weight: 1
+      - path: Root/R_Clavicle/R_Biceps/R_Forearm/R_Hand
+        weight: 1
+      - path: Root/R_Mortars
+        weight: 1
+      - path: Root/R_Mortars/R_Mortar1
+        weight: 1
+      - path: Root/R_Mortars/R_Mortar2
+        weight: 1
+      - path: Root/R_Mortars/R_Mortar3
+        weight: 1
+      - path: Root/R_Mortars/R_Mortar4
+        weight: 1
+      - path: Root/R_Mortars/R_Mortar5
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
