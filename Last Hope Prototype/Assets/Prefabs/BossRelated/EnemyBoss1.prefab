@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 95264660663862400}
   m_Layer: 0
   m_Name: EnemyBoss1
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,8 +555,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166271963318896}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -5.6603427, y: 0, z: 800.70026}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 5, y: -179.3, z: 1001.1}
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_Children:
   - {fileID: 4263320845690280}
@@ -776,7 +776,7 @@ Animator:
   m_GameObject: {fileID: 1166271963318896}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 28623ca91cac50a4298ca1ff1d0b9275, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4504bc0866f0892499d1fe84aab575e6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

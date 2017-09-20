@@ -23,7 +23,7 @@ public class OutOfElevator : MonoBehaviour {
         if (!closed && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             closed = true;
-            Debug.Log("Cierra!");
+            //Debug.Log("Cierra!");
             fence.enabled = true;
             wall.SetBool("close", true);
         }

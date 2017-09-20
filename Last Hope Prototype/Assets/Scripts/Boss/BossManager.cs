@@ -11,8 +11,7 @@ public class BossManager : MonoBehaviour
     public BossPhase currentPhase;
     public Slider hpSlider;
     public GameObject canvasGO;
-    public Transform camTargetT;
-    public GameObject rocketSpawnManager;
+    //public GameObject rocketSpawnManager;
     
 
     private int currentPhaseId;
@@ -35,12 +34,12 @@ public class BossManager : MonoBehaviour
     {
         Debug.Log("start boss fight");
         isAwaken = true;
-        if (rocketSpawnManager != null)
-        {
-            GameObject prefab;
-            prefab = (GameObject)Instantiate(rocketSpawnManager);
-            prefab.name = "RocketSpawnManager";
-        }
+        //if (rocketSpawnManager != null)
+        //{
+        //    GameObject prefab;
+        //    prefab = (GameObject)Instantiate(rocketSpawnManager);
+        //    prefab.name = "RocketSpawnManager";
+        //}
         canvasGO.SetActive(true);
         if (bossCam)
         {
