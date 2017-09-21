@@ -145,35 +145,4 @@ public class FreeLookCam : MonoBehaviour
         rigTargetRot = Quaternion.LookRotation(rigDir);
         transform.localRotation = Quaternion.Lerp(transform.localRotation, rigTargetRot, hSmooth);
     }
-
-
-    public void LockOnTarget(Transform targetT)
-    {
-        if (targetT)
-        {
-            lockMode = true;
-            lockTargetT = targetT;
-            camCollision.ChangeMaxDistance(30);
-        }
-        else
-        {
-            lockMode = false;
-            lockTargetT = null;
-            camCollision.ChangeMaxDistance(15);
-        }
-        StartCoroutine(ModeTransition(1.5f));
-    }
-
-    private IEnumerator ModeTransition(float transitionTime)
-    {
-        hSmooth /= 8;
-        vSmooth /= 8;
-
-        yield return new WaitForSeconds(transitionTime);
-
-        hSmooth *= 8;
-        vSmooth *= 8;
-    }
-
-
 }
