@@ -4,67 +4,68 @@ using UnityEngine;
 
 public class ElevatorController : MonoBehaviour
 {
-    private bool activated = false;
-    private bool moving = false;
-    public GameObject elevator;
     public Transform start;
     public Transform end;
+    public float maxSpeed = 5.0f;
+    public float smoothTime = 10F;
+    public GameObject elevatorWalls;
+    public Animator elevatorAC;
 
-    [SerializeField]
-    private float speed = 5.0f;
-    [SerializeField]
-    private GameObject elevatorWalls;
-
-    private Vector3 velocity;
-    private Rigidbody elevatorRig;
-
+    private Transform elevatorRig;
     private MainCameraManager mainCameraManager;
+    private Rigidbody elevatorRigRB;
 
-    public Animator anim;
+    private bool activated = false;
+    private bool moving = false;
+    private Vector3 currentVelocity;
 
-    // Use this for initialization
-    void Start()
+
+    void Awake()
     {
-        elevatorRig = elevator.GetComponent<Rigidbody>();
+        elevatorRig = transform.parent;
         mainCameraManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        elevatorRigRB = elevatorRig.GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        if (moving)
+
+        if (!moving)
         {
-            speed += 0.0005f;
-            velocity = Vector3.Lerp(start.position, end.position, speed * Time.deltaTime);
-            elevatorRig.MovePosition(velocity);
-            if (elevator.transform.position.y >= end.position.y-0.1f)
-            {
-                moving = false;
-                elevatorWalls.SetActive(false);
-                anim.SetBool("running", false);
-            }
+            return;
         }
+
+        Vector3 targetPos = Vector3.SmoothDamp(elevatorRig.position, end.position, ref currentVelocity, smoothTime, maxSpeed);
+
+        //speed += 0.0005f;
+        //currentVelocity = Vector3.Lerp(start.position, end.position, speed * Time.deltaTime);
+
+        elevatorRigRB.MovePosition(targetPos);
+        float speedproportion = currentVelocity.magnitude / maxSpeed;
+        elevatorAC.speed = speedproportion;
+
+        if (elevatorRig.position.y >= end.position.y - 0.1f)
+        {
+            elevatorAC.SetBool("running", false);
+            moving = false;
+            elevatorWalls.SetActive(false);
+        }
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (activated == false && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            anim.SetBool("running", true);
-            activated = true;
             ActivateElevator();
         }
     }
-    
 
     void ActivateElevator()
     {
+        elevatorAC.SetBool("running", true);
         mainCameraManager.SetBossCam();
+        activated = true;
         moving = true;
         elevatorWalls.SetActive(true);
     }
