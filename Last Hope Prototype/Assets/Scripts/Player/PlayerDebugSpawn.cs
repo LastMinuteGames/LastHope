@@ -9,9 +9,12 @@ public class PlayerDebugSpawn : MonoBehaviour
 
     private PlayerDebugSpawnPoint oldSpawnPoint;
     private Transform playerT;
+    private MainCameraManager mainCameraManager;
+
 
     private void Start()
     {
+        mainCameraManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraManager>();
         playerT = GameObject.FindGameObjectWithTag("Player").transform;
         UpdateSpawn();
     }
@@ -21,6 +24,11 @@ public class PlayerDebugSpawn : MonoBehaviour
         oldSpawnPoint = spawnPoint;
         int i = (int)spawnPoint;
         playerT.position = spawnPoints[i].position;
+
+        if (spawnPoint == PlayerDebugSpawnPoint.BossFight)
+        {
+            mainCameraManager.SetBossCam();
+        }
     }
 
     private void Update()

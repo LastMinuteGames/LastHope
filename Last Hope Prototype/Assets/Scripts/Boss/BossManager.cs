@@ -55,7 +55,6 @@ public class BossManager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("boss update");
         if (isAwaken && !isDead)
         {
             currentPhase.UpdatePhase();
@@ -84,18 +83,17 @@ public class BossManager : MonoBehaviour
             return;
         }
         TerminateCurrentPhase();
-        animator.SetTrigger("isDamaged");
+        animator.SetTrigger("damaged");
         UpdateHpSlider();
-        Debug.Log("so much aww");
     }
 
     void BossDeath()
     {
-        animator.SetTrigger("isDead");
+        animator.SetTrigger("dead");
         isDead = true;
         isAwaken = false;
         canvasGO.SetActive(false);
-        Debug.Log("boss is dead oh nooooo");
+        Invoke("Dead", 4.0f);
     }
 
     void UpdateHpSlider()
@@ -105,7 +103,6 @@ public class BossManager : MonoBehaviour
 
     public void Dead()
     {
-        Debug.Log("Dead animation event!");
         SceneManager.LoadScene("WinScreen");
     }
 
