@@ -26,9 +26,9 @@ public class BossPhase : ScriptableObject
     {
         //Debug.Log("phase update");
         bool ret = currentEvent.UpdateEvent();
-        //Debug.Log(ret);
         if (!ret)
         {
+            currentEvent.TerminateEvent();
             currentEventId = (currentEventId + 1) % bossEvents.Length;
             currentEvent = bossEvents[currentEventId];
             currentEvent.StartEvent();

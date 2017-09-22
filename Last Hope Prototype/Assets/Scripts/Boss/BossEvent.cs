@@ -23,7 +23,7 @@ public abstract class BossEvent : ScriptableObject
 
     public virtual void TerminateEvent()
     {
-        Debug.Log("terminate event");
+        //Debug.Log("terminate event");
         ellapsedTime = 0;
     }
 }

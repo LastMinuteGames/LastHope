@@ -21,13 +21,16 @@ public class BossManager : MonoBehaviour
     private FreeLookCam freeLookCam;
     private BossCam bossCam;
 
+    private GameObject plasmaRay;
+
+
     void Start()
     {
         //StartBossFight();
         animator = GetComponent<Animator>();
         freeLookCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FreeLookCam>();
         bossCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BossCam>();
-        
+        plasmaRay = transform.Find("Root/Neck/Head/PlasmaRay").gameObject;
     }
 
     public void StartBossFight()
@@ -104,6 +107,17 @@ public class BossManager : MonoBehaviour
     public void Dead()
     {
         SceneManager.LoadScene("WinScreen");
+    }
+
+
+    public void StartRay()
+    {
+        plasmaRay.SetActive(true);
+    }
+
+    public void EndRay()
+    {
+        plasmaRay.SetActive(false);
     }
 
 }
