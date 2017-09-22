@@ -870,7 +870,31 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("BossAttack"))
+        {
+            bool canReceiveBossAttack = true;
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == true || anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == true)
+            {
+                canReceiveBossAttack = false; ;
+            }
+            else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true && Vector3.Dot(transform.forward, other.transform.parent.forward) < -0.2f)
+            {
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_BlockAttack);
+                canReceiveBossAttack = false;
+            }
+
+            if (canReceiveBossAttack)
+            {
+                blocking = false;
+                SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_AttackHit);
+                TakeDamage(50);
+                anim.SetTrigger("damaged");
+            }
+        }
     }
+
     public void OnTriggerExit(Collider other)
     {
         // TODO: Possible bug if two interactable triggers are colliding with the player and one exits
