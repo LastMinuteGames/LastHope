@@ -10,6 +10,7 @@ public class RestingEvent : BossEvent
     {
         base.StartEvent();
         Debug.Log("starting RestingEvent");
+        BossManager.instance.SetEmisiveIddle();
     }
 
 

@@ -11,7 +11,6 @@ public class TurretController : Interactable
     private GameObject laser;
     [SerializeField]
     private Animator canon;
-    private BossManager bossManager;
     private bool activated = false;
 
     [SerializeField]
@@ -36,7 +35,6 @@ public class TurretController : Interactable
     public void Start()
     {
         baseColor.SetTexture("_EmissionMap", emissiveOn);
-        bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponentInParent<BossManager>();
         initialRot = rot.transform.localEulerAngles.z;
     }
 
@@ -113,10 +111,7 @@ public class TurretController : Interactable
     {
         //print(Time.time);
         yield return new WaitForSeconds(3.0f);
-        if (bossManager)
-        {
-            bossManager.TurretAttack();
-        }
+        BossManager.instance.TurretAttack();
         baseColor.SetTexture("_EmissionMap", emissiveOff);
     }
 

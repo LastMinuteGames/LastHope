@@ -7,10 +7,19 @@ using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
+    public static BossManager instance = null;
+
     public BossPhase[] bossPhases;
     public BossPhase currentPhase;
+
     public Slider hpSlider;
     public GameObject canvasGO;
+
+    public GameObject bodyGO;
+    public Texture emisiveIdle;
+    public Texture emisiveMortar;
+    public Texture emisiveFist;
+    private Material bodyMaterial;
     //public GameObject rocketSpawnManager;
     
 
@@ -26,6 +35,18 @@ public class BossManager : MonoBehaviour
     private TurretsManager turretsManager;
 
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         //StartBossFight();
@@ -35,6 +56,7 @@ public class BossManager : MonoBehaviour
         plasmaRayGO = transform.Find("Root/Neck/Head/PlasmaRay").gameObject;
         armAttackGO = transform.Find("Root/L_Clavicle/L_Biceps/L_Forearm/L_Hand/ArmAttack").gameObject;
         turretsManager = GameObject.FindGameObjectWithTag("TurretManager").GetComponent<TurretsManager>();
+        bodyMaterial = bodyGO.GetComponent<SkinnedMeshRenderer>().material;
     }
 
     public void StartBossFight()
@@ -118,6 +140,28 @@ public class BossManager : MonoBehaviour
     }
 
 
+
+    #region Emisive management functions
+    public void SetEmisiveIddle()
+    {
+        bodyMaterial.SetTexture("_EmissionMap", emisiveIdle);
+    }
+
+    public void SetEmisiveMortar()
+    {
+        bodyMaterial.SetTexture("_EmissionMap", emisiveMortar);
+    }
+
+    public void SetEmisiveFist()
+    {
+        bodyMaterial.SetTexture("_EmissionMap", emisiveFist);
+    }
+    #endregion
+
+
+
+    #region EventAttacks animation-related functions
+
     public void StartRay()
     {
         plasmaRayGO.SetActive(true);
@@ -134,5 +178,7 @@ public class BossManager : MonoBehaviour
     {
         armAttackGO.SetActive(false);
     }
+    #endregion
+
 
 }

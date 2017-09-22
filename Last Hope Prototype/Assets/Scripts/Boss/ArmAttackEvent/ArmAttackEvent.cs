@@ -10,6 +10,7 @@ public class ArmAttackEvent : BossEvent
     public override void StartEvent()
     {
         base.StartEvent();
+        BossManager.instance.SetEmisiveFist();
         Debug.Log("starting ArmAttackEvent");
 
         if (bossAC == null)
