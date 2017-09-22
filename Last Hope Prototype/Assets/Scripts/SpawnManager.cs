@@ -7,6 +7,13 @@ public class SpawnManager : MonoBehaviour
     public SpawnPoint[] spawnPoints;
     public SpawnPoint currrentSpawn;
 
+    private BossManager bossManager;
+
+
+    void Awake()
+    {
+        bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossManager>();
+    }
     void Start()
     {
         if (spawnPoints.Length > 0)
@@ -38,6 +45,10 @@ public class SpawnManager : MonoBehaviour
 
     public Vector3 GetRespawnPoint()
     {
+        if (currrentSpawn == spawnPoints[spawnPoints.Length -1])
+        {
+            bossManager.StartBossFight();
+        }
         return currrentSpawn.transform.position;
     }
 

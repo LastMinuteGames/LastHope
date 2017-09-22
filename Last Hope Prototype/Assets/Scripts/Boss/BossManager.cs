@@ -22,6 +22,7 @@ public class BossManager : MonoBehaviour
     private BossCam bossCam;
 
     private GameObject plasmaRay;
+    private TurretsManager turretsManager;
 
 
     void Start()
@@ -31,11 +32,14 @@ public class BossManager : MonoBehaviour
         freeLookCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FreeLookCam>();
         bossCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BossCam>();
         plasmaRay = transform.Find("Root/Neck/Head/PlasmaRay").gameObject;
+        turretsManager = GameObject.FindGameObjectWithTag("TurretManager").GetComponent<TurretsManager>();
     }
 
     public void StartBossFight()
     {
         Debug.Log("start boss fight");
+        turretsManager.RestartBossCombat();
+
         isAwaken = true;
         //if (rocketSpawnManager != null)
         //{
@@ -43,6 +47,8 @@ public class BossManager : MonoBehaviour
         //    prefab = (GameObject)Instantiate(rocketSpawnManager);
         //    prefab.name = "RocketSpawnManager";
         //}
+        UpdateHpSlider();
+
         canvasGO.SetActive(true);
         if (bossCam)
         {
