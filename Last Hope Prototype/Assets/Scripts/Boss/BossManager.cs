@@ -21,7 +21,8 @@ public class BossManager : MonoBehaviour
     private FreeLookCam freeLookCam;
     private BossCam bossCam;
 
-    private GameObject plasmaRay;
+    private GameObject plasmaRayGO;
+    private GameObject armAttackGO;
     private TurretsManager turretsManager;
 
 
@@ -31,7 +32,8 @@ public class BossManager : MonoBehaviour
         animator = GetComponent<Animator>();
         freeLookCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FreeLookCam>();
         bossCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BossCam>();
-        plasmaRay = transform.Find("Root/Neck/Head/PlasmaRay").gameObject;
+        plasmaRayGO = transform.Find("Root/Neck/Head/PlasmaRay").gameObject;
+        armAttackGO = transform.Find("Root/L_Clavicle/L_Biceps/L_Forearm/L_Hand/ArmAttack").gameObject;
         turretsManager = GameObject.FindGameObjectWithTag("TurretManager").GetComponent<TurretsManager>();
     }
 
@@ -118,12 +120,19 @@ public class BossManager : MonoBehaviour
 
     public void StartRay()
     {
-        plasmaRay.SetActive(true);
+        plasmaRayGO.SetActive(true);
     }
-
     public void EndRay()
     {
-        plasmaRay.SetActive(false);
+        plasmaRayGO.SetActive(false);
+    }
+    public void EnableArmAttackCollider()
+    {
+        armAttackGO.SetActive(true);
+    }
+    public void DisableArmAttackCollider()
+    {
+        armAttackGO.SetActive(false);
     }
 
 }

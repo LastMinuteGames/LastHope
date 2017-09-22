@@ -107,7 +107,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.3998828
+        functionName: EnableArmAttackCollider
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 61e393e0021374e4e96c5e6c3c671f4d,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7341334
+        functionName: DisableArmAttackCollider
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 61e393e0021374e4e96c5e6c3c671f4d,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
