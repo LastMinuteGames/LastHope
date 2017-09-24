@@ -79,14 +79,14 @@ public class RocketRainEvent : BossEvent
     private void RandomizeSpawnPoints()
     {
         //spawnPoints.Find(x => x.done == false);
-        int[] discarted = new int[9];
+        int[] discarted = new int[spawnPoints.Count];
         int discartedIndex = 0;
         for (int i = 0; i < spawnPoints.Count; ++i)
         {
             bool done = false;
             while (!done)
             {
-                int num = (int)Math.Round(UnityEngine.Random.Range(1.0f, 9.0f));
+                int num = (int)Math.Round(UnityEngine.Random.Range(1.0f, 15.0f));
                 bool found = false;
                 for (int j = 0; j < discarted.Length; j++)
                 {
