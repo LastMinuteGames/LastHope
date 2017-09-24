@@ -18,12 +18,8 @@ public class RocketRainEvent : BossEvent
         Debug.Log("starting RocketRainEvent");
         manager = GameObject.Find("RocketSpawnManager").GetComponent<RocketSpawnManager>();
         if (manager == null) TerminateEvent();
-        for (int i = 0; i < spawnPoints.Count; ++i)
-        {
-            spawnPoints[i].done = false;
-            spawnPoints[i].delay = spawnPoints[i].initialDelay;
-            spawnPoints[i].incoming = false;
-        }
+        RandomizeSpawnPoints();
+        InitializeSpawnPoints();
     }
 
     public override bool UpdateEvent()
@@ -68,5 +64,47 @@ public class RocketRainEvent : BossEvent
     {
         base.TerminateEvent();
         Debug.Log("terminating RocketRainEvent");
+    }
+
+    private void InitializeSpawnPoints()
+    {
+        for (int i = 0; i < spawnPoints.Count; ++i)
+        {
+            spawnPoints[i].done = false;
+            spawnPoints[i].delay = spawnPoints[i].initialDelay;
+            spawnPoints[i].incoming = false;
+        }
+    }
+
+    private void RandomizeSpawnPoints()
+    {
+        //spawnPoints.Find(x => x.done == false);
+        int[] discarted = new int[9];
+        int discartedIndex = 0;
+        for (int i = 0; i < spawnPoints.Count; ++i)
+        {
+            bool done = false;
+            while (!done)
+            {
+                int num = (int)Math.Round(UnityEngine.Random.Range(1.0f, 9.0f));
+                bool found = false;
+                for (int j = 0; j < discarted.Length; j++)
+                {
+                    if (discarted[j] == num) found = true;
+                }
+                if (!found)
+                {
+                    spawnPoints[i].order = discartedIndex;
+                    spawnPoints[i].initialDelay = 4f + 0.5f * num;
+                    discarted[discartedIndex] = num;
+                    discartedIndex++;
+                    done = true;
+                }
+            }
+
+        }
+
+        spawnPoints.Sort((x, y) => x.order.CompareTo(y.order));
+
     }
 }
