@@ -14,7 +14,7 @@ public class RocketRainEvent : BossEvent
     public override void StartEvent()
     {
         base.StartEvent();
-        BossManager.instance.SetEmisiveMortar();
+        BossManager.instance.SetEmisiveYellow();
         Debug.Log("starting RocketRainEvent");
         manager = GameObject.Find("RocketSpawnManager").GetComponent<RocketSpawnManager>();
         if (manager == null) TerminateEvent();

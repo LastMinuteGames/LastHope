@@ -16,9 +16,9 @@ public class BossManager : MonoBehaviour
     public GameObject canvasGO;
 
     public GameObject bodyGO;
-    public Texture emisiveIdle;
-    public Texture emisiveMortar;
-    public Texture emisiveFist;
+    public Texture emisiveBlue;
+    public Texture emisiveRed;
+    public Texture emisiveYellow;
     private Material bodyMaterial;
     //public GameObject rocketSpawnManager;
     
@@ -142,19 +142,19 @@ public class BossManager : MonoBehaviour
 
 
     #region Emisive management functions
-    public void SetEmisiveIddle()
+    public void SetEmisiveBlue()
     {
-        bodyMaterial.SetTexture("_EmissionMap", emisiveIdle);
+		bodyMaterial.SetTexture("_EmissionMap", emisiveBlue);
+    }
+		
+    public void SetEmisiveYellow()
+    {
+		bodyMaterial.SetTexture("_EmissionMap", emisiveYellow);
     }
 
-    public void SetEmisiveMortar()
+    public void SetEmisiveRed()
     {
-        bodyMaterial.SetTexture("_EmissionMap", emisiveMortar);
-    }
-
-    public void SetEmisiveFist()
-    {
-        bodyMaterial.SetTexture("_EmissionMap", emisiveFist);
+        bodyMaterial.SetTexture("_EmissionMap", emisiveRed);
     }
     #endregion
 

@@ -8,11 +8,13 @@ public class PlasmaAttackEvent : BossEvent
     private GameObject boss;
     private Animator bossAC;
     private GameObject plasmaRay;
+	private bool started = false;
 
 
 
     public override void StartEvent()
     {
+		started = false;
         base.StartEvent();
         Debug.Log("starting PlasmaAttackEvent");
 
@@ -22,15 +24,16 @@ public class PlasmaAttackEvent : BossEvent
             bossAC = boss.GetComponent<Animator>();
             plasmaRay = boss.transform.Find("Root/Neck/Head/PlasmaRay").gameObject;
         }
-
-        bossAC.SetTrigger("plasmaAttack");
+		BossManager.instance.SetEmisiveRed();
     }
 
 
     public override bool UpdateEvent()
     {
-        //Add behaviour
-        //Debug.Log("update PlasmaAttackEvent");
+		if (ellapsedTime >= anticipationTime && started == false) {
+			started = true;
+			bossAC.SetTrigger("plasmaAttack");
+		}
         return base.UpdateEvent();
     }
 
