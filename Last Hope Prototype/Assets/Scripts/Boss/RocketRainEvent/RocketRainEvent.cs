@@ -86,7 +86,7 @@ public class RocketRainEvent : BossEvent
             bool done = false;
             while (!done)
             {
-                int num = (int)Math.Round(UnityEngine.Random.Range(1.0f, 15.0f));
+                int num = (int)Math.Round(UnityEngine.Random.Range(1.0f, 16.0f));
                 bool found = false;
                 for (int j = 0; j < discarted.Length; j++)
                 {
@@ -95,7 +95,7 @@ public class RocketRainEvent : BossEvent
                 if (!found)
                 {
                     spawnPoints[i].order = discartedIndex;
-                    spawnPoints[i].initialDelay = 4f + 0.5f * num;
+                    spawnPoints[i].initialDelay = 2f + 0.5f * discartedIndex;
                     discarted[discartedIndex] = num;
                     discartedIndex++;
                     done = true;
