@@ -8,4 +8,5 @@ public class RocketSpawnPoint : MonoBehaviour {
     public bool done = false;
     public bool incoming = false;
     public GameObject incomingObject;
+    public int order;
 }
