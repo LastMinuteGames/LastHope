@@ -22,7 +22,7 @@ public class EnemySpawnEvent : BossEvent
             spawnPoints[i].delay = spawnPoints[i].initialDelay;
         }
 
-
+		BossManager.instance.SetEmisiveYellow();
     }
 
     public override bool UpdateEvent()

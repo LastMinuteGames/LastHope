@@ -10,28 +10,48 @@ public class RocketRainEvent : BossEvent
     private RocketSpawnManager manager;
     public GameObject rocketIncoming;
     private List<GameObject> incomings;
+	private bool started = false;
+
 
     public override void StartEvent()
     {
+		started = false;
         base.StartEvent();
         //BossManager.instance.SetEmisiveMortar();
         Debug.Log("starting RocketRainEvent");
         manager = GameObject.Find("RocketSpawnManager").GetComponent<RocketSpawnManager>();
-        if (manager == null) TerminateEvent();
+
+		if (manager == null) {
+			TerminateEvent ();
+		}
+
         RandomizeSpawnPoints();
         InitializeSpawnPoints();
 		BossManager.instance.SetEmisiveYellow();
+		GameObject.FindGameObjectWithTag("Boss").GetComponent<Animator>().SetTrigger("mortarAttack");
     }
 
     public override bool UpdateEvent()
     {
+
+		if (ellapsedTime >= anticipationTime && started == false) {
+			started = true;
+		}
+
+		if (!started ) {
+			return base.UpdateEvent();
+		}
+
+
         //Debug.Log("update RocketRainEvent");
         for (int i = 0; i < spawnPoints.Count; ++i)
         {
             if(!spawnPoints[i].incoming && spawnPoints[i].delay <= 4)
             {
-                GameObject incoming = Instantiate(rocketIncoming, new Vector3(spawnPoints[i].transform.position.x,
-                    spawnPoints[i].transform.position.y, spawnPoints[i].transform.position.z), Quaternion.identity);
+				//Vector3 instantiatePos = spawnPoints [i].transform.position;
+				//Quaternion instantiateRot = Quaternion.Euler (-90, 0, 0);
+
+				GameObject incoming = Instantiate(rocketIncoming, spawnPoints [i].transform.position , Quaternion.identity);
                 incomings.Add(incoming);
                 spawnPoints[i].incoming = true;
                 spawnPoints[i].incomingObject = incoming;

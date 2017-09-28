@@ -883,7 +883,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (other.name == "Ray")
                 {
-                    if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true && Vector3.Dot(transform.forward, other.transform.parent.forward) < -0.2f)
+					Vector3 playerLeftForward = transform.forward - transform.right;
+					if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true && Vector3.Dot(playerLeftForward, other.transform.parent.forward) < 0.2f)
                     {
                         AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_BlockAttack);
                         canReceiveBossAttack = false;
