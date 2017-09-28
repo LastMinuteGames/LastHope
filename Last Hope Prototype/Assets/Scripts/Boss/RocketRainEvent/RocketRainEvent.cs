@@ -63,6 +63,7 @@ public class RocketRainEvent : BossEvent
 
     public override void TerminateEvent()
     {
+        EliminateSpawnPointsParticles();
         base.TerminateEvent();
         Debug.Log("terminating RocketRainEvent");
     }
@@ -74,6 +75,18 @@ public class RocketRainEvent : BossEvent
             spawnPoints[i].done = false;
             spawnPoints[i].delay = spawnPoints[i].initialDelay;
             spawnPoints[i].incoming = false;
+        }
+    }
+
+    private void EliminateSpawnPointsParticles()
+    {
+        for (int i = 0; i < spawnPoints.Count; ++i)
+        {
+            if (spawnPoints[i].incoming)
+            {
+                incomings.Remove(spawnPoints[i].incomingObject);
+                Destroy(spawnPoints[i].incomingObject);
+            }
         }
     }
 
