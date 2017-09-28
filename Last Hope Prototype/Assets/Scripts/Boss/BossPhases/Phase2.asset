@@ -11,7 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a510b47b5a12114e8ff80fc665bb9d9, type: 3}
   m_Name: Phase2
   m_EditorClassIdentifier: 
-  bossEvents:
+  eventSequence:
   - {fileID: 11400000, guid: a4347c06c499f3648b313477af727055, type: 2}
-  - {fileID: 11400000, guid: fccc46c633cfd2c438167f4224ac3e95, type: 2}
-  currentEvent: {fileID: 11400000, guid: a4347c06c499f3648b313477af727055, type: 2}
+  - {fileID: 11400000, guid: be73c4f7d2d6f3d4ab78795d2edd2e40, type: 2}
+  - {fileID: 11400000, guid: c1dbc64dfc964bc439c331c70b43e327, type: 2}
+  - {fileID: 11400000, guid: e58cfe6cbf97689438a8b43065c57681, type: 2}
+  - {fileID: 11400000, guid: a4347c06c499f3648b313477af727055, type: 2}
+  eventsLoop:
+  - {fileID: 11400000, guid: be73c4f7d2d6f3d4ab78795d2edd2e40, type: 2}
+  - {fileID: 11400000, guid: e58cfe6cbf97689438a8b43065c57681, type: 2}
+  - {fileID: 11400000, guid: a4347c06c499f3648b313477af727055, type: 2}
+  currentEvent: {fileID: 0}
