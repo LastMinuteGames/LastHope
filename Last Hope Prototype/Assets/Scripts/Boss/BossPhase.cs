@@ -9,6 +9,7 @@ public class BossPhase : ScriptableObject
 	public BossEvent[] eventSequence;
 	public BossEvent[] eventsLoop;
     public BossEvent currentEvent;
+	public ArmAttackEvent armAttackEvent;
     private int currentEventId;
 
 	private bool sequenceEnded;
@@ -27,7 +28,7 @@ public class BossPhase : ScriptableObject
         }
     }
 
-    public virtual void UpdatePhase()
+	public virtual void UpdatePhase(bool interrupt)
     {
         bool ret = currentEvent.UpdateEvent();
 
@@ -35,29 +36,38 @@ public class BossPhase : ScriptableObject
 			return;
 		}
 
-		if (!sequenceEnded) 
+		if (!interrupt)
 		{
-			currentEvent.TerminateEvent();
-			currentEventId = (currentEventId + 1);
+			if (!sequenceEnded) 
+			{
+				currentEvent.TerminateEvent();
+				currentEventId = (currentEventId + 1);
 
-			if (currentEventId < eventSequence.Length)
-			{
-				currentEvent = eventSequence[currentEventId];
-				currentEvent.StartEvent ();
+				if (currentEventId < eventSequence.Length)
+				{
+					currentEvent = eventSequence[currentEventId];
+					currentEvent.StartEvent ();
+				} 
+				else 
+				{
+					currentEventId = 0;
+					sequenceEnded = true;
+					currentEvent = eventsLoop [currentEventId];
+					currentEvent.StartEvent ();
+				}
 			} 
-			else 
+			else
 			{
-				currentEventId = 0;
-				sequenceEnded = true;
-				currentEvent = eventsLoop [currentEventId];
-				currentEvent.StartEvent ();
+				currentEvent.TerminateEvent();
+				currentEventId = (currentEventId + 1) % eventsLoop.Length;
+				currentEvent = eventsLoop[currentEventId];
+				currentEvent.StartEvent();
 			}
-		} 
+		}
 		else
 		{
 			currentEvent.TerminateEvent();
-			currentEventId = (currentEventId + 1) % eventsLoop.Length;
-			currentEvent = eventsLoop[currentEventId];
+			currentEvent = armAttackEvent;
 			currentEvent.StartEvent();
 		}
     }

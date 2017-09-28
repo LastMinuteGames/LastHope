@@ -33,6 +33,7 @@ public class BossManager : MonoBehaviour
     private GameObject plasmaRayGO;
     private GameObject armAttackGO;
     private TurretsManager turretsManager;
+	private bool wantToFist;
 
 
     private void Awake()
@@ -90,7 +91,7 @@ public class BossManager : MonoBehaviour
     {
         if (isAwaken && !isDead)
         {
-            currentPhase.UpdatePhase();
+            currentPhase.UpdatePhase(wantToFist);
         }
     }
 
@@ -179,6 +180,12 @@ public class BossManager : MonoBehaviour
         armAttackGO.SetActive(false);
     }
     #endregion
+
+
+	public void SetFistTrigger(bool fistAttackTrigger)
+	{
+		wantToFist = fistAttackTrigger;
+	}
 
 
 }

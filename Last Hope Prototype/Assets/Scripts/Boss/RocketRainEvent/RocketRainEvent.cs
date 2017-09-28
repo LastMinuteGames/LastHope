@@ -20,6 +20,7 @@ public class RocketRainEvent : BossEvent
         if (manager == null) TerminateEvent();
         RandomizeSpawnPoints();
         InitializeSpawnPoints();
+		BossManager.instance.SetEmisiveYellow();
     }
 
     public override bool UpdateEvent()
