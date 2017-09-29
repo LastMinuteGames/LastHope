@@ -164,7 +164,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1145705113559872}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.22758478, z: -0, w: 0.9737583}
   m_LocalPosition: {x: -90, y: 0.5, z: 240}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -172,7 +172,7 @@ Transform:
   - {fileID: 4149841733439468}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -26.310001, z: 0}
 --- !u!4 &4340658986570382
 Transform:
   m_ObjectHideFlags: 1
@@ -365,7 +365,7 @@ Animator:
   m_GameObject: {fileID: 1516424999024876}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 39b41095d65663140bbe2da7ad117bd1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 1c0b283a7f93bea4fb1d75a64b521e28, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -382,7 +382,7 @@ Animator:
   m_GameObject: {fileID: 1446826744167668}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 39b41095d65663140bbe2da7ad117bd1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 1c0b283a7f93bea4fb1d75a64b521e28, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6ac65b35cda847e46889ae88cbc06e95, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
   particles: {fileID: 198798923291214546}
   combatEvent: {fileID: 0}
   player: {fileID: 0}
+  animator: {fileID: 95811770233799148}
   generator: {fileID: 1516424999024876}
   emisiveOff: {fileID: 2800000, guid: 194a92467830424419ace5131fc75835, type: 3}
   emisiveOn: {fileID: 2800000, guid: 03169ecb20f457e4b86f8fa48ae3af36, type: 3}

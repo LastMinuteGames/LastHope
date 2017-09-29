@@ -16,7 +16,7 @@ public class GeneratorController : Interactable {
     [SerializeField]
     private PlayerController player;
 
-    private Animator animator;
+    public Animator animator;
 
     public GameObject generator;
     private Material generatorMaterial;
@@ -27,7 +27,6 @@ public class GeneratorController : Interactable {
 
     void Start () {
         //AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorNoise);
-        animator = GetComponentInChildren<Animator>();
         generatorMaterial = generator.GetComponent<MeshRenderer>().material;
     }
 	
@@ -47,6 +46,7 @@ public class GeneratorController : Interactable {
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorNoise);
             Debug.Log("Generator charging...");
             running = true;
+            animator.SetTrigger("running");
             generatorMaterial.SetTexture("_EmissionMap", emisiveOn);
             DialogueSystem.Instance.NextDialogue();
         }
@@ -81,6 +81,7 @@ public class GeneratorController : Interactable {
         animator.SetTrigger("Charged");
         particles.Stop();
         generatorMaterial.SetTexture("_EmissionMap", emisiveOff);
+        animator.ResetTrigger("running");
         AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorSpawn);
         GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
         EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();
