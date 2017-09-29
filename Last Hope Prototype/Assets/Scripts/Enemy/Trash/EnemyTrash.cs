@@ -176,4 +176,9 @@ public class EnemyTrash : Enemy //MonoBehaviour
         float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
         Destroy(particle, totalDuration);
     }
+
+    public int GetLife()
+    {
+        return life;
+    }
 }

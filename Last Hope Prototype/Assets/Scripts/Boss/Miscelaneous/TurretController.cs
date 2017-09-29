@@ -31,6 +31,7 @@ public class TurretController : Interactable
     private Vector3 velocity;
 
     private bool doOnce = false;
+    private bool working = false;
 
     public void Start()
     {
@@ -44,7 +45,7 @@ public class TurretController : Interactable
         initialRot = 0;
         rotating = false;
         doOnce = false;
-        baseColor.SetTexture("_EmissionMap", emissiveOn);
+        baseColor.SetTexture("_EmissionMap", emissiveOff);
         initialRot = rot.transform.localEulerAngles.z;
     }
 
@@ -58,7 +59,7 @@ public class TurretController : Interactable
 
     public override void Run()
     {
-        if (CanInteract())
+        if (CanInteract() && working)
         {
             activated = true;
             StartCoroutine(Attack());
@@ -113,6 +114,19 @@ public class TurretController : Interactable
         yield return new WaitForSeconds(3.0f);
         BossManager.instance.TurretAttack();
         baseColor.SetTexture("_EmissionMap", emissiveOff);
+    }
+
+    public void ChangeEmissives(bool on)
+    {
+        if (on)
+        {
+            baseColor.SetTexture("_EmissionMap", emissiveOn);
+            working = true;
+        }
+        else
+        {
+            baseColor.SetTexture("_EmissionMap", emissiveOff);
+        }
     }
 
 

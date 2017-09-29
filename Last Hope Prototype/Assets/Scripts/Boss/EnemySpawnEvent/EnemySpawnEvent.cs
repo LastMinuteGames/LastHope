@@ -9,12 +9,15 @@ public class EnemySpawnEvent : BossEvent
     //EnmyspawnPoints[] seria mejor pero necesitariamos prefabs de enemyspawnpoints. de todas formas tenemos 1 solo enemigo de momento
     public List<EnemySpawnPoint> spawnPoints;
     private EnemySpawnManager manager;
+    private TurretsManager turrets;
 
     public override void StartEvent()
     {
         base.StartEvent();
         Debug.Log("starting spawnEvent");
         manager = GameObject.Find("EnemySpawnManager").GetComponent<EnemySpawnManager>();
+        turrets = GameObject.Find("Turrets").GetComponent<TurretsManager>();
+
  
         for (int i = 0; i < spawnPoints.Count; ++i)
         {
@@ -33,7 +36,8 @@ public class EnemySpawnEvent : BossEvent
         {
             if (spawnPoints[i].delay <= 0 && !spawnPoints[i].done)
             {
-                manager.SpawnEnemy(spawnPoints[i]);
+                CapsuleController aux = manager.SpawnEnemy(spawnPoints[i]).GetComponent<CapsuleController>();
+                turrets.capsules.Add(aux);
                 spawnPoints[i].done = true;
                 spawnPoints[i].delay = spawnPoints[i].initialDelay;
                 //Destroy(spawnPoints[i]);
