@@ -49,9 +49,9 @@ public class RocketRainEvent : BossEvent
             if(!spawnPoints[i].incoming && spawnPoints[i].delay <= 4)
             {
 				//Vector3 instantiatePos = spawnPoints [i].transform.position;
-				//Quaternion instantiateRot = Quaternion.Euler (-90, 0, 0);
+				Quaternion instantiateRot = Quaternion.Euler (-90, 0, 0);
 
-				GameObject incoming = Instantiate(rocketIncoming, spawnPoints [i].transform.position , Quaternion.identity);
+				GameObject incoming = Instantiate(rocketIncoming, spawnPoints [i].transform.position, instantiateRot);
                 incomings.Add(incoming);
                 spawnPoints[i].incoming = true;
                 spawnPoints[i].incomingObject = incoming;
