@@ -32,6 +32,7 @@ public class BossManager : MonoBehaviour
 
     private GameObject plasmaRayGO;
     private GameObject armAttackGO;
+    private GameObject armAttackExplotion;
     private TurretsManager turretsManager;
 	private bool wantToFist;
 
@@ -58,6 +59,7 @@ public class BossManager : MonoBehaviour
         armAttackGO = transform.Find("Root/L_Clavicle/L_Biceps/L_Forearm/L_Hand/ArmAttack").gameObject;
         turretsManager = GameObject.FindGameObjectWithTag("TurretManager").GetComponent<TurretsManager>();
         bodyMaterial = bodyGO.GetComponent<SkinnedMeshRenderer>().material;
+        armAttackExplotion = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/EffectExamples/FireExplosionEffects/Prefabs/BigExplosionEffect.prefab", typeof(GameObject));
     }
 
     public void StartBossFight()
@@ -174,6 +176,8 @@ public class BossManager : MonoBehaviour
     public void EnableArmAttackCollider()
     {
         armAttackGO.SetActive(true);
+        GameObject instantiated = Instantiate(armAttackExplotion, new Vector3(14.5f, 200.05f, 790.9f), Quaternion.identity);
+        instantiated.transform.localScale = new Vector3(20, 20, 15);
     }
     public void DisableArmAttackCollider()
     {
