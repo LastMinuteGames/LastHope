@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class BossEvent : ScriptableObject
 {
     public float duration = 2;
+	public float anticipationTime = 1;
     public float ellapsedTime = 0;
 
     public virtual void StartEvent()

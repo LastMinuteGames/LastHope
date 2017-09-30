@@ -25,6 +25,8 @@ public class CapsuleController : MonoBehaviour
 
     private AudioSource spawnSound;
 
+    public GameObject go;
+
     public EnemyObserver Observer
     {
         get
@@ -84,7 +86,7 @@ public class CapsuleController : MonoBehaviour
     {
         Vector3 landingPos = transform.position;
         Instantiate(landingParticles, transform.position, transform.rotation);
-        GameObject go = Instantiate(enemy, landingPos, transform.rotation);
+        go = Instantiate(enemy, landingPos, transform.rotation);
         Enemy instantiatedEnemy = go.GetComponent<Enemy>();
         if(instantiatedEnemy != null && observer != null)
         {

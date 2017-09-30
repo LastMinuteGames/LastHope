@@ -5,7 +5,8 @@ using UnityEngine;
 public class BossCam : MonoBehaviour {
 
     [SerializeField] private Transform bossCamTravelT;
-    [SerializeField] private float movementSmooth = 0.2f;
+	[SerializeField] private float movementSmooth = 0.2f;
+    [SerializeField] private float fov = 80f;
 
     private Animator animator;
     private Transform pivotT;
@@ -30,6 +31,7 @@ public class BossCam : MonoBehaviour {
         camT.parent = bossCamTravelT;
         camT.localPosition = Vector3.zero;
         camT.localRotation = Quaternion.identity;
+		camT.GetComponentInChildren<Camera>().fieldOfView = fov;
         Animate();
     }
 

@@ -16,9 +16,9 @@ public class BossManager : MonoBehaviour
     public GameObject canvasGO;
 
     public GameObject bodyGO;
-    public Texture emisiveIdle;
-    public Texture emisiveMortar;
-    public Texture emisiveFist;
+    public Texture emisiveBlue;
+    public Texture emisiveRed;
+    public Texture emisiveYellow;
     private Material bodyMaterial;
     //public GameObject rocketSpawnManager;
     
@@ -32,7 +32,9 @@ public class BossManager : MonoBehaviour
 
     private GameObject plasmaRayGO;
     private GameObject armAttackGO;
+    private GameObject armAttackExplotion;
     private TurretsManager turretsManager;
+	private bool wantToFist;
 
 
     private void Awake()
@@ -57,6 +59,7 @@ public class BossManager : MonoBehaviour
         armAttackGO = transform.Find("Root/L_Clavicle/L_Biceps/L_Forearm/L_Hand/ArmAttack").gameObject;
         turretsManager = GameObject.FindGameObjectWithTag("TurretManager").GetComponent<TurretsManager>();
         bodyMaterial = bodyGO.GetComponent<SkinnedMeshRenderer>().material;
+        armAttackExplotion = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/EffectExamples/FireExplosionEffects/Prefabs/BigExplosionEffect.prefab", typeof(GameObject));
     }
 
     public void StartBossFight()
@@ -90,7 +93,7 @@ public class BossManager : MonoBehaviour
     {
         if (isAwaken && !isDead)
         {
-            currentPhase.UpdatePhase();
+            currentPhase.UpdatePhase(wantToFist);
         }
     }
 
@@ -142,19 +145,19 @@ public class BossManager : MonoBehaviour
 
 
     #region Emisive management functions
-    public void SetEmisiveIddle()
+    public void SetEmisiveBlue()
     {
-        bodyMaterial.SetTexture("_EmissionMap", emisiveIdle);
+		bodyMaterial.SetTexture("_EmissionMap", emisiveBlue);
+    }
+		
+    public void SetEmisiveYellow()
+    {
+		bodyMaterial.SetTexture("_EmissionMap", emisiveYellow);
     }
 
-    public void SetEmisiveMortar()
+    public void SetEmisiveRed()
     {
-        bodyMaterial.SetTexture("_EmissionMap", emisiveMortar);
-    }
-
-    public void SetEmisiveFist()
-    {
-        bodyMaterial.SetTexture("_EmissionMap", emisiveFist);
+        bodyMaterial.SetTexture("_EmissionMap", emisiveRed);
     }
     #endregion
 
@@ -173,12 +176,20 @@ public class BossManager : MonoBehaviour
     public void EnableArmAttackCollider()
     {
         armAttackGO.SetActive(true);
+        GameObject instantiated = Instantiate(armAttackExplotion, new Vector3(14.5f, 200.05f, 790.9f), Quaternion.identity);
+        instantiated.transform.localScale = new Vector3(20, 20, 15);
     }
     public void DisableArmAttackCollider()
     {
         armAttackGO.SetActive(false);
     }
     #endregion
+
+
+	public void SetFistTrigger(bool fistAttackTrigger)
+	{
+		wantToFist = fistAttackTrigger;
+	}
 
 
 }
