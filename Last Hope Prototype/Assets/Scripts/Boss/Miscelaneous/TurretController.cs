@@ -45,6 +45,7 @@ public class TurretController : Interactable
         initialRot = 0;
         rotating = false;
         doOnce = false;
+        working = false;
         baseColor.SetTexture("_EmissionMap", emissiveOff);
         initialRot = rot.transform.localEulerAngles.z;
     }
