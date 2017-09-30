@@ -1100,7 +1100,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1331260994038662}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -1222,6 +1222,8 @@ MonoBehaviour:
   emisiveBlue: {fileID: 2800000, guid: 906fac5b87f9b4245a9461c980c51cac, type: 3}
   emisiveRed: {fileID: 2800000, guid: fb91229fcdeecbc41828941ed42f6e7d, type: 3}
   emisiveYellow: {fileID: 2800000, guid: fd2f3b5a46db341478ad62c3ebce35f5, type: 3}
+  armAttackExplotion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
+    type: 2}
 --- !u!114 &114502449580888106
 MonoBehaviour:
   m_ObjectHideFlags: 1

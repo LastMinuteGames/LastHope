@@ -20,6 +20,7 @@ public class BossManager : MonoBehaviour
     public Texture emisiveRed;
     public Texture emisiveYellow;
     private Material bodyMaterial;
+	public GameObject armAttackExplotion;
     //public GameObject rocketSpawnManager;
     
 
@@ -32,7 +33,6 @@ public class BossManager : MonoBehaviour
 
     private GameObject plasmaRayGO;
     private GameObject armAttackGO;
-    private GameObject armAttackExplotion;
     private TurretsManager turretsManager;
 	private bool wantToFist;
 
@@ -59,7 +59,6 @@ public class BossManager : MonoBehaviour
         armAttackGO = transform.Find("Root/L_Clavicle/L_Biceps/L_Forearm/L_Hand/ArmAttack").gameObject;
         turretsManager = GameObject.FindGameObjectWithTag("TurretManager").GetComponent<TurretsManager>();
         bodyMaterial = bodyGO.GetComponent<SkinnedMeshRenderer>().material;
-        armAttackExplotion = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/EffectExamples/FireExplosionEffects/Prefabs/BigExplosionEffect.prefab", typeof(GameObject));
     }
 
     public void StartBossFight()
