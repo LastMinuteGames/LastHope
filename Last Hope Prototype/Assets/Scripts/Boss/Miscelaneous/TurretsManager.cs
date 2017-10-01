@@ -16,6 +16,10 @@ public class TurretsManager : MonoBehaviour {
 		{
 			turrets[i].Restart();
 		}
+        isInRound = false;
+        round = 0;
+        capsules.Clear();
+        enemies.Clear();
 	}
 
     void Update()
