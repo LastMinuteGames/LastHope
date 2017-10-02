@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class TargetController : MonoBehaviour
 {
-    public float maxHp = 100;
-    public float currentHp;
+    public int maxHp = 100;
+    public int currentHp;
     [HideInInspector]
     public bool alive = true;
     public GameObject deadExplosion;
