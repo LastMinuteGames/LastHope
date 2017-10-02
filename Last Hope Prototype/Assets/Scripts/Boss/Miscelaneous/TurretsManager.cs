@@ -12,6 +12,8 @@ public class TurretsManager : MonoBehaviour {
 
     public void RestartBossCombat()
 	{
+
+		Debug.Log ("one");
 		for (int i = 0; i < turrets.Length; i++)
 		{
 			turrets[i].Restart();
@@ -19,7 +21,11 @@ public class TurretsManager : MonoBehaviour {
         isInRound = false;
         round = 0;
         capsules.Clear();
-        enemies.Clear();
+
+		foreach (EnemyTrash enemy in enemies) {
+			Destroy (enemy.gameObject);
+		}
+		enemies.Clear();
 	}
 
     void Update()
@@ -53,13 +59,10 @@ public class TurretsManager : MonoBehaviour {
 
     void DeleteEnemy(EnemyTrash enemy)
     {
-        
         if(enemies.Count == 1)
         {
-            
             isInRound = false;
             EndRound(round);
-            Debug.Log("Muertos todos!!");
         }
         enemies.Remove(enemy);
     }
