@@ -73,7 +73,7 @@ public class TurretsManager : MonoBehaviour {
     {
         if (num <= 2)
         {
-            turrets[num - 1].ChangeEmissives(true);
+			turrets[num - 1].Unlock();
         }
     }
 

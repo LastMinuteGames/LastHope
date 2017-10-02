@@ -11832,11 +11832,11 @@ MonoBehaviour:
   glow: {fileID: 1655804946618472}
   laser: {fileID: 1628327152448312}
   canon: {fileID: 95714453883106476}
-  baseColor: {fileID: 2100000, guid: 4fbc00ed764745e4d884035110699d9a, type: 2}
+  baseMaterial: {fileID: 2100000, guid: 4fbc00ed764745e4d884035110699d9a, type: 2}
   emissiveOff: {fileID: 2800000, guid: 171a16e376cc3c548a02804b1144e604, type: 3}
   emissiveOn: {fileID: 2800000, guid: eacade4f577ef434c9da8a04bedc112d, type: 3}
   turretRotation: 20
-  rot: {fileID: 4690435247734350}
+  targetT: {fileID: 4690435247734350}
   speed: 0.5
 --- !u!114 &114954702689277572
 MonoBehaviour:
@@ -11852,11 +11852,11 @@ MonoBehaviour:
   glow: {fileID: 1531925881759942}
   laser: {fileID: 1063206505669292}
   canon: {fileID: 95010700665538908}
-  baseColor: {fileID: 2100000, guid: 1beead21913651d45a88cfc0ba827609, type: 2}
+  baseMaterial: {fileID: 2100000, guid: 1beead21913651d45a88cfc0ba827609, type: 2}
   emissiveOff: {fileID: 2800000, guid: 171a16e376cc3c548a02804b1144e604, type: 3}
   emissiveOn: {fileID: 2800000, guid: eacade4f577ef434c9da8a04bedc112d, type: 3}
   turretRotation: -20
-  rot: {fileID: 4490475009836968}
+  targetT: {fileID: 4490475009836968}
   speed: 0.5
 --- !u!198 &198124112992599874
 ParticleSystem:
