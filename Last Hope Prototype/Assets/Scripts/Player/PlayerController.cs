@@ -134,6 +134,10 @@ public class PlayerController : MonoBehaviour
     //UI
     [SerializeField]
     private UIManager uiManager;
+	[SerializeField]
+	private Image damageImage;
+	[SerializeField]
+	private Color flashColour = new Color(1f, 0f, 0f, 0.1f);  
 
     // Interact
     public bool canInteract = false;
@@ -340,6 +344,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+		damageImage.color = Color.Lerp (damageImage.color, Color.clear, 10 * Time.deltaTime);
+
         if (!canDodge)
         {
             dodgeCurrentCooldown = dodgeMaxCooldown - (Time.time - dodgeTimer);
@@ -499,6 +505,7 @@ public class PlayerController : MonoBehaviour
         if (!blocking)
         {
             dmged = true;
+			damageImage.color = flashColour;
             timer = 0;
             currentHP -= value;
             uiManager.UpdateHealth(currentHP);
