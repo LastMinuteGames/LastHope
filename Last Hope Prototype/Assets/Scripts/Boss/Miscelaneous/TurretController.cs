@@ -11,42 +11,59 @@ public class TurretController : Interactable
     private GameObject laser;
     [SerializeField]
     private Animator canon;
-    private bool activated = false;
-
     [SerializeField]
-    private Material baseColor;
+	private Material baseMaterial;
     [SerializeField]
     private Texture emissiveOff;
     [SerializeField]
     private Texture emissiveOn;
-
     [SerializeField]
     private float turretRotation;
     [SerializeField]
-    private Transform rot;
-    private float initialRot = 0;
-    private bool rotating = false;
+	private Transform targetT;
     [SerializeField]
     private float speed = 0.5f;
+
     private Vector3 velocity;
 
     private bool doOnce = false;
     private bool working = false;
+	private bool activated = false;
+	private bool rotating = false;
+	private float initialRot = 0;
+
+	private bool enabled = false;
+	private bool unlocked = false;
+	private bool used = false;
+
+	private Vector3 eulerAngles;
+	private Vector3 initialEulerAngles;
+	private Quaternion targetRotation;
+
+
+
 
     public void Start()
     {
-        baseColor.SetTexture("_EmissionMap", emissiveOn);
-        initialRot = rot.transform.localEulerAngles.z;
+		eulerAngles = targetT.rotation.eulerAngles;
+		initialEulerAngles = eulerAngles;
+		targetRotation = targetT.rotation;
+
+		Restart ();
+
+
     }
 
     public void Restart()
     {
-        activated = false;
-        initialRot = 0;
-        rotating = false;
-        doOnce = false;
-        baseColor.SetTexture("_EmissionMap", emissiveOff);
-        initialRot = rot.transform.localEulerAngles.z;
+		enabled = false;
+		unlocked = false;
+		used = false;
+
+        baseMaterial.SetTexture("_EmissionMap", emissiveOff);
+
+		targetRotation = Quaternion.Euler (initialEulerAngles);
+		targetT.rotation = targetRotation;
     }
 
     void FixedUpdate()
@@ -57,29 +74,55 @@ public class TurretController : Interactable
         }
     }
 
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.U)) {
+			Unlock ();
+		}
+		if (Input.GetKeyDown(KeyCode.I)) {
+			Run ();
+		}
+		if (Input.GetKeyDown(KeyCode.O)) {
+			Restart ();
+		}
+
+
+	}
+
+	public void Unlock()
+	{
+		if (!unlocked && !used) 
+		{
+			unlocked = true;
+			enabled = true;
+			baseMaterial.SetTexture("_EmissionMap", emissiveOn);
+		}
+	}
+
     public override void Run()
     {
-        if (CanInteract() && working)
+        if (CanInteract())
         {
-            activated = true;
+			enabled = false;
+			used = true;
+
             StartCoroutine(Attack());
             glow.GetComponent<ParticleSystem>().Play();
             StartCoroutine(LaserParticles());
             rotating = true;
         }
     }
-
-
+		
     public override bool CanInteract()
     {
-        return !activated;
+        return enabled;
     }
 
     private void RotateTurret()
     {
         if (turretRotation >= 0)
         {
-            if (rot.transform.localEulerAngles.z >= initialRot + turretRotation)
+            if (targetT.transform.localEulerAngles.z >= initialRot + turretRotation)
             {
                 rotating = false;
             }
@@ -88,16 +131,16 @@ public class TurretController : Interactable
         {
             if (!doOnce)
             {
-                rot.Rotate(new Vector3(0, 0, 1), -1);
+                targetT.Rotate(new Vector3(0, 0, 1), -1);
                 doOnce = true;
             }
-            if (rot.transform.localEulerAngles.z < initialRot + 360 - Math.Abs(turretRotation))
+            if (targetT.transform.localEulerAngles.z < initialRot + 360 - Math.Abs(turretRotation))
             {
                 rotating = false;
             }
         }
         velocity = Vector3.Lerp(new Vector3(0, 0, initialRot), new Vector3(0, 0, turretRotation), speed * Time.deltaTime);
-        rot.Rotate(new Vector3(0, 0, 1), velocity.z);
+        targetT.Rotate(new Vector3(0, 0, 1), velocity.z);
 
     }
 
@@ -113,21 +156,6 @@ public class TurretController : Interactable
         //print(Time.time);
         yield return new WaitForSeconds(3.0f);
         BossManager.instance.TurretAttack();
-        baseColor.SetTexture("_EmissionMap", emissiveOff);
+        baseMaterial.SetTexture("_EmissionMap", emissiveOff);
     }
-
-    public void ChangeEmissives(bool on)
-    {
-        if (on)
-        {
-            baseColor.SetTexture("_EmissionMap", emissiveOn);
-            working = true;
-        }
-        else
-        {
-            baseColor.SetTexture("_EmissionMap", emissiveOff);
-        }
-    }
-
-
 }
