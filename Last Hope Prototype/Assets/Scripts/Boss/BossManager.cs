@@ -119,6 +119,7 @@ public class BossManager : MonoBehaviour
         }
         TerminateCurrentPhase();
         animator.SetTrigger("damaged");
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Hurt);
         UpdateHpSlider();
     }
 

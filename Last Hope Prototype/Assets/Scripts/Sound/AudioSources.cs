@@ -155,7 +155,11 @@ public enum AudiosSoundFX
 
     Environment_BreakEnvironment_BreakBarricade,
     Environment_BreakEnvironment_BreakBench,
-    Environment_BreakEnvironment_BreakTrafficLight
+    Environment_BreakEnvironment_BreakTrafficLight,
+    #endregion
+
+    #region Boss
+    Boss_Hurt
     #endregion
 }
 
