@@ -20,15 +20,12 @@ public class RocketController : MonoBehaviour {
     private float timer = 0f;
     private float timeToLive = 1f;
 
-    private AudioSource spawnSound;
-
     // Use this for initialization
     void Start () {
         startOffset = new Vector3(0, heightOffset, 0);
         destinationY = gameObject.transform.position.y;
         gameObject.transform.position += startOffset;
         capsuleHeight = GetComponentInParent<CapsuleCollider>().height;
-        spawnSound = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -44,7 +41,7 @@ public class RocketController : MonoBehaviour {
         {
             if (!spawned)
             {
-                spawnSound.Play();
+				AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_FSMinfo_Spawn);
                 StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(0.3f, 1.75f, 1, 1, this.transform));
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ControllerEvents>().AddRumble(0.4f, new Vector2(0.5f, 0.3f), 0.2f);
                 SpawnParticles();
@@ -56,7 +53,7 @@ public class RocketController : MonoBehaviour {
             else
             {
                 timer += Time.deltaTime;
-                if ((GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done || timer >= timeToLive) && !spawnSound.isPlaying)
+                if ((GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().done || timer >= timeToLive))
                 {
                     Destroy(gameObject);
                 }
