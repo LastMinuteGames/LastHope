@@ -26,7 +26,6 @@ public class PlasmaAttackEvent : BossEvent
         }
 		BossManager.instance.SetEmisiveRed();
         AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Plasma_Attack);
-        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Plasma_Effect);
     }
 
 
@@ -50,7 +49,6 @@ public class PlasmaAttackEvent : BossEvent
     public void StartRay()
     {
         plasmaRay.SetActive(true);
-        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Plasma_Effect);
     }
 
 

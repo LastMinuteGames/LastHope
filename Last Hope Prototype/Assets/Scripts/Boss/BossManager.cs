@@ -64,7 +64,7 @@ public class BossManager : MonoBehaviour
     public void StartBossFight()
     {
 		AudioSources.instance.PlayMusic((int)AudiosMusic.CombatTheme);
-        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Start);
+        Invoke("PlayVoice", 0.9f);
         Debug.Log("start boss fight");
         turretsManager.RestartBossCombat();
 
@@ -145,6 +145,11 @@ public class BossManager : MonoBehaviour
         SceneManager.LoadScene("WinScreen");
     }
 
+    public void PlayVoice()
+    {
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Start);
+    }
+
 
 
     #region Emisive management functions
@@ -172,10 +177,12 @@ public class BossManager : MonoBehaviour
     {
         plasmaRayGO.SetActive(true);
         AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Plasma_Effect);
+
     }
     public void EndRay()
     {
         plasmaRayGO.SetActive(false);
+        AudioSources.instance.StopSound((int)AudiosSoundFX.Boss_Plasma_Effect);
     }
     public void EnableArmAttackCollider()
     {
