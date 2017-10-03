@@ -10,8 +10,14 @@ public class DestructibleEnviroment : MonoBehaviour {
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
-            if(this.gameObject.name.Contains("StreetLamp") || this.gameObject.name.Contains("TrafficLight")) AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_BreakEnvironment_BreakTrafficLight);
-            else if(this.gameObject.name.Contains("Bench")) AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_BreakEnvironment_BreakBench);
+			if (this.gameObject.name.Contains ("StreetLamp") || this.gameObject.name.Contains ("TrafficLight") || this.gameObject.name.Contains ("SquareLamp"))
+			{
+				AudioSources.instance.PlaySound ((int)AudiosSoundFX.Environment_BreakEnvironment_BreakTrafficLight);
+			} 
+			else if (this.gameObject.name.Contains ("Bench")) 
+			{
+				AudioSources.instance.PlaySound ((int)AudiosSoundFX.Environment_BreakEnvironment_BreakBench);
+			}
             SpawnExplosion();
             Destroy(transform.parent.gameObject);
             

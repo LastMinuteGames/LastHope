@@ -17,7 +17,7 @@ public class ArtilleryController : TargetController
             leftBarrelParticles.Play();
         }
         //AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
-        AudioSources.instance.Play3DSound((int)AudiosSoundFX.Environment_Artillery_Shot, transform.position, 0.9f, AudioRolloffMode.Linear, 0.35f);
+		AudioSources.instance.Play3DSound((int)AudiosSoundFX.Environment_Artillery_Shot, transform.position, 0.97f, AudioRolloffMode.Linear, 0.35f);
 
     }
     void RightBarrelShoot()
@@ -27,7 +27,7 @@ public class ArtilleryController : TargetController
             rightBarrelParticles.Play();
         }
         //AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Artillery_Shot);
-        AudioSources.instance.Play3DSound((int)AudiosSoundFX.Environment_Artillery_Shot, transform.position, 0.9f, AudioRolloffMode.Linear, 0.35f);
+        AudioSources.instance.Play3DSound((int)AudiosSoundFX.Environment_Artillery_Shot, transform.position, 0.97f, AudioRolloffMode.Linear, 0.35f);
 
     }
 

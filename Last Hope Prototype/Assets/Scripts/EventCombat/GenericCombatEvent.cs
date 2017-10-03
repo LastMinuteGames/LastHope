@@ -203,7 +203,6 @@ public class GenericCombatEvent : MonoBehaviour, EnemyObserver
         status = EVENT_STATUS.FINISHED;
 
         UnblockExits();
-        Debug.Log("GENERIC-PENE");
     }
 
     /*****************     Enemy Management ********************/
