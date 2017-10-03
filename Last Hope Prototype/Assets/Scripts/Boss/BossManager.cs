@@ -21,6 +21,8 @@ public class BossManager : MonoBehaviour
     public Texture emisiveYellow;
     private Material bodyMaterial;
 	public GameObject armAttackExplotion;
+	public ParticleSystem[] lMortarParticles;
+	public ParticleSystem[] rMortarParticles;
     //public GameObject rocketSpawnManager;
     
 
@@ -188,6 +190,18 @@ public class BossManager : MonoBehaviour
     {
         armAttackGO.SetActive(false);
     }
+
+	public void MortarParticles(int id)
+	{
+		lMortarParticles [id].Play ();
+		rMortarParticles [id].Play ();
+
+		if (id == 0) 
+		{
+			AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Rocket_Attack);
+		}
+	}
+
     #endregion
 
 
