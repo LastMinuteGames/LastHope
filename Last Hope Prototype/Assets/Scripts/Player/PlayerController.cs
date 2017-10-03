@@ -342,9 +342,15 @@ public class PlayerController : MonoBehaviour
             {
                 dmged = false;
             }
+			damageImage.color = Color.Lerp (damageImage.color, flashColour, 5 * Time.deltaTime);
         }
+		else
+		{
+			damageImage.color = Color.Lerp (damageImage.color, Color.clear, 40 * Time.deltaTime);
+		}
+			
 
-		damageImage.color = Color.Lerp (damageImage.color, Color.clear, 10 * Time.deltaTime);
+		//damageImage.color = Color.Lerp (damageImage.color, Color.clear, 10 * Time.deltaTime);
 
         if (!canDodge)
         {
@@ -505,7 +511,6 @@ public class PlayerController : MonoBehaviour
         if (!blocking)
         {
             dmged = true;
-			damageImage.color = flashColour;
             timer = 0;
             currentHP -= value;
             uiManager.UpdateHealth(currentHP);
