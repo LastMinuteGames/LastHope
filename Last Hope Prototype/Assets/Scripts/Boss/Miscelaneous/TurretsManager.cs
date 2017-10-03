@@ -12,8 +12,6 @@ public class TurretsManager : MonoBehaviour {
 
     public void RestartBossCombat()
 	{
-
-		Debug.Log ("one");
 		for (int i = 0; i < turrets.Length; i++)
 		{
 			turrets[i].Restart();
@@ -53,8 +51,6 @@ public class TurretsManager : MonoBehaviour {
                 }
             }
         }
-
-        Debug.Log(enemies.Count);
     }
 
     void DeleteEnemy(EnemyTrash enemy)

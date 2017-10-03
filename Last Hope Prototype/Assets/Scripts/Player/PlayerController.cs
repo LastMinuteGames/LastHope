@@ -908,7 +908,7 @@ public class PlayerController : MonoBehaviour
                 blocking = false;
                 SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
                 AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_AttackHit);
-                TakeDamage(50);
+                TakeDamage(30);
                 anim.SetTrigger("damaged");
             }
         }

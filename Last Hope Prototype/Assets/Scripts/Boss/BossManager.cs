@@ -63,6 +63,7 @@ public class BossManager : MonoBehaviour
 
     public void StartBossFight()
     {
+		AudioSources.instance.PlayMusic((int)AudiosMusic.CombatTheme);
         Debug.Log("start boss fight");
         turretsManager.RestartBossCombat();
 
