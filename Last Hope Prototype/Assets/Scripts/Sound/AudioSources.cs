@@ -32,6 +32,10 @@ public class AudioSources : MonoBehaviour
     {
         SoundAudioSources[index].StopLoopingSound();
     }
+    public void StopSound(int index)
+    {
+        SoundAudioSources[index].Stop();
+    }
 
     public void PlayMusic(int index, float volume = 1)
     {
