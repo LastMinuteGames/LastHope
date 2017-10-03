@@ -41,7 +41,7 @@ public class RocketController : MonoBehaviour {
         {
             if (!spawned)
             {
-				AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_FSMinfo_Spawn);
+				AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Rocket_Impact);
                 StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(0.3f, 1.75f, 1, 1, this.transform));
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ControllerEvents>().AddRumble(0.4f, new Vector2(0.5f, 0.3f), 0.2f);
                 SpawnParticles();

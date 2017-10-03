@@ -169,7 +169,8 @@ public enum AudiosSoundFX
     Boss_Arm_Effect,
     Boss_Plasma_Attack,
     Boss_Plasma_Effect,
-    Boss_Rocket_Attack,
+	Boss_Rocket_Attack,
+    Boss_Rocket_Impact,
     Boss_Spawn_Attack,
     Boss_Start,
     Boss_Turret1
