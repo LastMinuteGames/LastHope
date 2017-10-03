@@ -171,7 +171,8 @@ public enum AudiosSoundFX
     Boss_Plasma_Effect,
     Boss_Rocket_Attack,
     Boss_Spawn_Attack,
-    Boss_Start
+    Boss_Start,
+    Boss_Turret1
     #endregion
 }
 

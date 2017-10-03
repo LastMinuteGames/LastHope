@@ -105,6 +105,7 @@ public class TurretController : Interactable
         {
 			enabled = false;
 			used = true;
+            AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Turret1);
 
             StartCoroutine(Attack());
             glow.GetComponent<ParticleSystem>().Play();
