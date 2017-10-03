@@ -29,6 +29,7 @@ public class RocketRainEvent : BossEvent
         InitializeSpawnPoints();
 		BossManager.instance.SetEmisiveYellow();
 		GameObject.FindGameObjectWithTag("Boss").GetComponent<Animator>().SetTrigger("mortarAttack");
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Rocket_Attack);
     }
 
     public override bool UpdateEvent()

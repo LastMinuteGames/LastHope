@@ -159,7 +159,15 @@ public enum AudiosSoundFX
     #endregion
 
     #region Boss
-    Boss_Hurt
+    Boss_Hurt,
+    Boss_Die,
+    Boss_Arm_Attack,
+    Boss_Arm_Effect,
+    Boss_Plasma_Attack,
+    Boss_Plasma_Effect,
+    Boss_Rocket_Attack,
+    Boss_Spawn_Attack,
+    Boss_Start
     #endregion
 }
 

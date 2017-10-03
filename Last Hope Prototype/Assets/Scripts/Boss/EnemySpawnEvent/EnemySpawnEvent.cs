@@ -26,6 +26,7 @@ public class EnemySpawnEvent : BossEvent
         }
 
 		BossManager.instance.SetEmisiveYellow();
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Spawn_Attack);
     }
 
     public override bool UpdateEvent()

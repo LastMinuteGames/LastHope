@@ -64,6 +64,7 @@ public class BossManager : MonoBehaviour
     public void StartBossFight()
     {
 		AudioSources.instance.PlayMusic((int)AudiosMusic.CombatTheme);
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Start);
         Debug.Log("start boss fight");
         turretsManager.RestartBossCombat();
 
@@ -131,6 +132,7 @@ public class BossManager : MonoBehaviour
         isAwaken = false;
         canvasGO.SetActive(false);
         Invoke("Dead", 4.0f);
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Die);
     }
 
     void UpdateHpSlider()
@@ -169,6 +171,7 @@ public class BossManager : MonoBehaviour
     public void StartRay()
     {
         plasmaRayGO.SetActive(true);
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Plasma_Effect);
     }
     public void EndRay()
     {
@@ -179,6 +182,7 @@ public class BossManager : MonoBehaviour
         armAttackGO.SetActive(true);
         GameObject instantiated = Instantiate(armAttackExplotion, new Vector3(14.5f, 200.05f, 790.9f), Quaternion.identity);
         instantiated.transform.localScale = new Vector3(20, 20, 15);
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Arm_Effect);
     }
     public void DisableArmAttackCollider()
     {

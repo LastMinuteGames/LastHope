@@ -20,7 +20,7 @@ public class ArmAttackEvent : BossEvent
         {
             bossAC = GameObject.FindGameObjectWithTag("Boss").GetComponent<Animator>();
         }
-
+        AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Arm_Attack);
     }
 
 
