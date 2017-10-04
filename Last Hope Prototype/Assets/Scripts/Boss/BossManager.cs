@@ -133,6 +133,7 @@ public class BossManager : MonoBehaviour
         isDead = true;
         isAwaken = false;
         canvasGO.SetActive(false);
+        EndRay();
         Invoke("Dead", 4.0f);
         AudioSources.instance.PlaySound((int)AudiosSoundFX.Boss_Die);
     }
