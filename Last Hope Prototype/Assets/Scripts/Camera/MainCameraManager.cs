@@ -25,7 +25,7 @@ public class MainCameraManager : MonoBehaviour
 
     void Start()
     {
-        AudioSources.instance.PlayMusic((int)AudiosMusic.MainTheme);
+        AudioSources.instance.PlayMusic((int)AudiosMusic.CityTheme);
     }
 
     void Update ()

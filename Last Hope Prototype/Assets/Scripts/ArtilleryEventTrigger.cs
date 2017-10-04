@@ -41,6 +41,8 @@ public class ArtilleryEventTrigger : GenericCombatEvent
         base.EventStart();
         artilleryCamera.GetComponent<Camera>().enabled = true;
         artilleryCamera.GetComponent<Animator>().SetTrigger("Move");
+
+        AudioSources.instance.PlayMusic((int)AudiosMusic.ArtilleryTheme);
     }
 
     override protected void UpdateEvent()
@@ -61,6 +63,7 @@ public class ArtilleryEventTrigger : GenericCombatEvent
                 currentWave = null;
                 status = EVENT_STATUS.FINISHED;
                 target.hpSlider.gameObject.SetActive(false);
+
 
                 UnblockExits();
 

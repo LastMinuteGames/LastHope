@@ -74,7 +74,10 @@ public enum AudiosMusic
 {
     MainTheme,
     CityTheme,
-    CombatTheme
+    CombatTheme,
+    ArtilleryTheme,
+    ArtilleryLoopTheme,
+    BridgeTheme
 }
 
 
