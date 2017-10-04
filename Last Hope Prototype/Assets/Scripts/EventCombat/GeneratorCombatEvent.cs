@@ -40,7 +40,6 @@ public class GeneratorCombatEvent : GenericCombatEvent
 
     override protected void FinishedEvent()
     {
-        Debug.Log("PENE");
         generator.SpawnSpecialAbility();
         base.FinishedEvent();
     }
