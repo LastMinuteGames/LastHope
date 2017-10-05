@@ -44,8 +44,8 @@ public class InGameMenu : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        unselectedTextColor = new Color(0F, 0F, 0F, 1);
-        selectedTextColor = new Color(1F, 1F, 1F, 1);
+        unselectedTextColor = new Color(0.4F, 0.486F, 0.6235F, 1);
+        selectedTextColor = new Color(0.612F, 0.937F, 1F, 1);
 
         //Boton Iniciar Partida - Initial state: Selected
         continueGame = continueGame.GetComponent<Button>();

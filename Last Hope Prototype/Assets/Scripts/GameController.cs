@@ -43,11 +43,12 @@ public class GameController : MonoBehaviour {
             openMenu();
             AudioSources.instance.PlaySound(pauseFxId);
         }
-        else if (InputManager.Pause() && isMenu)
+        /*else if (InputManager.Pause() && isMenu)
         {
+            
             closeMenu();
             AudioSources.instance.PlaySound(unpauseFxId);
-        }
+        }*/
     }
 
     public void openMenu()
@@ -63,6 +64,8 @@ public class GameController : MonoBehaviour {
         {
             AudioSources.instance.PlaySound(applySelectionFxId);
         }
+        menuInGame.gameObject.GetComponent<InGameMenu>().isConfirmExit = false;
+        //menuInGame.gameObject.GetComponent<InGameMenu>().confirmExit.gameObject.SetActive(false);
         menuInGame.gameObject.SetActive(false);
         Time.timeScale = 1.0F;
         isMenu = false;
