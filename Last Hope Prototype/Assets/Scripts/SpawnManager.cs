@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     public SpawnPoint[] spawnPoints;
     public SpawnPoint currrentSpawn;
 
+
     void Start()
     {
         if (spawnPoints.Length > 0)
@@ -38,6 +39,10 @@ public class SpawnManager : MonoBehaviour
 
     public Vector3 GetRespawnPoint()
     {
+        if (currrentSpawn == spawnPoints[spawnPoints.Length -1])
+        {
+            BossManager.instance.StartBossFight();
+        }
         return currrentSpawn.transform.position;
     }
 

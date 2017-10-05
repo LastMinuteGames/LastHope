@@ -32,6 +32,10 @@ public class AudioSources : MonoBehaviour
     {
         SoundAudioSources[index].StopLoopingSound();
     }
+    public void StopSound(int index)
+    {
+        SoundAudioSources[index].Stop();
+    }
 
     public void PlayMusic(int index, float volume = 1)
     {
@@ -70,7 +74,10 @@ public enum AudiosMusic
 {
     MainTheme,
     CityTheme,
-    CombatTheme
+    CombatTheme,
+    ArtilleryTheme,
+    ArtilleryLoopTheme,
+    BridgeTheme
 }
 
 
@@ -155,7 +162,21 @@ public enum AudiosSoundFX
 
     Environment_BreakEnvironment_BreakBarricade,
     Environment_BreakEnvironment_BreakBench,
-    Environment_BreakEnvironment_BreakTrafficLight
+    Environment_BreakEnvironment_BreakTrafficLight,
+    #endregion
+
+    #region Boss
+    Boss_Hurt,
+    Boss_Die,
+    Boss_Arm_Attack,
+    Boss_Arm_Effect,
+    Boss_Plasma_Attack,
+    Boss_Plasma_Effect,
+	Boss_Rocket_Attack,
+    Boss_Rocket_Impact,
+    Boss_Spawn_Attack,
+    Boss_Start,
+    Boss_Turret1
     #endregion
 }
 

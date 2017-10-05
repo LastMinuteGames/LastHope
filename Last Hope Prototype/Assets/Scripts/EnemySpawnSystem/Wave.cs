@@ -8,6 +8,13 @@ using UnityEngine;
 namespace Assets.Scripts.EnemySpawnSystem
 {
     [System.Serializable]
+    public struct WaveBlueprint
+    {
+        public uint maxSpawnedEnemies;
+        public uint totalEnemies;
+    }
+
+    [System.Serializable]
     public class Wave
     {
         public Dictionary<EnemyType, uint> currentEnemies; //current enemies spawned

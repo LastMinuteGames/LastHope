@@ -110,7 +110,8 @@ public class PlayerController : MonoBehaviour
     private int initialMaxEnergy;
 
     // Movement
-    public float turnSpeed = 50;
+    public float turnSpeed = 300;
+    public float turnSmooth = 0.85f;
     public Transform camRigT;
     public Transform camT;
     private CameraShake camShake;
@@ -128,13 +129,15 @@ public class PlayerController : MonoBehaviour
     private float dodgeTimer;
     private float movementHorizontal, movementVertical;
     private Rigidbody rigidBody;
-    private Vector3 camForward;
-    private Vector3 camRight;
     private Dictionary<string, Attack> playerAttacks;
 
     //UI
     [SerializeField]
     private UIManager uiManager;
+	[SerializeField]
+	private Image damageImage;
+	[SerializeField]
+	private Color flashColour = new Color(1f, 0f, 0f, 0.1f);  
 
     // Interact
     public bool canInteract = false;
@@ -339,7 +342,15 @@ public class PlayerController : MonoBehaviour
             {
                 dmged = false;
             }
+			damageImage.color = Color.Lerp (damageImage.color, flashColour, 5 * Time.deltaTime);
         }
+		else
+		{
+			damageImage.color = Color.Lerp (damageImage.color, Color.clear, 40 * Time.deltaTime);
+		}
+			
+
+		//damageImage.color = Color.Lerp (damageImage.color, Color.clear, 10 * Time.deltaTime);
 
         if (!canDodge)
         {
@@ -382,7 +393,6 @@ public class PlayerController : MonoBehaviour
         switch (typeStance)
         {
             case PlayerStanceType.STANCE_NONE:
-                Debug.Log("NO STANCE");
                 this.stance = stances[typeStance];
                 currentStats = baseStats;
                 ChangeSwordParticles(typeStance);
@@ -391,7 +401,6 @@ public class PlayerController : MonoBehaviour
             case PlayerStanceType.STANCE_BLUE:
                 if (greyAbilityEnabled)
                 {
-                    Debug.Log("BLUE STANCE");
                     this.stance = stances[typeStance];
                     currentStats = baseStats * blueStats;
                     ChangeSwordParticles(typeStance);
@@ -401,7 +410,6 @@ public class PlayerController : MonoBehaviour
             case PlayerStanceType.STANCE_RED:
                 if (redAbilityEnabled)
                 {
-                    Debug.Log("RED STANCE");
                     this.stance = stances[typeStance];
                     currentStats = baseStats * redStats;
                     ChangeSwordParticles(typeStance);
@@ -614,23 +622,23 @@ public class PlayerController : MonoBehaviour
 
     public void Rotate()
     {
-        camForward = camT.TransformDirection(Vector3.forward);
+        Vector3 camForward = camT.forward;
         camForward.y = 0;
         camForward.Normalize();
-
-        Debug.DrawRay(transform.position, camForward, Color.black);
-        Debug.DrawRay(transform.position, transform.forward, Color.cyan);
-
-        camRight = new Vector3(camForward.z, 0, -camForward.x);
-        Debug.DrawRay(transform.position, camRight, Color.red);
+        Vector3 camRight = new Vector3(camForward.z, 0, -camForward.x);
 
         targetDirection = camForward * movementVertical + camRight * movementHorizontal;
-        Debug.DrawRay(transform.position, targetDirection, Color.blue);
 
         if (targetDirection != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+            targetDirection.Normalize();
+
+            float angle = Vector3.Angle(transform.forward, targetDirection);
+            float maxDeltaAngle = turnSpeed * Time.fixedDeltaTime * 10;
+            angle = Mathf.Clamp(angle, -maxDeltaAngle, maxDeltaAngle);
+            Quaternion idealRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+            Quaternion targetRotation = Quaternion.RotateTowards(transform.rotation, idealRotation, angle);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSmooth);
         }
     }
 
@@ -852,7 +860,7 @@ public class PlayerController : MonoBehaviour
             if (interactable != null && interactable.CanInteract())
             {
                 canInteract = true;
-                
+
             }
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("EnemyAttack"))
@@ -867,13 +875,50 @@ public class PlayerController : MonoBehaviour
                     AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_AttackHit);
                     TakeDamage(currentAttackReceived.damage);
                     anim.SetTrigger("damaged");
-                }else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true)
+                }
+                else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true)
                 {
                     AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_BlockAttack);
                 }
             }
         }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("BossAttack"))
+        {
+            bool canReceiveBossAttack = true;
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged") == true || anim.GetCurrentAnimatorStateInfo(0).IsName("Die") == true)
+            {
+                canReceiveBossAttack = false; ;
+            }
+
+            else
+            {
+                if (other.name == "Ray")
+                {
+					Vector3 playerLeftForward = transform.forward - transform.right;
+					if (anim.GetCurrentAnimatorStateInfo(0).IsName("Block") == true && Vector3.Dot(playerLeftForward, other.transform.parent.forward) < 0.2f)
+                    {
+                        AudioSources.instance.PlaySound((int)AudiosSoundFX.Player_Combat_BlockAttack);
+                        canReceiveBossAttack = false;
+                    }
+                }
+                if (other.name == "ArmCollider")
+                {
+                    //hurts you anyway
+                }
+            }
+
+            if (canReceiveBossAttack)
+            {
+                blocking = false;
+                SpawnHitParticles(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+                AudioSources.instance.PlaySound((int)AudiosSoundFX.Enemy_Combat_AttackHit);
+                TakeDamage(30);
+                anim.SetTrigger("damaged");
+            }
+        }
     }
+
     public void OnTriggerExit(Collider other)
     {
         // TODO: Possible bug if two interactable triggers are colliding with the player and one exits

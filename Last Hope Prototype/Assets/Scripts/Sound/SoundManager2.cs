@@ -202,10 +202,10 @@ namespace LastHope.SoundManager2
             }
 
             float targetVolume = volume * realSoundVolume;
-            if (maxVolume > 0.5f)
-            {
-                targetVolume = (minVolume + maxVolume) / (float)(volumes.Count + 2);
-            }
+            //if (maxVolume > 0.5f)
+            //{
+            //    targetVolume = (minVolume + maxVolume) / (float)(volumes.Count + 2);
+            //}
 
             volumes.Add(targetVolume);
 

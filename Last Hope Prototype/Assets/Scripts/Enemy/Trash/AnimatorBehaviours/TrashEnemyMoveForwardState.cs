@@ -9,7 +9,6 @@ public class TrashEnemyMoveForwardState : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("MoveForward Enter");
         if (enemyTrash == null)
         {
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
@@ -21,7 +20,6 @@ public class TrashEnemyMoveForwardState : StateMachineBehaviour {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("MoveForward Update");
         if (enemyTrash.nav.remainingDistance <= enemyTrash.attackRange)
         {
             enemyTrash.nav.Stop();

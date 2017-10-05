@@ -27,13 +27,11 @@ public class EnergyCoreController : MonoBehaviour {
                     player.EnableBlueAbility();
                     player.ChangeStance(stance);
                     player.DialogBlueEnergyCore();
-                    Debug.Log("Blue special ability learned");
                     break;
                 case PlayerStanceType.STANCE_RED:
                     player.EnableRedAbility();
                     //player.ChangeStance(stance);
                     player.DialogSwitchStances();
-                    Debug.Log("Red special ability learned");
                     break;
             }
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Unclassified_Core);

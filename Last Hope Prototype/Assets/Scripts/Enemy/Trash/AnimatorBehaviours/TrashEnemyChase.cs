@@ -13,13 +13,11 @@ public class TrashEnemyChase : StateMachineBehaviour
             enemyTrash = animator.transform.gameObject.GetComponent<EnemyTrash>();
         }
         enemyTrash.DisableSwordEmitter();
-        Debug.Log("Chase Enter");
     }
 
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Chase Update");
         RaycastHit attackHit;
         Vector3 direction;
         bool rayAttackHit;
@@ -93,7 +91,7 @@ public class TrashEnemyChase : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Chase exit");
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

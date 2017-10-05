@@ -5,109 +5,70 @@ using UnityEngine.UI;
 
 public class UIHealth : MonoBehaviour
 {
-    public int startingHealth = 10;
-    public int maxHealth = 100;
-    public bool testModeOn = false;
+	public RectTransform[] fillRects;
+	private Image[] fillImgs;
+	public Image[] extraHPImgs;
 
-    public int currentHealth;
     private Slider hpSlider;
 
     void Awake()
     {
+		fillImgs = new Image[3];
         hpSlider = GetComponent<Slider>();
+		for (int i = 0; i < fillRects.Length; i++) 
+		{
+			fillImgs[i] = fillRects[i].GetComponent<Image>();
+		}
+
+		UpdateVisible (0);
     }
-
-    //void Start()
-    //{
-    //    if (startingHealth > maxHealth)
-    //    {
-    //        startingHealth = maxHealth;
-    //    }
-    //    currentHealth = startingHealth;
-    //    hpSlider = GetComponent<Slider>();
-    //    RenderUI();
-    //}
-
-    //void Update()
-    //{
-    //    //TODO::only enable this on debug mode and probably change keybindings
-    //    if (!testModeOn)
-    //    {
-    //        return;
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.Alpha1))
-    //    {
-    //        OnIncrementMaxHealth(10);
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.Alpha2))
-    //    {
-    //        OnDecreaseMaxHealth(10);
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.Alpha3))
-    //    {
-    //        HealUp(10);
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.Alpha4))
-    //    {
-    //        TakeDamage(10);
-    //    }
-    //}
-
-    //public void OnIncrementMaxHealth(int amount)
-    //{
-    //    RenderUI();
-    //}
-
-    //public void OnDecreaseMaxHealth(int amount)
-    //{
-    //    RenderUI();
-    //}
-
-    //public void HealUp(int amount)
-    //{
-    //    currentHealth += amount;
-    //    if (currentHealth > maxHealth)
-    //    {
-    //        currentHealth = maxHealth;
-    //    }
-    //    RenderUI();
-    //}
-
-    //public void TakeDamage(int amount)
-    //{
-    //    if (currentHealth > 0)
-    //    {
-    //        currentHealth -= amount;
-    //        if (currentHealth <= 0)
-    //        {
-    //            currentHealth = 0;
-    //            Die();
-    //        }
-    //    }
-    //    RenderUI();
-    //}
-
-    //void Die()
-    //{
-    //    //die behaviour
-    //}
-
-    //void RenderUI()
-    //{
-    //    hpSlider.value = (float)currentHealth / 100;
-    //}
-
-
+		
     public void UpdateHealth(int amount)
     {
-        currentHealth = amount;
-        hpSlider.value = (float)currentHealth / maxHealth;
+		hpSlider.value = amount;
     }
 
     public void UpdateMaxHealth(int _maxHealth)
     {
-        maxHealth = _maxHealth;
-        // chage hp bar size
-
+		if (_maxHealth == 105) 
+		{
+			UpdateVisible(1);
+		}
+		if (_maxHealth == 110)
+		{
+			UpdateVisible(2);
+		}
     }
+
+
+	public void UpdateVisible(int x)
+	{
+		hpSlider.fillRect = fillRects[x];
+
+		for (int i = 0; i < fillRects.Length; i++) 
+		{
+			if (i == x) 
+			{
+				fillImgs[i].enabled = true;
+			} 
+			else 
+			{
+				fillImgs[i].enabled = false;
+			}
+		}
+			
+		x--;
+		for (int i = 0; i < extraHPImgs.Length; i++) 
+		{
+			if (i == x) 
+			{
+				extraHPImgs[i].enabled = true;
+			} 
+			else 
+			{
+				extraHPImgs[i].enabled = false;
+			}
+		}
+
+	}
 }

@@ -24,7 +24,6 @@ public class BarricadeController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
         if (layersToCollideWith == (layersToCollideWith | (1 << other.gameObject.layer)) && other.tag == "RedAttack")
         {
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_BreakEnvironment_BreakBarricade);

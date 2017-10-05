@@ -34,6 +34,8 @@ public class PowerPlantController : Interactable {
     {
         if(CanInteract())
         {
+            AudioSources.instance.PlayMusic((int)AudiosMusic.BridgeTheme);
+
             running = true;
             ActivateBridge();
             baseColor.SetTexture("_EmissionMap", emissiveOn);

@@ -7,6 +7,7 @@ using LastHope.SoundManager;
 public class GameController : MonoBehaviour {
 
     public Canvas menuInGame;
+    public InGameMenu inGame;
     public bool isMenu = false;
 
     //Audio
@@ -45,6 +46,7 @@ public class GameController : MonoBehaviour {
         }
         else if (InputManager.Pause() && isMenu)
         {
+            
             closeMenu();
             AudioSources.instance.PlaySound(unpauseFxId);
         }
@@ -63,6 +65,9 @@ public class GameController : MonoBehaviour {
         {
             AudioSources.instance.PlaySound(applySelectionFxId);
         }
+        menuInGame.gameObject.GetComponent<InGameMenu>().isConfirmExit = false;
+        inGame.closeExitMenu();
+        //menuInGame.gameObject.GetComponent<InGameMenu>().confirmExit.gameObject.SetActive(false);
         menuInGame.gameObject.SetActive(false);
         Time.timeScale = 1.0F;
         isMenu = false;

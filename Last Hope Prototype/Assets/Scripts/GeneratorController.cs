@@ -11,13 +11,23 @@ public class GeneratorController : Interactable {
     public Quaternion spawnPointQuat;
     public ParticleSystem particles;
 
-    private Animator animator;
+    [SerializeField]
+    private GenericCombatEvent combatEvent;
+    [SerializeField]
+    private PlayerController player;
+
+    public Animator animator;
+
+    public GameObject generator;
+    private Material generatorMaterial;
+    public Texture emisiveOff;
+    public Texture emisiveOn;
 
     bool running = false;
 
     void Start () {
         //AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorNoise);
-        animator = GetComponentInChildren<Animator>();
+        generatorMaterial = generator.GetComponent<MeshRenderer>().material;
     }
 	
 	void Update () {
@@ -28,15 +38,16 @@ public class GeneratorController : Interactable {
     {
         if(CanInteract())
         {
+            combatEvent.EventStart(player);
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_PlayerToWorld_Interact);
             animator.SetTrigger("Charging");
             particles.Play(); 
             //TODO: Hide message
             AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorNoise);
             Debug.Log("Generator charging...");
-            Debug.Log("Wait for 5 seconds");
             running = true;
-            Invoke("SpawnSpecialAbility", 5);
+            animator.SetTrigger("running");
+            generatorMaterial.SetTexture("_EmissionMap", emisiveOn);
             DialogueSystem.Instance.NextDialogue();
         }
     }
@@ -45,6 +56,7 @@ public class GeneratorController : Interactable {
     {
         if (CanInteract() && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            player = other.GetComponent<PlayerController>();
             string text = "Press B to charge the Generator";
             string from = "Generator";
             DialogueSystem.Instance.AddDialogue(text, from);
@@ -64,14 +76,19 @@ public class GeneratorController : Interactable {
         }
     }
 
-    void SpawnSpecialAbility()
+    public void SpawnSpecialAbility()
     {
         animator.SetTrigger("Charged");
         particles.Stop();
+        generatorMaterial.SetTexture("_EmissionMap", emisiveOff);
+        animator.ResetTrigger("running");
         AudioSources.instance.PlaySound((int)AudiosSoundFX.Environment_Generator_GeneratorSpawn);
         GameObject core = Instantiate(energyCore, spawnPointPos, spawnPointQuat);
         EnergyCoreController coreParameters = core.GetComponent<EnergyCoreController>();
         coreParameters.stance = PlayerStanceType.STANCE_RED;
+        string text = "Generator charged!";
+        string from = "Generator";
+        DialogueSystem.Instance.AddDialogue(text, from, 2.5f);
     }
 
     void PlayGeneratorNoise()
