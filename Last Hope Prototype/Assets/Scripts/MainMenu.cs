@@ -64,8 +64,8 @@ public class MainMenu : MonoBehaviour {
         selectedBGColor = new Color(0.364F, 0.305F, 0.227F, 1);
         //unselectedTextColor = new Color(0.333F, 0.239F, 0.086F, 1);
         //selectedTextColor = new Color(0.176F, 0.156F, 0.086F, 1);
-        unselectedTextColor = new Color(0F, 0F, 0F, 1);
-        selectedTextColor = new Color(1F, 1F, 1F, 1);
+        unselectedTextColor = new Color(0.4F, 0.486F, 0.6235F, 1);
+        selectedTextColor = new Color(0.612F, 0.937F, 1F, 1);
 
         //Boton Iniciar Partida - Initial state: Selected
         start = start.GetComponent<Button>();
@@ -214,11 +214,11 @@ public class MainMenu : MonoBehaviour {
         switch (focus)
         {
             case 0:
-                start.image.color = selectedBGColor;
-                help.image.color = unselectedBGColor;
-                settings.image.color = unselectedBGColor;
-                credits.image.color = unselectedBGColor;
-                exit.image.color = unselectedBGColor;
+                //start.image.color = selectedBGColor;
+                //help.image.color = unselectedBGColor;
+                //settings.image.color = unselectedBGColor;
+                //credits.image.color = unselectedBGColor;
+                //exit.image.color = unselectedBGColor;
 
                 startText.color = selectedTextColor;
                 helpText.color = unselectedTextColor;
@@ -227,11 +227,11 @@ public class MainMenu : MonoBehaviour {
                 exitText.color = unselectedTextColor;
                 break;
             case 1:
-                start.image.color = unselectedBGColor;
-                help.image.color = selectedBGColor;
-                settings.image.color = unselectedBGColor;
-                credits.image.color = unselectedBGColor;
-                exit.image.color = unselectedBGColor;
+                //start.image.color = unselectedBGColor;
+                //help.image.color = selectedBGColor;
+                //settings.image.color = unselectedBGColor;
+                //credits.image.color = unselectedBGColor;
+                //exit.image.color = unselectedBGColor;
 
                 startText.color = unselectedTextColor;
                 helpText.color = selectedTextColor;
@@ -240,11 +240,12 @@ public class MainMenu : MonoBehaviour {
                 exitText.color = unselectedTextColor;
                 break;
             case 2:
-                start.image.color = unselectedBGColor;
+                /*start.image.color = unselectedBGColor;
                 help.image.color = unselectedBGColor;
                 settings.image.color = selectedBGColor;
                 credits.image.color = unselectedBGColor;
                 exit.image.color = unselectedBGColor;
+                */
 
                 startText.color = unselectedTextColor;
                 helpText.color = unselectedTextColor;
@@ -253,12 +254,12 @@ public class MainMenu : MonoBehaviour {
                 exitText.color = unselectedTextColor;
                 break;
             case 3:
-                start.image.color = unselectedBGColor;
+                /*start.image.color = unselectedBGColor;
                 help.image.color = unselectedBGColor;
                 settings.image.color = unselectedBGColor;
                 credits.image.color = selectedBGColor;
                 exit.image.color = unselectedBGColor;
-
+                */
                 startText.color = unselectedTextColor;
                 helpText.color = unselectedTextColor;
                 settingsText.color = unselectedTextColor;
@@ -266,12 +267,12 @@ public class MainMenu : MonoBehaviour {
                 exitText.color = unselectedTextColor;
                 break;
             case 4:
-                start.image.color = unselectedBGColor;
+                /*start.image.color = unselectedBGColor;
                 help.image.color = unselectedBGColor;
                 settings.image.color = unselectedBGColor;
                 credits.image.color = unselectedBGColor;
                 exit.image.color = selectedBGColor;
-
+                */
                 startText.color = unselectedTextColor;
                 helpText.color = unselectedTextColor;
                 settingsText.color = unselectedTextColor;
@@ -287,15 +288,15 @@ public class MainMenu : MonoBehaviour {
         switch (focus)
         {
             case 0:
-                yes.image.color = selectedBGColor;
-                no.image.color = unselectedBGColor;
+                //yes.image.color = selectedBGColor;
+                //no.image.color = unselectedBGColor;
 
                 yesText.color = selectedTextColor;
                 noText.color = unselectedTextColor;
                 break;
             case 1:
-                yes.image.color = unselectedBGColor;
-                no.image.color = selectedBGColor;
+                //yes.image.color = unselectedBGColor;
+                //no.image.color = selectedBGColor;
 
                 yesText.color = unselectedTextColor;
                 noText.color = selectedTextColor;

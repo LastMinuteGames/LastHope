@@ -34,24 +34,28 @@ public class RocketRainEvent : BossEvent
     public override bool UpdateEvent()
     {
 
-		if (ellapsedTime >= anticipationTime && started == false) {
-			started = true;
-		}
+        if (ellapsedTime >= anticipationTime && started == false)
+        {
+            started = true;
+        }
 
-		if (!started ) {
-			return base.UpdateEvent();
-		}
+        if (!started)
+        {
+            return base.UpdateEvent();
+        }
 
 
         //Debug.Log("update RocketRainEvent");
         for (int i = 0; i < spawnPoints.Count; ++i)
         {
-            if(!spawnPoints[i].incoming && spawnPoints[i].delay <= 4)
+            if (!spawnPoints[i].incoming && spawnPoints[i].delay <= 4)
             {
-				//Vector3 instantiatePos = spawnPoints [i].transform.position;
-				Quaternion instantiateRot = Quaternion.Euler (-90, 0, 0);
-
-				GameObject incoming = Instantiate(rocketIncoming, spawnPoints [i].transform.position, instantiateRot);
+                int num = (int)Math.Round(UnityEngine.Random.Range(-30.0f, 30.0f));
+                //Vector3 instantiatePos = spawnPoints [i].transform.position;
+                Quaternion instantiateRot = Quaternion.Euler(-90, 0, 0);
+                Vector3 pos = spawnPoints[i].transform.position;
+                pos.x += num;
+                GameObject incoming = Instantiate(rocketIncoming, pos, instantiateRot);
                 incomings.Add(incoming);
                 spawnPoints[i].incoming = true;
                 spawnPoints[i].incomingObject = incoming;
