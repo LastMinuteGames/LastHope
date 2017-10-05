@@ -50,11 +50,11 @@ public class RocketRainEvent : BossEvent
         {
             if (!spawnPoints[i].incoming && spawnPoints[i].delay <= 4)
             {
-                int num = (int)Math.Round(UnityEngine.Random.Range(-30.0f, 30.0f));
+                spawnPoints[i].random = (int)Math.Round(UnityEngine.Random.Range(-30.0f, 30.0f));
                 //Vector3 instantiatePos = spawnPoints [i].transform.position;
                 Quaternion instantiateRot = Quaternion.Euler(-90, 0, 0);
                 Vector3 pos = spawnPoints[i].transform.position;
-                pos.x += num;
+                pos.x += spawnPoints[i].random;
                 GameObject incoming = Instantiate(rocketIncoming, pos, instantiateRot);
                 incomings.Add(incoming);
                 spawnPoints[i].incoming = true;
@@ -63,6 +63,8 @@ public class RocketRainEvent : BossEvent
 
             if (spawnPoints[i].delay <= 0 && !spawnPoints[i].done)
             {
+                RocketSpawnPoint aux = spawnPoints[i];
+                aux.transform.position = new Vector3(aux.transform.position.x + spawnPoints[i].random, aux.transform.position.y, aux.transform.position.z);
                 manager.SpawnRocket(spawnPoints[i]);
                 spawnPoints[i].done = true;
                 spawnPoints[i].delay = spawnPoints[i].initialDelay;
@@ -99,6 +101,7 @@ public class RocketRainEvent : BossEvent
             spawnPoints[i].done = false;
             spawnPoints[i].delay = spawnPoints[i].initialDelay;
             spawnPoints[i].incoming = false;
+            spawnPoints[i].random = 0;
         }
     }
 
