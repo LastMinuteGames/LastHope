@@ -9,4 +9,5 @@ public class RocketSpawnPoint : MonoBehaviour {
     public bool incoming = false;
     public GameObject incomingObject;
     public int order;
+    public int random;
 }

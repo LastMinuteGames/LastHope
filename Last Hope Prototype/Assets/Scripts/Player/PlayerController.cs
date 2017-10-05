@@ -803,7 +803,7 @@ public class PlayerController : MonoBehaviour
             ParticleSystem ps = spawnedParticle.GetComponent<ParticleSystem>();
             float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
             Destroy(spawnedParticle, totalDuration);
-            if (camShake != null)
+			if (camShake != null && camShake.enabled)
             {
                 StartCoroutine(camShake.Shake());
             }

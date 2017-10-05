@@ -20,12 +20,13 @@ public class RocketRainEvent : BossEvent
         //BossManager.instance.SetEmisiveMortar();
         Debug.Log("starting RocketRainEvent");
         manager = GameObject.Find("RocketSpawnManager").GetComponent<RocketSpawnManager>();
+        incomings = new List<GameObject>();
 
-		if (manager == null) {
+        if (manager == null) {
 			TerminateEvent ();
 		}
 
-        RandomizeSpawnPoints();
+        //RandomizeSpawnPoints();
         InitializeSpawnPoints();
 		BossManager.instance.SetEmisiveYellow();
 		GameObject.FindGameObjectWithTag("Boss").GetComponent<Animator>().SetTrigger("mortarAttack");
@@ -33,40 +34,33 @@ public class RocketRainEvent : BossEvent
 
     public override bool UpdateEvent()
     {
-
-        if (ellapsedTime >= anticipationTime && started == false)
-        {
-            started = true;
-        }
-
-        if (!started)
-        {
-            return base.UpdateEvent();
-        }
-
-
         //Debug.Log("update RocketRainEvent");
         for (int i = 0; i < spawnPoints.Count; ++i)
         {
-            if (!spawnPoints[i].incoming && spawnPoints[i].delay <= 4)
+            if (!spawnPoints[i].incoming && spawnPoints[i].delay <= 4f)
             {
-                int num = (int)Math.Round(UnityEngine.Random.Range(-30.0f, 30.0f));
+                spawnPoints[i].random = (int)Math.Round(UnityEngine.Random.Range(-30.0f, 30.0f));
                 //Vector3 instantiatePos = spawnPoints [i].transform.position;
                 Quaternion instantiateRot = Quaternion.Euler(-90, 0, 0);
                 Vector3 pos = spawnPoints[i].transform.position;
-                pos.x += num;
+                pos.x += spawnPoints[i].random;
                 GameObject incoming = Instantiate(rocketIncoming, pos, instantiateRot);
-                incomings.Add(incoming);
-                spawnPoints[i].incoming = true;
-                spawnPoints[i].incomingObject = incoming;
+                if (incoming != null)
+                {
+                    incomings.Add(incoming);
+                    spawnPoints[i].incoming = true;
+                    spawnPoints[i].incomingObject = incoming;
+                }
             }
 
-            if (spawnPoints[i].delay <= 0 && !spawnPoints[i].done)
+            if (spawnPoints[i].delay <= 0f && !spawnPoints[i].done)
             {
+                RocketSpawnPoint aux = spawnPoints[i];
+                aux.transform.position = new Vector3(aux.transform.position.x + spawnPoints[i].random, aux.transform.position.y, aux.transform.position.z);
                 manager.SpawnRocket(spawnPoints[i]);
                 spawnPoints[i].done = true;
                 spawnPoints[i].delay = spawnPoints[i].initialDelay;
-                if (spawnPoints[i].incoming)
+                if (spawnPoints[i].incoming && spawnPoints[i].incomingObject != null)
                 {
                     incomings.Remove(spawnPoints[i].incomingObject);
                     Destroy(spawnPoints[i].incomingObject);
@@ -74,7 +68,7 @@ public class RocketRainEvent : BossEvent
                 //Destroy(spawnPoints[i]);
                 //spawnPoints.RemoveAt(i);
             }
-            else
+            if(spawnPoints[i].delay > 0f)
             {
                 spawnPoints[i].delay -= Time.deltaTime;
             }
@@ -99,6 +93,7 @@ public class RocketRainEvent : BossEvent
             spawnPoints[i].done = false;
             spawnPoints[i].delay = spawnPoints[i].initialDelay;
             spawnPoints[i].incoming = false;
+            spawnPoints[i].random = 0;
         }
     }
 
