@@ -242,12 +242,24 @@ public class InGameMenu : MonoBehaviour
     }
 
     //Open the confirm exit menu
-    void closeExitMenu()
+    public void closeExitMenu()
     {
         confirmExit.gameObject.SetActive(false);
         isConfirmExit = false;
+
+        focus = 0;
+        continueGame.GetComponent<Image>().sprite = selectedBGMenuSprite;
+        exit.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+        continueGameText.color = selectedTextColor;
+        exitText.color = unselectedTextColor;
+
         focusExit = 1;
         continueGame.gameObject.SetActive(true);
+        yes.GetComponent<Image>().sprite = unselectedBGExitSprite;
+        no.GetComponent<Image>().sprite = selectedBGExitSprite;
+        yesText.color = selectedTextColor;
+        noText.color = unselectedTextColor;
+
         exit.gameObject.SetActive(true);
     }
 
