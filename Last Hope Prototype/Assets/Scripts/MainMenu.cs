@@ -40,6 +40,11 @@ public class MainMenu : MonoBehaviour {
     public Color unselectedTextColor;
     public Color selectedTextColor;
 
+    public Sprite unselectedBGMenuSprite;
+    public Sprite selectedBGMenuSprite;
+    public Sprite unselectedBGExitSprite;
+    public Sprite selectedBGExitSprite;
+
     //Input
     bool upInUse = false;
     bool downInUse = false;
@@ -60,40 +65,66 @@ public class MainMenu : MonoBehaviour {
         //Hide cursor
         Cursor.visible = false;
 
-        unselectedBGColor = new Color(0.529F, 0.407F, 0.239F, 1);
-        selectedBGColor = new Color(0.364F, 0.305F, 0.227F, 1);
+        //unselectedBGColor = new Color(0.529F, 0.407F, 0.239F, 1);
+        //selectedBGColor = new Color(0.364F, 0.305F, 0.227F, 1);
         //unselectedTextColor = new Color(0.333F, 0.239F, 0.086F, 1);
         //selectedTextColor = new Color(0.176F, 0.156F, 0.086F, 1);
         unselectedTextColor = new Color(0.4F, 0.486F, 0.6235F, 1);
         selectedTextColor = new Color(0.612F, 0.937F, 1F, 1);
 
         //Boton Iniciar Partida - Initial state: Selected
-        start = start.GetComponent<Button>();
+        /*start = start.GetComponent<Button>();
         start.image.color = selectedBGColor;
+        startText = startText.GetComponent<Text>();
+        startText.color = selectedTextColor;
+        */
+        start = start.GetComponent<Button>();
+        start.GetComponent<Image>().sprite = selectedBGMenuSprite;
         startText = startText.GetComponent<Text>();
         startText.color = selectedTextColor;
 
         //Boton Level Select - Initial state: Unselected
-        help = help.GetComponent<Button>();
+        /*help = help.GetComponent<Button>();
         help.image.color = unselectedBGColor;
         helpText = helpText.GetComponent<Text>();
         helpText.color = unselectedTextColor;
+        */
+        help = help.GetComponent<Button>();
+        help.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+        helpText = helpText.GetComponent<Text>();
+        helpText.color = unselectedTextColor;
+
 
         //Boton Controles - Initial state: Unselected
-        settings = settings.GetComponent<Button>();
+        /*settings = settings.GetComponent<Button>();
         settings.image.color = unselectedBGColor;
+        settingsText = settingsText.GetComponent<Text>();
+        settingsText.color = unselectedTextColor;
+        */
+        settings = settings.GetComponent<Button>();
+        settings.GetComponent<Image>().sprite = unselectedBGMenuSprite;
         settingsText = settingsText.GetComponent<Text>();
         settingsText.color = unselectedTextColor;
 
         //Boton Controles - Initial state: Unselected
-        credits = credits.GetComponent<Button>();
+        /*credits = credits.GetComponent<Button>();
         credits.image.color = unselectedBGColor;
+        creditsText = creditsText.GetComponent<Text>();
+        creditsText.color = unselectedTextColor;
+        */
+        credits = credits.GetComponent<Button>();
+        credits.GetComponent<Image>().sprite = unselectedBGMenuSprite;
         creditsText = creditsText.GetComponent<Text>();
         creditsText.color = unselectedTextColor;
 
         //Boton Salida - Initial state: Unselected
-        exit = exit.GetComponent<Button>();
+        /*exit = exit.GetComponent<Button>();
         exit.image.color = unselectedBGColor;
+        exitText = exitText.GetComponent<Text>();
+        exitText.color = unselectedTextColor;
+        */
+        exit = exit.GetComponent<Button>();
+        exit.GetComponent<Image>().sprite = unselectedBGMenuSprite;
         exitText = exitText.GetComponent<Text>();
         exitText.color = unselectedTextColor;
 
@@ -108,14 +139,24 @@ public class MainMenu : MonoBehaviour {
         isConfirmExit = false;
 
         //Boton SI salir
-        yes = yes.GetComponent<Button>();
+        /*yes = yes.GetComponent<Button>();
         yes.image.color = unselectedBGColor;
+        yesText = yesText.GetComponent<Text>();
+        yesText.color = unselectedTextColor;
+        */
+        yes = yes.GetComponent<Button>();
+        yes.GetComponent<Image>().sprite = unselectedBGExitSprite;
         yesText = yesText.GetComponent<Text>();
         yesText.color = unselectedTextColor;
 
         //Boton NO salir
-        no = no.GetComponent<Button>();
+        /*no = no.GetComponent<Button>();
         no.image.color = unselectedBGColor;
+        noText = noText.GetComponent<Text>();
+        noText.color = unselectedTextColor;
+        */
+        no = no.GetComponent<Button>();
+        no.GetComponent<Image>().sprite = unselectedBGExitSprite;
         noText = noText.GetComponent<Text>();
         noText.color = unselectedTextColor;
 
@@ -219,6 +260,11 @@ public class MainMenu : MonoBehaviour {
                 //settings.image.color = unselectedBGColor;
                 //credits.image.color = unselectedBGColor;
                 //exit.image.color = unselectedBGColor;
+                start.GetComponent<Image>().sprite = selectedBGMenuSprite;
+                help.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                settings.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                credits.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                exit.GetComponent<Image>().sprite = unselectedBGMenuSprite;
 
                 startText.color = selectedTextColor;
                 helpText.color = unselectedTextColor;
@@ -232,6 +278,11 @@ public class MainMenu : MonoBehaviour {
                 //settings.image.color = unselectedBGColor;
                 //credits.image.color = unselectedBGColor;
                 //exit.image.color = unselectedBGColor;
+                start.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                help.GetComponent<Image>().sprite = selectedBGMenuSprite;
+                settings.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                credits.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                exit.GetComponent<Image>().sprite = unselectedBGMenuSprite;
 
                 startText.color = unselectedTextColor;
                 helpText.color = selectedTextColor;
@@ -246,6 +297,11 @@ public class MainMenu : MonoBehaviour {
                 credits.image.color = unselectedBGColor;
                 exit.image.color = unselectedBGColor;
                 */
+                start.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                help.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                settings.GetComponent<Image>().sprite = selectedBGMenuSprite;
+                credits.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                exit.GetComponent<Image>().sprite = unselectedBGMenuSprite;
 
                 startText.color = unselectedTextColor;
                 helpText.color = unselectedTextColor;
@@ -260,6 +316,12 @@ public class MainMenu : MonoBehaviour {
                 credits.image.color = selectedBGColor;
                 exit.image.color = unselectedBGColor;
                 */
+                start.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                help.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                settings.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                credits.GetComponent<Image>().sprite = selectedBGMenuSprite;
+                exit.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+
                 startText.color = unselectedTextColor;
                 helpText.color = unselectedTextColor;
                 settingsText.color = unselectedTextColor;
@@ -273,6 +335,12 @@ public class MainMenu : MonoBehaviour {
                 credits.image.color = unselectedBGColor;
                 exit.image.color = selectedBGColor;
                 */
+                start.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                help.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                settings.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                credits.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                exit.GetComponent<Image>().sprite = selectedBGMenuSprite;
+
                 startText.color = unselectedTextColor;
                 helpText.color = unselectedTextColor;
                 settingsText.color = unselectedTextColor;
@@ -290,6 +358,8 @@ public class MainMenu : MonoBehaviour {
             case 0:
                 //yes.image.color = selectedBGColor;
                 //no.image.color = unselectedBGColor;
+                yes.GetComponent<Image>().sprite = selectedBGExitSprite;
+                no.GetComponent<Image>().sprite = unselectedBGExitSprite;
 
                 yesText.color = selectedTextColor;
                 noText.color = unselectedTextColor;
@@ -297,6 +367,8 @@ public class MainMenu : MonoBehaviour {
             case 1:
                 //yes.image.color = unselectedBGColor;
                 //no.image.color = selectedBGColor;
+                yes.GetComponent<Image>().sprite = unselectedBGExitSprite;
+                no.GetComponent<Image>().sprite = selectedBGExitSprite;
 
                 yesText.color = unselectedTextColor;
                 noText.color = selectedTextColor;
