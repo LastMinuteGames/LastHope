@@ -74,6 +74,12 @@ public class TurretsManager : MonoBehaviour {
         {
 			turrets[num - 1].Unlock();
         }
+		if (num == 1) {
+			DialogueSystem.Instance.AddDialogue ("Left turret activated", "", 3.5f);
+		}
+		if (num == 2) {
+			DialogueSystem.Instance.AddDialogue ("Right turret activated", "", 3.5f);
+		}
     }
 
     void ManageCapsules()
