@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ParticleSystemSwitcher : MonoBehaviour
 {
-
+    [SerializeField]
+    private GameObject artillery;
     private List<GameObject> particles = new List<GameObject>();
 
     // Use this for initialization
@@ -51,6 +52,14 @@ public class ParticleSystemSwitcher : MonoBehaviour
         {
             Activate(8);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            ToggleArtillery();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            DeactivateAll();
+        }
     }
 
     void Activate(int num)
@@ -62,5 +71,19 @@ public class ParticleSystemSwitcher : MonoBehaviour
         }
         particles[num - 1].gameObject.SetActive(true);
         particles[num - 1].GetComponent<ParticleSystem>().Play();
+    }
+
+    void DeactivateAll()
+    {
+        foreach (GameObject particle in particles)
+        {
+            particle.GetComponent<ParticleSystem>().Stop();
+            particle.gameObject.SetActive(false);
+        }
+    }
+
+    void ToggleArtillery()
+    {
+        artillery.SetActive(!artillery.activeSelf);
     }
 }
