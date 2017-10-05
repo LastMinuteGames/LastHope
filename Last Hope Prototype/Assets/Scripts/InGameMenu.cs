@@ -23,10 +23,13 @@ public class InGameMenu : MonoBehaviour
     public Text noText;
     public int focusExit;
 
-    public Color unselectedBGColor;
-    public Color selectedBGColor;
     public Color unselectedTextColor;
     public Color selectedTextColor;
+
+    public Sprite unselectedBGMenuSprite;
+    public Sprite selectedBGMenuSprite;
+    public Sprite unselectedBGExitSprite;
+    public Sprite selectedBGExitSprite;
 
     //Input
     bool upInUse = false;
@@ -41,22 +44,20 @@ public class InGameMenu : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        unselectedBGColor = new Color(0.529F, 0.407F, 0.239F, 1);
-        selectedBGColor = new Color(0.364F, 0.305F, 0.227F, 1);
         unselectedTextColor = new Color(0F, 0F, 0F, 1);
         selectedTextColor = new Color(1F, 1F, 1F, 1);
 
         //Boton Iniciar Partida - Initial state: Selected
         continueGame = continueGame.GetComponent<Button>();
-        continueGame.image.color = selectedBGColor;
+        continueGame.GetComponent<Image>().sprite = selectedBGMenuSprite;
         continueGameText = continueGameText.GetComponent<Text>();
         continueGameText.color = selectedTextColor;
 
         //Boton Salida - Initial state: Unselected
         exit = exit.GetComponent<Button>();
-        exit.image.color = unselectedBGColor;
+        exit.GetComponent<Image>().sprite = unselectedBGMenuSprite;
         exitText = exitText.GetComponent<Text>();
-        exitText.color = unselectedTextColor;
+        exitText.color = selectedTextColor;
 
         //focus manages button focus logic - initiate 0
         focus = 0;
@@ -70,13 +71,13 @@ public class InGameMenu : MonoBehaviour
 
         //Boton SI salir
         yes = yes.GetComponent<Button>();
-        yes.image.color = unselectedBGColor;
+        yes.GetComponent<Image>().sprite = unselectedBGExitSprite;
         yesText = yesText.GetComponent<Text>();
         yesText.color = unselectedTextColor;
 
         //Boton NO salir
         no = no.GetComponent<Button>();
-        no.image.color = unselectedBGColor;
+        no.GetComponent<Image>().sprite = unselectedBGExitSprite;
         noText = noText.GetComponent<Text>();
         noText.color = unselectedTextColor;
 
@@ -147,15 +148,15 @@ public class InGameMenu : MonoBehaviour
         switch (focus)
         {
             case 0:
-                continueGame.image.color = selectedBGColor;
-                exit.image.color = unselectedBGColor;
+                continueGame.GetComponent<Image>().sprite = selectedBGMenuSprite;
+                exit.GetComponent<Image>().sprite = unselectedBGMenuSprite;
 
                 continueGameText.color = selectedTextColor;
                 exitText.color = unselectedTextColor;
                 break;
             case 1:
-                continueGame.image.color = unselectedBGColor;
-                exit.image.color = selectedBGColor;
+                continueGame.GetComponent<Image>().sprite = unselectedBGMenuSprite;
+                exit.GetComponent<Image>().sprite = selectedBGMenuSprite;
 
                 continueGameText.color = unselectedTextColor;
                 exitText.color = selectedTextColor;
@@ -170,15 +171,15 @@ public class InGameMenu : MonoBehaviour
         switch (focus)
         {
             case 0:
-                yes.image.color = selectedBGColor;
-                no.image.color = unselectedBGColor;
+                yes.GetComponent<Image>().sprite = selectedBGExitSprite;
+                no.GetComponent<Image>().sprite = unselectedBGExitSprite;
 
                 yesText.color = selectedTextColor;
                 noText.color = unselectedTextColor;
                 break;
             case 1:
-                yes.image.color = unselectedBGColor;
-                no.image.color = selectedBGColor;
+                yes.GetComponent<Image>().sprite = unselectedBGExitSprite;
+                no.GetComponent<Image>().sprite = selectedBGExitSprite;
 
                 yesText.color = unselectedTextColor;
                 noText.color = selectedTextColor;
