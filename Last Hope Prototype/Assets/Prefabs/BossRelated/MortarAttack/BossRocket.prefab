@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1524319597780506
 GameObject:
   m_ObjectHideFlags: 1
@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020688459693868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.858904, y: 0.7700577, z: 745.4766}
+  m_LocalPosition: {x: -10.000471, y: 0.7700577, z: 749.6092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4844478258466014}
@@ -110,13 +110,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020688459693868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a145cdfdf6b3d4bae09c4ccc674a1e, type: 3}
+  m_Script: {fileID: 11500000, guid: fb0f64c5d11c2b040b52eb04ac811f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   incomingParticleGO: {fileID: 1073903604851332}
   rocketGO: {fileID: 1873338042823562, guid: 1b7463683322da94c9afe40b909cd566, type: 2}
-  anticipationTime: 2
-  timer: 0
+  anticipationTime: 3
 --- !u!198 &198264144920080516
 ParticleSystem:
   m_ObjectHideFlags: 1
