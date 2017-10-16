@@ -178,6 +178,14 @@ MonoBehaviour:
   heightOffset: 200
   fallDuration: 0.5
   decal: {fileID: 1930662934816432, guid: 60992ba07b42f1c488a1c4b87af1de1e, type: 2}
+  destinationY: 0
+  startOffset: {x: 0, y: 0, z: 0}
+  interpolationTime: 0
+  currentHeight: 0
+  capsuleHeight: 0
+  spawned: 0
+  timer: 0
+  timeToLive: 1
 --- !u!136 &136498605388421258
 CapsuleCollider:
   m_ObjectHideFlags: 1
