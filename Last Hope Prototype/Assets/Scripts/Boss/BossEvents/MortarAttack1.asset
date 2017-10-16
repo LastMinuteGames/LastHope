@@ -14,8 +14,14 @@ MonoBehaviour:
   duration: 2
   anticipationTime: 1
   ellapsedTime: 0
-  spawnPoints:
-  - {fileID: 4400250527305272, guid: 71bb5366f15b4584fa4c07b7bf3367af, type: 2}
-  - {fileID: 4554698818368950, guid: 71bb5366f15b4584fa4c07b7bf3367af, type: 2}
+  rocketAmount: 15
   bossRocketPrefab: {fileID: 1020688459693868, guid: 00adce56239cb30449d630c8b0922e49,
     type: 2}
+  spawnPointsCenter: {fileID: 4282337523622364, guid: 71bb5366f15b4584fa4c07b7bf3367af,
+    type: 2}
+  marginX: 105
+  marginZ: 15
+  minX: -100
+  maxX: 110
+  minZ: 780
+  maxZ: 810
