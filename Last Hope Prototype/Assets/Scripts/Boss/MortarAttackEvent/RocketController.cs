@@ -18,7 +18,7 @@ public class RocketController : MonoBehaviour {
     private bool spawned = false;
 
     private float timer = 0f;
-    private float timeToLive = 1f;
+    private float timeToLive = 0.5f;
 
     // Use this for initialization
     void Start () {
