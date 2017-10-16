@@ -18,7 +18,7 @@ public class RocketController : MonoBehaviour {
     private bool spawned = false;
 
     private float timer = 0f;
-    private float timeToLive = 1f;
+    private float timeToLive = 0.5f;
 
     // Use this for initialization
     void Start () {
@@ -73,7 +73,9 @@ public class RocketController : MonoBehaviour {
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit);
         Quaternion hitRotation = Quaternion.Euler(90, Random.Range(0, 360), 0);
-        Instantiate(decal, hit.point + new Vector3(0, 0.001f, 0), hitRotation);
+		Vector3 targetPosition = transform.position;
+		targetPosition.y += 0.01f;
+		Instantiate(decal, targetPosition, hitRotation);
     }
 
     void OnTriggerEnter(Collider other)
